@@ -66,7 +66,7 @@ if (isset($_POST["login"])) {
 
 
 
-        header("    Location: public/evaluationresults.php");
+        header("Location: public/evaluationresults.php");
     }
 }
 
