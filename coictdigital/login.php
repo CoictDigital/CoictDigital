@@ -65,7 +65,8 @@ if (isset($_POST["login"])) {
         $_SESSION["evaluationResultsB"] = $resultB;
 
 
-        header("Location: public/evaluationresults.php");
+
+        header("    Location: public/evaluationresults.php");
     }
 }
 
