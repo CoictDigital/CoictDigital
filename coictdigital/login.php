@@ -23,10 +23,10 @@ if (isset($_POST["login"])) {
     }
 } elseif (isset($_POST["proceedEvalutation"])) {
     $allOkey = true;
-    $course = $_POST["course"];
-    $programme = $_POST["programme"];
     $year = $_POST["year"];
-    $result = fetchProceedEvalutation($course, $programme, $year);
+    $programme = $_POST["programme"];
+    $course = $_POST["course"];    
+    $result = fetchProceedEvalutation($year, $programme, $course);
 
     if ($allOkey) {
         $_SESSION["evaluationFilled"] = $result;

@@ -9,7 +9,7 @@ require_once("includes/functions.php");
 
 
 
-$password = "mdeme";
+$password = "mndeme";
 
 $hashed_password =
     password_hash($password, PASSWORD_DEFAULT);
