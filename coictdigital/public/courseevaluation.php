@@ -12,7 +12,7 @@
     $partA = $_SESSION["evaluationFilled"];
     echo "all good";
   } else {
-    header("Location:/coictdigital/evaluation.php");
+    header("Location: evaluation1.php");
     // header("Location: ./evaluation1.php");
   }
 
@@ -37,10 +37,10 @@
     <section id="evaluation" class="services">
       <div class="container-fluid">
         <div class="section-title">
-        <h3>UNIVERSITY OF DAR ES SALAAM</h3>         
-            <h3>Quality Assurance Bureau (QAB)</h3>
-            <h3>Student Course Evaluation Form</h3>
-            <h2>Undergraduate Programmes</h2>
+          <h3>UNIVERSITY OF DAR ES SALAAM</h3>
+          <h3>Quality Assurance Bureau (QAB)</h3>
+          <h3>Student Course Evaluation Form</h3>
+          <h2>Undergraduate Programmes</h2>
         </div>
         <div class="container">
 
