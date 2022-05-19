@@ -15,6 +15,7 @@ if (isset($_POST["login"])) {
     if ($email) { // user verfied
         $_SESSION["userData"] = $email;
         unset($_SESSION['message']);
+        
         header("Location: public/index.php");
     } else {
         $_SESSION["message"] = "not logged in";
@@ -27,10 +28,12 @@ if (isset($_POST["login"])) {
     $programme = $_POST["programme"];
     $course = $_POST["course"];    
     $result = fetchProceedEvalutation($year, $programme, $course);
+ 
+    print_r($result);
 
     if ($allOkey) {
         $_SESSION["evaluationFilled"] = $result;
-        header("Location: public/courseevaluation.php");
+       header("Location: public/courseevaluation.php");
     }
 } elseif (isset($_POST["evaluationQn"])) {
     $allOkey = true;
@@ -48,7 +51,7 @@ if (isset($_POST["login"])) {
     $semester = $_POST["semester"];
     $course = $_POST["course"];
 
-    $resultA = fetchProceedEvalutation($course, $programme, $studyYear);
+    $resultA = fetchProceedEvalutation($year, $programme, $course);
     $resultB = fetchCourseEvaluationResults($course);
     $resultA = array_merge($resultA, ["totalResponse" => countEvaluationResponse($course)]);
 

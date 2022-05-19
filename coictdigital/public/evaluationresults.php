@@ -82,7 +82,7 @@
               <p>Lecture Venue: <?php echo $partA["venue"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Students programme: <?php echo $partA["student_programme"]; ?> </p>
+              <p>Students programme: </p>
             </div>
           </div>
 

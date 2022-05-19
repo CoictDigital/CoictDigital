@@ -74,7 +74,7 @@
 
 
               <button type="submit" class="mx-auto button" name="departmentForm" value="departmentForm">Proceed</button>
-              <a href="index.html">
+              <a href="index.php">
                 <p class="text-center pt-3">Cancel</p>
               </a>
             </form>
