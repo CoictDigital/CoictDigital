@@ -2,18 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   
+<?php
+require_once("../includes/headerContent.php");
+require_once("../includes/sessionStuffs.php");
 
-  <title>CoICT Digital</title>
-  <link rel="shortcut icon" href="assets/img/favicon.jpg" type="image/x-icon">
-  <meta name="title" content="">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <!-- css files -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
-  <link href="assets/css/style.css" rel="stylesheet">
+unset($_SESSION["studentFilledCount"]);
+
+?>
+
 
 </head>
 
@@ -47,15 +44,12 @@
 
   <main id="main">
 
-    <div class="row" >
-      <div class="col-md-12">
-       <span class="badge alert-success" style="float: right; width: 100px;">Admin</span>
-      </div>
-    </div>
+  
        <!-- ======= Form Section ======= -->
        <section id="allocation" class="services">
         <div class="container-fluid">            
-         <div class="section-title">
+          <!-- <span class="badge alert-success" style="float: right;">Admin</span> -->
+          <div class="section-title">
             <h2>COURSE ALLOCATION</h2>
           </div>
           <div class="container">
@@ -65,65 +59,109 @@
               <div class="col-sm-5 mb-1">
                 <input type="text" class="form-control">
               </div>
-              <div class="col-sm-5 mb-1">
+              <!-- <div class="col-sm-5 mb-1">
                 <a href="#addnewModal"  data-toggle="modal" data-target="#addnewModal" > 
                   <button type="submit" class="mx-auto button" style="float: right; height: 40px;">Add New</button>
                 </a>
-                </div>
+                </div> -->
 
             </div>
            <div class="form-group row">
-              <h5>Table of course allocation for staff</h5>
+              <h5><center> Table of course allocation for Teaching staff</center></h5>
             </div>
             <div class="form-group row">
               <div class="centre">
               <table class="table table-sm">
                 <thead class="table-secondary">
                   <tr>
-                    <th scope="col">Staff Name</th>
-                    <th scope="col">Course Code</th>
-                    <th scope="col">Course Name</th>
-                    <th scope="col">Action</th>
+                  <th scope="col">Instructors</th>
+                      <th scope="col">NO  of Course </th>
+                      <th scope="col">Course Code</th>
+                      <th scope="col">Course Name</th>
+                      <th scope="col">Program</th>
+                      <th scope="col">current</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Credits</th>
+                      <th scope="col">Practical	/	Tutorial	Assistant</th> 
+                      <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                  
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
+                <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>3</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>12</td>
+                      <td>Mr kishiwa</td>
+                      
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>2</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE & Elective</td>
+                      <td>active</td>
+                      <td>12</td>
+                      <td>Mr kishiwa</td>
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>1</td>
+                      <td>IS 565</td>
+                      <td>Information Systems,DS</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>8</td>
+                      <td>Mr kishiwa</td>
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>3</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>12</td>
+                      <td>Mr kishiwa</td>
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>3</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>8</td>
+                      <td>Mr kishiwa</td>
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>3</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>12</td>
+                      <td>Mr kishiwa</td>
+                      
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
                 </tbody>
               </table>
             </div>
@@ -170,39 +208,10 @@
 
       <!-- end of fading aadnew form-->
       
-      <!-- fading edit form-->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-title text-center">
-                <h4>Edit Allocation</h4>
-              </div>
-              <div class="d-flex flex-column text-center">
-                <form>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursecode" placeholder="Course Code">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursename" placeholder="New Course Name">
-                  </div>
-                  <button type="submit" class="mx-auto button" >Save</button>
-                </form>
-              </div>
-            </div>
-          </div>
-           </div>
-      </div>
+      
 
       <!-- end of fading edit form-->
+
 
 
   </main>
@@ -232,4 +241,4 @@
 
 </body>
 
-</html>
+</html> 

@@ -2,19 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   
+<?php
+require_once("../includes/headerContent.php");
+require_once("../includes/sessionStuffs.php");
 
-  <title>CoICT Digital</title>
-  <link rel="shortcut icon" href="assets/img/favicon.jpg" type="image/x-icon">
-  <meta name="title" content="">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <!-- css files -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
- 
-  <link href="assets/css/style.css" rel="stylesheet">
+unset($_SESSION["studentFilledCount"]);
+
+?>
+
 
 </head>
 
@@ -52,80 +48,83 @@
        <!-- ======= Form Section ======= -->
        <section id="invigilation" class="services">
         <div class="container-fluid">            
-          <span class="badge alert-success" style="float: right;">Admin</span>
+          <!-- <span class="badge alert-success" style="float: right;">Admin</span> -->
           <div class="section-title">
             <h2>EXAM INVIGILATION</h2>
           </div>
           <div class="container">
           <form>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Search</label>
+              <label class="col-sm-2 col-form-label"> <i class="fa fa-search" aria-hidden="true"></i>Search</label>
               <div class="col-sm-5 mb-1">
                 <input type="text" class="form-control">
               </div>
-              <div class="col-sm-5 mb-1">
-              <a href="#addnewModal"  data-toggle="modal" data-target="#addnewModal" > 
-                <button type="submit" class="mx-auto button" style="float: right; height: 40px;">Add New</button>
-              </a>
-              </div>
+              
             </div>
            <div class="form-group row">
-              <h5>Table of exam invigilation for staff</h5>
+              <h5>  your allocation</h5>
             </div>
             <div class="form-group row">
               <div class="centre">
               <table class="table table-sm">
                 <thead class="table-secondary">
-                  <tr>
-                    <th scope="col">Staff Name</th>
-                    <th scope="col">Course Name>
-                    <th scope="col">Venue</th>
+                <tr>
+                    <th scope="col">Day</th>
                     <th scope="col">Time</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Venue</th>
+                    <th scope="col">Invigilators</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                  
                   <tr>
-                    <td>Frank Zizima</td>
+                    <td>1/2/2022</td>
+                    <td>8:00 -10:00</td>
                     <td>Information Systems</td>
                     <td>B302</td>
-                    <td>8:00am-11:00am</td>
+                    <td>Mlaki,Japhet</td>
                     <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
                   </tr>
                   <tr>
-                    <td>Frank Zizima</td>
+                  <td>1/2/2022</td>
+                    <td>8:00 -10:00</td>
                     <td>Information Systems</td>
                     <td>B302</td>
-                    <td>8:00am-11:00am</td>
+                    <td>Mlaki,Japhet</td>
                     <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
                   </tr>
                   <tr>
-                    <td>Frank Zizima</td>
+                  <td>1/2/2022</td>
+                    <td>8:00 -10:00</td>
                     <td>Information Systems</td>
                     <td>B302</td>
-                    <td>8:00am-11:00am</td>
+                    <td>Mlaki,Japhet</td>
                     <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
                   </tr>
                   <tr>
-                    <td>Frank Zizima</td>
+                  <td>1/2/2022</td>
+                    <td>8:00 -10:00</td>
                     <td>Information Systems</td>
                     <td>B302</td>
-                    <td>8:00am-11:00am</td>
+                    <td>Mlaki,Japhet</td>
                     <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
                   </tr>
                   <tr>
-                    <td>Frank Zizima</td>
+                  <td>1/2/2022</td>
+                    <td>8:00 -10:00</td>
                     <td>Information Systems</td>
                     <td>B302</td>
-                    <td>8:00am-11:00am</td>
+                    <td>Mlaki,Japhet</td>
                     <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
                   </tr>
                   <tr>
-                    <td>Frank Zizima</td>
+                  <td>1/2/2022</td>
+                    <td>8:00 -10:00</td>
                     <td>Information Systems</td>
                     <td>B302</td>
-                    <td>8:00am-11:00am</td>
+                    <td>Mlaki,Japhet</td>
                     <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
                   </tr>
                   
@@ -133,7 +132,7 @@
               </table>
             </div>
             </div>
-          
+           
           </form>
         </div>
 
@@ -180,7 +179,7 @@
       <!-- end of fading aadnew form-->
       
       <!-- fading edit form-->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="declineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header border-bottom-0">
@@ -190,7 +189,7 @@
             </div>
             <div class="modal-body">
               <div class="form-title text-center">
-                <h4>Edit Invigilation</h4>
+                <h4>Reasons For Decline</h4>
               </div>
               <div class="d-flex flex-column text-center">
                 <form>
@@ -198,15 +197,14 @@
                     <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
                   </div>
                   <div class="form-group">
+                    <input type="text" class="form-control" id="assistantname"placeholder="Assistant Name">
+                  </div>
+                  <div class="form-group">
                     <input type="text" class="form-control" id="coursename" placeholder="Course Name">
                   </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="venue" placeholder="Venue">
+                 
                   </div>
-                  <div class="form-group">
-                    <input type="time" class="form-control" id="time" placeholder="Time">
-                  </div>
-                  <button type="submit" class="mx-auto button" >Save</button>
+                  <button type="submit" class="mx-auto button" >SEND</button>
                 </form>
               </div>
             </div>

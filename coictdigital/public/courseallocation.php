@@ -64,7 +64,7 @@
           <div class="container">
           <form>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Search</label>
+              <label class="col-sm-2 col-form-label"><i class="fa fa-search" aria-hidden="true"></i>Search</label>
               <div class="col-sm-5 mb-1">
                 <input type="text" class="form-control">
               </div>
@@ -83,50 +83,94 @@
               <table class="table table-sm">
                 <thead class="table-secondary">
                   <tr>
-                    <th scope="col">Staff Name</th>
-                    <th scope="col">Course Code</th>
-                    <th scope="col">Course Name</th>
-                    <th scope="col">Action</th>
+                  <th scope="col">Instructors</th>
+                      <th scope="col">NO  of Course </th>
+                      <th scope="col">Course Code</th>
+                      <th scope="col">Course Name</th>
+                      <th scope="col">Program</th>
+                      <th scope="col">current</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Credits</th>
+                      <th scope="col">Practical	/	Tutorial	Assistant</th> 
+                      <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                  
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                    <td>Mlaki Japhet</td>
-                    <td>IS 345</td>
-                    <td>Information Systems</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
+                <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>3</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>12</td>
+                      <td>Mr kishiwa</td>
+                      
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>2</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE & Elective</td>
+                      <td>active</td>
+                      <td>12</td>
+                      <td>Mr kishiwa</td>
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>1</td>
+                      <td>IS 565</td>
+                      <td>Information Systems,DS</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>8</td>
+                      <td>Mr kishiwa</td>
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>3</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>12</td>
+                      <td>Mr kishiwa</td>
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>3</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>8</td>
+                      <td>Mr kishiwa</td>
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mlaki Japhet</td>
+                      <td>3</td>
+                      <td>IS 345</td>
+                      <td>Information Systems</td>
+                      <td>CS ,BIT</td>
+                      <td>CORE </td>
+                      <td>active</td>
+                      <td>12</td>
+                      <td>Mr kishiwa</td>
+                      
+                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
                 </tbody>
               </table>
             </div>

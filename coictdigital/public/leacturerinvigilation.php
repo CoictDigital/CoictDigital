@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
+    
 <?php
-    require_once("../includes/headerContent.php");
-    require_once("../includes/sessionStuffs.php");
+require_once("../includes/headerContent.php");
+require_once("../includes/sessionStuffs.php");
 
-    unset($_SESSION["studentFilledCount"]);
+unset($_SESSION["studentFilledCount"]);
 
-    ?>
+?>
 
 </head>
 
@@ -28,18 +29,12 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="index.php" class="nav-link scrollto"> <span>Home</span></a></li>
-          <li><a href="<?php
-            if ($_SESSION["userData"]["role"] == 2) {
-              echo "department1.php";
-            } else if ($_SESSION["userData"]["role"] == 1) {
-              echo "evaluation1.php";
-            }
-            ?>" class="nav-link scrollto  "> <span>Course Evaluation</span></a></li>        
-          <li><a href="alumnirecords.php" class="nav-link scrollto"><span>Alumni Records</span></a></li>
-          <li><a href="teaching.php" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
-          <li><a href="courseallocation.php" class="nav-link scrollto" > <span>Course Allocation</span></a></li>
-          <li><a href="examinvigilation.php" class="nav-link scrollto" active> <span>Exam Invigilation</span></a></li>
+          <li><a href="index.html" class="nav-link scrollto"> <span>Home</span></a></li>
+          <li><a href="courseevaluation.html" class="nav-link scrollto  "> <span>Course Evaluation</span></a></li>        
+          <li><a href="alumnirecords.html" class="nav-link scrollto"><span>Alumni Records</span></a></li>
+          <li><a href="teachingmonitoring.html" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
+          <li><a href="courseallocation.html" class="nav-link scrollto" > <span>Course Allocation</span></a></li>
+          <li><a href="#invigilation" class="nav-link scrollto" active> <span>Exam Invigilation</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
@@ -48,36 +43,25 @@
 
   <main id="main">
 
-    <div class="row" >
-      <div class="col-md-12"><div class="dropdown" style="float: right; width: 100px;">
-  <button class="dropbtn">user<i class="fa fa-caret-down"></i></button>
-  <div class="dropdown-content">
-    <a href="#">Profile</a>
-    <a href="#">Logout</a>
-    
-  </div>
-</div>
-       <span class="badge alert-success" style="float: right; width: 100px;">Admin</span>
-      </div>
-    </div>
+  
        <!-- ======= Form Section ======= -->
        <section id="invigilation" class="services">
         <div class="container-fluid">            
-         
+          <!-- <span class="badge alert-success" style="float: right;">Admin</span> -->
           <div class="section-title">
             <h2>EXAM INVIGILATION</h2>
           </div>
           <div class="container">
           <form>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label"><i class="fa fa-search" aria-hidden="true"></i> Search</label>
+              <label class="col-sm-2 col-form-label"> <i class="fa fa-search" aria-hidden="true"></i>Search</label>
               <div class="col-sm-5 mb-1">
                 <input type="text" class="form-control">
               </div>
               <div class="col-sm-5 mb-1">
-              <a href="#addnewModal"  data-toggle="modal" data-target="#addnewModal" > 
+              <!-- <a href="#addnewModal"  data-toggle="modal" data-target="#addnewModal" > 
                 <button type="submit" class="mx-auto button" style="float: right; height: 40px;">Add New</button>
-              </a>
+              </a> -->
               </div>
             </div>
            <div class="form-group row">
@@ -151,7 +135,7 @@
               </table>
             </div>
             </div>
-          
+            <button type="submit" class="mx-auto button" ><a href="invigilationdashboard.php"  class="fa fa-history"></a>My allocation</button>
           </form>
         </div>
 
@@ -211,7 +195,7 @@
                 <h4>Edit Invigilation</h4>
               </div>
               <div class="d-flex flex-column text-center">
-              <form>
+                <form>
                   <div class="form-group">
                     <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
                   </div>
