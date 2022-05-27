@@ -4,29 +4,38 @@
 <head>
 
 <?php
-    require_once("../includes/headerContent.php");
-    require_once("../includes/sessionStuffs.php");
+require_once '../includes/headerContent.php';
+require_once '../includes/sessionStuffs.php';
 
-    unset($_SESSION["studentFilledCount"]);
+if (isset($_SESSION["teachingFilled"])) {
+  
+  echo "all good";
+} else {
+  header("Location: teaching.php");
+}
+// unset($_SESSION["studentFilledCount"]);
 
-    ?>
+?>
 
 
 <script>
     function showHidemycode(){
-      if (document.getElementById("absent").checked){
-        document.getElementById("abs").style.display = "block";
-      }else {
+      if (document.getElementById("present").checked){
+        document.getElementById("mycode").style.display = "block";
         document.getElementById("abs").style.display = "none";
+      }else {
       }
     }
   </script>
+
   <script>
     function showHideabs(){
-      if (document.getElementById("present").checked){
-        document.getElementById("abs").style.display = "none";
-      }else {
+      if (document.getElementById("absent").checked){
+        // window.alert("Hello");
         document.getElementById("abs").style.display = "block";
+        document.getElementById("mycode").style.display = "none";
+      }else {
+        
       }
     }
   </script>
@@ -35,11 +44,32 @@
   function showHideontime(){
     if (document.getElementById("ontime").checked){
       document.getElementById("reason").style.display = "none";
-    }else if (document.getElementById("0-30").checked || document.getElementById("15-30").checked || document.getElementById(">30").checked){
+    }else{
       document.getElementById("reason").style.display = "block";
     }
   }
 </script>
+
+<script>
+  function showHideissues(){
+    if (document.getElementById("yes").checked){
+      document.getElementById("issues").style.display = "block";
+    }else{
+      document.getElementById("issues").style.display = "none";
+    }
+  }
+</script>
+
+<!-- <script>
+  function submit(x){
+    if (x==0){
+      document.getElementById("submit").style.display = "block";
+    }else{
+
+    } return;
+  }
+    
+</script> -->
 
 </head>
 
@@ -60,13 +90,11 @@
       <nav id="navbar" class="nav-menu navbar">
         <ul>
           <li><a href="index.php" class="nav-link scrollto"> <span>Home</span></a></li>
-          <li><a href="<?php
-            if ($_SESSION["userData"]["role"] == 2) {
-              echo "department1.php";
-            } else if ($_SESSION["userData"]["role"] == 1) {
-              echo "evaluation1.php";
-            }
-            ?>" class="nav-link scrollto"> <span>Course Evaluation</span></a></li>        
+          <li><a href="<?php if ($_SESSION['userData']['role'] == 2) {
+              echo 'department1.php';
+          } elseif ($_SESSION['userData']['role'] == 1) {
+              echo 'evaluation1.php';
+          } ?>" class="nav-link scrollto"> <span>Course Evaluation</span></a></li>        
           <li><a href="alumnirecords.php" class="nav-link scrollto"><span>Alumni Records</span></a></li>
           <li><a href="teaching.php" class="nav-link scrollto active"> <span>Teaching Monitoring</span></a></li>
           <li><a href="courseallocation.php" class="nav-link scrollto"> <span>Course Allocation</span></a></li>
@@ -87,37 +115,45 @@
           <h3>UNIVERSITY OF DAR ES SALAAM</h3>         
             <h3>Quality Assurance Bureau (QAB)</h3>
             <h3>Teaching and learning Monitoring</h3>
-            <h2>Undergraduate Programmes</h2>
             </div>
             </div>
 
           <div class="container">
-          <form>
+          <form action="./../login.php" method="POST">
 
             <!-- ======= General info ======= -->
-            <div class="question">
+          <div class="question">
             <h3>General information</h3>
-            
-          <div class="row mb-3">
-          <h5>Please fill in the right information</h5>
-            <label for="Course code" class="col-sm-2 col-form-label">Session date</label>
-            <div class="col-sm-10">
-                <input type="date" class="form-control" name="Session date" placeholder="Session date" required>
-            </div>
-        </div>
-
         <div class="row mb-3">
           <label for="Session time" class="col-sm-2 col-form-label">Starting time</label>
           <div class="col-sm-10">
-              <input type="time" class="form-control" name="Starting time" placeholder="" required>
+              <input type="time" class="form-control" name="starting_time" placeholder="" required>
           </div>
       </div>
       <div class="row mb-3">
           <label for="Session time" class="col-sm-2 col-form-label">Ending time</label>
           <div class="col-sm-10">
-              <input type="time" class="form-control" name="Ending time" placeholder="" required>
+              <input type="time" class="form-control" name="ending_time" placeholder="" required>
           </div>
       </div>
+      <div class="row mb-3">
+            <label for="venue" class="col-sm-2 col-form-label">Venue</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="venue" placeholder="Venue" value="venue" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+          <label for="venue capacity" class="col-sm-2 col-form-label">Venue capacity</label>
+          <div class="col-sm-10">
+              <input type="number" class="form-control" name="venue_capacity" placeholder="Venue capacity"value="venue_capacity" required>
+          </div>
+      </div>
+      <div class="row mb-3">
+        <label for="Number of students in class" class="col-sm-2 col-form-label">Number of students</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="no_of_students" placeholder="Number of students present in class" value="Number_of_students"required>
+        </div>
+    </div>
       </div>
 
 
@@ -128,36 +164,44 @@
          <h5>Please select the corresponding attendance state of the instructor </h5>       
         
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="present" onclick="showHidemycode()" value="option1">
+              <input class="form-check-input" type="radio" name="attendance" id="present" onclick="showHidemycode()" value="present">
               <label class="form-check-label" for="inlineRadio1">Present</label>
             </div>
             
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="absent" onclick="showHideabs()"value="option2">
+              <input class="form-check-input" type="radio" name="attendance" id="absent" onclick="showHideabs()"value="absent">
               <label class="form-check-label" for="inlineRadio2">Absent</label>
              </div>
-            <div class="" id="abs">
-            <select class="form-select" aria-label="Default select example">
-            <option selected="Select reason for starting late">If absent, select the reason for absence</option>
-            <option value="1">Sickness</option>
-            <option value="2">Travelled</option>
-            <option value="3">Assigned a special task</option>
-            <option value="4">Attended a meeting</option>
-            <option value="5">Not informed</option>
+            <div class="" id="">
+              <div class="" id="abs">
+                <select class="form-select" aria-label="Default select example" name= "absence_reason">
+                <option selected="Select reason for starting late">If absent, select the reason for absence</option>
+                <option value="Sickness">Sickness</option>
+                <option value="Travelled">Travelled</option>
+                <option value="Assigned a special task">Assigned a special task</option>
+                <option value="Attended a meeting">Attended a meeting</option>
+                <option value="Not informed">Not informed</option>
             </select> 
-          
+
              <h5>Are the students informed about the instructor's absence?</h5>
-        
              <div class="form-check form-check-inline">
-               <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio1"  value="option1">
+               <input class="form-check-input" type="radio" name="student_informed" id="informed"  value="yes" onclick="submit(o)">
                <label class="form-check-label" for="inlineRadio1">Yes</label>
              </div>
              
              <div class="form-check form-check-inline">
-               <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2">
+               <input class="form-check-input" type="radio" name="student_informed" id="not_informed" value="no" onclick="submit(1)">
                <label class="form-check-label" for="inlineRadio2">No</label>
               </div>
+
+              <div class="form-group" id="submit">
+               <button type="submit" class="mx-auto button1" name="" value="submit">Submit</button>
               </div>
+
+              
+              </div>
+            </div>
+            
           </div>
             
 <!-- ======= session starting time ======= -->
@@ -168,13 +212,13 @@
             <div class="row">
               <div class="col-md-6">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ontime" onclick="showHideontime()" value="option1">
+              <input class="form-check-input" type="radio" name="time" id="ontime" onclick="showHideontime()" value="started_on_time">
               <label class="form-check-label" for="ontime">Started on time</label>
             </div>
           </div>
             <div class="col-md-6">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="0-15" onclick="showHideontime()" value="option1">
+              <input class="form-check-input" type="radio" name="time" id="0-15" onclick="showHideontime()" value="Started late between 0-15 minutes">
               <label class="form-check-label" for="0-15">Started late between 0-15 minutes</label>
             </div>
           </div>
@@ -183,42 +227,38 @@
           <div class="row">
             <div class="col-md-6">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="15-30" onclick="showHideontime()" value="option1">
+              <input class="form-check-input" type="radio" name="time" id="15-30" onclick="showHideontime()" value="Started late between 15-30 minutes">
               <label class="form-check-label" for="15-30">Started late between 15-30 minutes</label>
             </div>
             </div>
             <div class="col-md-6">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id=">30" onclick="showHideontime()" value="option1">
+              <input class="form-check-input" type="radio" name="time" id=">30" onclick="showHideontime()" value="Started late for more than 30 minutes">
               <label class="form-check-label" for=">30">Started late for more than 30 minutes</label>
             </div>
           </div>
           </div>
 
-          <div id="reason">
-          <select class="form-select" aria-label="Default select example">
-            <option selected="Select reason for starting late">Select reason for starting late</option>
+        <div class="starting_time" id="reason">
+          <label for="started_late">Please select the reason for starting late:</label>
+          <select class="form-selectaria-label="Default select example" name="started_late">
             <option value="late arrival of the Instructor">late arrival of the Instructor</option>
-            <option value="late arrival of the Instructor">late arrival of the Instructor</option>
+            <option value="late arrival of the students">late arrival of the students</option>
             <option value="Change of Venue due to collision">Change of Venue due to collision</option>
             <option value="Sitting arrangement">Sitting arrangement</option>
             <option value="Previous class ended late">Previous class ended late</option>
             <option value="No initial teaching preparations">No initial teaching preparations</option>
             <option value="Other reasons">Other reasons</option>
-
           </select>
-          </div>
-          </div>
+        </div>
+          <!-- </div> -->
 
           <!-- ======= teaching process ======= -->
-          <div class="question">
-
+         <div class="question">
           <h3>Teaching Process</h3>
-
-          <h5>a) Session Type</h5>
+          <h4>a) Session Type</h4>
           <label for="Session type">Please select the corresponding session type:</label>
-          <select class="form-select" aria-label="Default select example">
-            
+          <select class="form-select" aria-label="Default select example" name="session_type">
             <option value="Tutorial">Tutorial</option>
             <option value="Seminar">Seminar</option>
             <option value="Practical">Practical</option>
@@ -226,69 +266,37 @@
             <option value="Other">Other</option>
             </select>
 
-            <h5>b) Teaching Mode</h5>
-
+            <h4>b) Teaching Mode</h4>
             <label for="Teaching mode">Please select the teaching mode used:</label>
-          <select class="form-select" aria-label="Default select example">
-            
+          <select class="form-select" aria-label="Default select example" name="teaching_mode">
             <option value="Teacher centred">Teacher centred</option>
             <option value="Student centred">Student centred</option>
             <option value="Student lead with instructor supervisor">Student lead with instructor supervisor</option>
           </select>
 
-            <h5>c) Teaching method used</h5>
-            
+            <h4>c) Teaching method used</h4>
             <label for="Teaching method used">Please note the type of teaching method used:</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Talk and Chalk</option>
+            <select class="form-select" aria-label="Default select example" name="teaching_method">
+              <option value="Talk and Chalk">Talk and Chalk</option>
               <option value="Conventional overhead projector">Conventional overhead projector</option>
               <option value="Student Presentation and practical">Student Presentation and practical</option>
               <option value="Power point presentation with LCD projector">Power point presentation with LCD projector</option>
               <option value="Other">Other</option>
               </select>
 
-            
-
-          <h5>d) Medium of instruction</h5>
-
+          <h4>d) Medium of instruction</h4>
           <label for="Medium of instruction">Please select the medium of instruction used:</label>
-          <select class="form-select" aria-label="Default select example">
-            
+          <select class="form-select" aria-label="Default select example" name="medium_of_instruction">
             <option value="Course in English and English is used through out">Course in English and English is used through out</option>
             <option value="Course in English but code-switching to Kiswahili">Course in English but code-switching to Kiswahili</option>
             <option value="Course in Kiswahili but code-switching to English">Course in Kiswahili but code-switching to English</option>
           </select>
           </div>
 
-          <!-- ======= venue and conditions ======= -->
-          
-          <div class="question">
-          <h3>Teaching venues and their conditions</h3>
-            
-          <div class="row mb-3">
-            <label for="Room name" class="col-sm-2 col-form-label">Room name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="Room name" placeholder="Room name" required>
-            </div>
-        </div>
-        <div class="row mb-3">
-          <label for="Room capacity" class="col-sm-2 col-form-label">Room capacity</label>
-          <div class="col-sm-10">
-              <input type="number" class="form-control" name="Room capacity" placeholder="Room capacity" required>
-          </div>
-      </div>
-      <div class="row mb-3">
-        <label for="Number of students in class" class="col-sm-2 col-form-label">No of students</label>
-        <div class="col-sm-10">
-            <input type="number" class="form-control" name="Number of students in class" placeholder="Number of students in class" required>
-        </div>
-    </div>
-          </div>
-
     <!-- ======= condition of teaching room ======= -->
     <div class="question">
      
-        <h3>Condition of the teaching room</h3>
+        <h3>Teaching venue conditions</h3>
         <div class="form-group row">
           <h5>Please rate the condition of the teaching room using the given standards. Put a tick in the appropiate box found on the extreme right.
             1 = Very poor, 2 = Poor, 3 = Good, 4 = Very good, 5 = Excellent, NA = Not Applicable
@@ -310,115 +318,130 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Sitting arrangement of students</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
+            <tr>
+              <td>1. Sitting arrangements of students</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="NA" id="flexRadioDefault"></td>
               </tr>
-              <tr>
-                <td>lighting</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
+
+             <tr>
+              <td>2. Lighting</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="NA" id="flexRadioDefault"></td>
+              </tr>        
+                <td>3. Chairs and Tables</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="NA" id="flexRadioDefault"></td>
               </tr>
+
               <tr>
-                <td>Chairs and tables</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
+               <td>4. Fixed LCD projector system (if any)</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="NA" id="flexRadioDefault"></td>
               </tr>
+
               <tr>
-                <td>Fixed LCD projector system (if any)</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
+                <td>5. Display and Visibility</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="NA" id="flexRadioDefault"></td>
               </tr>
+
               <tr>
-                <td>Display and visibility</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
+              <td>6. General physical condition of the room</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="NA" id="flexRadioDefault"></td>
               </tr>
+
               <tr>
-                <td>General physical condition of the room</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
+                <td>7. Public address system (if any)</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="NA" id="flexRadioDefault"></td>
               </tr>
+
               <tr>
-                <td>Public address system (if any)</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
+                <td>8. Availability of brash and chalks/markers</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="NA" id="flexRadioDefault"></td>
               </tr>
+
               <tr>
-                <td>Availability of brash and chalks/markers</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
+                <td>9. Use of whiteboard/blackboard</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="NA" id="flexRadioDefault"></td>
               </tr>
+
               <tr>
-                <td>Blackboard/whiteboard</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
+                <td>10. Room ventilation</td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="5" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="4" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="3" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="2" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="NA" id="flexRadioDefault"></td>
               </tr>
-              <tr>
-                <td>Room ventilation</td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-                <td><input class="form-check-input" type="checkbox" ></td>
-              </tr>                         
+              
             </tbody>
           </table>
-
           </div>
 
-          <div class="question">
-      <h3>Matters for immediate/special attention</h3>
-      <h5>Please note any issues that require a special attention</h5>
-
-      <div class="form-group">
-        <textarea class="form-control" rows="4" placeholder="Matters that require an immediate attention:"></textarea>
-      </div>
-          </div>
+<div class="question">
+<h3>Matters for immediate/special attention</h3>
+      <h5>Are there matters of immediate attention?</h5>
+                <div class="form-check col-sm-1">
+                  <input class="form-check-input" type="radio" name="special_matters" id="yes" value="yes" onclick="showHideissues()">
+                  <label class="form-check-label">Yes</label>
+                </div>
+                <div class="form-check col-sm-1">
+                  <input class="form-check-input" type="radio" name="special_matters" id="no" value="no" onclick="showHideissues()">
+                  <label class="form-check-label">No</label>
+                </div>
+                <div class="form-group" id="issues">
+                  <textarea class="form-control" rows="4" name="identified_matters" value="" placeholder="If the answer is Yes, identify them:"></textarea>
+                </div>
+</div>
           
-          </div>
+
+      
             <div class="form-group">
-              <a href="#evaluationModal"  data-toggle="modal" data-target="#evaluationModal" > 
-              <button type="submit" class="mx-auto button1" name="submit">Submit</button>
-              </a>
+              <!-- <a href="#evaluationModal"  data-toggle="modal" data-target="#evaluationModal" >  -->
+              <button type="submit" class="mx-auto button1" name="monitoringQn">Submit</button>
+              <!-- </a> -->
             </div>
 
              <!-- fading evaluation submit-->

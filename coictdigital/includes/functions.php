@@ -216,6 +216,21 @@ function fetchProceedEvalutation($year, $programme, $course)
 }
 
 
+function fetchteaching($studyYear,$semester,$programme,$coursecode)
+{
+    global $conn;
+    //write query
+    $sql = "SELECT * FROM courses WHERE `course_code`='$coursecode'";
+    
+    $results = mysqli_query($conn, $sql);
+    confirm_query($conn, $results);
+    print_r($results);     
+    $results =  mysqli_fetch_assoc($results);
+ 
+    return $results;
+}
+
+
 function confirm_query($conn, $result_set)
 {
     if (!$result_set) {
