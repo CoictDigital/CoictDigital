@@ -1,13 +1,4 @@
 <?php
-require_once("includes/functions.php");
-// echo "asdfa";
-// echo password_hash("mlundi", PASSWORD_BCRYPT);
-// $valid2 = password_hash("mlundi", PASSWORD_BCRYPT);
-
-// echo password_verify("mlundi", $valid2);
-
-
-
 
 $password = "mndeme";
 
@@ -26,6 +17,4 @@ if (password_verify($password, $hashed_password)) {
     echo 'Invalid password.';
 }
 
-
 ?>
-
