@@ -1,6 +1,7 @@
 <?php
 
 $password = "mkonyi";
+$password = "mndeme";
 
 $hashed_password =
     password_hash($password, PASSWORD_DEFAULT);
