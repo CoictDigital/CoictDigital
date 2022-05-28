@@ -4,6 +4,7 @@
 <head>
     
 <?php
+require_once("../includes/db.php");
 require_once("../includes/headerContent.php");
 require_once("../includes/sessionStuffs.php");
 
@@ -19,26 +20,9 @@ unset($_SESSION["studentFilledCount"]);
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
   <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/udsmlogo.jpg" alt="" class="img-fluid rounded-circle">
-       
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="index.html" class="nav-link scrollto"> <span>Home</span></a></li>
-          <li><a href="courseevaluation.html" class="nav-link scrollto  "> <span>Course Evaluation</span></a></li>        
-          <li><a href="alumnirecords.html" class="nav-link scrollto"><span>Alumni Records</span></a></li>
-          <li><a href="teachingmonitoring.html" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
-          <li><a href="courseallocation.html" class="nav-link scrollto" > <span>Course Allocation</span></a></li>
-          <li><a href="#invigilation" class="nav-link scrollto" active> <span>Exam Invigilation</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
+  <?php
+    require_once("../includes/leftNav.php");
+    ?>
 
 
   <main id="main">
@@ -82,54 +66,31 @@ unset($_SESSION["studentFilledCount"]);
                 </thead>
                 <tbody>
                  
+                <?php   
+                $sql = "select * from exam_invigilation" ;
+              //   $sql = "SELECT id, firstname, lastname FROM MyGuests";
+              //  $result = $conn->query($sql);
+
+                $result = $conn->query($sql);
+
+                 if ($result->num_rows > 0) {
+                 while($row = $result->fetch_assoc()){
+                extract($row);
+                 
+                ?>
                   <tr>
-                    <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                   <td><?php echo $row['day']; ?></td>
+                   <td><?php echo $row['from_time'] ;?> - <?php echo $row['to_time'] ;?></td>
+                   <td><?php echo $row['course_name']; ?></td>
+                   <td><?php echo $row['venue']; ?></td>
+                   <td><?php echo $row['invigilators']; ?></td>
+                   
+                   <!-- <td><?php echo $row['#']; ?></td> -->
+                   <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
                   </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
+                  <?php }
+                 }
+                 ?> 
                   
                 </tbody>
               </table>

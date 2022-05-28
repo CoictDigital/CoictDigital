@@ -11,4 +11,4 @@
 <!-- css files -->
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="assets\css\style.css" rel="stylesheet">

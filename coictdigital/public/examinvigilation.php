@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <?php
+    require_once("../includes/db.php");
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
 
@@ -18,42 +20,26 @@
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
   <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/udsmlogo.jpg" alt="" class="img-fluid rounded-circle">
-       
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="index.php" class="nav-link scrollto"> <span>Home</span></a></li>
-          <li><a href="<?php
-            if ($_SESSION["userData"]["role"] == 2) {
-              echo "department1.php";
-            } else if ($_SESSION["userData"]["role"] == 1) {
-              echo "evaluation1.php";
-            }
-            ?>" class="nav-link scrollto  "> <span>Course Evaluation</span></a></li>        
-          <li><a href="alumnirecords.php" class="nav-link scrollto"><span>Alumni Records</span></a></li>
-          <li><a href="teaching.php" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
-          <li><a href="courseallocation.php" class="nav-link scrollto" > <span>Course Allocation</span></a></li>
-          <li><a href="examinvigilation.php" class="nav-link scrollto" active> <span>Exam Invigilation</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
+  <?php
+    require_once("../includes/leftNav.php");
+    ?>
 
 
   <main id="main">
 
-    <div class="row" >
+    <!-- <div class="row" >
       <div class="col-md-12"><div class="dropdown" style="float: right; width: 100px;">
   <button class="dropbtn">user<i class="fa fa-caret-down"></i></button>
   <div class="dropdown-content">
     <a href="#">Profile</a>
-    <a href="#">Logout</a>
+    <a href="#">Logout</a> -->
+    <div class="dropdown nav-link">
+  <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    User Profile
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item text-dark" href="#"><p>Change Password</p></a>
+  </div>
     
   </div>
 </div>
@@ -97,8 +83,33 @@
                   </tr>
                 </thead>
                 <tbody>
+                <?php   
+                $sql = "select * from exam_invigilation" ;
+              //   $sql = "SELECT id, firstname, lastname FROM MyGuests";
+              //  $result = $conn->query($sql);
+
+                $result = $conn->query($sql);
+
+                 if ($result->num_rows > 0) {
+                 while($row = $result->fetch_assoc()){
+                extract($row);
                  
+                ?>
                   <tr>
+                   <td><?php echo $row['day']; ?></td>
+                   <td><?php echo $row['from_time'] ;?> - <?php echo $row['to_time'] ;?></td>
+                   <td><?php echo $row['course_name']; ?></td>
+                   <td><?php echo $row['venue']; ?></td>
+                   <td><?php echo $row['invigilators']; ?></td>
+                   
+                   <!-- <td><?php echo $row['#']; ?></td> -->
+                   <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                  </tr>
+                  <?php }
+                 }
+                 ?> 
+                 
+                  <!-- <tr>
                     <td>1/2/2022</td>
                     <td>8:00 -10:00</td>
                     <td>Information Systems</td>
@@ -145,7 +156,7 @@
                     <td>B302</td>
                     <td>Mlaki,Japhet</td>
                     <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
+                  </tr> -->
                   
                 </tbody>
               </table>
@@ -313,5 +324,7 @@
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
 </body>
+
+
 
 </html>

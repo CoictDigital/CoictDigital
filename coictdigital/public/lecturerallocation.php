@@ -4,6 +4,7 @@
 <head>
    
 <?php
+require_once("../includes/db.php");
 require_once("../includes/headerContent.php");
 require_once("../includes/sessionStuffs.php");
 
@@ -20,26 +21,9 @@ unset($_SESSION["studentFilledCount"]);
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
   <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/udsmlogo.jpg" alt="" class="img-fluid rounded-circle">
-       
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="index.html" class="nav-link scrollto"> <span>Home</span></a></li>
-          <li><a href="courseevaluation.html" class="nav-link scrollto  "> <span>Course Evaluation</span></a></li>        
-          <li><a href="alumnirecords.html" class="nav-link scrollto"><span>Alumni Records</span></a></li>
-          <li><a href="teachingmonitoring.html" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
-          <li><a href="#allocation" class="nav-link scrollto" active> <span>Course Allocation</span></a></li>
-          <li><a href="examinvigilation.html" class="nav-link scrollto"> <span>Exam Invigilation</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
+  <?php
+    require_once("../includes/leftNav.php");
+    ?>>
 
 
   <main id="main">
@@ -79,88 +63,40 @@ unset($_SESSION["studentFilledCount"]);
                       <th scope="col">Course Code</th>
                       <th scope="col">Course Name</th>
                       <th scope="col">Program</th>
-                      <th scope="col">current</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Credits</th>
                       <th scope="col">Practical	/	Tutorial	Assistant</th> 
                       <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
+                <?php   
+                $sql = "select * from course_allocation" ;
+              //   $sql = "SELECT id, firstname, lastname FROM MyGuests";
+              //  $result = $conn->query($sql);
+
+                $result = $conn->query($sql);
+
+                 if ($result->num_rows > 0) {
+                 while($row = $result->fetch_assoc()){
+                extract($row);
                  
-                <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>3</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>12</td>
-                      <td>Mr kishiwa</td>
+                ?>
+                  <tr>
+                   <td><?php echo $row['instructor']; ?></td>
+                   <td><?php echo $row['no_of_course']; ?></td>
+                   <td><?php echo $row['course_code']; ?></td>
+                   <td><?php echo $row['course_name']; ?></td>
+                   <td><?php echo $row['program']; ?></td>
+                   
+                   <td></td>
+                   <!-- <td><?php echo $row['#']; ?></td> -->
+                   <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                  </tr>
+                  <?php }
+                 }
+                 ?> 
+                
                       
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>2</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE & Elective</td>
-                      <td>active</td>
-                      <td>12</td>
-                      <td>Mr kishiwa</td>
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>1</td>
-                      <td>IS 565</td>
-                      <td>Information Systems,DS</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>8</td>
-                      <td>Mr kishiwa</td>
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>3</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>12</td>
-                      <td>Mr kishiwa</td>
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>3</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>8</td>
-                      <td>Mr kishiwa</td>
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>3</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>12</td>
-                      <td>Mr kishiwa</td>
-                      
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                     
                     </tr>
                 </tbody>
               </table>

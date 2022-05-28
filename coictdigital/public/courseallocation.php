@@ -1,10 +1,12 @@
-<<<<<<< HEAD
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   
 <?php
+    require_once("../includes/db.php");
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
 
@@ -20,39 +22,25 @@
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
   <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/udsmlogo.jpg" alt="" class="img-fluid rounded-circle">
-       
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="index.php" class="nav-link scrollto"> <span>Home</span></a></li>
-          <li><a href="<?php
-            if ($_SESSION["userData"]["role"] == 2) {
-              echo "department1.php";
-            } else if ($_SESSION["userData"]["role"] == 1) {
-              echo "evaluation1.php";
-            }
-            ?>" class="nav-link scrollto  "> <span>Course Evaluation</span></a></li>        
-          <li><a href="alumnirecords.php" class="nav-link scrollto"><span>Alumni Records</span></a></li>
-          <li><a href="teaching.php" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
-          <li><a href="courseallocation.php" class="nav-link scrollto" active> <span>Course Allocation</span></a></li>
-          <li><a href="examinvigilation.php" class="nav-link scrollto"> <span>Exam Invigilation</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
+  <?php
+    require_once("../includes/leftNav.php");
+    
+   
+    ?>
 
 
   <main id="main">
 
     <div class="row" >
-      <div class="col-md-12">
-       <span class="badge alert-success" style="float: right; width: 100px;">Admin</span>
+      <div class="col-md-12" >
+      <div class="dropdown nav-link" >
+  <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+    User Profile
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item text-dark" href="#"><p>Change Password</p></a>
+  </div>
+</div>
       </div>
     </div>
        <!-- ======= Form Section ======= -->
@@ -96,81 +84,40 @@
                   </tr>
                 </thead>
                 <tbody>
+                <?php 
+                $sql = "select * from course_allocation" ;
+                $result = $conn->query($sql);
                  
-                <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>3</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>12</td>
-                      <td>Mr kishiwa</td>
-                      
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>2</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE & Elective</td>
-                      <td>active</td>
-                      <td>12</td>
-                      <td>Mr kishiwa</td>
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>1</td>
-                      <td>IS 565</td>
-                      <td>Information Systems,DS</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>8</td>
-                      <td>Mr kishiwa</td>
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>3</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>12</td>
-                      <td>Mr kishiwa</td>
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>3</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>8</td>
-                      <td>Mr kishiwa</td>
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                    <tr>
-                      <td>Mlaki Japhet</td>
-                      <td>3</td>
-                      <td>IS 345</td>
-                      <td>Information Systems</td>
-                      <td>CS ,BIT</td>
-                      <td>CORE </td>
-                      <td>active</td>
-                      <td>12</td>
-                      <td>Mr kishiwa</td>
-                      
-                      <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
+       // Performing insert query execution
+       // here our table name is college
+      
+           
+
+
+                 if ($result->num_rows > 0) {
+                 while($row = $result->fetch_assoc()){
+                extract($row);
+                 
+                ?>
+
+              
+                  <tr>
+                   <td><?php echo $row['instructor']; ?></td>
+                   <td><?php echo $row['no_of_course']; ?></td>
+                   <td><?php echo $row['course_code']; ?></td>
+                   <td><?php echo $row['course_name']; ?></td>
+                   <td><?php echo $row['program']; ?></td>
+                   <td><?php echo $row['current']; ?></td>
+                   <td><?php echo $row['status']; ?></td>
+                   <td><?php echo $row['credits']; ?></td>
+                   <td></td>
+                   <!-- <td><?php echo $row['#']; ?></td> -->
+                   <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                  </tr>
+                  <?php }
+                 }
+                 ?> 
+                
                 </tbody>
               </table>
             </div>
@@ -197,15 +144,30 @@
                 <h4>Add New Allocation</h4>
               </div>
               <div class="d-flex flex-column text-center">
-                <form>
+                <form action="addnewallocation.php" method="post">
                   <div class="form-group">
-                    <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
+                    <input type="text" class="form-control" id="instructor"placeholder="Staff Name" name="instructor" >
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="coursecode" placeholder="Course Code">
+                    <input type="text" class="form-control" id="no_of_course" placeholder="no_of_course" name= "no_of_course">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="coursename" placeholder="Course Name">
+                    <input type="text" class="form-control" id="course_code" placeholder="Course Code" name="course_code">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="course_name" placeholder="Course Name" name="course_name">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="program" placeholder="program" name="program">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="current" placeholder="current" name="current">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="status" placeholder="status" name="status">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="credits" placeholder="Credits" name="credits">
                   </div>
                   <button type="submit" class="mx-auto button" >Save</button>
                 </form>

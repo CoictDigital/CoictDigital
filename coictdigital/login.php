@@ -15,6 +15,7 @@ if (isset($_POST["login"])) {
     if ($email) { // user verfied
         $_SESSION["userData"] = $email;
         unset($_SESSION['message']);
+        
         header("Location: public/index.php");
     } else {
         $_SESSION["message"] = "not logged in";
@@ -23,14 +24,16 @@ if (isset($_POST["login"])) {
     }
 } elseif (isset($_POST["proceedEvalutation"])) {
     $allOkey = true;
-    $course = $_POST["course"];
-    $programme = $_POST["programme"];
     $year = $_POST["year"];
-    $result = fetchProceedEvalutation($course, $programme, $year);
+    $programme = $_POST["programme"];
+    $course = $_POST["course"];    
+    $result = fetchProceedEvalutation($year, $programme, $course);
+ 
+    print_r($result);
 
     if ($allOkey) {
         $_SESSION["evaluationFilled"] = $result;
-        header("Location: public/courseevaluation.php");
+       header("Location: public/courseevaluation.php");
     }
 } elseif (isset($_POST["evaluationQn"])) {
     $allOkey = true;
@@ -48,7 +51,7 @@ if (isset($_POST["login"])) {
     $semester = $_POST["semester"];
     $course = $_POST["course"];
 
-    $resultA = fetchProceedEvalutation($course, $programme, $studyYear);
+    $resultA = fetchProceedEvalutation($year, $programme, $course);
     $resultB = fetchCourseEvaluationResults($course);
     $resultA = array_merge($resultA, ["totalResponse" => countEvaluationResponse($course)]);
 
@@ -63,6 +66,7 @@ if (isset($_POST["login"])) {
     if ($allOkey) {
         $_SESSION["evaluationResultsA"] = $resultA;
         $_SESSION["evaluationResultsB"] = $resultB;
+
 
 
         header("Location: public/evaluationresults.php");

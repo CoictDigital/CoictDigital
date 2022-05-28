@@ -201,15 +201,17 @@ function authenticate_user($username, $password)
 }
 
 
-function fetchProceedEvalutation($course, $programme, $year)
+function fetchProceedEvalutation($year, $programme, $course)
 {
     global $conn;
     //write query
-    $sql = "SELECT * FROM `evaluation_details` WHERE `course_code`='$course'  AND `student_programme`='$programme' AND `study_year`='$year' ";
-
+    $sql = "SELECT * FROM courses WHERE `course_code`='$course'";
+    
     $results = mysqli_query($conn, $sql);
+    confirm_query($conn, $results);
+    print_r($results);     
     $results =  mysqli_fetch_assoc($results);
-
+ 
     return $results;
 }
 
