@@ -290,7 +290,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `reg_no`, `password`, `role`, `stude
 (484, 'Simfukwe, Aaron Gervas', NULL, '2018-04-06786', '$2y$10$JL4CK5d8hXqwbCpbVQ3vO.rjN8MVuLdvWn/wzoVDXFjp7daEep1TK', 1, 'BSC IN CEIT', 3),
 (485, 'Assey, Anna-maria Geofrey', NULL, '2019-04-00516', '$2y$10$ZVwiXf.yuE2xIMDI8VxLcumUXoxJFaKhdCmAafSwDGB/NN6WJM4mS', 1, 'BSC IN CEIT', 3),
 (486, 'Mtui, Alex G.', NULL, '2018-04-01660', '$2y$10$6yFPAk.BhzXAb1SaUPcj1Oxqy4/TBddgagRNiNGEeApvQAZyr9hEO', 1, 'BSC IN CEIT', 3),
-(487, 'Oshipai, Saning\'o M.', NULL, '2019-04-11554', '$2y$10$zQ02Kb3fWvxXNIVlEWHiyeG9qC08R38BSBXRqZA0g.YsmXX96GrVG', 1, 'BSC IN CEIT', 3),
+(487, "Oshipai, Saning\'o M.", NULL, '2019-04-11554', '$2y$10$zQ02Kb3fWvxXNIVlEWHiyeG9qC08R38BSBXRqZA0g.YsmXX96GrVG', 1, 'BSC IN CEIT', 3),
 (488, 'Kasaila, Yohana S.', NULL, '2019-04-03649', '$2y$10$hhTmRRRCKvzNYmlF5N3Kx.1Kmq9ED9C.mhfl0BndrHyNeu/yNVAo6', 1, 'BSC IN CEIT', 3),
 (489, 'Scolastica, John S.', NULL, '2019-04-11464', '$2y$10$r9fWYsdOie4KAVhtoz.yI.DvxxWLm9rME80Ia0sMRONnUDEm130By', 1, 'BSC IN CEIT', 3),
 (490, 'Ndyanabo, Pauletha Simon', NULL, '2019-04-09692', '$2y$10$RFnlvuOTe1o3QgMIXRBa0.E3DKB.kr32Um0WcuILb7SP0xeQMBcMy', 1, 'BSC IN CEIT', 3),

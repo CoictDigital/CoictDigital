@@ -1,8 +1,6 @@
 <?php
 
 $SERVERNAME="localhost";
-$USERNAME="root";
-$PASSWORD="";
+$USERNAME="mushi";
+$PASSWORD="localpassword";
 $DBNAME="coict_digital";
-
-?>

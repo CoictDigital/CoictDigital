@@ -1,9 +1,30 @@
 <?php
 require_once("functionHelpers.php");
+require_once("db.php");
+
+function fetchProgramId($programme)
+{
+    global $conn;
+    //write query
+    $sql = "SELECT * FROM `programme` WHERE `student_programme`='$programme' ";
+
+    $results = mysqli_query($conn, $sql);
+    $results =  mysqli_fetch_assoc($results);
+
+    return $results;
+}
 
 function getLastName($fullName)
 {
     return explode(",", $fullName)[0];
+}
+
+function fetchStudentCourses($programme)
+{
+    global $conn;
+    $sql = "SELECT * FROM `programme_course` WHERE `id_programme`='$programme' ";
+    $results = mysqli_query($conn, $sql);
+    return $results;
 }
 
 function formatEvaluationQnResults($resultQuery)
@@ -206,27 +227,27 @@ function fetchProceedEvalutation($year, $programme, $course)
     global $conn;
     //write query
     $sql = "SELECT * FROM courses WHERE `course_code`='$course'";
-    
+
     $results = mysqli_query($conn, $sql);
     confirm_query($conn, $results);
-    print_r($results);     
+    print_r($results);
     $results =  mysqli_fetch_assoc($results);
- 
+
     return $results;
 }
 
 
-function fetchteaching($studyYear,$semester,$programme,$coursecode)
+function fetchteaching($studyYear, $semester, $programme, $coursecode)
 {
     global $conn;
     //write query
     $sql = "SELECT * FROM courses WHERE `course_code`='$coursecode'";
-    
+
     $results = mysqli_query($conn, $sql);
     confirm_query($conn, $results);
-    print_r($results);     
+    print_r($results);
     $results =  mysqli_fetch_assoc($results);
- 
+
     return $results;
 }
 

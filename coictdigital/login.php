@@ -15,7 +15,7 @@ if (isset($_POST["login"])) {
     if ($email) { // user verfied
         $_SESSION["userData"] = $email;
         unset($_SESSION['message']);
-        
+
         header("Location: public/index.php");
     } else {
         $_SESSION["message"] = "not logged in";
@@ -26,14 +26,14 @@ if (isset($_POST["login"])) {
     $allOkey = true;
     $year = $_POST["year"];
     $programme = $_POST["programme"];
-    $course = $_POST["course"];    
+    $course = $_POST["course"];
     $result = fetchProceedEvalutation($year, $programme, $course);
- 
+
     print_r($result);
 
     if ($allOkey) {
         $_SESSION["evaluationFilled"] = $result;
-       header("Location: public/courseevaluation.php");
+        header("Location: public/courseevaluation.php");
     }
 } elseif (isset($_POST["evaluationQn"])) {
     $allOkey = true;
@@ -71,29 +71,22 @@ if (isset($_POST["login"])) {
 
         header("Location: public/evaluationresults.php");
     }
-}
-
-
-elseif (isset($_POST["teaching"])) {
+} elseif (isset($_POST["teaching"])) {
     $allOkey = true;
-    $studyYear = $_POST["study_year"];    
+    $studyYear = $_POST["study_year"];
     $semester = $_POST["semester"];
     $programme = $_POST["student_programme"];
     $coursecode = $_POST["course_code"];
-    $result = fetchteaching($studyYear,$semester,$programme,$coursecode);
+    $result = fetchteaching($studyYear, $semester, $programme, $coursecode);
 
     print_r($result);
- if ($allOkey) {
-   $_SESSION["teachingFilled"] = $result;
-   header("Location: public/Teachingmonitoring.php");
-}
-
- else{
-   echo"wrong";
- }
-}
-
-elseif (isset($_POST["monitoringQn"])) {
+    if ($allOkey) {
+        $_SESSION["teachingFilled"] = $result;
+        header("Location: public/Teachingmonitoring.php");
+    } else {
+        echo "wrong";
+    }
+} elseif (isset($_POST["monitoringQn"])) {
     $allOkey = true;
     $result = submitEvaluationQnAns($_POST);
 

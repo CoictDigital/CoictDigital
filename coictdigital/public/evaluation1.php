@@ -3,6 +3,8 @@
 
 <head>
   <?php
+
+  require_once("./../includes/functions.php");
   require_once("../includes/headerContent.php");
   require_once("../includes/sessionStuffs.php");
 
@@ -12,6 +14,14 @@
     unset($_SESSION['evaluationFilled']);
   } else {
   }
+
+
+  $programId = fetchProgramId($_SESSION["userData"]["student_programme"]);
+
+  $programId = $programId["id"];
+  $courses = fetchStudentCourses($programId);
+
+
 
   ?>
 
@@ -41,16 +51,23 @@
               <div class="mb-3">
                 <select class="form-select" name="course" aria-label="Default select example">
                   <option selected="selected"> Course code </option>
-                  <option value="IE 445">IE 445</option>
-                  <option value="IS 335">IS 335</option>
-                  <option value="3">IS 336</option>
-                  <option value="4">IS 337</option>
-                  <option value="5">IS 345</option>
-                  <option value="6">IS 365</option>
-                  <option value="7">IS 368</option>
+                  <?php
+
+                  while ($row = mysqli_fetch_assoc($courses)) {
+                  ?>
+
+                    <option value="<?php echo $row["course_code"]; ?>"> <?php echo $row["course_code"]; ?> </option>
+
+
+
+                  <?php
+                  }
+
+                  ?>
+
                 </select>
               </div>
-                        
+
               <button type="submit" class="mx-auto button" name="proceedEvalutation" value="proceed">Proceed</button>
               <a href="./index.php">
                 <p class="text-center pt-3">Cancel</p>
