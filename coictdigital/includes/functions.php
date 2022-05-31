@@ -2,6 +2,40 @@
 require_once("functionHelpers.php");
 require_once("db.php");
 
+function getCourseResponse($course_code)
+{
+    global $conn;
+    $sql = "SELECT COUNT(*) AS response_count FROM evaluation_questions WHERE course_code='$course_code'";
+    $results = mysqli_query($conn, $sql);
+    // die(print_r(mysqli_fetch_assoc($results)["response_count"]));\
+    $count = mysqli_fetch_assoc($results)["response_count"];
+
+
+    return $count;
+}
+
+function fetchCourse()
+{
+    global $conn;
+    $sql = "SELECT * FROM `courses` ";
+    $results = mysqli_query($conn, $sql);
+    return $results;
+}
+
+function checkIfUserFilledEv($userId, $couseId)
+{
+    $userFilled = false;
+    global $conn;
+    $sql = "SELECT * FROM `user_response` WHERE `user_id`='$userId' AND `course_code`='$couseId'";
+    $results = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($results) > 0) {
+        $userFilled = true;
+    }
+    return $userFilled;
+}
+
+
 function fetchProgramId($programme)
 {
     global $conn;
@@ -155,14 +189,25 @@ function submitEvaluationQnAns($qnAns)
     $_18 = $qnAns["flexRadioDefault18"];
     $_19 = $qnAns["flexRadioDefault19"];
     $_20 = $qnAns["harrassmentExplanation"];
+    $programmeId = $_SESSION["userData"]["programme_id"];
 
-    $sql = "INSERT INTO `evaluation_questions` ( `course_code`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`,`harassment_explanation`) 
-    VALUES ( '$course', $_1, $_2, $_3, $_4, $_5,$_6,$_7,$_8,$_9,$_10,$_11,$_12,$_13,$_14,$_15,$_16,$_17,$_18,$_19,'$_20')";
+    $sql = "INSERT INTO `evaluation_questions` ( `course_code`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`,`harassment_explanation`,`programme_id`) 
+    VALUES ( '$course', $_1, $_2, $_3, $_4, $_5,$_6,$_7,$_8,$_9,$_10,$_11,$_12,$_13,$_14,$_15,$_16,$_17,$_18,$_19,'$_20',$programmeId)";
+
+    //mark user that he has filled the evaluation form
 
     $results = mysqli_query($conn, $sql);
-
-
     confirm_query($conn, $results);
+
+
+    $user_id = $_SESSION["userData"]["id"];
+
+    $sql2 = "INSERT INTO `user_response` ( `user_id`, `course_code` ) VALUES ($user_id,'$course' )";
+
+    $results = mysqli_query($conn, $sql2);
+    confirm_query($conn, $results);
+
+    //mark user that he has filled the
 
     return countEvaluationResponse($course);
 }

@@ -39,7 +39,6 @@ if (isset($_POST["login"])) {
     $allOkey = true;
     $result = submitEvaluationQnAns($_POST);
 
-
     if ($allOkey) {
         $_SESSION["studentFilledCount"] = $result;
         header("Location: public/courseevaluation.php");

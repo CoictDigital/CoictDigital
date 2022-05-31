@@ -19,10 +19,8 @@
   $programId = fetchProgramId($_SESSION["userData"]["student_programme"]);
 
   $programId = $programId["id"];
+  $_SESSION["userData"]["programme_id"] = $programId;
   $courses = fetchStudentCourses($programId);
-
-
-
   ?>
 
 </head>
@@ -78,6 +76,20 @@
       </div>
     </section>
   </main>
+
+
+  <?php
+
+  if (isset($_SESSION["messageEvFilled"])) {
+  ?>
+    <script>
+      alert("Sorry, you have already filled evaluation form for this course");
+    </script>
+
+  <?php
+    unset($_SESSION['message']);   //to avoid unnecessary incorrect password alerts when one gaveup login in
+  }
+  ?>
 
   <script src="https://kit.fontawesome.com/939695db0f.js" crossorigin="anonymous"></script>
   <script src="./js/bootstrap.min.js"></script>

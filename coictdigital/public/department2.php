@@ -3,13 +3,20 @@
 
 <head>
   <?php
+  require_once("../includes/functions.php");
+
   require_once("../includes/headerContent.php");
   require_once("../includes/sessionStuffs.php");
 
 
   //fetching evaluation data
+  $couses = fetchCourse();
+  $courseRes = [];
+  while ($row = $couses->fetch_assoc()) {
+    $row["totalResponses"] = getCourseResponse($row["course_code"]);
+    array_push($courseRes, $row);
+  }
 
-  $evaluationSummary = []
 
   ?>
 
@@ -85,61 +92,44 @@
 
             <div class="container-fluid mb-3">
 
-              <div class="card mb-1">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-10">
-                      <p class="">CS 384 - COMPUTER SECURITY</p>
-                      <p class="">102 Responses</p>
-                    </div>
-                    <div class="col-2">
-                      <a href="#" class="btn btn-primary">View</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="card mb-1">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-10">
-                      <p class="">CS 338 - ARTIFICIAL INTELLIGENCE</p>
-                      <p class="">56 Responses</p>
-                    </div>
-                    <div class="col-2">
-                      <a href="#" class="btn btn-primary">View</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <?php
 
-              <div class="card mb-1">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-10">
-                      <p class="">IE 445 - ENTREPRENEURSHIP FOR ENGINEERS</p>
-                      <p class="">578 Responses</p>
-                    </div>
-                    <div class="col-2">
-                      <a href="#" class="btn btn-primary">View</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="card mb-1">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-10">
-                      <p class="">CS 336 - DATA MINING</p>
-                      <p class="">45 Responses</p>
-                    </div>
-                    <div class="col-2">
-                      <a href="#" class="btn btn-primary">View</a>
+              foreach ($courseRes as $course) {
+              ?>
+
+
+                <div class="card mb-1">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-10">
+                        <p class="">
+                          <?php echo $course["course_code"] . " - " . $course["course_title"]; ?>
+
+                        </p>
+                        <p class="">
+                          <?php
+
+                          echo $course["totalResponses"];
+                          echo  $course["totalResponses"] > 1 ? " Responses" : " Response";
+
+                          ?>
+
+                        </p>
+                      </div>
+                      <div class="col-2">
+                        <a href="#" class="btn btn-primary">View</a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+
+
+              <?php
+              }
+              ?>
+
 
 
             </div>

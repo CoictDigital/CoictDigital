@@ -3,6 +3,9 @@
 
 <head>
   <?php
+
+
+  require_once("../includes/functions.php");
   require_once("../includes/headerContent.php");
   require_once("../includes/sessionStuffs.php");
 
@@ -10,6 +13,15 @@
 
   if (isset($_SESSION["evaluationFilled"])) {
     $partA = $_SESSION["evaluationFilled"];
+    //check if user has already filled evaluation
+
+    $userFilledEvaluation = checkIfUserFilledEv($_SESSION["userData"]["id"],  $partA["course_code"]);
+
+    if ($userFilledEvaluation) {
+      $_SESSION["messageEvFilled"] = "You have already filled evaluation form for this course";
+      header("Location: ./evaluation1.php");
+    }
+
     echo "all good";
   } else {
     header("Location: evaluation1.php");
@@ -79,7 +91,7 @@
               <p>Lecture Venue: <?php echo $partA["venue"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Students programme:  </p>
+              <p>Students programme: </p>
             </div>
           </div>
 
