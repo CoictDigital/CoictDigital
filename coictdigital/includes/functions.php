@@ -2,6 +2,21 @@
 require_once("functionHelpers.php");
 require_once("db.php");
 
+function fetchStudentProgrammes($courseCode)
+{
+    global $conn;
+    $studentProgrammes = [];
+
+    $sql = "SELECT programme.student_programme FROM programme,programme_course WHERE programme_course.course_code='$courseCode' AND programme.id=programme_course.id_programme";
+    $results = mysqli_query($conn, $sql);
+    if ($results) {
+        while ($row = mysqli_fetch_assoc($results)) {
+            $studentProgrammes[] = $row["student_programme"];
+        }
+    }
+    return $studentProgrammes;
+}
+
 function getCourseResponse($course_code)
 {
     global $conn;
@@ -74,6 +89,7 @@ function formatEvaluationQnResults($resultQuery)
         "8" => ["question" => "Instructor's availability for consultations", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "9" => ["question" => "Manner in which instructor interacts with students in class?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "10" => ["question" => "Generally, how do you rate the competency of the instructor to meet your learning satisfaction?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
+        //key 11 is different, it has extra key `harassment_explanation`
         "11" => ["question" => "Instructor observed or complied with UDSM Sexual Harassment Code?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0, "harassment_explanation" => []],
         "12" => ["question" => "How clear was the objective of the course", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "13" => ["question" => "How well was the course content coverage", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
@@ -83,6 +99,7 @@ function formatEvaluationQnResults($resultQuery)
         "17" => ["question" => "How well did the course link theory and practise?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "18" => ["question" => "How adequate were the tutorials, seminars and practicals", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "19" => ["question" => "Generally, how do you rate the relevance of the course to meet your expectations?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
+        //this harassment_explanation key will be deleted
         "harassment_explanation" => ["question" => "Explanation of Harassment Code", "explanations" => []]
 
     ];

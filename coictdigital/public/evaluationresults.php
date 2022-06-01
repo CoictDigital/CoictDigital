@@ -18,6 +18,8 @@
     $resultB = formatEvaluationQnResults($resultB);
     $partA = $resultA;
     $partB = $resultB;
+
+    $studentProgrammes = fetchStudentProgrammes($courseCode);
   } else {
     header("Location: ./department2.php");
   }
@@ -91,7 +93,17 @@
               <p>Lecture Venue: <?php echo $partA["venue"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Students programme: </p>
+              <p>Students programme:
+                <?php
+                foreach ($studentProgrammes as $key => $value) {
+
+                  echo $value;
+                  if ($key < sizeof($studentProgrammes) - 1) {
+                    echo ", ";
+                  }
+                }
+                ?>
+              </p>
             </div>
           </div>
 
