@@ -45,20 +45,14 @@ if (isset($_POST["login"])) {
     }
 } elseif (isset($_POST["departmentForm"])) {
     //ldksj
-    $studyYear = $_POST["year"];
-    $programme = $_POST["programme"];
-    $semester = $_POST["semester"];
+
     $course = $_POST["course"];
 
-    $resultA = fetchProceedEvalutation($year, $programme, $course);
+    $resultA = fetchProceedEvalutation($course);
     $resultB = fetchCourseEvaluationResults($course);
     $resultA = array_merge($resultA, ["totalResponse" => countEvaluationResponse($course)]);
 
     $resultB = formatEvaluationQnResults($resultB);
-
-
-
-
 
     $allOkey = true;
 

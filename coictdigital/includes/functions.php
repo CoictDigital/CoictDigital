@@ -74,7 +74,7 @@ function formatEvaluationQnResults($resultQuery)
         "8" => ["question" => "Instructor's availability for consultations", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "9" => ["question" => "Manner in which instructor interacts with students in class?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "10" => ["question" => "Generally, how do you rate the competency of the instructor to meet your learning satisfaction?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
-        "11" => ["question" => "Instructor observed or complied with UDSM Sexual Harassment Code?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
+        "11" => ["question" => "Instructor observed or complied with UDSM Sexual Harassment Code?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0, "harassment_explanation" => []],
         "12" => ["question" => "How clear was the objective of the course", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "13" => ["question" => "How well was the course content coverage", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "14" => ["question" => "How well was the mode of assessment?(e.g sufficient tests, assignments, timed essays)", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
@@ -83,6 +83,7 @@ function formatEvaluationQnResults($resultQuery)
         "17" => ["question" => "How well did the course link theory and practise?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "18" => ["question" => "How adequate were the tutorials, seminars and practicals", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "19" => ["question" => "Generally, how do you rate the relevance of the course to meet your expectations?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
+        "harassment_explanation" => ["question" => "Explanation of Harassment Code", "explanations" => []]
 
     ];
 
@@ -147,12 +148,17 @@ function formatEvaluationQnResults($resultQuery)
                 case 19:
                     $resultB = updateValueForQn($resultB, $key, $val);
                     break;
+                case "harassment_explanation":
+                    $resultB = updateValueForQn($resultB, $key, $val);
+                    break;
 
                     // default:
                     //     echo "failed to read question answer value";
             }
         }
     }
+    $resultB["11"]["harassment_explanation"] = $resultB["harassment_explanation"]["explanations"];
+    unset($resultB["harassment_explanation"]);
     return $resultB;
 }
 
@@ -267,7 +273,7 @@ function authenticate_user($username, $password)
 }
 
 
-function fetchProceedEvalutation($year, $programme, $course)
+function fetchProceedEvalutation($course)
 {
     global $conn;
     //write query
@@ -275,7 +281,7 @@ function fetchProceedEvalutation($year, $programme, $course)
 
     $results = mysqli_query($conn, $sql);
     confirm_query($conn, $results);
-    print_r($results);
+
     $results =  mysqli_fetch_assoc($results);
 
     return $results;
@@ -290,7 +296,7 @@ function fetchteaching($studyYear, $semester, $programme, $coursecode)
 
     $results = mysqli_query($conn, $sql);
     confirm_query($conn, $results);
-    print_r($results);
+
     $results =  mysqli_fetch_assoc($results);
 
     return $results;

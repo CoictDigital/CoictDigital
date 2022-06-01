@@ -26,6 +26,12 @@ function updateValueForQn($resultB, $qnNo, $val)
         case 5:
             $resultB[$qnNo]["veryPoor"] += 1;
             break;
+        default:
+
+            array_push($resultB[$qnNo]["explanations"], $val);
+            // print_r($resultB[$qnNo]["explanations"]);
+            // die();
+            break;
     }
     return $resultB;
 }

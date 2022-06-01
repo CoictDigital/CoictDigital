@@ -119,7 +119,11 @@
                         </p>
                       </div>
                       <div class="col-2">
-                        <a href="#" class="btn btn-primary">View</a>
+                        <a href="./evaluationresults.php?<?php
+                                                          echo "courseCode=" . $course["course_code"];
+
+
+                                                          ?>" class="btn btn-primary">View</a>
                       </div>
                     </div>
                   </div>
