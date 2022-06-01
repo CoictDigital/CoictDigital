@@ -32,7 +32,7 @@ function getCourseResponse($course_code)
 function fetchCourse()
 {
     global $conn;
-    $sql = "SELECT * FROM `courses` ";
+    $sql = "SELECT DISTINCT course_code,assistant,class_size,college,course_title,department,instructor,semester,venue FROM `courses`";
     $results = mysqli_query($conn, $sql);
     return $results;
 }

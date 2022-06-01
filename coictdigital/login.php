@@ -43,27 +43,6 @@ if (isset($_POST["login"])) {
         $_SESSION["studentFilledCount"] = $result;
         header("Location: public/courseevaluation.php");
     }
-} elseif (isset($_POST["departmentForm"])) {
-    //ldksj
-
-    $course = $_POST["course"];
-
-    $resultA = fetchProceedEvalutation($course);
-    $resultB = fetchCourseEvaluationResults($course);
-    $resultA = array_merge($resultA, ["totalResponse" => countEvaluationResponse($course)]);
-
-    $resultB = formatEvaluationQnResults($resultB);
-
-    $allOkey = true;
-
-    if ($allOkey) {
-        $_SESSION["evaluationResultsA"] = $resultA;
-        $_SESSION["evaluationResultsB"] = $resultB;
-
-
-
-        header("Location: public/evaluationresults.php");
-    }
 } elseif (isset($_POST["teaching"])) {
     $allOkey = true;
     $studyYear = $_POST["study_year"];

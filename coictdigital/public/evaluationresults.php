@@ -84,7 +84,10 @@
               <p>Instructor's full name: <?php echo $partA["instructor"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Date: <?php echo $partA["date"]; ?> </p>
+              <p>Date: <?php
+                        $date = date('d-M-Y', strtotime($partA["date"]));
+
+                        echo $date; ?> </p>
             </div>
           </div>
 
