@@ -6,6 +6,8 @@
 <?php
 require_once '../includes/headerContent.php';
 require_once '../includes/sessionStuffs.php';
+require_once("../includes/db.php");
+require_once("../includes/fetchvenue.php");
 
 if (isset($_SESSION["teachingFilled"])) {
   
@@ -13,7 +15,6 @@ if (isset($_SESSION["teachingFilled"])) {
 } else {
   header("Location: teaching.php");
 }
-// unset($_SESSION["studentFilledCount"]);
 
 ?>
 
@@ -31,7 +32,6 @@ if (isset($_SESSION["teachingFilled"])) {
   <script>
     function showHideabs(){
       if (document.getElementById("absent").checked){
-        // window.alert("Hello");
         document.getElementById("abs").style.display = "block";
         document.getElementById("mycode").style.display = "none";
       }else {
@@ -79,31 +79,9 @@ if (isset($_SESSION["teachingFilled"])) {
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
   <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/udsmlogo.jpg" alt="" class="img-fluid rounded-circle">
-       
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="index.php" class="nav-link scrollto"> <span>Home</span></a></li>
-          <li><a href="<?php if ($_SESSION['userData']['role'] == 2) {
-              echo 'department1.php';
-          } elseif ($_SESSION['userData']['role'] == 1) {
-              echo 'evaluation1.php';
-          } ?>" class="nav-link scrollto"> <span>Course Evaluation</span></a></li>        
-          <li><a href="alumnirecords.php" class="nav-link scrollto"><span>Alumni Records</span></a></li>
-          <li><a href="teaching.php" class="nav-link scrollto active"> <span>Teaching Monitoring</span></a></li>
-          <li><a href="courseallocation.php" class="nav-link scrollto"> <span>Course Allocation</span></a></li>
-          <li><a href="examinvigilation.php" class="nav-link scrollto"> <span>Exam Invigilation</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
-
+  <?php
+  require_once("../includes/leftNav.php");
+  ?>
 
   <main id="main">
 
@@ -112,36 +90,48 @@ if (isset($_SESSION["teachingFilled"])) {
        <section id="evaluation" class="services">        
         <div class="container-fluid">           
           <div class="section-title">
-          <h3>UNIVERSITY OF DAR ES SALAAM</h3>         
+            <h3>UNIVERSITY OF DAR ES SALAAM</h3>         
             <h3>Quality Assurance Bureau (QAB)</h3>
             <h3>Teaching and learning Monitoring</h3>
-            </div>
-            </div>
+          </div>
+        </div>
 
-          <div class="container">
-          <form action="./../login.php" method="POST">
+        <div class="container">
+          <form action="monitoringqtns.php" method="POST">
 
             <!-- ======= General info ======= -->
           <div class="question">
             <h3>General information</h3>
-        <div class="row mb-3">
-          <label for="Session time" class="col-sm-2 col-form-label">Starting time</label>
-          <div class="col-sm-10">
+         <div class="row mb-3">
+           <label for="Session time" class="col-sm-2 col-form-label">Starting time</label>
+           <div class="col-sm-10">
               <input type="time" class="form-control" name="starting_time" placeholder="" required>
-          </div>
-      </div>
-      <div class="row mb-3">
+           </div>
+         </div>
+       <div class="row mb-3">
           <label for="Session time" class="col-sm-2 col-form-label">Ending time</label>
           <div class="col-sm-10">
               <input type="time" class="form-control" name="ending_time" placeholder="" required>
           </div>
+       </div>
+
+       <div class="row mb-3">
+        <label for="venue" class="col-sm-2 col-form-label">Venue</label>
+        <div class="col-sm-10">
+       <select class="form-select" aria-label="Default select example" name="venue">
+        <option hidden disabled selected value> -- select an option --</option>
+        <option>Venue</option>
+        <?php 
+           foreach ($options as $option) {
+        ?>
+         <option><?php echo $option['venue']; ?> </option>
+        <?php 
+        }
+        ?>    
+       </select>
       </div>
-      <div class="row mb-3">
-            <label for="venue" class="col-sm-2 col-form-label">Venue</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="venue" placeholder="Venue" value="venue" required>
-            </div>
-        </div>
+    </div>
+
         <div class="row mb-3">
           <label for="venue capacity" class="col-sm-2 col-form-label">Venue capacity</label>
           <div class="col-sm-10">
@@ -155,11 +145,7 @@ if (isset($_SESSION["teachingFilled"])) {
         </div>
     </div>
       </div>
-
-
-
-         <!-- ======= Attendance ======= -->
-        <div class="question">
+      <div class="question">
          <h3>Instructor's attendance</h3>
          <h5>Please select the corresponding attendance state of the instructor </h5>       
         
@@ -173,18 +159,22 @@ if (isset($_SESSION["teachingFilled"])) {
               <label class="form-check-label" for="inlineRadio2">Absent</label>
              </div>
             <div class="" id="">
+            <!-- <input class="form-check-input" type="hidden" name="student_informed" id="informed"  value="yes"> -->
               <div class="" id="abs">
-                <select class="form-select" aria-label="Default select example" name= "absence_reason">
-                <option selected="Select reason for starting late">If absent, select the reason for absence</option>
-                <option value="Sickness">Sickness</option>
-                <option value="Travelled">Travelled</option>
-                <option value="Assigned a special task">Assigned a special task</option>
-                <option value="Attended a meeting">Attended a meeting</option>
-                <option value="Not informed">Not informed</option>
-            </select> 
-
-             <h5>Are the students informed about the instructor's absence?</h5>
+                
+              <label for="Session type">Please select reason for instructor's absence:</label>
+          <select class="form-select" name="absence_reason">
+          <option hidden disabled selected value> -- select an option --</option>
+            <option value="Instructor is assigned a special task">Instructor is assigned a special task</option>
+            <option value="Instructor has attended a meeting">Instructor has attended a meeting</option>
+            <option value="Out of university campus, travelled">Out of university campus, travelled</option>
+            <option value="Sickness">Sickness</option>
+            <option value="Not informed">Not informed</option>
+            </select>
+              
+            <h5>Are the students informed about the instructor's absence?</h5>
              <div class="form-check form-check-inline">
+         
                <input class="form-check-input" type="radio" name="student_informed" id="informed"  value="yes" onclick="submit(o)">
                <label class="form-check-label" for="inlineRadio1">Yes</label>
              </div>
@@ -195,7 +185,7 @@ if (isset($_SESSION["teachingFilled"])) {
               </div>
 
               <div class="form-group" id="submit">
-               <button type="submit" class="mx-auto button1" name="" value="submit">Submit</button>
+              <button type="submit" class="mx-auto button1" name="monitoringQn" value="submit">Submit</button>
               </div>
 
               
@@ -203,9 +193,8 @@ if (isset($_SESSION["teachingFilled"])) {
             </div>
             
           </div>
-            
-<!-- ======= session starting time ======= -->
-<div id="mycode">
+
+          <div id="mycode">
 <div class="question">
          <h3>Time management</h3>
             <h5>Please select the session starting time</h5>
@@ -241,8 +230,9 @@ if (isset($_SESSION["teachingFilled"])) {
 
         <div class="starting_time" id="reason">
           <label for="started_late">Please select the reason for starting late:</label>
-          <select class="form-selectaria-label="Default select example" name="started_late">
-            <option value="late arrival of the Instructor">late arrival of the Instructor</option>
+          <select class="form-select" aria-label="Default select example" name="started_late">
+          <option hidden disabled selected value> -- select an option --</option>
+          <option value="late arrival of the Instructor">late arrival of the Instructor</option>
             <option value="late arrival of the students">late arrival of the students</option>
             <option value="Change of Venue due to collision">Change of Venue due to collision</option>
             <option value="Sitting arrangement">Sitting arrangement</option>
@@ -251,14 +241,13 @@ if (isset($_SESSION["teachingFilled"])) {
             <option value="Other reasons">Other reasons</option>
           </select>
         </div>
-          <!-- </div> -->
 
-          <!-- ======= teaching process ======= -->
-         <div class="question">
+        <div class="question">
           <h3>Teaching Process</h3>
           <h4>a) Session Type</h4>
           <label for="Session type">Please select the corresponding session type:</label>
           <select class="form-select" aria-label="Default select example" name="session_type">
+          <option hidden disabled selected value> -- select an option --</option>
             <option value="Tutorial">Tutorial</option>
             <option value="Seminar">Seminar</option>
             <option value="Practical">Practical</option>
@@ -269,6 +258,7 @@ if (isset($_SESSION["teachingFilled"])) {
             <h4>b) Teaching Mode</h4>
             <label for="Teaching mode">Please select the teaching mode used:</label>
           <select class="form-select" aria-label="Default select example" name="teaching_mode">
+          <option hidden disabled selected value> -- select an option --</option>
             <option value="Teacher centred">Teacher centred</option>
             <option value="Student centred">Student centred</option>
             <option value="Student lead with instructor supervisor">Student lead with instructor supervisor</option>
@@ -277,6 +267,7 @@ if (isset($_SESSION["teachingFilled"])) {
             <h4>c) Teaching method used</h4>
             <label for="Teaching method used">Please note the type of teaching method used:</label>
             <select class="form-select" aria-label="Default select example" name="teaching_method">
+            <option hidden disabled selected value> -- select an option --</option>
               <option value="Talk and Chalk">Talk and Chalk</option>
               <option value="Conventional overhead projector">Conventional overhead projector</option>
               <option value="Student Presentation and practical">Student Presentation and practical</option>
@@ -287,14 +278,14 @@ if (isset($_SESSION["teachingFilled"])) {
           <h4>d) Medium of instruction</h4>
           <label for="Medium of instruction">Please select the medium of instruction used:</label>
           <select class="form-select" aria-label="Default select example" name="medium_of_instruction">
+          <option hidden disabled selected value> -- select an option --</option>
             <option value="Course in English and English is used through out">Course in English and English is used through out</option>
             <option value="Course in English but code-switching to Kiswahili">Course in English but code-switching to Kiswahili</option>
             <option value="Course in Kiswahili but code-switching to English">Course in Kiswahili but code-switching to English</option>
           </select>
           </div>
-
-    <!-- ======= condition of teaching room ======= -->
-    <div class="question">
+      
+        <div class="question">
      
         <h3>Teaching venue conditions</h3>
         <div class="form-group row">
@@ -319,7 +310,7 @@ if (isset($_SESSION["teachingFilled"])) {
             </thead>
             <tbody>
             <tr>
-              <td>1. Sitting arrangements of students</td>
+              <td>A. Sitting arrangements of students</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="3" id="flexRadioDefault"></td>
@@ -329,7 +320,7 @@ if (isset($_SESSION["teachingFilled"])) {
               </tr>
 
              <tr>
-              <td>2. Lighting</td>
+              <td>B. Lighting</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="3" id="flexRadioDefault"></td>
@@ -337,7 +328,7 @@ if (isset($_SESSION["teachingFilled"])) {
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="1" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="NA" id="flexRadioDefault"></td>
               </tr>        
-                <td>3. Chairs and Tables</td>
+                <td>C. Chairs and Tables</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="3" id="flexRadioDefault"></td>
@@ -347,7 +338,7 @@ if (isset($_SESSION["teachingFilled"])) {
               </tr>
 
               <tr>
-               <td>4. Fixed LCD projector system (if any)</td>
+               <td>D. Fixed LCD projector system (if any)</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="3" id="flexRadioDefault"></td>
@@ -357,7 +348,7 @@ if (isset($_SESSION["teachingFilled"])) {
               </tr>
 
               <tr>
-                <td>5. Display and Visibility</td>
+                <td>E. Display and Visibility</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="3" id="flexRadioDefault"></td>
@@ -367,7 +358,7 @@ if (isset($_SESSION["teachingFilled"])) {
               </tr>
 
               <tr>
-              <td>6. General physical condition of the room</td>
+              <td>F. General physical condition of the room</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="3" id="flexRadioDefault"></td>
@@ -377,7 +368,7 @@ if (isset($_SESSION["teachingFilled"])) {
               </tr>
 
               <tr>
-                <td>7. Public address system (if any)</td>
+                <td>G. Public address system (if any)</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="3" id="flexRadioDefault"></td>
@@ -387,7 +378,7 @@ if (isset($_SESSION["teachingFilled"])) {
               </tr>
 
               <tr>
-                <td>8. Availability of brash and chalks/markers</td>
+                <td>H. Availability of brash and chalks/markers</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="3" id="flexRadioDefault"></td>
@@ -397,7 +388,7 @@ if (isset($_SESSION["teachingFilled"])) {
               </tr>
 
               <tr>
-                <td>9. Use of whiteboard/blackboard</td>
+                <td>I. Use of whiteboard/blackboard</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="3" id="flexRadioDefault"></td>
@@ -407,7 +398,7 @@ if (isset($_SESSION["teachingFilled"])) {
               </tr>
 
               <tr>
-                <td>10. Room ventilation</td>
+                <td>J. Room ventilation</td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="5" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="4" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="3" id="flexRadioDefault"></td>
@@ -435,14 +426,22 @@ if (isset($_SESSION["teachingFilled"])) {
                   <textarea class="form-control" rows="4" name="identified_matters" value="" placeholder="If the answer is Yes, identify them:"></textarea>
                 </div>
 </div>
-          
 
-      
             <div class="form-group">
               <!-- <a href="#evaluationModal"  data-toggle="modal" data-target="#evaluationModal" >  -->
               <button type="submit" class="mx-auto button1" name="monitoringQn">Submit</button>
               <!-- </a> -->
             </div>
+
+              
+              </div>
+            </div>
+            
+          </div>
+
+
+
+            
 
              <!-- fading evaluation submit-->
        <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
