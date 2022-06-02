@@ -39,12 +39,6 @@ require_once("../includes/db.php");
 // $sql = "SELECT * FROM teachingmonitoring_questions";
 // $result=$conn->query($sql);
 ?>
-<div class="row" >
-  <div class="col-md-12">
-   <span class="badge alert-success" style="float: right; width: 100px;">HOD</span>
-  </div>
-</div>
-
 <section id="evaluation" class="services">        
  <div class="container-fluid">           
    <div class="section-title">          

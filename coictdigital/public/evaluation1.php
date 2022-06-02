@@ -18,7 +18,7 @@
 
   $programId = fetchProgramId($_SESSION["userData"]["student_programme"]);
 
-  $programId = $programId["id"];
+  // $programId = $programId["id"];
   $_SESSION["userData"]["programme_id"] = $programId;
   $courses = fetchStudentCourses($programId);
   ?>
@@ -47,23 +47,29 @@
               <p class="text-center pt-3">Please select course code to proceed</p>
 
               <div class="mb-3">
+              <?php
+
+              $sql = "SELECT * FROM `courses` WHERE course_code IS NOT NULL";
+              $result=$conn->query($sql);
+               ?>
+               <?php                  
+                 if ($result->num_rows > 0) {
+                 while($row = $result->fetch_assoc()){
+                extract($row);
+                 
+                ?>
+               
                 <select class="form-select" name="course" aria-label="Default select example">
+                
                   <option selected="selected"> Course code </option>
-                  <?php
-
-                  while ($row = mysqli_fetch_assoc($courses)) {
-                  ?>
-
-                    <option value="<?php echo $row["course_code"]; ?>"> <?php echo $row["course_code"]; ?> </option>
-
-
-
-                  <?php
-                  }
-
-                  ?>
-
+                 
+                    <option value="<?php                    
+                    echo $row["course_code"]; ?>"> <?php echo $row["course_code"]; ?> </option>
                 </select>
+                <?php
+                 }}
+                 ?>
+
               </div>
 
               <button type="submit" class="mx-auto button" name="proceedEvalutation" value="proceed">Proceed</button>
@@ -76,7 +82,7 @@
       </div>
     </section>
   </main>
-
+ 
 
   <?php
 
