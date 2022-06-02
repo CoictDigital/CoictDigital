@@ -40,6 +40,7 @@ if (isset($_SESSION["teachingFilled"])) {
     }
   </script>
 
+<!-- reason for starting late -->
 <script>
   function showHideontime(){
     if (document.getElementById("ontime").checked){
@@ -50,6 +51,19 @@ if (isset($_SESSION["teachingFilled"])) {
   }
 </script>
 
+<!-- button for absence -->
+<!-- <script>
+  function showHidesubmit(){
+    if((document.getElementById("informed").checked) || (document.getElementById("not_informed").checked)){
+      document.getElementById("inform").style.display = "block";
+    }else{
+      document.getElementById("inform").style.display = "none";
+    }
+  }
+</script> -->
+
+
+<!-- special issues -->
 <script>
   function showHideissues(){
     if (document.getElementById("yes").checked){
@@ -119,7 +133,7 @@ if (isset($_SESSION["teachingFilled"])) {
         <label for="venue" class="col-sm-2 col-form-label">Venue</label>
         <div class="col-sm-10">
        <select class="form-select" aria-label="Default select example" name="venue">
-        <option hidden disabled selected value> -- select an option --</option>
+        <option hidden disabled selected value> -- select venue--</option>
         <option>Venue</option>
         <?php 
            foreach ($options as $option) {
@@ -158,6 +172,8 @@ if (isset($_SESSION["teachingFilled"])) {
               <input class="form-check-input" type="radio" name="attendance" id="absent" onclick="showHideabs()"value="absent">
               <label class="form-check-label" for="inlineRadio2">Absent</label>
              </div>
+
+             <!-- reasons absence and student informed or not -->
             <div class="" id="">
             <!-- <input class="form-check-input" type="hidden" name="student_informed" id="informed"  value="yes"> -->
               <div class="" id="abs">
@@ -174,25 +190,21 @@ if (isset($_SESSION["teachingFilled"])) {
               
             <h5>Are the students informed about the instructor's absence?</h5>
              <div class="form-check form-check-inline">
-         
-               <input class="form-check-input" type="radio" name="student_informed" id="informed"  value="yes" onclick="submit(o)">
+               <input class="form-check-input" type="radio" name="student_informed" id="informed"  value="Yes" >
                <label class="form-check-label" for="inlineRadio1">Yes</label>
              </div>
              
              <div class="form-check form-check-inline">
-               <input class="form-check-input" type="radio" name="student_informed" id="not_informed" value="no" onclick="submit(1)">
+               <input class="form-check-input" type="radio" name="student_informed" id="not_informed" value="No" >
                <label class="form-check-label" for="inlineRadio2">No</label>
               </div>
-
-              <div class="form-group" id="submit">
-              <button type="submit" class="mx-auto button1" name="monitoringQn" value="submit">Submit</button>
-              </div>
-
-              
+             <div class="form-group" id="inform">
+              <button id ="button1" type="submit" class="mx-auto button1" name="monitoringQn" value="submit">Submit</button>
+             </div>
               </div>
             </div>
-            
           </div>
+            
 
           <div id="mycode">
 <div class="question">
@@ -497,6 +509,28 @@ if (isset($_SESSION["teachingFilled"])) {
   <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
   <!-- Bootstrap JS -->
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+
+
+  <script>
+$(document).ready(function(){
+  console.log("ASDfa")
+  // document.getElementById("inform").style.display = "none";
+  // hide submit by default
+  $('#button1').hide();
+  $("input[value='Yes']").click(function(){
+    $("#button1").show();
+});
+});
+</script>
+<script>
+    $(document).ready(function(){
+  // hide submit by default
+  $('#button1').hide();
+  $("input[value='No']").click(function(){
+    $("#button1").show();
+});
+});
+</script>
 
 </body>
 

@@ -3,18 +3,20 @@
     <head>
         
 <?php
+    
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
     require_once("../includes/db.php");
     require_once("../includes/fetchcoursecode.php");
+    
+    
 
     if (isset($_SESSION["teachingFilled"])) {
       unset($_SESSION['teachingFilled']);
     } else {
     }
-  
-
     ?>
+    
     </head>
     <body>
 
@@ -34,20 +36,16 @@
     
 <div class="col-sm-4">
 <form action="./../login.php" class="card p-4 rounded shadow details" method="POST">
-<p class="text-center pt-3">Please select course</p>
+<p class="text-center pt-3">Please select the corresponding details</p>
 
-<!-- <div class="mb-3">
+<div class="mb-3">
+  <!-- <?php print_r ($options ) ?> -->
 <select class="form-select" aria-label="Default select example" name="semester" required>
-<option>Semester</option>
-  <?php 
-  foreach ($options as $option) {
-  ?>
-    <option><?php echo $option['semester']; ?> </option>
-    <?php 
-    }
-   ?>    
-   </select> 
-</div> -->
+<option value="">Semester</option>
+<option value="Semester 1">Semester 1</option>
+<option value="Semester 2">Semester 2</option>
+  </select> 
+</div>
 
 <div class="mb-3">
 <select class="form-select" aria-label="Default select example" name="course_code">

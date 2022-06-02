@@ -58,6 +58,8 @@ if (isset($_POST["login"])) {
     } else {
         echo "wrong";
     }
+
+    
 } elseif (isset($_POST["monitoringQn"])) {
     $allOkey = true;
     $result = submitEvaluationQnAns($_POST);
