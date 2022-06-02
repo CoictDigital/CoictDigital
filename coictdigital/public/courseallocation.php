@@ -9,6 +9,7 @@
     require_once("../includes/db.php");
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
+    require_once("../public/addnewallocation.php");
 
     unset($_SESSION["studentFilledCount"]);
 
@@ -47,7 +48,15 @@
        <section id="allocation" class="services">
         <div class="container-fluid">            
          <div class="section-title">
-            <h2>COURSE ALLOCATION</h2>
+         <section id="" class="services">
+      <div class="container-fluid">
+        <div class="section-title">
+          <h3>UNIVERSITY OF DAR ES SALAAM</h3>
+          <h2>Undergraduate Programmes</h2>
+          <h2>COURSE ALLOCATION</h2>   
+        </div>
+</div>
+            
           </div>
           <div class="container">
           <form>
@@ -63,6 +72,64 @@
                 </div>
 
             </div>
+
+           
+     <form action="#" method="POST">
+        <div class="container">
+        <div class="">
+        <div class="card">
+  <div class="card-body">
+    <p class="card-title">Allocate Courses for respective Instructor</p>
+    <div class="row">
+    <div class="col-sm-4">
+                <select class="form-select" name="course" aria-label="Default select example">
+                      
+                          <option value="">Select Course</option>
+                          <?php 
+                          foreach ($options as $option) {
+                          ?>
+                            <option value="<?php echo $option['course_title']; ?>"><?php echo $option['course_title']; ?> </option>
+                            <?php 
+                            }
+                          ?>
+                                
+                  </select>
+              </div>
+
+              <div class="col-sm-4">
+              <select class="form-select" name="Instructor" aria-label="Default select example">
+                      
+                      <option value="">Select Instructor</option>
+                      <?php 
+                      foreach ($options as $option) {
+                      ?>
+                        <option value="<?php echo $option['instructor']; ?>"><?php echo $option['instructor']; ?> </option>
+                        <?php 
+                        }
+                      ?>
+                            
+              </select>
+              </div>
+
+              <div class="col-sm-4">
+              <select class="form-select" name="semester" aria-label="Default select example">
+                  <option value="">Semester</option>
+                  <option value="1">I</option>
+                  <option value="2">II</option>
+                </select>
+              </div>
+          </div>
+            </div>
+            <!-- <input type="submit" name=""> -->
+            <input  type="submit" name="submit"> 
+            <!-- <button type="submit" name="submit" class="mx-auto button" >Allocate</button> -->
+          </div>
+          </div>
+         
+          </div>
+          
+     </form>
+
            <div class="form-group row">
               <h5>Table of course allocation for staff</h5>
             </div>
@@ -73,12 +140,10 @@
                   <tr>
                   <th scope="col">Instructors</th>
                       <th scope="col">NO  of Course </th>
-                      <th scope="col">Course Code</th>
+                      <!-- <th scope="col">Course Code</th> -->
                       <th scope="col">Course Name</th>
-                      <th scope="col">Program</th>
-                      <th scope="col">current</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Credits</th>
+                      <!-- <th scope="col">Program</th> -->
+                      
                       <th scope="col">Practical	/	Tutorial	Assistant</th> 
                       <th scope="col">Action</th>
                   </tr>
@@ -104,12 +169,10 @@
                   <tr>
                    <td><?php echo $row['instructor']; ?></td>
                    <td><?php echo $row['no_of_course']; ?></td>
-                   <td><?php echo $row['course_code']; ?></td>
+                   <!-- <td><?php echo $row['course_code']; ?></td> -->
                    <td><?php echo $row['course_name']; ?></td>
-                   <td><?php echo $row['program']; ?></td>
-                   <td><?php echo $row['current']; ?></td>
-                   <td><?php echo $row['status']; ?></td>
-                   <td><?php echo $row['credits']; ?></td>
+                   <!-- <td><?php echo $row['program']; ?></td> -->
+                
                    <td></td>
                    <!-- <td><?php echo $row['#']; ?></td> -->
                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
@@ -144,16 +207,16 @@
                 <h4>Add New Allocation</h4>
               </div>
               <div class="d-flex flex-column text-center">
-                <form action="addnewallocation.php" method="post">
+                <form action="#" method="post">
                   <div class="form-group">
                     <input type="text" class="form-control" id="instructor"placeholder="Staff Name" name="instructor" >
                   </div>
                   <div class="form-group">
                     <input type="text" class="form-control" id="no_of_course" placeholder="no_of_course" name= "no_of_course">
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <input type="text" class="form-control" id="course_code" placeholder="Course Code" name="course_code">
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <input type="text" class="form-control" id="course_name" placeholder="Course Name" name="course_name">
                   </div>
