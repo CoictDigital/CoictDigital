@@ -7,6 +7,8 @@
   require_once("./../includes/functions.php");
   require_once("../includes/headerContent.php");
   require_once("../includes/sessionStuffs.php");
+  require_once("../includes/db.php");
+  require_once("../includes/fetchcoursecode.php");
 
 
 
@@ -44,33 +46,20 @@
 
           <div class="col-sm-4">
             <form action="./../login.php" class="card p-4 rounded shadow details" method="POST">
-              <p class="text-center pt-3">Please select course code to proceed</p>
+              <p class="text-center pt-3">Please select course</p>
 
-              <div class="mb-3">
-              <?php
-
-              $sql = "SELECT * FROM `courses` WHERE course_code IS NOT NULL";
-              $result=$conn->query($sql);
-               ?>
-               <?php                  
-                 if ($result->num_rows > 0) {
-                 while($row = $result->fetch_assoc()){
-                extract($row);
-                 
-                ?>
-               
-                <select class="form-select" name="course" aria-label="Default select example">
-                
-                  <option selected="selected"> Course code </option>
-                 
-                    <option value="<?php                    
-                    echo $row["course_code"]; ?>"> <?php echo $row["course_code"]; ?> </option>
-                </select>
-                <?php
-                 }}
-                 ?>
-
-              </div>
+<div class="mb-3">
+<select class="form-select" aria-label="Default select example" name="course_code">
+<option>Course code</option>
+  <?php 
+  foreach ($options as $option) {
+  ?>
+    <option><?php echo $option['course_code']; ?> </option>
+    <?php 
+    }
+   ?>    
+    </select>
+</div> 
 
               <button type="submit" class="mx-auto button" name="proceedEvalutation" value="proceed">Proceed</button>
               <a href="./index.php">
