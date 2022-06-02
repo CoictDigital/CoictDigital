@@ -23,7 +23,7 @@
   <!-- ======= Header ======= -->
   <?php
   require_once("../includes/leftNav.php");
-  ?>
+  ?> 
 
   <main id="main">
                  <?php

@@ -3,14 +3,25 @@
 
 <head>
   <?php
+  require_once("../includes/functions.php");
   require_once("../includes/headerContent.php");
   require_once("../includes/sessionStuffs.php");
 
-  if (isset($_SESSION["evaluationResultsA"]) && isset($_SESSION["evaluationResultsB"])) {
-    $partA = $_SESSION["evaluationResultsA"];
-    $partB = $_SESSION["evaluationResultsB"];
+
+  if (isset($_GET["courseCode"])) {
+    $courseCode = $_GET["courseCode"];
+
+
+    $resultA = fetchProceedEvalutation($courseCode);
+    $resultB = fetchCourseEvaluationResults($courseCode);
+    $resultA = array_merge($resultA, ["totalResponse" => countEvaluationResponse($courseCode)]);
+    $resultB = formatEvaluationQnResults($resultB);
+    $partA = $resultA;
+    $partB = $resultB;
+
+    $studentProgrammes = fetchStudentProgrammes($courseCode);
   } else {
-    header("Location: /coictdigital/public/department1.php");
+    header("Location: ./department2.php");
   }
 
   ?>
@@ -35,7 +46,7 @@
     <!-- ======= Form Section ======= -->
 
     <section id="evaluation" class="services">
-      <div class="container-fluid" id="results" >
+      <div class="container-fluid" id="results">
         <div class="section-title">
           <h3>UNIVERSITY OF DAR ES SALAAM</h3>
           <h3>Quality Assurance Bureau (QAB)</h3>
@@ -73,7 +84,10 @@
               <p>INSTRUCTOR: <?php echo $partA["instructor"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>DATE: <?php echo $partA["date"]; ?> </p>
+              <p>Date: <?php
+                        $date = date('d-M-Y', strtotime($partA["date"]));
+
+                        echo $date; ?> </p>
             </div>
           </div>
 
@@ -82,7 +96,17 @@
               <p>LECTURE VENUE: <?php echo $partA["venue"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>STUDENTS PROGRAMME: </p>
+              <p>Students programme:
+                <?php
+                foreach ($studentProgrammes as $key => $value) {
+
+                  echo $value;
+                  if ($key < sizeof($studentProgrammes) - 1) {
+                    echo ", ";
+                  }
+                }
+                ?>
+              </p>
             </div>
           </div>
 
@@ -101,44 +125,71 @@
 
           <?php
           foreach ($partB as $key => $val) {
+            if ($key == 11) { //harassment qn
           ?>
-            <div class="row">
-              <div class="centre">
-                <p> <?php echo $key . ". " . $val["question"]; ?> </p>
-                <div class="chart">
-                  <canvas id="<?php echo "chart-bars" . $key;  ?>" class="chart-canvas" height="250" width="200" style="border-radius: 10px;"></canvas>
+              <div class="row">
+                <div class="centre">
+                  <p> <?php echo $key . ". " . $val["question"]; ?> </p>
+                  <div class="chart">
+                    <canvas id="myChart" class="chart-canvas"></canvas>
+                  </div>
                 </div>
               </div>
-            </div>
+              <div class="mt-4 row">
+                <div class="centre">
+                  <!-- explanation for reason is no -->
+                  <div class="alert alert-secondary">
+                    Explanation here incase reason is no
+                    <ul>
+                      <?php
+                      foreach ($val["harassment_explanation"] as $key2 => $val2) {
+                        if ($val2 == "") {
+                          continue;
+                        }
+                      ?>
+                        <li> <?php echo $val2; ?> </li>
+
+                      <?php
+                      }
+
+                      ?>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            <?php
+            } else {
+            ?>
+              <div class="row">
+                <div class="centre">
+                  <p> <?php echo $key . ". " . $val["question"]; ?> </p>
+                  <div class="chart">
+                    <canvas id="<?php echo "chart-bars" . $key;  ?>" class="chart-canvas" height="250" width="200" style="border-radius: 10px;"></canvas>
+                  </div>
+                </div>
+              </div>
           <?php
-          }
+            } //end of else
+          } //end for each
 
           ?>
 
           <!-- pie chart and explanation box for the qtn on sexual harassment / its javascript is below with element id= mychart  -->
-          <div class="row">
-  <div class="centre">
-  <div class="chart">
-  <canvas id="myChart" class="chart-canvas" ></canvas>
-  </div>
-      </div>    
-    </div>
 
-    <div class="mt-4 row">
-      <div class="centre">
-       <!-- explanation for reason is no -->
-       <div class="alert alert-secondary">
-  Explanation here incase reason is no
-</div>
-        </div>
-        </div>
 
-        <!-- end here -->
+
+
+          <!-- end here -->
 
 
 
           <div class="form-group">
+<<<<<<< HEAD
           <input type="button" id="rep" value="Print results" class="button1 btn_print">
+=======
+            <input type="button" id="rep" value="Download results" class="button2 btn_print">
+>>>>>>> 7ea313a653d47db7ec32a4bfe30af080214a0688
           </div>
         </div>
     </section><!-- End Form Section -->
@@ -162,132 +213,150 @@
   <script src="./assets/js/plugins/chartjs.min.js"></script>
   <script>
     <?php
-    foreach ($partB as $key => $val) { ?>
-      var ctx = document.getElementById("<?php echo "chart-bars" . $key ?>").getContext("2d");
+    foreach ($partB as $key => $val) {
 
+      if ($key == 11) { //harrassment qn
+    ?>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'pie',
 
-      new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: ["Excellent", "Very good", "Satisfactory", "Poor", "Very Poor"],
-          datasets: [{
-            tension: 0.4,
-            borderWidth: 0,
-            borderRadius: 2,
-            borderSkipped: false,
-            backgroundColor: '#f6b418',
-            data: [<?php echo $val["excellent"] .  ", " . $val["veryGood"] .  ", " . $val["satisfactory"] .  ", " . $val["poor"] .  ", " . $val["veryPoor"]; ?>],
-            maxBarThickness: 20
-          }, ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            }
+          // The data for our dataset
+          data: {
+            labels: ['Yes', 'No'],
+            datasets: [{
+              backgroundColor: ['#38574d', '#f6b418'],
+              data: [<?php echo $val["excellent"] .  ", " . $val["veryGood"]; ?>],
+            }]
           },
 
-          scales: {
-            y: {
+          // Configuration options go here
+          options: {
+            responsive: true,
 
-              ticks: {
-                suggestedMin: 0,
-                suggestedMax: 500,
-                beginAtZero: true,
-                padding: 10,
-                font: {
-                  size: 14,
-                  weight: 300,
-                  family: "Roboto",
-                  style: 'normal',
-                  lineHeight: 2
-                },
-                color: "#000"
-              },
-            },
-            x: {
+          }
+        });
 
-              ticks: {
-                display: true,
-                color: '#000',
-                padding: 10,
-                font: {
-                  size: 14,
-                  weight: 300,
-                  family: "Roboto",
-                  style: 'normal',
-                  lineHeight: 2
-                },
+      <?php
+
+      } else {
+      ?>
+        var ctx = document.getElementById("<?php echo "chart-bars" . $key ?>").getContext("2d");
+
+
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: ["Excellent", "Very good", "Satisfactory", "Poor", "Very Poor"],
+            datasets: [{
+              tension: 0.4,
+              borderWidth: 0,
+              borderRadius: 2,
+              borderSkipped: false,
+              backgroundColor: '#f6b418',
+              data: [<?php echo $val["excellent"] .  ", " . $val["veryGood"] .  ", " . $val["satisfactory"] .  ", " . $val["poor"] .  ", " . $val["veryPoor"]; ?>],
+              maxBarThickness: 20
+            }, ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
               }
             },
+
+            scales: {
+              y: {
+
+                ticks: {
+                  suggestedMin: 0,
+                  suggestedMax: 500,
+                  beginAtZero: true,
+                  padding: 10,
+                  font: {
+                    size: 14,
+                    weight: 300,
+                    family: "Roboto",
+                    style: 'normal',
+                    lineHeight: 2
+                  },
+                  color: "#000"
+                },
+              },
+              x: {
+
+                ticks: {
+                  display: true,
+                  color: '#000',
+                  padding: 10,
+                  font: {
+                    size: 14,
+                    weight: 300,
+                    family: "Roboto",
+                    style: 'normal',
+                    lineHeight: 2
+                  },
+                }
+              },
+            },
           },
-        },
-      });
+        });
+      <?php
+
+      }
+
+      ?>
+
+
     <?php }  ?>
-
-    
   </script>
-  
-  <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'pie',
 
-    // The data for our dataset
-    data: {
-        labels: ['Yes', 'No'],
-        datasets: [{
-            backgroundColor: ['#38574d','#f6b418'],
-            data: [30, 10]
-        }]
-    },
 
-    // Configuration options go here
-    options: {
-      responsive: true,
-    
-    }
-});
-  </script>
 
   <!-- download results script -->
 
-	<script type="text/javascript">
-	$(document).ready(function($) 
-	{ 
+  <script type="text/javascript">
+    $(document).ready(function($) {
 
-		$(document).on('click', '.btn_print', function(event) 
-		{
-			event.preventDefault();
-			
-			var element = document.getElementById('results'); 
+      $(document).on('click', '.btn_print', function(event) {
+        event.preventDefault();
 
-			//more custom settings
-			var opt = 
-			{
-			  margin:       1,
-			  filename:     'evaluationresults.pdf',
-			  image:        { type: 'jpeg', quality: 0.98 },
-			  html2canvas:  { scale: 2 },
-			  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-			};
+        var element = document.getElementById('results');
 
-			// New Promise-based usage:
-			html2pdf().set(opt).from(element).save();
+        //more custom settings
+        var opt = {
+          margin: 1,
+          filename: 'evaluationresults.pdf',
+          image: {
+            type: 'jpeg',
+            quality: 0.98
+          },
+          html2canvas: {
+            scale: 2
+          },
+          jsPDF: {
+            unit: 'in',
+            format: 'letter',
+            orientation: 'portrait'
+          }
+        };
 
-			 
-		});
+        // New Promise-based usage:
+        html2pdf().set(opt).from(element).save();
 
- 
- 
-	});
-	</script>
-  
+
+      });
+
+
+
+    });
+  </script>
+
   <!-- html2pdf js file -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"></script>
   <!-- fontawesome js file -->
   <script src="https://kit.fontawesome.com/0cdec3100d.js" crossorigin="anonymous"></script>
   <!-- main js file -->

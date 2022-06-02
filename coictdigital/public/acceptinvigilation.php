@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+     
 <?php
-    require_once("../includes/db.php");
-    require_once("../includes/headerContent.php");
-    require_once("../includes/sessionStuffs.php");
+require_once("../includes/db.php");
+require_once("../includes/headerContent.php");
+require_once("../includes/sessionStuffs.php");
 
-    unset($_SESSION["studentFilledCount"]);
+unset($_SESSION["studentFilledCount"]);
 
-    ?>
-
+?>
 </head>
 
 <body>
@@ -24,50 +23,31 @@
     require_once("../includes/leftNav.php");
     ?>
 
-
   <main id="main">
 
-    <!-- <div class="row" >
-      <div class="col-md-12"><div class="dropdown" style="float: right; width: 100px;">
-  <button class="dropbtn">user<i class="fa fa-caret-down"></i></button>
-  <div class="dropdown-content">
-    <a href="#">Profile</a>
-    <a href="#">Logout</a> -->
-    <div class="dropdown nav-link">
-  <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    User Profile
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item text-dark" href="#"><p>Change Password</p></a>
-  </div>
-    
-  </div>
-</div>
-       <span class="badge alert-success" style="float: right; width: 100px;">Admin</span>
-      </div>
-    </div>
+  
        <!-- ======= Form Section ======= -->
        <section id="invigilation" class="services">
         <div class="container-fluid">            
-         
+          <!-- <span class="badge alert-success" style="float: right;">Admin</span> -->
           <div class="section-title">
             <h2>EXAM INVIGILATION</h2>
           </div>
           <div class="container">
           <form>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label"><i class="fa fa-search" aria-hidden="true"></i> Search</label>
+              <label class="col-sm-2 col-form-label"> <i class="fa fa-search" aria-hidden="true"></i>Search</label>
               <div class="col-sm-5 mb-1">
                 <input type="text" class="form-control">
               </div>
               <div class="col-sm-5 mb-1">
               <a href="#addnewModal"  data-toggle="modal" data-target="#addnewModal" > 
-                <button type="submit" class="mx-auto button" style="float: right; height: 40px;">Add New</button>
+                <!-- <button type="submit" class="mx-auto button" style="float: right; height: 40px;">Add New</button> -->
               </a>
               </div>
             </div>
            <div class="form-group row">
-              <h5>Table of exam invigilation for staff</h5>
+              <h5>You have  just Accept  your allocation</h5>
             </div>
             <div class="form-group row">
               <div class="centre">
@@ -83,33 +63,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php   
-                $sql = "select * from exam_invigilation" ;
-              //   $sql = "SELECT id, firstname, lastname FROM MyGuests";
-              //  $result = $conn->query($sql);
-
-                $result = $conn->query($sql);
-
-                 if ($result->num_rows > 0) {
-                 while($row = $result->fetch_assoc()){
-                extract($row);
                  
-                ?>
                   <tr>
-                   <td><?php echo $row['day']; ?></td>
-                   <td><?php echo $row['from_time'] ;?> - <?php echo $row['to_time'] ;?></td>
-                   <td><?php echo $row['course_name']; ?></td>
-                   <td><?php echo $row['venue']; ?></td>
-                   <td><?php echo $row['invigilators']; ?></td>
-                   
-                   <!-- <td><?php echo $row['#']; ?></td> -->
-                   <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <?php }
-                 }
-                 ?> 
-                 
-                  <!-- <tr>
                     <td>1/2/2022</td>
                     <td>8:00 -10:00</td>
                     <td>Information Systems</td>
@@ -156,13 +111,18 @@
                     <td>B302</td>
                     <td>Mlaki,Japhet</td>
                     <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr> -->
+                  </tr>
                   
                 </tbody>
               </table>
             </div>
             </div>
-          
+            <div class="col-sm-5 mb-1">
+              <a href="#declineModal"  data-toggle="modal" data-target="#declineModal" > 
+                <button type="submit" class="mx-auto button" style="float: right; height: 40px;">DECLINE Allocation</button>
+              </a>
+              </div>
+            <!-- <button type="submit" class="mx-auto button" ><a href="declineinvigilation.html"  class="fa fa-history"></a>DECLINE Allocation</button> -->
           </form>
         </div>
 
@@ -170,7 +130,38 @@
         
         </div>
       </section><!-- End Form Section -->
-
+      <div class="modal fade" id="declineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-title text-center">
+                <h4>Reasons For Decline</h4>
+              </div>
+              <div class="d-flex flex-column text-center">
+                <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="assistantname"placeholder="Assistant Name">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="coursename" placeholder="Course Name">
+                  </div>
+                 
+                  </div>
+                  <button type="submit" class="mx-auto button" >SEND</button>
+                </form>
+              </div>
+            </div>
+          </div>
+           </div>
+      </div>
       <!-- fading addnew form-->
       <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -222,7 +213,7 @@
                 <h4>Edit Invigilation</h4>
               </div>
               <div class="d-flex flex-column text-center">
-              <form>
+                <form>
                   <div class="form-group">
                     <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
                   </div>
@@ -324,7 +315,5 @@
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
 </body>
-
-
 
 </html>
