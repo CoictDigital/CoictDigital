@@ -36,14 +36,15 @@ require_once("../includes/db.php");
 
 <?php
 // $sql = "SELECT * FROM courses";
-// $sql = "SELECT * FROM teachingmonitoring_questions";
-// $result=$conn->query($sql);
-?>
-<div class="row" >
+$sql = "SELECT * FROM teachingmonitoring_questions";
+$result=$conn->query($sql);
+// <?php echo $row['course_code']; ?>
+
+<!-- <div class="row" >
   <div class="col-md-12">
    <span class="badge alert-success" style="float: right; width: 100px;">HOD</span>
   </div>
-</div>
+</div> -->
 
 <section id="evaluation" class="services">        
  <div class="container-fluid">           
@@ -53,42 +54,38 @@ require_once("../includes/db.php");
      <h3>Teaching and learning Monitoring</h3>      
    </div>
    <div class="container">
+ 
           <div class="form-group row">
             <h4>General information</h4>
           </div>
-          <?php                  
-                 if ($result->num_rows > 0) {
-                 while($row = $result->fetch_assoc()){
-                extract($row);
-                 
-                ?>
+          
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Course Code:<?php echo $row['course_code']; ?></p>
+              <p>Course Code:</p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Course Title:<?php echo $row['course_title']; ?></p>
+              <p>Course Title:</p>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Department: <?php echo $row['department']; ?></p>
+              <p>Department:</p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Semester:<?php echo $row['semester']; ?></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 mb-1">
-              <p>Venue:<?php echo $row['venue']; ?></p>
-            </div>
-            <div class="col-sm-6 mb-1">
-              <p>Venue capacity:<?php echo $row['class_size']; ?></p>
+              <p>Semester:</p>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Instructor:<?php echo $row['instructor']; ?></p>
+              <p>Venue:</p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Venue capacity:</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Instructor:</p>
             </div>
             <div class="col-sm-6 mb-1">
               <p>Number of students in class:</p>
@@ -145,11 +142,17 @@ require_once("../includes/db.php");
 
       </div>
 </section>
+<!-- <?php                  
+                 if ($result->num_rows > 0) {
+                 while($row = $result->fetch_assoc()){
+                extract($row);
+                 
+                ?>
 
 <?php
                  }
                 }
-                ?>
+                ?> -->
 </main>
 
 
