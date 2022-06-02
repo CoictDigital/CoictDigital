@@ -20,7 +20,7 @@
         <li><a href="teaching.php" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
         <li><a href="courseallocation.php" class="nav-link scrollto"> <span>Course Allocation</span></a></li>
         <li><a href="examinvigilation.php" class="nav-link scrollto"> <span>Exam Invigilation</span></a></li>
-        <li>
+        <!--<li>
         <div class="dropdown nav-link">
   <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     User Profile
@@ -29,7 +29,7 @@
     <a class="dropdown-item text-dark" href="#"><p>Change Password</p></a>
   </div>
 </div>
-</li>
+</li>-->
       </ul>
     </nav><!-- .nav-menu -->
   </div>

@@ -52,46 +52,46 @@
           </div>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Course Code: <?php echo $partA["course_code"]; ?></p>
+              <p>COURSE CODE: <?php echo $partA["course_code"]; ?></p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Department: <?php echo $partA["department"]; ?> </p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6 mb-1">
-              <p>Course Title: <?php echo $partA["course_title"]; ?> </p>
-            </div>
-            <div class="col-sm-6 mb-1">
-              <p>College: <?php echo $partA["college"]; ?> </p>
+              <p>DEPARTMENT: <?php echo $partA["department"]; ?> </p>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Instructor's full name: <?php echo $partA["instructor"]; ?> </p>
+              <p>COURSE TITLE: <?php echo $partA["course_title"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Date: <?php echo $partA["date"]; ?> </p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6 mb-1">
-              <p>Lecture Venue: <?php echo $partA["venue"]; ?> </p>
-            </div>
-            <div class="col-sm-6 mb-1">
-              <p>Students programme: </p>
+              <p>COLLEGE: <?php echo $partA["college"]; ?> </p>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Class size: <?php echo $partA["class_size"]; ?> </p>
+              <p>INSTRUCTOR: <?php echo $partA["instructor"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Study year: <?php echo $partA["study_year"]; ?> </p>
+              <p>DATE: <?php echo $partA["date"]; ?> </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>LECTURE VENUE: <?php echo $partA["venue"]; ?> </p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>STUDENTS PROGRAMME: </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>CLASS SIZE: <?php echo $partA["class_size"]; ?> </p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>STUDY YEAR: <?php echo $partA["study_year"]; ?> </p>
             </div>
           </div>
 
@@ -138,7 +138,7 @@
 
 
           <div class="form-group">
-          <input type="button" id="rep" value="Download results" class="button2 btn_print">
+          <input type="button" id="rep" value="Print results" class="button1 btn_print">
           </div>
         </div>
     </section><!-- End Form Section -->
