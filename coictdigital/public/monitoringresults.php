@@ -19,32 +19,26 @@
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
+  <?php
+require_once("../includes/db.php");
 
+// 
+
+// $result = mysql_query($query)
+
+?>
   <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/udsmlogo.jpg" alt="" class="img-fluid rounded-circle">
-       
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="index.html" class="nav-link scrollto"> <span>Home</span></a></li>
-          <li><a href="courseevaluation.html" class="nav-link scrollto"> <span>Course Evaluation</span></a></li>        
-          <li><a href="alumnirecords.html" class="nav-link scrollto"><span>Alumni Records</span></a></li>
-          <li><a href="teachingmonitoring.html" class="nav-link scrollto active"> <span>Teaching Monitoring</span></a></li>
-          <li><a href="courseallocation.html" class="nav-link scrollto"> <span>Course Allocation</span></a></li>
-          <li><a href="examinvigilation.html" class="nav-link scrollto"> <span>Exam Invigilation</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
-
+  <?php
+  require_once("../includes/leftNav.php");
+  ?>
   <main id="main">
 <!-- ======= Form Section ======= -->
 
+<?php
+// $sql = "SELECT * FROM courses";
+// $sql = "SELECT * FROM teachingmonitoring_questions";
+// $result=$conn->query($sql);
+?>
 <div class="row" >
   <div class="col-md-12">
    <span class="badge alert-success" style="float: right; width: 100px;">HOD</span>
@@ -56,8 +50,107 @@
    <div class="section-title">          
      <h3>UNIVERSITY OF DAR ES SALAAM</h3>         
      <h3>Quality Assurance Bureau (QAB)</h3>
-     <h3>Student Course Evaluation Form</h3>
-     <h2>Undergraduate Programmes</h2>       
+     <h3>Teaching and learning Monitoring</h3>      
    </div>
+   <div class="container">
+          <div class="form-group row">
+            <h4>General information</h4>
+          </div>
+          <?php                  
+                 if ($result->num_rows > 0) {
+                 while($row = $result->fetch_assoc()){
+                extract($row);
+                 
+                ?>
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Course Code:<?php echo $row['course_code']; ?></p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Course Title:<?php echo $row['course_title']; ?></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Department: <?php echo $row['department']; ?></p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Semester:<?php echo $row['semester']; ?></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Venue:<?php echo $row['venue']; ?></p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Venue capacity:<?php echo $row['class_size']; ?></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Instructor:<?php echo $row['instructor']; ?></p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Number of students in class:</p>
+            </div>
+          </div>
+<!-- attendance -->
+          <h4>Attendance in class</h4>
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Instructor's attendance state:</p>
+            </div>
+          </div>
+          
+<!-- //new div section -->
+        
+        </div>
+        <div class="container">
+          <!-- startingtime -->
+          <h4>Time management</h4>
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>The session </p>
+            </div>
+            <div class="row">
+             <div class="col-sm-6 mb-1">
+              <p>Reason to why the session started late:</p>
+             </div>
+            </div>
+          </div>
+
+          <h4>Teaching process details</h4>
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Session type: </p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Teaching mode used:</p>
+            </div>
+          </div>
+<!-- medium of instruction -->
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Medium of instruction:</p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Teaching method used:</p>
+            </div>
+          </div>
+<!-- teaching venue -->
+          <h4>Teaching venue conditions</h4>
+<!-- special matters -->
+          <h4>Matters of immediate attention</h4>
+          </div>
+
+      </div>
 </section>
+
+<?php
+                 }
+                }
+                ?>
 </main>
+
+
+          

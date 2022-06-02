@@ -25,12 +25,11 @@
 
     <!-- End Header -->
 
-    <!-- ======= Hero Section 
     <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
         <div class="hero-container" data-aos="fade-in">
             <h1 class="">CoICT Digital</h1>
         </div>
-    </section> End Hero -->
+    </section><!-- End Hero --> 
 
     <main id="main">
 
@@ -40,11 +39,9 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>CoICT Digital</h2>
-                    <p class="text-center">This is a wider card with supporting text below as a natural lead-in to additional content. 
-                        This card has even longer content than the first to show that equal height action.
-                        This is a wider card with supporting text below as a natural lead-in to additional content. 
-                        This card has even longer content than the first to show that equal height action.
+                    <h2>About</h2>
+                    <p class="text-center">Improvement of the management of university business processes at the college level 
+                      through the use of an innovative management information system.
 
                     </p>
                 </div>
@@ -53,11 +50,10 @@
  <div class="col-4">
  <div class="card " style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title text-warning">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <h5 class="card-title text-warning">Course Evaluation</h5>
+    <p class="card-text">Filling end of semester evaluation forms and viewing evaluation results for respective courses.
+    Evaluation results are real time and seen by the department.
+    </p>
   </div>
 </div>
 </div>
@@ -65,11 +61,10 @@
 <div class="col-4">
 <div class="card bg-light" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title text-warning">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <h5 class="card-title text-warning">Teaching Monitoring</h5>
+    <p class="card-text">Filling end of semester evaluation forms and viewing evaluation results for respective courses.
+    and viewing evaluation results for respective courses
+    </p>
   </div>
 </div>
 </div>
@@ -77,11 +72,10 @@
 <div class="col-4">
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title text-warning">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <h5 class="card-title text-warning">Course Allocation</h5>
+    <p class="card-text">Filling end of semester evaluation forms and viewing evaluation results for respective courses.
+    and viewing evaluation results for respective courses
+    </p>
   </div>
 </div>
 </div>   
@@ -92,11 +86,10 @@
 <div class="col-4">
 <div class="card bg-light" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title text-warning">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <h5 class="card-title text-warning">Alumni Records</h5>
+    <p class="card-text">Filling end of semester evaluation forms and viewing evaluation results for respective courses.
+    and viewing evaluation results for respective courses
+    </p>
   </div>
 </div>
 </div> 
@@ -104,11 +97,10 @@
 <div class="col-4">
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title text-warning">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <h5 class="card-title text-warning">Exam Invigilation</h5>
+    <p class="card-text">Filling end of semester evaluation forms and viewing evaluation results for respective courses.
+    and viewing evaluation results for respective courses
+    </p>
   </div>
 </div>
 </div> 
@@ -117,10 +109,9 @@
 <div class="card bg-light" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title text-warning">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <p class="card-text">Filling end of semester evaluation forms and viewing evaluation results for respective courses.
+    and viewing evaluation results for respective courses
+    </p>
   </div>
 </div>
 </div> 

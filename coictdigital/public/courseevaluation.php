@@ -3,6 +3,9 @@
 
 <head>
   <?php
+
+
+  require_once("../includes/functions.php");
   require_once("../includes/headerContent.php");
   require_once("../includes/sessionStuffs.php");
 
@@ -10,6 +13,15 @@
 
   if (isset($_SESSION["evaluationFilled"])) {
     $partA = $_SESSION["evaluationFilled"];
+    //check if user has already filled evaluation
+
+    $userFilledEvaluation = checkIfUserFilledEv($_SESSION["userData"]["id"],  $partA["course_code"]);
+
+    if ($userFilledEvaluation) {
+      $_SESSION["messageEvFilled"] = "You have already filled evaluation form for this course";
+      header("Location: ./evaluation1.php");
+    }
+
     echo "all good";
   } else {
     header("Location: evaluation1.php");
@@ -49,46 +61,46 @@
           </div>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Course Code: <?php echo $partA["course_code"]; ?></p>
+              <p>COURSE CODE: <?php echo $partA["course_code"]; ?></p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Department: <?php echo $partA["department"]; ?> </p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6 mb-1">
-              <p>Course Title: <?php echo $partA["course_title"]; ?> </p>
-            </div>
-            <div class="col-sm-6 mb-1">
-              <p>College: <?php echo $partA["college"]; ?> </p>
+              <p>DEPARTMENT: <?php echo $partA["department"]; ?> </p>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Instructor's full name: <?php echo $partA["instructor"]; ?> </p>
+              <p>COURSE TITLE: <?php echo $partA["course_title"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Date: <?php echo $partA["date"]; ?> </p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6 mb-1">
-              <p>Lecture Venue: <?php echo $partA["venue"]; ?> </p>
-            </div>
-            <div class="col-sm-6 mb-1">
-              <p>Students programme:  </p>
+              <p>COLLEGE: <?php echo $partA["college"]; ?> </p>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Class size: <?php echo $partA["class_size"]; ?> </p>
+              <p>INSTRUCTOR: <?php echo $partA["instructor"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Study year: <?php echo $partA["study_year"]; ?> </p>
+              <p>DATE: <?php echo $partA["date"]; ?> </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>LECTURE VENUE: <?php echo $partA["venue"]; ?> </p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>STUDENTS PROGRAMME:  </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>CLASS SIZE: <?php echo $partA["class_size"]; ?> </p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>STUDY YEAR: <?php echo $partA["study_year"]; ?> </p>
             </div>
           </div>
           <form action="./../login.php" method="POST">
@@ -315,7 +327,7 @@
                 <p>You and other <?php echo ($_SESSION["studentFilledCount"] - 1);
                                   echo $_SESSION["studentFilledCount"] - 1 > 1 ?  " students " : " student "   ?>have filled this form.</p>
 
-                <button type="submit" class="mx-auto button2"><a href="./index.php">Exit</a></button>
+                <button type="submit" class="mx-auto button1"><a href="./index.php">Exit</a></button>
               </div>
             </div>
           </div>

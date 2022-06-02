@@ -5,6 +5,8 @@
 <?php
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
+    require_once("../includes/db.php");
+    require_once("../includes/fetchcoursecode.php");
 
     if (isset($_SESSION["teachingFilled"])) {
       unset($_SESSION['teachingFilled']);
@@ -32,26 +34,35 @@
     
 <div class="col-sm-4">
 <form action="./../login.php" class="card p-4 rounded shadow details" method="POST">
-<p class="text-center pt-3">Please select the corresponding details</p>
+<p class="text-center pt-3">Please select course</p>
 
-<div class="mb-3">
+<!-- <div class="mb-3">
 <select class="form-select" aria-label="Default select example" name="semester" required>
-    <option selected="Select reason for starting late">Semester</option>
-    <option value="1">Semester1</option>
-    <option value="2">Semester2</option>
+<option>Semester</option>
+  <?php 
+  foreach ($options as $option) {
+  ?>
+    <option><?php echo $option['semester']; ?> </option>
+    <?php 
+    }
+   ?>    
    </select> 
-</div>
+</div> -->
 
 <div class="mb-3">
-<select class="form-select" aria-label="Default select example" name="course_code" required>
-    <option selected="Select reason for starting late">Course code</option>
-    <option value="IS 384">IS 384</option>
-    <option value="MK 100">MK 301</option>
-    <option value="IS 386">IS 386</option>
-    <option value="IS 385">IS 385</option>
-    <option value="IS 336">IS 336</option>
+<select class="form-select" aria-label="Default select example" name="course_code">
+<option>Course code</option>
+  <?php 
+  foreach ($options as $option) {
+  ?>
+    <option><?php echo $option['course_code']; ?> </option>
+    <?php 
+    }
+   ?>    
     </select>
 </div> 
+
+
     
 
     

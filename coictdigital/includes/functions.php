@@ -1,9 +1,79 @@
 <?php
 require_once("functionHelpers.php");
+require_once("db.php");
+
+function fetchStudentProgrammes($courseCode)
+{
+    global $conn;
+    $studentProgrammes = [];
+
+    $sql = "SELECT programme.student_programme FROM programme,programme_course WHERE programme_course.course_code='$courseCode' AND programme.id=programme_course.id_programme";
+    $results = mysqli_query($conn, $sql);
+    if ($results) {
+        while ($row = mysqli_fetch_assoc($results)) {
+            $studentProgrammes[] = $row["student_programme"];
+        }
+    }
+    return $studentProgrammes;
+}
+
+function getCourseResponse($course_code)
+{
+    global $conn;
+    $sql = "SELECT COUNT(*) AS response_count FROM evaluation_questions WHERE course_code='$course_code'";
+    $results = mysqli_query($conn, $sql);
+    // die(print_r(mysqli_fetch_assoc($results)["response_count"]));\
+    $count = mysqli_fetch_assoc($results)["response_count"];
+
+
+    return $count;
+}
+
+function fetchCourse()
+{
+    global $conn;
+    $sql = "SELECT DISTINCT course_code,assistant,class_size,college,course_title,department,instructor,semester,venue FROM `courses`";
+    $results = mysqli_query($conn, $sql);
+    return $results;
+}
+
+function checkIfUserFilledEv($userId, $couseId)
+{
+    $userFilled = false;
+    global $conn;
+    $sql = "SELECT * FROM `user_response` WHERE `user_id`='$userId' AND `course_code`='$couseId'";
+    $results = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($results) > 0) {
+        $userFilled = true;
+    }
+    return $userFilled;
+}
+
+
+function fetchProgramId($programme)
+{
+    global $conn;
+    //write query
+    $sql = "SELECT * FROM `programme` WHERE `student_programme`='$programme' ";
+
+    $results = mysqli_query($conn, $sql);
+    $results =  mysqli_fetch_assoc($results);
+
+    return $results;
+}
 
 function getLastName($fullName)
 {
     return explode(",", $fullName)[0];
+}
+
+function fetchStudentCourses($programme)
+{
+    global $conn;
+    $sql = "SELECT * FROM `programme_course` WHERE `id_programme`='$programme' ";
+    $results = mysqli_query($conn, $sql);
+    return $results;
 }
 
 function formatEvaluationQnResults($resultQuery)
@@ -19,7 +89,8 @@ function formatEvaluationQnResults($resultQuery)
         "8" => ["question" => "Instructor's availability for consultations", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "9" => ["question" => "Manner in which instructor interacts with students in class?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "10" => ["question" => "Generally, how do you rate the competency of the instructor to meet your learning satisfaction?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
-        "11" => ["question" => "Instructor observed or complied with UDSM Sexual Harassment Code?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
+        //key 11 is different, it has extra key `harassment_explanation`
+        "11" => ["question" => "Instructor observed or complied with UDSM Sexual Harassment Code?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0, "harassment_explanation" => []],
         "12" => ["question" => "How clear was the objective of the course", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "13" => ["question" => "How well was the course content coverage", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "14" => ["question" => "How well was the mode of assessment?(e.g sufficient tests, assignments, timed essays)", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
@@ -28,6 +99,8 @@ function formatEvaluationQnResults($resultQuery)
         "17" => ["question" => "How well did the course link theory and practise?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "18" => ["question" => "How adequate were the tutorials, seminars and practicals", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
         "19" => ["question" => "Generally, how do you rate the relevance of the course to meet your expectations?", "excellent" => 0, "veryGood" => 0, "satisfactory" => 0, "poor" => 0, "veryPoor" => 0],
+        //this harassment_explanation key will be deleted
+        "harassment_explanation" => ["question" => "Explanation of Harassment Code", "explanations" => []]
 
     ];
 
@@ -92,12 +165,17 @@ function formatEvaluationQnResults($resultQuery)
                 case 19:
                     $resultB = updateValueForQn($resultB, $key, $val);
                     break;
+                case "harassment_explanation":
+                    $resultB = updateValueForQn($resultB, $key, $val);
+                    break;
 
                     // default:
                     //     echo "failed to read question answer value";
             }
         }
     }
+    $resultB["11"]["harassment_explanation"] = $resultB["harassment_explanation"]["explanations"];
+    unset($resultB["harassment_explanation"]);
     return $resultB;
 }
 
@@ -134,14 +212,25 @@ function submitEvaluationQnAns($qnAns)
     $_18 = $qnAns["flexRadioDefault18"];
     $_19 = $qnAns["flexRadioDefault19"];
     $_20 = $qnAns["harrassmentExplanation"];
+    $programmeId = $_SESSION["userData"]["programme_id"];
 
-    $sql = "INSERT INTO `evaluation_questions` ( `course_code`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`,`harassment_explanation`) 
-    VALUES ( '$course', $_1, $_2, $_3, $_4, $_5,$_6,$_7,$_8,$_9,$_10,$_11,$_12,$_13,$_14,$_15,$_16,$_17,$_18,$_19,'$_20')";
+    $sql = "INSERT INTO `evaluation_questions` ( `course_code`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`,`harassment_explanation`,`programme_id`) 
+    VALUES ( '$course', $_1, $_2, $_3, $_4, $_5,$_6,$_7,$_8,$_9,$_10,$_11,$_12,$_13,$_14,$_15,$_16,$_17,$_18,$_19,'$_20',$programmeId)";
+
+    //mark user that he has filled the evaluation form
 
     $results = mysqli_query($conn, $sql);
-
-
     confirm_query($conn, $results);
+
+
+    $user_id = $_SESSION["userData"]["id"];
+
+    $sql2 = "INSERT INTO `user_response` ( `user_id`, `course_code` ) VALUES ($user_id,'$course' )";
+
+    $results = mysqli_query($conn, $sql2);
+    confirm_query($conn, $results);
+
+    //mark user that he has filled the
 
     return countEvaluationResponse($course);
 }
@@ -201,32 +290,32 @@ function authenticate_user($username, $password)
 }
 
 
-function fetchProceedEvalutation($year, $programme, $course)
+function fetchProceedEvalutation($course)
 {
     global $conn;
     //write query
     $sql = "SELECT * FROM courses WHERE `course_code`='$course'";
-    
+
     $results = mysqli_query($conn, $sql);
     confirm_query($conn, $results);
-    print_r($results);     
+
     $results =  mysqli_fetch_assoc($results);
- 
+
     return $results;
 }
 
 
-function fetchteaching($studyYear,$semester,$programme,$coursecode)
+function fetchteaching($studyYear, $semester, $programme, $coursecode)
 {
     global $conn;
     //write query
     $sql = "SELECT * FROM courses WHERE `course_code`='$coursecode'";
-    
+
     $results = mysqli_query($conn, $sql);
     confirm_query($conn, $results);
-    print_r($results);     
+
     $results =  mysqli_fetch_assoc($results);
- 
+
     return $results;
 }
 
