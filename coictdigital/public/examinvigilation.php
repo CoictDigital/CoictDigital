@@ -7,7 +7,7 @@
     require_once("../includes/db.php");
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
-
+    require_once("../public/addnewallocation.php");
     unset($_SESSION["studentFilledCount"]);
 
     ?>
@@ -27,23 +27,24 @@
 
   <main id="main">
 
-    <!-- <div class="row" >
+     <div class="row" >
       <div class="col-md-12"><div class="dropdown" style="float: right; width: 100px;">
-  <button class="dropbtn">user<i class="fa fa-caret-down"></i></button>
-  <div class="dropdown-content">
-    <a href="#">Profile</a>
-    <a href="#">Logout</a> -->
-    <div class="dropdown nav-link">
-  <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    User Profile
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item text-dark" href="#"><p>Change Password</p></a>
-  </div>
-    
-  </div>
-</div>
-       <span class="badge alert-success" style="float: right; width: 100px;">Admin</span>
+          <!-- <button class="dropbtn">user<i class="fa fa-caret-down"></i></button>
+          <div class="dropdown-content">
+            <a href="#">Profile</a>
+            <a href="#">Logout</a> --> 
+            <div class="dropdown nav-link">
+          <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            User Profile
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item text-dark" href="#"><p>Change Password</p></a>
+          </div>
+          </div>
+          </div>
+      </div>
+    </div>
+      
       </div>
     </div>
        <!-- ======= Form Section ======= -->
@@ -66,8 +67,84 @@
               </a>
               </div>
             </div>
+            <form action="#" method="POST">
+            <div class="container">
+            <div class="">
+          <div class="card">
+         <div class="card-body">
+            <div class="row">
+    
+        <div class="col-sm-4">
+                <select class="form-select" name="course" aria-label="Default select example">
+                      
+                          <option selected>Select Course</option>
+                          <?php 
+                          foreach ($options as $option) {
+                          ?>
+                            <option><?php echo $option['course_title']; ?> </option>
+                            <?php 
+                            }
+                          ?>
+                                
+                  </select>
+              </div>
+
+              <div class="col-sm-4">
+              <select class="form-select" name="Instructor" aria-label="Default select example">
+                      
+                      <option selected>Select Instructor</option>
+                      <?php 
+                      foreach ($options as $option) {
+                      ?>
+                        <option><?php echo $option['instructor']; ?> </option>
+                        <?php 
+                        }
+                      ?>
+                            
+              </select>
+              </div>
+
+              <div class="col-sm-4">
+              <select class="form-select" name="venue" aria-label="Default select example">
+                  <option selected>venue</option>
+                  <?php 
+                      foreach ($options as $option) {
+                      ?>
+                        <option><?php echo $option['venue']; ?> </option>
+                        <?php 
+                        }
+                      ?>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <select class="form-select" name="Day" aria-label="Default select example">
+                  <option selected>Day option to select</option>
+            
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <select class="form-select" name="From time" aria-label="Default select example">
+                  <option selected>Time</option>
+                  <option value="1">muekee muda</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <select class="form-select" name="to time" aria-label="Default select example">
+                  <option selected>To time</option>
+                  <option value="1">muekee muda from data we have</option>
+                  
+                </select>
+              </div>
+        </div>
+          </div>
+          <button type="submit" class="mx-auto button" >Save</button>
+        </div>
+        </div>
+        </div>
+        
+        </form>
            <div class="form-group row">
-              <h5>Table of exam invigilation for staff</h5>
+              <h5>Table of selected exam Invigilators</h5>
             </div>
             <div class="form-group row">
               <div class="centre">
