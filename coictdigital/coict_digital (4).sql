@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2022 at 09:08 PM
+-- Generation Time: Jun 03, 2022 at 07:20 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -45,15 +45,22 @@ CREATE TABLE `courses` (
 
 INSERT INTO `courses` (`course_code`, `course_title`, `instructor`, `venue`, `class_size`, `department`, `college`, `assistant`, `semester`) VALUES
 (' MK 301', 'ENTREPRENEURSHIP', 'DR WINNIE NGUNI', 'YOMBO 5', 35, 'CSE', 'COICT', '', 2),
+('CS 334', 'PRINCIPLES OF OPERATING SYSTEM', 'DR. FATUMA SIMBA', 'B307', 244, 'CSE', 'COICT', NULL, 1),
+('CS 335', 'SOFTWARE ENGINEERING', 'Dr. JUMA H. LUNGO', 'DO1', 269, 'CSE', 'COICT', NULL, 1),
+('GM 300', 'STRATEGIC MANAGEMENT', 'Dr. WINFRIDA', 'YOMBO5', 350, 'CSE', 'COICT', NULL, 1),
 ('IE 445', 'ENTREPRENEURSHIP FOR ENGINEERS', 'DR TAIFA', 'YOMBO 5', 244, 'CSE', 'COICT', NULL, 2),
 ('IS 335', 'FYP', 'DR COSMAS MUSHI', 'COICT', 244, 'CSE', 'COICT', NULL, 2),
 ('IS 336', 'PRINCIPLE OF SYSTEM SECURITY', 'DR HELLEN MAZIKU', 'B302', 244, 'CSE', 'COICT', NULL, 2),
 ('IS 337', 'MOBILE COMPUTING', 'DR JIMMY MBELWA', 'B 305', 244, 'CSE', 'COICT', NULL, 2),
+('IS 343', 'PRACTICAL TRAINING 2', 'DR. GODFREY JUSTO', 'B302', 415, 'CSE', 'COICT', NULL, 1),
+('IS 344', 'HUMAN COMPUTER INTERACTION', 'DR. JOSEPH MUSHI', 'B310', 244, 'CSE', 'COICT', NULL, 1),
 ('IS 365', 'ARTIFICIAL INTELLIGENCE', 'DR CHAMBUA', 'B305', 244, 'CSE', 'COICT', NULL, 2),
 ('IS 368', 'DATA MINING AND WAREHOUSING', 'DR KENNEDY', 'B307', 244, 'CSE', 'COICT', NULL, 2),
+('IS 369', 'IT AUDIT AND CONTROLS', 'Dr. ARON R. KONDORO', 'B305', 108, 'CSE', 'COICT', NULL, 1),
 ('IS 384', 'SOFTWARE PROJECT MANAGEMENT', 'DR MATHEW MNDEME', 'B307', 35, 'CSE', 'COICT', '', 2),
 ('IS 385', 'BUSINESS INTELLIGENCE', 'DR GODFREY N. JUSTO', 'B307', 35, 'CSE', 'COICT', '', 2),
-('IS 386', 'ENTERPRISE SYSTEMS', 'DR HONEST C. KIMARO', 'B 307', 35, 'CSE', 'COICT', '', 2);
+('IS 386', 'ENTERPRISE SYSTEMS', 'DR HONEST C. KIMARO', 'B 307', 35, 'CSE', 'COICT', '', 2),
+('IS 387', 'ENVIRONMENTAL MANAGEMENT INFORMATION SYSTEM', 'Dr. WILFRED SENYONI', 'B307', 35, 'CSE', 'COICT', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -159,6 +166,7 @@ CREATE TABLE `samples` (
 
 CREATE TABLE `teachingmonitoring_questions` (
   `id` int(11) NOT NULL,
+  `course_code` varchar(200) NOT NULL,
   `starting_time` time NOT NULL,
   `ending_time` time NOT NULL,
   `venue` varchar(150) NOT NULL,
@@ -191,17 +199,21 @@ CREATE TABLE `teachingmonitoring_questions` (
 -- Dumping data for table `teachingmonitoring_questions`
 --
 
-INSERT INTO `teachingmonitoring_questions` (`id`, `starting_time`, `ending_time`, `venue`, `venue_capacity`, `Number_of_students`, `attendance`, `reason_for_absence`, `student_informed`, `session_starting_time`, `reason_for_startinglate`, `session_type`, `teaching_mode`, `teaching_method`, `medium_of_instruction`, `a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `special_matters`, `specialmatters_explanation`) VALUES
-(27, '10:01:00', '10:02:00', 'venue45', 8, 0, 'absent', 'Out of university campus, travelled', 'no', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(28, '10:03:00', '10:03:00', '8', 8, 0, 'present', '', '', 'started_on_time', '', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in English and English is used through out', '3', '3', '3', '2', '2', '2', '2', '2', '2', '2', 'yes', 'electricity shortage'),
-(29, '12:55:00', '12:55:00', '', 100, 78, 'present', '', '', 'started_on_time', '', 'Practical', 'Student centred', 'Conventional overhead projector', 'Course in English but code-switching to Kiswahili', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'yes', 'no electricity'),
-(30, '13:01:00', '13:01:00', 'B302', 78, 89, 'present', '', '', 'Started late between 15-30 minutes', 'Sitting arrangement', 'Lecture', 'Student centred', 'Student Presentation and practical', 'Course in English but code-switching to Kiswahili', '1', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'no', ''),
-(31, '15:59:00', '15:59:00', 'B310', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(32, '15:59:00', '15:59:00', 'B310', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(33, '15:59:00', '15:59:00', 'B310', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(34, '15:59:00', '15:59:00', 'B310', 89, 90, 'present', 'Out of university campus, travelled', 'yes', 'started_on_time', '', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in Kiswahili but code-switching to English', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'yes', 'no umeme'),
-(35, '16:17:00', '16:17:00', 'B307', 45, 34, 'present', '', '', 'started_on_time', '', 'Seminar', 'Student centred', 'Student Presentation and practical', 'Course in Kiswahili but code-switching to English', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'no', ''),
-(36, '16:17:00', '16:17:00', 'B307', 45, 34, 'present', '', '', 'started_on_time', '', 'Seminar', 'Student centred', 'Student Presentation and practical', 'Course in Kiswahili but code-switching to English', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'no', '');
+INSERT INTO `teachingmonitoring_questions` (`id`, `course_code`, `starting_time`, `ending_time`, `venue`, `venue_capacity`, `Number_of_students`, `attendance`, `reason_for_absence`, `student_informed`, `session_starting_time`, `reason_for_startinglate`, `session_type`, `teaching_mode`, `teaching_method`, `medium_of_instruction`, `a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `special_matters`, `specialmatters_explanation`) VALUES
+(27, '', '10:01:00', '10:02:00', 'venue45', 8, 0, 'absent', 'Out of university campus, travelled', 'no', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(28, '', '10:03:00', '10:03:00', '8', 8, 0, 'present', '', '', 'started_on_time', '', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in English and English is used through out', '3', '3', '3', '2', '2', '2', '2', '2', '2', '2', 'yes', 'electricity shortage'),
+(29, '', '12:55:00', '12:55:00', '', 100, 78, 'present', '', '', 'started_on_time', '', 'Practical', 'Student centred', 'Conventional overhead projector', 'Course in English but code-switching to Kiswahili', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'yes', 'no electricity'),
+(30, '', '13:01:00', '13:01:00', 'B302', 78, 89, 'present', '', '', 'Started late between 15-30 minutes', 'Sitting arrangement', 'Lecture', 'Student centred', 'Student Presentation and practical', 'Course in English but code-switching to Kiswahili', '1', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'no', ''),
+(31, '', '15:59:00', '15:59:00', 'B310', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(32, '', '15:59:00', '15:59:00', 'B310', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(33, '', '15:59:00', '15:59:00', 'B310', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(34, '', '15:59:00', '15:59:00', 'B310', 89, 90, 'present', 'Out of university campus, travelled', 'yes', 'started_on_time', '', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in Kiswahili but code-switching to English', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'yes', 'no umeme'),
+(35, '', '16:17:00', '16:17:00', 'B307', 45, 34, 'present', '', '', 'started_on_time', '', 'Seminar', 'Student centred', 'Student Presentation and practical', 'Course in Kiswahili but code-switching to English', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'no', ''),
+(36, '', '16:17:00', '16:17:00', 'B307', 45, 34, 'present', '', '', 'started_on_time', '', 'Seminar', 'Student centred', 'Student Presentation and practical', 'Course in Kiswahili but code-switching to English', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'no', ''),
+(37, '', '22:35:00', '22:35:00', 'B307', 34, 45, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(38, '', '22:38:00', '22:38:00', 'B307', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(39, '', '13:35:00', '13:35:00', 'B302', 1, 9, 'absent', 'Instructor has attended a meeting', 'no', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(40, '', '14:59:00', '14:59:00', 'B307', 89, 9, 'present', '', '', 'started_on_time', '', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in English but code-switching to Kiswahili', '4', '3', '4', '3', '3', '3', '3', '3', '3', '3', 'yes', 'no electricity');
 
 -- --------------------------------------------------------
 
@@ -329,7 +341,28 @@ INSERT INTO `users` (`id`, `name`, `email`, `reg_no`, `password`, `role`, `stude
 (522, 'Mwakwilusa, Imani A.', NULL, '2018-04-01684', '$2y$10$YGUAYKm0S3rwTv8pEizBdunPa.U1LpcUGRrzqeh4vTrI/5YPTvqHe', 1, NULL, 3),
 (523, 'David, Beatrice', NULL, '2019-04-01510', '$2y$10$6oEPjjnuyOxvamjfgHhZfeO5ntCUM3974plBtvMAStIQSV4mCGCXa', 1, NULL, 3),
 (524, 'Ikunda, Elvis Neville', NULL, '2018-04-01669', '$2y$10$9zzsI3u5X36JOH.WByAPU.6VeECtnNFLxeOdWkU882MdGcLeU0omK', 1, NULL, 3),
-(525, 'Dr Mdeme', 'mathewmndeme@udsm.ac.tz', NULL, '$2y$10$ByiCtnUm.PiQDYiNFl4UrOC6QNjP9WIbu3oeAdNtNq1GS4qr/kvfe', 2, NULL, NULL);
+(525, 'Dr Mdeme', 'mathewmndeme@udsm.ac.tz', NULL, '$2y$10$ByiCtnUm.PiQDYiNFl4UrOC6QNjP9WIbu3oeAdNtNq1GS4qr/kvfe', 2, NULL, NULL),
+(526, 'Dr. Godfrey N. Justo', 'njulumi@gmail.com', 'NULL', '$2y$10$V05tlM.T50zcfMuiSqaQje4rkRMFxW8RVSaBT7auVoDNXKwvcjAeS', 3, NULL, NULL),
+(527, 'Dr. Juma H.Lungo', 'jlungo@udsm.ac.tz', 'NULL', '$2y$10$INs91UEX3aU9aHUcXlG4feIyTylg4M2N5.x/dZZxPO1HJEhuYIjoC', 3, NULL, NULL),
+(528, 'Dr. Ruth Kateule', 'macky@yahoo.com', 'NULL', '$2y$10$4E2BbrrrF85az33HJAOKM.KYSsrJi.mGIFCRRL.mOAXvqzcrcu3b2', 3, NULL, NULL),
+(529, 'Dr. Wilfred Senyoni', 'senyoni@gmail.com', 'NULL', '$2y$10$cI3.w6H87/gaHk7b/D9ZiuS//mDV7mSm/qamtj2SLmGIKNWvfi9L2', 3, NULL, NULL),
+(530, 'Dr. Aron W. Kondoro', 'awkondoro@gmail.com', 'NULL', '$2y$10$5O0V6iwrOWNQq2d5CC71bOuGx/rE3wyHZyuY/FaTiA/OzaJ44nrBW', 3, NULL, NULL),
+(531, 'Dr. Fatuma Simba', 'fatmasimba@gmail.com', 'NULL', '$2y$10$OCoJ7IiC9P8GjOwJo7cto.QsHsvBpNXw9HM3e6P0nQIrdrB6AvIHe', 3, NULL, NULL),
+(532, 'Dr. Abdullah Ally', 'abdull01tzy@yahoo.com', 'NULL', '$2y$10$8plhH8ed70eUwGdisdL8HeWdWWbBnLK7fLTwKObo1q37OxuwWb8dO', 3, NULL, NULL),
+(533, 'Dr. Leonard P. Binamungu', 'lepebina@udsm.ac.tz', 'NULL', '$2y$10$wC/zdjFM5YrtGwWkncaKHuYuqoKpdlphC/IMTmW1LXzXNg/MtIgK6', 3, NULL, NULL),
+(534, 'Dr. Hellen Maziku', 'nahelna@gmail.com', 'NULL', '$2y$10$q7jaVp1r.Kc3R1Vh0S1tV.e9nqIB4WZ7vl3.21mOkOpT8J3T5hGZ6', 3, NULL, NULL),
+(535, 'Dr. Jimmy Mbelwa', 'jmbelwa@yahoo.co.uk', 'NULL', '$2y$10$r3C70w8xzMxuUIm9UF20iOsW0lkPAhSarJ9/Y83XbnRPxJSoN5I4q', 3, NULL, NULL),
+(536, 'Dr. Joseph C. Mushi', 'mushyjc@gmail.co.tz', 'NULL', '$2y$10$3xg7luWS0YdAz2N8TcLifOBirc7HLf6NptMgJXBoAYeZwArJMzap2', 3, NULL, NULL),
+(537, 'Dr. James Chambua', 'james.chambua@udsm.ac.tz', 'NULL', '$2y$10$3xg7luWS0YdAz2N8TcLifOBirc7HLf6NptMgJXBoAYeZwArJMzap2', 3, NULL, NULL),
+(538, 'Dr. Wilbard Nyamwihula', 'wbilungi@yahoo.com', 'NULL', '$2y$10$1jcFeycpJNKN2v6vwW6JV.naGY547CymTR/elrL76GwHndLhpk7SG', 3, NULL, NULL),
+(539, 'Dr. Salome H. Maro', 'salomehonest@gmail.com', 'NULL', '$2y$10$hT59NWZzmEW1lTjfoFsYguqc2o3LHInxhyQCmvA.cTA32iq19eIE6', 3, NULL, NULL),
+(540, 'Dr. Frank Kennedy', 'kenfactz@gmail.com', 'NULL', '$2y$10$iplqyDCKcIVvDqkDxOG0m.PvfZQSg5JgiJ1pCy8FAo7Z5Mb8WUKDe', 3, NULL, NULL),
+(541, 'Dr. Masoud H. Mahundi', 'mmahundi97@gmail.com', 'NULL', '$2y$10$Eqatzsjz4.fb5gH9YW43DenLLFHzZI26BKjASuyvVbNqEiUpaRc92', 3, NULL, NULL),
+(542, 'Dr. Daudi Mnyanghwalo', 'info@cse.udsm.ac.tz', 'NULL', '$2y$10$sLoYQbbQJo/YI/0ELysg6umIV7CC3iLrHtSLE/TCYu7pWW9dX2bnG', 3, NULL, NULL),
+(543, 'Dr. Yonah Andengelile', 'yona.andengelile@gmail.com', 'NULL', '$2y$10$gwUg/VySE24sx3HImDyoeuluXwXA7I2MwcMGE4wk7ekgGMMSf36ue', 3, NULL, NULL),
+(544, 'Dr. Honest C. Kimaro', 'honest_c@yahoo.com', 'NULL', '$2y$10$pUZguJhr11PyJVGwctsOBua01XSLHO2wKib5cmyge6jB7NkcpctKq', 3, NULL, NULL),
+(545, 'Dr. Ellen A Kalinga', 'ellenakchale@gmail.com', 'NULL', '$2y$10$TOLdAydMXsPrYG3NWMkMxuQRr6GMLUOzl9uZkoPsorQqb.CzA5yaG', 3, NULL, NULL),
+(546, 'Dr Mercy Mbise', 'mmbise@udsm.ac.tz', NULL, '$2y$10$KVCEZ5Y.OtYe2kGOS0klk.PftD/qtVOzbKilFZDGQJ9RxJeZ5qBAC', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -379,7 +412,8 @@ ALTER TABLE `samples`
 -- Indexes for table `teachingmonitoring_questions`
 --
 ALTER TABLE `teachingmonitoring_questions`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `course_code` (`course_code`);
 
 --
 -- Indexes for table `users`
@@ -414,13 +448,13 @@ ALTER TABLE `samples`
 -- AUTO_INCREMENT for table `teachingmonitoring_questions`
 --
 ALTER TABLE `teachingmonitoring_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=526;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=547;
 
 --
 -- AUTO_INCREMENT for table `venue`
@@ -431,6 +465,12 @@ ALTER TABLE `venue`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `teachingmonitoring_questions`
+--
+ALTER TABLE `teachingmonitoring_questions`
+  ADD CONSTRAINT `teachingmonitoring_questions_ibfk_1` FOREIGN KEY (`course_code`) REFERENCES `courses` (`course_code`);
 
 --
 -- Constraints for table `users`

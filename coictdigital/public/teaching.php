@@ -15,6 +15,20 @@
       unset($_SESSION['teachingFilled']);
     } else {
     }
+
+    if (!empty($_POST["course_code"])) {
+      $id = $_POST['course_code'];
+      $query = "select * from courses where course_code=$id";
+      $result = mysqli_query($conn, $query);
+      if ($result->num_rows > 0) {
+          echo '<option value="">Select course_code</option>';
+          while ($row = mysqli_fetch_assoc($result)) {
+              echo '<option value="' . $row['id'] . '">' . $row['course_code'] . '</option>';
+          }
+      }
+  } elseif (!empty($_POST['sid'])) {
+      
+      }
     ?>
     
     </head>
@@ -42,8 +56,29 @@
   <!-- <?php print_r ($options ) ?> -->
 <select class="form-select" aria-label="Default select example" name="semester" required>
 <option value="">Semester</option>
-<option value="Semester 1">Semester 1</option>
-<option value="Semester 2">Semester 2</option>
+<?php
+
+$query = "select DISTINCT semester from courses";
+//$query1 = mysqli_query($conn, $qr);
+$result = $conn->query($query);
+if ($result->num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+
+?>
+
+       if ($row['semester']!=$i) {
+        $i=0;
+           $i= $row['semester']
+        <option value="<?php echo $row['course_code']; ?>"><?php echo $row['semester']; ?></option>
+       }
+<?php
+    }
+}
+
+?>
+
+<!-- <option value="Semester 1">Semester 1</option>
+<option value="Semester 2">Semester 2</option> -->
   </select> 
 </div>
 
