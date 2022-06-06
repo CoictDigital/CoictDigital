@@ -3,18 +3,34 @@
     <head>
         
 <?php
+    
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
     require_once("../includes/db.php");
     require_once("../includes/fetchcoursecode.php");
+    
+    
 
     if (isset($_SESSION["teachingFilled"])) {
       unset($_SESSION['teachingFilled']);
     } else {
     }
-  
 
+    if (!empty($_POST["course_code"])) {
+      $id = $_POST['course_code'];
+      $query = "select * from courses where course_code=$id";
+      $result = mysqli_query($conn, $query);
+      if ($result->num_rows > 0) {
+          echo '<option value="">Select course_code</option>';
+          while ($row = mysqli_fetch_assoc($result)) {
+              echo '<option value="' . $row['id'] . '">' . $row['course_code'] . '</option>';
+          }
+      }
+  } elseif (!empty($_POST['sid'])) {
+      
+      }
     ?>
+    
     </head>
     <body>
 
@@ -34,20 +50,37 @@
     
 <div class="col-sm-4">
 <form action="./../login.php" class="card p-4 rounded shadow details" method="POST">
-<p class="text-center pt-3">Please select course</p>
+<p class="text-center pt-3">Please select the corresponding details</p>
 
-<!-- <div class="mb-3">
+<div class="mb-3">
+  <!-- <?php print_r ($options ) ?> -->
 <select class="form-select" aria-label="Default select example" name="semester" required>
-<option>Semester</option>
-  <?php 
-  foreach ($options as $option) {
-  ?>
-    <option><?php echo $option['semester']; ?> </option>
-    <?php 
+<option value="">Semester</option>
+<?php
+
+$query = "select DISTINCT semester from courses";
+//$query1 = mysqli_query($conn, $qr);
+$result = $conn->query($query);
+if ($result->num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+
+?>
+
+       if ($row['semester']!=$i) {
+        $i=0;
+           $i= $row['semester']
+        <option value="<?php echo $row['course_code']; ?>"><?php echo $row['semester']; ?></option>
+       }
+<?php
     }
-   ?>    
-   </select> 
-</div> -->
+}
+
+?>
+
+<!-- <option value="Semester 1">Semester 1</option>
+<option value="Semester 2">Semester 2</option> -->
+  </select> 
+</div>
 
 <div class="mb-3">
 <select class="form-select" aria-label="Default select example" name="course_code">

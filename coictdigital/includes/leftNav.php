@@ -20,7 +20,7 @@
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
                         echo "monitoringresults.php";
-                      } else if ($_SESSION["userData"]["role"] == 1) {
+                      } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "Teachingmonitoring.php";
                       }
                       ?>" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
