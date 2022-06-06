@@ -51,8 +51,7 @@
  <div class="card " style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title text-warning">Course Evaluation</h5>
-    <p class="card-text">Filling end of semester evaluation forms and viewing evaluation results for respective courses.
-    Evaluation results are real time and seen by the department.
+    <p class="card-text">Course evaluation is a short survey conducted by students at the end of a class or course of study. The evaluation form aims to collect general information on what each student liked and disliked most about the class with the goal of improving the educational experience for future students
     </p>
   </div>
 </div>
@@ -62,9 +61,7 @@
 <div class="card bg-light" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title text-warning">Teaching Monitoring</h5>
-    <p class="card-text">Filling end of semester evaluation forms and viewing evaluation results for respective courses.
-    and viewing evaluation results for respective courses
-    </p>
+    <p class="card-text">Teaching monitoring is a vital element in improving the quality of education which simultaneously gives positive benefits to students' learning outcomes. The significance of teaching monitoring is to improve the quality of teaching done by the lecturers as the main basis improvement in teaching and learning processes  </p>
   </div>
 </div>
 </div>
@@ -105,7 +102,7 @@
 </div>
 </div> 
 
-<div class="col-4">
+<!-- <div class="col-4">
 <div class="card bg-light" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title text-warning">Card title</h5>
@@ -114,7 +111,7 @@
     </p>
   </div>
 </div>
-</div> 
+</div>  -->
 
 </div>
 

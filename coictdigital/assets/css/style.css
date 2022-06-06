@@ -1,10 +1,15 @@
 <<<<<<< HEAD
 
 
+.note h6 {
+  color:#ff0000;
+  font-size: 14px;
+}
 body {
   font-family: "Helvetica", sans-serif;
   color: #000;
 }
+
 
 a {
   color: #;
