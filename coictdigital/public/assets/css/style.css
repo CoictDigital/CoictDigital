@@ -49,18 +49,7 @@ h5{
 }
 
 /* evaluation results end*/
-
-.login {
-  margin-left: auto;
-  margin-right:auto;
-  width: 320px;
-  height: 400px;
-  color: #000000;
-  margin-top: 40px;
-  font-size: 15px;
-  }
-
-  .mb-3{
+ .mb-3{
     border: none;
     border-radius: 40px;
   }
@@ -72,7 +61,6 @@ h5{
      width: 100px;
      height: auto;
      color: white;
-     margin-top: auto;
      }
 
  .shadow{
@@ -481,4 +469,25 @@ h5{
     width: auto;
     padding-right: 20px 15px;
   }
+}
+
+/*----------------------------------------------------
+      login form
+-----------------------------------------------------*/
+
+.coict-image{
+  color: #ffffff;
+  background: url("../img/coict.jpg") top center;
+  background-size: cover;
+  text-align: center;
+}
+.container{
+  width: 60%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.coict-image h4{
+  text-align: center;
+  padding-top: 35%;
 }

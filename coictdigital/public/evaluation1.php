@@ -19,10 +19,10 @@
 
 
   $programId = fetchProgramId($_SESSION["userData"]["student_programme"]);
+  
 
   // $programId = $programId["id"];
   $_SESSION["userData"]["programme_id"] = $programId;
-  $courses = fetchStudentCourses($programId);
   ?>
 
 </head>
@@ -40,36 +40,57 @@
 
 
   <main id="main">
-    <section>
-      <div class="container">
-        <div class="row justify-content-center align-items-center">
 
-          <div class="col-sm-4">
-            <form action="./../login.php" class="card p-4 rounded shadow details" method="POST">
-              <p class="text-center pt-3">Please select course</p>
+  <section >
+		<div class="container" id="container">	
+			<div class="row rounded shadow ">  
 
-<div class="mb-3">
-<select class="form-select" aria-label="Default select example" name="course_code">
-<option>Course code</option>
-  <?php 
-  foreach ($options as $option) {
-  ?>
-    <option><?php echo $option['course_code']; ?> </option>
-    <?php 
-    }
-   ?>    
-    </select>
-</div> 
-
-              <button type="submit" class="mx-auto button" name="proceedEvalutation" value="proceed">Proceed</button>
-              <a href="./index.php">
-                <p class="text-center pt-3">Cancel</p>
-              </a>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+      <div class="col-sm-6 coict-image">
+			   <div class="coict-text">	
+					<h4>Welcome!</h4>
+					<p><?php
+               echo $_SESSION["userData"]["name"];
+              ?> 
+              <br>
+              <?php
+              echo $_SESSION["userData"]["student_programme"];
+              ?>
+            </p>
+			   </div>
+			</div>
+	
+	
+		<div class="col-sm-6 p-5">    
+			<form action="./../login.php" method="POST">
+				<p class="text-center pt-3">Please select course</p>
+  
+				<div class="mb-3">
+				   <select class="form-select" aria-label="Default select example" name="course_code" required>
+					 <option>Course code</option>
+						  <?php 
+						  foreach ($options as $option) {
+						  ?>
+					 <option><?php echo $option['course_code']; ?> </option>
+						  <?php 
+							}
+						  ?>    
+				   </select>
+				</div>
+  
+				<div class="text-center">
+				   <button type="submit" class="button" name="proceedEvalutation" value="proceed">Proceed</button>
+				</div>
+				   <a href="./index.php">
+					 <p class="text-center pt-3">Cancel</p>
+				   </a>
+			  </form>
+	</div>
+		
+		  
+		</div>
+	</div>
+		</section>
+   
   </main>
  
 

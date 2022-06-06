@@ -5,15 +5,11 @@
     <?php
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
-
     unset($_SESSION["studentFilledCount"]);
-
     ?>
-
 </head>
 
 <body>
-
     <!-- ======= Mobile nav toggle button ======= -->
     <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
@@ -21,16 +17,13 @@
     <?php
     require_once("../includes/leftNav.php");
     ?>
-    <!-- ======= Header ======= -->
-
-    <!-- End Header -->
-
-    
+    <!-- ======= End Header  ======= -->    
 
     <main id="main">
+
    <!-- ======= Services Section ======= -->
     <section id="services" class="services">
-      <div class="container">
+      <div class="p-4">
 
         <div class="section-title">
           <h2>CoICT Digital</h2>
@@ -71,28 +64,27 @@
         </div>
 
       </div>
-    </section><!-- End Services Section -->
-      
+    </section>
+   <!-- ======= End Services Section ======= -->   
 
     </main>
-    <!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
-        <div class="container">
-            <!-- <div class="copyright">
-        &copy; Copyright <strong><span>coictdigital@udsm.co.tz</span></strong>
-      </div> -->
-
-        </div>
-    </footer><!-- End  Footer -->
+        <!-- <div class="container">
+              <div class="copyright">
+                   &copy; Copyright <strong><span>coictdigital@udsm.co.tz</span></strong>
+              </div> 
+             </div> -->
+    </footer>
+    <!-- ======= End Footer ======= -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
+    <!-- font awesome file -->
     <script src="https://kit.fontawesome.com/939695db0f.js" crossorigin="anonymous"></script>
-
     <!-- main js file -->
     <script src="assets/js/main.js"></script>
 
-</body>
 
+</body>
 </html>

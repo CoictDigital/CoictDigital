@@ -11,7 +11,7 @@
         <li><a href="index.php" class="nav-link scrollto"> <span>Home</span></a></li>
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
-                        echo "department2.php";
+                        echo "department1.php";
                       } else if ($_SESSION["userData"]["role"] == 1) {
                         echo "evaluation1.php";
                       }
@@ -42,4 +42,4 @@
       </ul>
     </nav><!-- .nav-menu -->
   </div>
-</header><!-- End Header -->
+</header>

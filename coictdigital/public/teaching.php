@@ -28,7 +28,7 @@
 
 <main id="main">  
     <section>
-        <div class="container">
+        <div class="">
           <div class="row justify-content-center align-items-center">
         
     
