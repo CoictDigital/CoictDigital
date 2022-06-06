@@ -22,7 +22,7 @@
       header("Location: ./evaluation1.php");
     }
 
-    echo "all good";
+    echo "";
   } else {
     header("Location: evaluation1.php");
     // header("Location: ./evaluation1.php");
@@ -54,7 +54,8 @@
           <h3>Student Course Evaluation Form</h3>
           <h2>Undergraduate Programmes</h2>
         </div>
-        <div class="container">
+
+        <div class="p-4">
 
           <div class="form-group row">
             <h5>Part A: The Participants</h5>
@@ -91,7 +92,7 @@
               <p>LECTURE VENUE: <?php echo $partA["venue"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>STUDENTS PROGRAMME:  </p>
+              <p>STUDENTS PROGRAMME: <?php echo $_SESSION["userData"]["student_programme"]; ?>  </p>
             </div>
           </div>
 

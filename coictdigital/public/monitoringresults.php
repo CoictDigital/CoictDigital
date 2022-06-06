@@ -32,16 +32,9 @@ require_once("../includes/db.php");
 
 <?php
 // $sql = "SELECT * FROM courses";
-$sql = "SELECT * FROM courses, teachingmonitoring_questions WHERE courses.course_code = teachingmonitoring_questions.course_code";
-$result=$conn->query($sql);
-// <?php echo $row['course_code']; ?>
-
-<!-- <div class="row" >
-  <div class="col-md-12">
-   <span class="badge alert-success" style="float: right; width: 100px;">HOD</span>
-  </div>
-</div> -->
-
+// $sql = "SELECT * FROM teachingmonitoring_questions";
+// $result=$conn->query($sql);
+?>
 <section id="evaluation" class="services">        
  <div class="container-fluid">           
    <div class="section-title">          
