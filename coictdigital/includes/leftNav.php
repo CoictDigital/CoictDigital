@@ -17,13 +17,15 @@
                       }
                       ?>" class="nav-link scrollto"> <span>Course Evaluation</span></a></li>
         <li><a href="alumnirecords.php" class="nav-link scrollto"><span>Alumni Records</span></a></li>
+
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
-                        echo "monitoringresults.php";
+                        echo "teachingresults.php";
                       } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "Teachingmonitoring.php";
                       }
                       ?>" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
+                      
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
                         echo "courseallocation.php";
