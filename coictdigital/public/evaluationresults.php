@@ -185,11 +185,7 @@
 
 
           <div class="form-group">
-<<<<<<< HEAD
-          <input type="button" id="rep" value="Print results" class="button1 btn_print">
-=======
             <input type="button" id="rep" value="Download results" class="button2 btn_print">
->>>>>>> 7ea313a653d47db7ec32a4bfe30af080214a0688
           </div>
         </div>
     </section><!-- End Form Section -->
