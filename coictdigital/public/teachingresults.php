@@ -3,32 +3,36 @@
     <head>
         
 <?php
-    
+    require_once("../includes/functions.php");
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
     require_once("../includes/db.php");
     require_once("../includes/fetchcoursecode.php");
-    
-    
+    //get number of responses
+  //   $couses = fetchCourse();
+  // $courseRes = [];
+  // while ($row = $couses->fetch_assoc()) {
+  //   $row["totalResponses"] = getCourseResponse($row["course_code"]);
+  //   array_push($courseRes, $row);
+ // }
+  //   if (isset($_SESSION["teachingFilled"])) {
+  //     unset($_SESSION['teachingFilled']);
+  //   } else {
+  //   }
 
-    if (isset($_SESSION["teachingFilled"])) {
-      unset($_SESSION['teachingFilled']);
-    } else {
-    }
-
-    if (!empty($_POST["course_code"])) {
-      $id = $_POST['course_code'];
-      $query = "select * from courses where course_code=$id";
-      $result = mysqli_query($conn, $query);
-      if ($result->num_rows > 0) {
-          echo '<option value="">Select course_code</option>';
-          while ($row = mysqli_fetch_assoc($result)) {
-              echo '<option value="' . $row['id'] . '">' . $row['course_code'] . '</option>';
-          }
-      }
-  } elseif (!empty($_POST['sid'])) {
+  //   if (!empty($_POST["course_code"])) {
+  //     $id = $_POST['course_code'];
+  //     $query = "select * from courses where course_code=$id";
+  //     $result = mysqli_query($conn, $query);
+  //     if ($result->num_rows > 0) {
+  //         echo '<option value="">Select course_code</option>';
+  //         while ($row = mysqli_fetch_assoc($result)) {
+  //             echo '<option value="' . $row['id'] . '">' . $row['course_code'] . '</option>';
+  //         }
+  //     }
+  // } elseif (!empty($_POST['sid'])) {
       
-      }
+  //     }
     ?>
     
     </head>
@@ -44,7 +48,7 @@
 
 <main id="main">  
     <section>
-        <div class="container">
+        <div class="">
           <div class="row justify-content-center align-items-center">
         
     

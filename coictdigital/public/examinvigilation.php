@@ -117,21 +117,33 @@
                 </select>
               </div>
               <div class="col-sm-4">
-                <select class="form-select" name="Day" aria-label="Default select example">
-                  <option selected>Day option to select</option>
-            
-                </select>
+    
+                  <input class="form-select" type="date" placeholder="Select day">
+                
+              
+               
               </div>
               <div class="col-sm-4">
                 <select class="form-select" name="From time" aria-label="Default select example">
-                  <option selected>Time</option>
-                  <option value="1">muekee muda</option>
+                  <option selected> From Time</option>
+              
+                  <option value="7:30">7:30   </option>
+                  <option value="8:00 ">8:00   </option>
+                  <option value="8:30">8:30   </option>
+                  <option value="9:00">9:00   </option>
+                  <option value="9:30">9:30   </option>
+                  <option value="11:30">11:30   </option>
+                  <option value="9:30">15:30   </option>
+                  
                 </select>
               </div>
               <div class="col-sm-4">
                 <select class="form-select" name="to time" aria-label="Default select example">
                   <option selected>To time</option>
-                  <option value="1">muekee muda from data we have</option>
+                  <option value="10:30">10:30</option>
+                  <option value="14:30">14:30</option>
+                  <option value="18:30">18:30</option>
+                 
                   
                 </select>
               </div>

@@ -1,5 +1,7 @@
 <?php
 require_once("../includes/db.php");
+require_once("../includes/sessionStuffs.php");
+require_once("../includes/headerContent.php");
 // $instructor = $_POST["instructor"];
 // $no_of_course = $_POST["no_of_course"];
 // $course_code = $_POST["course_code"];
@@ -78,17 +80,86 @@ require_once("../includes/db.php");
     }
 ?>
 <?php 
-if(isset($_POST['submit'])){
-  $course = $_POST['course_name']; 
-  $instructor = $_POST['instructor'];
-  $semester = $_POST['semester'];
-  if(!empty($course) && !empty($instructor) && !empty($semester)){
-      $query = "INSERT INTO course_allocation (course_name,instructor,semester) VALUES('$course','$instructor','$semester')";
-      $result = $conn->query($query);
-      if($result){
-        echo "Course is inserted successfully";
-      }  
-    }
-  }
+//if(isset($_POST['save'])){
+ 
+    //save();
+  
+  
+
+  // $course = $_POST['course_name']; 
+  // $instructor = $_POST['instructor'];
+  // $semester = $_POST['semester'];
+  // if(!empty($course) && !empty($instructor) && !empty($semester)&& !empty($TA) && !empty($assistant)){
+  //     $query = "INSERT INTO course_allocation (course_name,instructor,semester) VALUES('$course','$instructor','$semester')";
+  //     $result = $conn->query($query);
+  //     if($result){
+  //       echo "Course is inserted successfully";
+  //     }  
+  //   }
+ // }
+
+
+// session_start();
+// if ($conn->connect_error) {
+//   die("Connection failed: " . $conn->connect_error);
+// }
+// function save() {
+//   global $conn;
+   
+//   $course =mysqli_real_escape_string($conn,$_POST['course_name']) ; 
+//   $instructor =mysqli_real_escape_string($conn,$_POST['instructor']) ;  
+//   $semester = mysqli_real_escape_string($conn,$_POST['semester']) ;  
+//   $TA     = mysqli_real_escape_string($conn,$_POST['TA']) ;  
+//   $assistant = mysqli_real_escape_string($conn,$_POST['assistant']) ;
+
+//   $sql = "INSERT INTO course_allocation (instructor,course_name,instructor,semester,TA,assistant) VALUES('$instructor','$course','$semester','$TA ',`$assistant`)";
+//   $query_run =  mysqli_query($conn, $sql);
+
+//   if($query_run){
+//     header("location: courseallocation.php");
+//       exit();
+//   }
+//   else{
+//       echo	"wrong code";
+// }
+// }
+// ?>
+<?php
+if(isset($_POST["allocate"])){
+ 
+
+  $course =mysqli_real_escape_string($conn,$_POST['course_name']) ; 
+  $instructor =mysqli_real_escape_string($conn,$_POST['instructor']) ;  
+  $semester = mysqli_real_escape_string($conn,$_POST['semester']) ;  
+  $TA     = mysqli_real_escape_string($conn,$_POST['TA']) ;  
+  $assistant = mysqli_real_escape_string($conn,$_POST['assistant']) ; 
+
+  $sql = "INSERT INTO course_allocation (instructor,course_name,instructor,semester,TA,assistant) VALUES('$instructor','$course','$semester','$TA ',`$assistant`)";
+ $query_run =  mysqli_query($conn, $sql);
+
+ if($query_run){
+  $_SESSION[ 'status'] = "insected successfully";
+  header("Location:courseallocation.php") ; 
+}
+else{
+  $_SESSION[ 'status'] = "Not insected  ";
+  header("Location:leacturerallocation.php") ; 
+}
+
+}
+//  if($query_run){
+//   header("location: courseallocation.php");
+//     exit();
+// }
+// else{
+//     echo	"wrong code";
+// }
+
+ 
+  
+
+
+$conn->close();
+
 
 ?>

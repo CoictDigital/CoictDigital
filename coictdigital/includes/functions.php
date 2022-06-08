@@ -302,7 +302,7 @@ function fetchProceedEvalutation($course)
 }
 
 
-function fetchteaching($studyYear, $semester, $programme, $coursecode)
+function fetchteaching($semester,$coursecode)
 {
     global $conn;
     //write query

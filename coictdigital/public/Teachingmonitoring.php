@@ -24,6 +24,8 @@ require_once("../includes/fetchcoursecode.php");
     function showHidemycode(){
       if (document.getElementById("present").checked){
         document.getElementById("mycode").style.display = "block";
+  
+    
         document.getElementById("abs").style.display = "none";
       }else {
       }
@@ -85,7 +87,7 @@ require_once("../includes/fetchcoursecode.php");
           </div>
         </div>
 
-        <div class="container">
+        <div class="p-3">
           <form action="monitoringqtns.php" method="POST">
 
             <!-- ======= General info ======= -->
@@ -108,7 +110,7 @@ require_once("../includes/fetchcoursecode.php");
        if ($row['semester']!=$i) {
         $i=0;
            $i= $row['semester']
-        <option value="<?php echo $row['course_code']; ?>"><?php echo $row['semester']; ?></option>
+        <option value="<?php echo $row['semester']; ?>"><?php echo $row['semester']; ?></option>
        }
           <?php
              }
@@ -219,12 +221,12 @@ require_once("../includes/fetchcoursecode.php");
             </select>
             <h5>Are the students informed about the instructor's absence?</h5>
              <div class="form-check form-check-inline">
-               <input class="form-check-input" type="radio" name="student_informed" id="informed"  value="Yes" >
+               <input class="form-check-input" type="radio" name="student_informed" id="informed"  value="Yes" onclick="function()" >
                <label class="form-check-label" for="inlineRadio1">Yes</label>
              </div>
              
              <div class="form-check form-check-inline">
-               <input class="form-check-input" type="radio" name="student_informed" id="not_informed" value="No" >
+               <input class="form-check-input" type="radio" name="student_informed" id="not_informed" value="No" onclick="function()" >
                <label class="form-check-label" for="inlineRadio2">No</label>
               </div>
 
@@ -544,10 +546,10 @@ require_once("../includes/fetchcoursecode.php");
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
 
-  <!-- <script>
+<script>
 $(document).ready(function(){
   console.log("ASDfa")
-  document.getElementById("inform").style.display = "none";
+  //document.getElementById("inform").style.display = "none";
   // hide submit by default
   $('#button1').hide();
   $("input[value='Yes']").click(function(){
@@ -563,9 +565,9 @@ $(document).ready(function(){
     $("#button1").show();
 });
 });
-</script> -->
+</script>
 
-<script>
+<!-- <script>
   $(document).ready(function(){
   // hide submit by default
   $('#button1').hide();
@@ -581,7 +583,7 @@ $(document).ready(function(){
     $(".Submit").show();
 });
 });
-</script>
+</script> -->
 
 </body>
 
