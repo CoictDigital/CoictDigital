@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <section class="login">
+    <section class="">
     <div class="container" id="container">	
         <div class="row rounded shadow ">  
 

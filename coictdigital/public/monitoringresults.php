@@ -19,22 +19,46 @@
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
-  <?php
-require_once("../includes/db.php");
 
-?>
+
+   <?php
+   require_once '../includes/monitoringfunctions.php';
+   require_once '../includes/db.php';
+
+
+
+
+   if (isset($_GET['courseCode'])) {
+       $courseCode = $_GET['courseCode'];
+
+       $result1 = fetchviewresult($courseCode);
+       $result2 = fetchmonitoringresults($courseCode);
+
+       $row = $result1;
+       $row = $result2;
+
+       //$studentProgrammes = fetchStudentProgrammes($courseCode);
+   } else {
+       header('Location: ./index.php');
+   }
+   ?>
   <!-- ======= Header ======= -->
-  <?php
-  require_once("../includes/leftNav.php");
-  ?>
+
+  <?php require_once '../includes/leftNav.php'; 
+  
+ $sql = "SELECT * FROM teachingmonitoring_questions, courses 
+ WHERE courses.course_code = teachingmonitoring_questions.course_code 
+ AND teachingmonitoring_questions.course_code = '$courseCode'";
+//$results = mysqli_query($conn, $sql);
+$result = $conn->query($sql);// or die($conn->error);
+ $row = $result->fetch_assoc();
+ ?> 
+
   <main id="main">
+
 <!-- ======= Form Section ======= -->
 
-<?php
-// $sql = "SELECT * FROM courses";
-// $sql = "SELECT * FROM teachingmonitoring_questions";
-// $result=$conn->query($sql);
-?>
+
 <section id="evaluation" class="services">        
  <div class="container-fluid">           
    <div class="section-title">          
@@ -42,7 +66,7 @@ require_once("../includes/db.php");
      <h3>Quality Assurance Bureau (QAB)</h3>
      <h3>Teaching and learning Monitoring</h3>      
    </div>
-   <div class="container">
+   <div class="p-3">
  
           <div class="form-group row">
             <h4>General information</h4>
@@ -50,57 +74,68 @@ require_once("../includes/db.php");
           
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Course Code:</p>
+              <p>Course Code: <?php echo $row['course_code']; ?></p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Course Title:</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 mb-1">
-              <p>Department:</p>
-            </div>
-            <div class="col-sm-6 mb-1">
-              <p>Semester:</p>
+              <p>Course Title: <?php echo $row['course_title']; ?> </p>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Venue:</p>
+              <p>Department: <?php echo $row['department']; ?> </p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Semester: <?php echo $row['semester']; ?> </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Venue: <?php echo $row['venue']; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
               <p>Venue capacity:</p>
             </div>
           </div>
+
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Instructor:</p>
+              <p>Instructor: <?php echo $row['instructor']; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Number of students in class:</p>
+              <p>Number of students in class: <?php echo $row['Number_of_students']; ?> </p>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Class size: <?php echo $row['class_size']; ?> </p>
+            </div>
+            <!-- <div class="col-sm-6 mb-1">
+              
+            </div> -->
           </div>
 <!-- attendance -->
           <h4>Attendance in class</h4>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Instructor's attendance state:</p>
+              <p value = "<?php echo $row['attendance']; ?>" id ="instructorattendance">Instructor's attendance state: <?php echo $row['attendance']; ?> </p>
             </div>
           </div>
           
 <!-- //new div section -->
         
         </div>
-        <div class="container" id="present">
+        <div class="p-3" id="instructorpresent">
           <!-- startingtime -->
           <h4>Time management</h4>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>The session </p>
+              <p>The session <?php echo $row['session_starting_time']; ?>  </p>
             </div>
             <div class="row">
              <div class="col-sm-6 mb-1">
-              <p>Reason to why the session started late:</p>
+               <p>Reason to why the session started late: <?php echo $row['reason_for_startinglate']; ?> </p>
              </div>
             </div>
           </div>
@@ -108,28 +143,90 @@ require_once("../includes/db.php");
           <h4>Teaching process details</h4>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Session type: </p>
+              <p>Session type: <?php echo $row['session_type']; ?>  </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Teaching mode used:</p>
+              <p>Teaching mode used: <?php echo $row['teaching_mode']; ?> </p>
             </div>
           </div>
 <!-- medium of instruction -->
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>Medium of instruction:</p>
+              <p>Medium of instruction: <?php echo $row['medium_of_instruction']; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Teaching method used:</p>
+              <p>Teaching method used: <?php echo $row['teaching_method']; ?> </p>
             </div>
           </div>
+
 <!-- teaching venue -->
           <h4>Teaching venue conditions</h4>
+
+          <table>
+  <tr>
+    
+    <th>Venue condition</th>
+    <th>Rating</th>
+    
+  </tr>
+  <tr>
+    
+    <td>A. Sitting arrangements of students</td>
+    <td><?php echo $row['a']; ?></td>
+    
+  </tr>
+  <tr>
+    <td>B. Lighting</td>
+    <td><?php echo $row['b']; ?></td>
+    
+  </tr>
+  <tr>
+    <td>C. Chairs and Tables</td>
+    <td><?php echo $row['c']; ?></td>
+    
+  </tr>
+  <tr>
+    <td>D. Fixed LCD projector system (if any)</td>
+    <td><?php echo $row['d']; ?></td>
+    
+  </tr>
+  <tr>
+    <td>E. Display and Visibility</td>
+    <td><?php echo $row['e']; ?></td>
+    
+  </tr>
+  <tr>
+    <td>F. General physical condition of the room</td>
+    <td><?php echo $row['f']; ?></td>
+    
+  </tr>
+  <tr>
+    <td>G. Public address system (if any)</td>
+    <td><?php echo $row['g']; ?></td>
+    
+  </tr>
+  <tr>
+    <td>H. Availability of brash and chalks/markers</td>
+    <td><?php echo $row['h']; ?></td>
+    
+  </tr>
+  <tr>
+    <td>I. Use of whiteboard/blackboard</td>
+    <td><?php echo $row['i']; ?></td>
+    
+  </tr>
+  <tr>
+    <td>J. Room ventilation</td>
+    <td><?php echo $row['j']; ?></td>
+    
+  </tr>
+</table>
 <!-- special matters -->
           <h4>Matters of immediate attention</h4>
-          </div>
+        </div>
 
       </div>
+      
 </section>
 
 
@@ -144,21 +241,44 @@ require_once("../includes/db.php");
   <!-- Bootstrap JS -->
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
+  <!-- <script>
+    $(document).ready(function(){
+  // hide submit by default
+  $('#button1').hide();
+  $("input[value='No']").click(function(){
+    $("#button1").show();
+});
+});
+</script> -->
 
+  <!-- <script>
+// Define your function
+function yourfunc() {
+    var validValue = document.getElementById("Valid").getAttribute('value');
+    if(validValue == 'True') {
+        document.getElementById("Address").setAttribute('disabled', true);
+    }
+}
+yourfunc(); // Call the function: is important, otherwise your code will never be run.
+</script> -->
 
-  
-<!-- <?php                  
-                 if ($result->num_rows > 0) {
-                 while($row = $result->fetch_assoc()){
-                extract($row);
-                 
-                ?>
+<script>
+// Define your function
+function yourfunc() {
+    var validValue = document.getElementById("instructorattendance").getAttribute('value');
+    if(validValue == 'present') {
+        document.getElementById("instructorpresent").setAttribute('disabled', true);
+    }else{
+      document.getElementById("instructorpresent").setAttribute('disabled', false);
+    }
+}
+yourfunc(); // Call the function: is important, otherwise your code will never be run.
+</script>
 
-<?php
-                 }
-                }
-                ?> -->
 </main>
+
+</body>
+</html>
 
 
           
