@@ -2,20 +2,14 @@
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
   
 <?php
     require_once("../includes/db.php");
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
     require_once("../public/addnewallocation.php");
-=======
->>>>>>> f328d154b9055eeab5b374374b55fc448a67f6f9
-
-  <?php
-  require_once("../includes/db.php");
-  require_once("../includes/headerContent.php");
-  require_once("../includes/sessionStuffs.php");
+  //  session_start();
+ 
 
   unset($_SESSION["studentFilledCount"]);
 
@@ -74,24 +68,28 @@
               <div class="col-sm-5 mb-1">
                 <input type="text" class="form-control">
               </div>
-              <div class="col-sm-5 mb-1">
-                <a href="#addnewModal" data-toggle="modal" data-target="#addnewModal">
-                  <button type="submit" class="mx-auto button" style="float: right; height: 40px;">Add New</button>
-                </a>
-              </div>
+             
 
             </div>
 
            
-     <form action="#" method="POST">
+     <form action="addnewallocation.php" method="POST">
         <div class="container">
         <div class="">
         <div class="card">
+          
   <div class="card-body">
+  <?php
+           if(isset($_SESSION[ 'status']))
+           {
+             echo "<h4>".$_SESSION[ 'status']."</h4>";
+             unset($_SESSION[ 'status']);
+           }
+          ?>
     <p class="card-title">Allocate Courses for respective Instructor</p>
     <div class="row">
     <div class="col-sm-4">
-                <select class="form-select" name="course" aria-label="Default select example">
+                <select class="form-select" name="course" aria-label="Default select example" >
                       
                           <option value="">Select Course</option>
                           <?php 
@@ -106,9 +104,37 @@
               </div>
 
               <div class="col-sm-4">
-              <select class="form-select" name="Instructor" aria-label="Default select example">
+              <select class="form-select" name="instructor" aria-label="Default select example">
                       
                       <option value="">Select Instructor</option>
+                      <?php 
+                      foreach ($options as $option) {
+                      ?>
+                        <option value="<?php echo $option['instructor']; ?>"><?php echo $option['instructor']; ?> </option>
+                        <?php 
+                        }
+                      ?>
+                            
+              </select>
+              </div>
+              <div class="col-sm-4">
+              <select class="form-select" name="TA" aria-label="Default select example">
+                      
+                      <option value="">Select TA</option>
+                      <?php 
+                      foreach ($options as $option) {
+                      ?>
+                        <option value="<?php echo $option['instructor']; ?>"><?php echo $option['instructor']; ?> </option>
+                        <?php 
+                        }
+                      ?>
+                            
+              </select>
+              </div>
+              <div class="col-sm-4">
+              <select class="form-select" name="assistant" aria-label="Default select example">
+                      
+                      <option value="">Select Practical Assistant</option>
                       <?php 
                       foreach ($options as $option) {
                       ?>
@@ -127,10 +153,11 @@
                   <option value="2">II</option>
                 </select>
               </div>
+              <center><button  type="submit" name="allocate"  class="mx-auto button"  style="height:30px; width:70px; border-radius: 5px; ">allocate</button></center>
           </div>
             </div>
-            <!-- <input type="submit" name=""> -->
-            <input  type="submit" name="submit"> 
+            
+           
             <!-- <button type="submit" name="submit" class="mx-auto button" >Allocate</button> -->
           </div>
           </div>
@@ -148,47 +175,48 @@
                 <thead class="table-secondary">
                   <tr>
                   <th scope="col">Instructors</th>
-                      <th scope="col">NO  of Course </th>
+                      <!-- <th scope="col">NO  of Course </th> -->
                       <!-- <th scope="col">Course Code</th> -->
                       <th scope="col">Course Name</th>
-                      <!-- <th scope="col">Program</th> -->
-                      
+                       <th scope="col"> TA</th> 
                       <th scope="col">Practical	/	Tutorial	Assistant</th> 
+                      <th scope="col">semister</th>
                       <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php 
-                $sql = "select * from course_allocation" ;
-                $result = $conn->query($sql);
+      //           $sql = "select * from course_allocation" ;
+      //           $result = $conn->query($sql);
                  
-       // Performing insert query execution
-       // here our table name is college
+      //  // Performing insert query execution
+      //  // here our table name is college
       
            
 
 
-                 if ($result->num_rows > 0) {
-                 while($row = $result->fetch_assoc()){
-                extract($row);
+      //            if ($result->num_rows > 0) {
+      //            while($row = $result->fetch_assoc()){
+      //           extract($row);
                  
-                ?>
+      //           ?>
 
               
-                  <tr>
-                   <td><?php echo $row['instructor']; ?></td>
-                   <td><?php echo $row['no_of_course']; ?></td>
-                   <!-- <td><?php echo $row['course_code']; ?></td> -->
-                   <td><?php echo $row['course_name']; ?></td>
-                   <!-- <td><?php echo $row['program']; ?></td> -->
-                
-                   <td></td>
-                   <!-- <td><?php echo $row['#']; ?></td> -->
-                   <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <?php }
-                 }
-                 ?> 
+      //             <tr>
+      //              <td><?php //echo $row['instructor']; ?></td>
+      //              <!-- <td><?php// echo $row['no_of_course']; ?></td> -->
+      //              <!-- <td><?php //echo $row['course_code']; ?></td> -->
+      //              <td><?php //echo$row['course_name']; ?></td>
+      //              <!-- <td><?php //echo $row['program']; ?></td> -->
+      //              <td></td>
+      //              <td></td>
+      //              <td></td>
+      //              <!-- <td><?php //echo $row['#']; ?></td> -->
+      //              <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+      //             </tr>
+      //             <?php //}
+      //            }
+      //            ?> 
                 
                 </tbody>
               </table>
@@ -212,7 +240,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="form-title text-center">
+            <div class="form-title text-center">0
               <h4>Add New Allocation</h4>
             </div>
             <div class="modal-body">

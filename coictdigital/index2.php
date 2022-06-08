@@ -1,6 +1,6 @@
 <?php
 
-$password = "mbise";
+$password = "secondyear";
 
 $hashed_password =
     password_hash($password, PASSWORD_DEFAULT);
@@ -12,7 +12,7 @@ echo "Hashed Password is: ", $hashed_password;
 echo "\n";
 
 if (password_verify($password, $hashed_password)) {
-    echo 'Password is valid!';
+    echo ':Password is valid!';
 } else {
     echo 'Invalid password.';
 }

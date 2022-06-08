@@ -122,6 +122,11 @@ $result = $conn->query($sql);// or die($conn->error);
               <p value = "<?php echo $row['attendance']; ?>" id ="instructorattendance">Instructor's attendance state: <?php echo $row['attendance']; ?> </p>
             </div>
           </div>
+
+          <!-- <?php
+$t = attendance("<?php echo $row['attendance']; ?>");
+
+
           
 <!-- //new div section -->
         

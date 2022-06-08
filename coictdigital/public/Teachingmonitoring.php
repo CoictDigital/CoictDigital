@@ -24,6 +24,8 @@ require_once("../includes/fetchcoursecode.php");
     function showHidemycode(){
       if (document.getElementById("present").checked){
         document.getElementById("mycode").style.display = "block";
+  
+    
         document.getElementById("abs").style.display = "none";
       }else {
       }
