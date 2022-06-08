@@ -121,12 +121,12 @@ $result = $conn->query($sql);// or die($conn->error);
             <div class="col-sm-6 mb-1">
               <p value = "<?php echo $row['attendance']; ?>" id ="instructorattendance">Instructor's attendance state: <?php echo $row['attendance']; ?> </p>
             </div>
-          </div>
-
-          <!-- <?php
-$t = attendance("<?php echo $row['attendance']; ?>");
-
-
+          <div class="row">
+            <div class="col-sm-6 mb-1" id = "absencereason">
+              <p>Reason to instructor's absence in class: <?php echo $row['reason_for_absence']; ?>  </p>
+            </div>
+           </div>
+  </div>
           
 <!-- //new div section -->
         
@@ -138,8 +138,8 @@ $t = attendance("<?php echo $row['attendance']; ?>");
             <div class="col-sm-6 mb-1">
               <p>The session <?php echo $row['session_starting_time']; ?>  </p>
             </div>
-            <div class="row">
-             <div class="col-sm-6 mb-1">
+            <div class="row" >
+             <div class="col-sm-6 mb-1" id ="startedlate" >
                <p>Reason to why the session started late: <?php echo $row['reason_for_startinglate']; ?> </p>
              </div>
             </div>
@@ -246,40 +246,40 @@ $t = attendance("<?php echo $row['attendance']; ?>");
   <!-- Bootstrap JS -->
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
-  <!-- <script>
-    $(document).ready(function(){
-  // hide submit by default
-  $('#button1').hide();
-  $("input[value='No']").click(function(){
-    $("#button1").show();
-});
-});
-</script> -->
+<!-- //script for instructor's attendance -->
+<script>
+   
+      if( ("<?php echo $row['attendance']; ?>") == "present"){
+        document.getElementById("instructorpresent").style.display = "block";
+  
+      }else {
+    
+        document.getElementById("instructorpresent").style.display = "none";
+      }
+  </script>
 
-  <!-- <script>
-// Define your function
-function yourfunc() {
-    var validValue = document.getElementById("Valid").getAttribute('value');
-    if(validValue == 'True') {
-        document.getElementById("Address").setAttribute('disabled', true);
-    }
-}
-yourfunc(); // Call the function: is important, otherwise your code will never be run.
-</script> -->
+<!-- script for stating session on time -->
+<script>
+   
+   if( ("<?php echo $row['session_starting_time']; ?>") == "started_on_time"){
+     document.getElementById("startedlate").style.display = "none";
+
+   }else {
+ 
+     document.getElementById("startedlate").style.display = "block";
+   }
+</script>
+<!-- //script for reason for absence --> 
 
 <script>
-// Define your function
-function yourfunc() {
-    var validValue = document.getElementById("instructorattendance").getAttribute('value');
-    if(validValue == 'present') {
-        document.getElementById("instructorpresent").setAttribute('disabled', true);
-    }else{
-      document.getElementById("instructorpresent").setAttribute('disabled', false);
-    }
-}
-yourfunc(); // Call the function: is important, otherwise your code will never be run.
-</script>
+   if( ("<?php echo $row['attendance']; ?>") == "absent"){
+     document.getElementById("absencereason").style.display = "block";
 
+   }else {
+
+     document.getElementById("absencereason").style.display = "none";
+   }
+</script>
 </main>
 
 </body>
