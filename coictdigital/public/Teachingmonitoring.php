@@ -7,14 +7,15 @@
 require_once '../includes/headerContent.php';
 require_once '../includes/sessionStuffs.php';
 require_once("../includes/db.php");
-require_once("../includes/fetchvenue.php");
+// require_once("../includes/fetchvenue.php");
+require_once("../includes/fetchcoursecode.php");
 
-if (isset($_SESSION["teachingFilled"])) {
+// if (isset($_SESSION["teachingFilled"])) {
   
-  echo "all good";
-} else {
-  header("Location: teaching.php");
-}
+//   echo "all good";
+// } else {
+//   header("Location: index.php");
+// }
 
 ?>
 
@@ -51,18 +52,6 @@ if (isset($_SESSION["teachingFilled"])) {
   }
 </script>
 
-<!-- button for absence -->
-<!-- <script>
-  function showHidesubmit(){
-    if((document.getElementById("informed").checked) || (document.getElementById("not_informed").checked)){
-      document.getElementById("inform").style.display = "block";
-    }else{
-      document.getElementById("inform").style.display = "none";
-    }
-  }
-</script> -->
-
-
 <!-- special issues -->
 <script>
   function showHideissues(){
@@ -73,18 +62,6 @@ if (isset($_SESSION["teachingFilled"])) {
     }
   }
 </script>
-
-<!-- <script>
-  function submit(x){
-    if (x==0){
-      document.getElementById("submit").style.display = "block";
-    }else{
-
-    } return;
-  }
-    
-</script> -->
-
 </head>
 
 <body>
@@ -98,9 +75,7 @@ if (isset($_SESSION["teachingFilled"])) {
   ?>
 
   <main id="main">
-
-  
-       <!-- ======= Form Section ======= -->
+     <!-- ======= Form Section ======= -->
        <section id="evaluation" class="services">        
         <div class="container-fluid">           
           <div class="section-title">
@@ -114,10 +89,84 @@ if (isset($_SESSION["teachingFilled"])) {
           <form action="monitoringqtns.php" method="POST">
 
             <!-- ======= General info ======= -->
-          <div class="question">
-            <h3>General information</h3>
+        <div class="question">
+          <h3>General information</h3>
+<!-- select semester -->
+                <div class="row mb-3">
+        <label for="venue" class="col-sm-2 col-form-label">Semester</label>
+        <div class="col-sm-10">
+       <select class="form-select" aria-label="Default select example" name="semester" required>
+        <option hidden disabled selected value> -- Select semester --</option>
+        <!-- <option>Semester</option> -->
+        <?php
+                $query = "select DISTINCT semester from courses";
+                  //$query1 = mysqli_query($conn, $qr);
+                $result = $conn->query($query);
+                 if ($result->num_rows > 0) {
+               while ($row = mysqli_fetch_assoc($result)) {
+              ?>
+       if ($row['semester']!=$i) {
+        $i=0;
+           $i= $row['semester']
+        <option value="<?php echo $row['course_code']; ?>"><?php echo $row['semester']; ?></option>
+       }
+          <?php
+             }
+             }
+              ?>
+       </select>
+      </div>
+    </div>
+
+    <!-- select course -->
+    <div class="row mb-3">
+        <label for="venue" class="col-sm-2 col-form-label">Course</label>
+        <div class="col-sm-10">
+       <select class="form-select" aria-label="Default select example" name="course_code">
+        <option hidden disabled selected value> -- Select course --</option>
+        <option>Course</option>
+        <?php 
+           foreach ($options as $option) {
+          ?>
+          <option><?php echo $option['course_code']; ?> </option>
+          <?php 
+           }
+          ?>    
+       </select>
+      </div>
+    </div>
+
+    <!-- select venue -->
+    <div class="row mb-3">
+        <label for="venue" class="col-sm-2 col-form-label">Venue</label>
+        <div class="col-sm-10">
+       <select class="form-select" aria-label="Default select example" name="venue">
+        <option hidden disabled selected value> -- Select venue --</option>
+        <option>Venue</option>
+        <?php
+                $query = "select DISTINCT venue from courses";
+                $result = $conn->query($query);
+                 if ($result->num_rows > 0) {
+               while ($row = mysqli_fetch_assoc($result)) {
+              ?>
+       if ($row['venue']!=$i) {
+        $i=0;
+           $i= $row['venue']
+        <option value="<?php echo $row['venue']; ?>">
+        <?php echo $row['venue']; ?>
+      </option>
+       }
+          <?php
+             }
+             }
+              ?>
+       </select>
+      </div>
+    </div>
+
+<!-- starting time -->
          <div class="row mb-3">
-           <label for="Session time" class="col-sm-2 col-form-label">Starting time</label>
+          <label for="Session time" class="col-sm-2 col-form-label">Starting time</label>
            <div class="col-sm-10">
               <input type="time" class="form-control" name="starting_time" placeholder="" required>
            </div>
@@ -129,29 +178,7 @@ if (isset($_SESSION["teachingFilled"])) {
           </div>
        </div>
 
-       <div class="row mb-3">
-        <label for="venue" class="col-sm-2 col-form-label">Venue</label>
-        <div class="col-sm-10">
-       <select class="form-select" aria-label="Default select example" name="venue">
-        <option hidden disabled selected value> -- select venue--</option>
-        <option>Venue</option>
-        <?php 
-           foreach ($options as $option) {
-        ?>
-         <option><?php echo $option['venue']; ?> </option>
-        <?php 
-        }
-        ?>    
-       </select>
-      </div>
-    </div>
-
-        <div class="row mb-3">
-          <label for="venue capacity" class="col-sm-2 col-form-label">Venue capacity</label>
-          <div class="col-sm-10">
-              <input type="number" class="form-control" name="venue_capacity" placeholder="Venue capacity"value="venue_capacity" required>
-          </div>
-      </div>
+    <!-- number of students -->
       <div class="row mb-3">
         <label for="Number of students in class" class="col-sm-2 col-form-label">Number of students</label>
         <div class="col-sm-10">
@@ -159,6 +186,9 @@ if (isset($_SESSION["teachingFilled"])) {
         </div>
     </div>
       </div>
+
+
+<!-- instructor's attendance -->
       <div class="question">
          <h3>Instructor's attendance</h3>
          <h5>Please select the corresponding attendance state of the instructor </h5>       
@@ -173,7 +203,7 @@ if (isset($_SESSION["teachingFilled"])) {
               <label class="form-check-label" for="inlineRadio2">Absent</label>
              </div>
 
-             <!-- reasons absence and student informed or not -->
+             
             <div class="" id="">
             <!-- <input class="form-check-input" type="hidden" name="student_informed" id="informed"  value="yes"> -->
               <div class="" id="abs">
@@ -187,7 +217,6 @@ if (isset($_SESSION["teachingFilled"])) {
             <option value="Sickness">Sickness</option>
             <option value="Not informed">Not informed</option>
             </select>
-              
             <h5>Are the students informed about the instructor's absence?</h5>
              <div class="form-check form-check-inline">
                <input class="form-check-input" type="radio" name="student_informed" id="informed"  value="Yes" >
@@ -198,14 +227,16 @@ if (isset($_SESSION["teachingFilled"])) {
                <input class="form-check-input" type="radio" name="student_informed" id="not_informed" value="No" >
                <label class="form-check-label" for="inlineRadio2">No</label>
               </div>
+
              <div class="form-group" id="inform">
               <button id ="button1" type="submit" class="mx-auto button1" name="monitoringQn" value="submit">Submit</button>
              </div>
+             
               </div>
             </div>
           </div>
             
-
+<!-- time management -->
           <div id="mycode">
 <div class="question">
          <h3>Time management</h3>
@@ -240,6 +271,7 @@ if (isset($_SESSION["teachingFilled"])) {
           </div>
           </div>
 
+<!-- reason for starting late -->
         <div class="starting_time" id="reason">
           <label for="started_late">Please select the reason for starting late:</label>
           <select class="form-select" aria-label="Default select example" name="started_late">
@@ -254,6 +286,7 @@ if (isset($_SESSION["teachingFilled"])) {
           </select>
         </div>
 
+        <!-- teaching process -->
         <div class="question">
           <h3>Teaching Process</h3>
           <h4>a) Session Type</h4>
@@ -296,10 +329,13 @@ if (isset($_SESSION["teachingFilled"])) {
             <option value="Course in Kiswahili but code-switching to English">Course in Kiswahili but code-switching to English</option>
           </select>
           </div>
-      
+
+      <!-- teaching venue conditions -->
         <div class="question">
-     
         <h3>Teaching venue conditions</h3>
+        <div class= "note">
+          <h6><u>NOTE:</u></h6>
+        </div>
         <div class="form-group row">
           <h5>Please rate the condition of the teaching room using the given standards. Put a tick in the appropiate box found on the extreme right.
             1 = Very poor, 2 = Poor, 3 = Good, 4 = Very good, 5 = Excellent, NA = Not Applicable
@@ -424,8 +460,10 @@ if (isset($_SESSION["teachingFilled"])) {
           </div>
 
 <div class="question">
-<h3>Matters for immediate/special attention</h3>
-      <h5>Are there matters of immediate attention?</h5>
+  <!-- special matters -->
+  <div class="question">
+            <h3>Matters for immediate/special attention</h3>
+                  <h5>Are there matters of immediate attention?</h5>
                 <div class="form-check col-sm-1">
                   <input class="form-check-input" type="radio" name="special_matters" id="yes" value="yes" onclick="showHideissues()">
                   <label class="form-check-label">Yes</label>
@@ -437,6 +475,7 @@ if (isset($_SESSION["teachingFilled"])) {
                 <div class="form-group" id="issues">
                   <textarea class="form-control" rows="4" name="identified_matters" value="" placeholder="If the answer is Yes, identify them:"></textarea>
                 </div>
+            </div>
 </div>
 
             <div class="form-group">
@@ -444,16 +483,10 @@ if (isset($_SESSION["teachingFilled"])) {
               <button type="submit" class="mx-auto button1" name="monitoringQn">Submit</button>
               <!-- </a> -->
             </div>
-
-              
               </div>
             </div>
             
           </div>
-
-
-
-            
 
              <!-- fading evaluation submit-->
        <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -511,10 +544,10 @@ if (isset($_SESSION["teachingFilled"])) {
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
 
-  <script>
+  <!-- <script>
 $(document).ready(function(){
   console.log("ASDfa")
-  // document.getElementById("inform").style.display = "none";
+  document.getElementById("inform").style.display = "none";
   // hide submit by default
   $('#button1').hide();
   $("input[value='Yes']").click(function(){
@@ -528,6 +561,24 @@ $(document).ready(function(){
   $('#button1').hide();
   $("input[value='No']").click(function(){
     $("#button1").show();
+});
+});
+</script> -->
+
+<script>
+  $(document).ready(function(){
+  // hide submit by default
+  $('#button1').hide();
+  $("input[value='No']").click(function(){
+    $(".Submit").show();
+});
+});
+
+$(document).ready(function(){
+  // hide submit by default
+  $('#button1').hide();
+  $("input[value='Yes']").click(function(){
+    $(".Submit").show();
 });
 });
 </script>

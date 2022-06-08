@@ -84,7 +84,7 @@
               <p>INSTRUCTOR: <?php echo $partA["instructor"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Date: <?php
+              <p>DATE: <?php
                         $date = date('d-M-Y', strtotime($partA["date"]));
 
                         echo $date; ?> </p>
@@ -96,7 +96,7 @@
               <p>LECTURE VENUE: <?php echo $partA["venue"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Students programme:
+              <p>STUDENTS PROGRAMME:
                 <?php
                 foreach ($studentProgrammes as $key => $value) {
 
@@ -139,7 +139,6 @@
                 <div class="centre">
                   <!-- explanation for reason is no -->
                   <div class="alert alert-secondary">
-                    Explanation here incase reason is no
                     <ul>
                       <?php
                       foreach ($val["harassment_explanation"] as $key2 => $val2) {
@@ -185,7 +184,7 @@
 
 
           <div class="form-group">
-            <input type="button" id="rep" value="Download results" class="button2 btn_print">
+          <input type="button" id="rep" value="Print results" class="button1 btn_print">
           </div>
         </div>
     </section><!-- End Form Section -->

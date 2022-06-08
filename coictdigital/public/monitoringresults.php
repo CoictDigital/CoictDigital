@@ -22,10 +22,6 @@
   <?php
 require_once("../includes/db.php");
 
-// 
-
-// $result = mysql_query($query)
-
 ?>
   <!-- ======= Header ======= -->
   <?php
@@ -36,16 +32,9 @@ require_once("../includes/db.php");
 
 <?php
 // $sql = "SELECT * FROM courses";
-$sql = "SELECT * FROM teachingmonitoring_questions";
-$result=$conn->query($sql);
-// <?php echo $row['course_code']; ?>
-
-<!-- <div class="row" >
-  <div class="col-md-12">
-   <span class="badge alert-success" style="float: right; width: 100px;">HOD</span>
-  </div>
-</div> -->
-
+// $sql = "SELECT * FROM teachingmonitoring_questions";
+// $result=$conn->query($sql);
+?>
 <section id="evaluation" class="services">        
  <div class="container-fluid">           
    <div class="section-title">          
@@ -102,7 +91,7 @@ $result=$conn->query($sql);
 <!-- //new div section -->
         
         </div>
-        <div class="container">
+        <div class="container" id="present">
           <!-- startingtime -->
           <h4>Time management</h4>
           <div class="row">
@@ -142,6 +131,22 @@ $result=$conn->query($sql);
 
       </div>
 </section>
+
+
+
+<script src="https://kit.fontawesome.com/0cdec3100d.js" crossorigin="anonymous"></script>
+   <!-- main js file -->
+  <script src="assets/js/main.js"></script>
+  <!-- jQuery -->
+  <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+  <!-- Popper JS -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+  <!-- Bootstrap JS -->
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+
+
+
+  
 <!-- <?php                  
                  if ($result->num_rows > 0) {
                  while($row = $result->fetch_assoc()){
