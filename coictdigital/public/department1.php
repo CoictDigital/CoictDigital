@@ -4,26 +4,14 @@
 <head>
   <?php
   require_once("../includes/functions.php");
-
   require_once("../includes/headerContent.php");
   require_once("../includes/sessionStuffs.php");
-
-
-  //fetching evaluation data
-  $couses = fetchCourse();
-  $courseRes = [];
-  while ($row = $couses->fetch_assoc()) {
-    $row["totalResponses"] = getCourseResponse($row["course_code"]);
-    array_push($courseRes, $row);
-  }
-
+  require_once("../includes/db.php");
 
   ?>
-
 </head>
 
 <body>
-
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
@@ -33,8 +21,7 @@
   ?>
 
   <main id="main">
-
-    <!-- ======= Form Section ======= -->
+    <!-- ======= Main  Section ======= -->
     <section id="" class="services">
       <div class="container-fluid">
         <div class="section-title">
@@ -50,30 +37,67 @@
             <div class="card-body">
               <p class="card-title">Department of Computer Science and Engineering</p>
               <div class="row">
+                <!--------------- Study year ----------------------------------------------------------------->
                 <div class="col-sm-4">
+                    <?php 
+                       $query1 ="SELECT DISTINCT study_year FROM courses WHERE study_year>0";
+                       $result1 = $conn->query($query1);
+                       if($result1->num_rows> 0){
+                       $years= mysqli_fetch_all($result1, MYSQLI_ASSOC);
+                       }
+
+                    ?>
                   <select class="form-select" name="year" aria-label="Default select example">
-                    <option selected>Study Year</option>
-                    <option value="1">I</option>
-                    <option value="2">II</option>
-                    <option value="3">III</option>
-                    <option value="4">IV</option>
+                    <option>Study Year</option>
+                    <?php 
+						         foreach ($years as $year) {
+						        ?>
+                    <option value="<?php echo $year['study_year']; ?>"><?php echo $year['study_year']; ?></option>>
+                    <?php 
+						        	}
+						        ?>
                   </select>
                 </div>
-
+                <!--------------- Student programme ----------------------------------------------------------------->
                 <div class="col-sm-4">
+                <?php 
+                       $query2 ="SELECT student_programme FROM programme";
+                       $result2 = $conn->query($query2);
+                       if($result2->num_rows> 0){
+                       $programs= mysqli_fetch_all($result2, MYSQLI_ASSOC);
+                       }
+
+                    ?>
                   <select class="form-select" name="programme" aria-label="Default select example">
-                    <option selected>Student's Programme</option>
-                    <option value="BSc IN CS">BSc in Cs</option>
-                    <option value="2">BSc in BIT</option>
-                    <option value="3">BSc in CEIT</option>
+                    <option>Student's Programme</option>
+                    <?php 
+						         foreach ($programs as $program) {
+						        ?>
+                    <option value="<?php echo $program['student_programme']; ?>"><?php echo $program['student_programme']; ?></option>
+                    <?php 
+						        	}
+						        ?>
                   </select>
                 </div>
-
+               <!--------------- Semester -----------------------------------------------------------------> 
                 <div class="col-sm-4">
+                <?php 
+                       $query3 ="SELECT DISTINCT semester FROM courses";
+                       $result3 = $conn->query($query3);
+                       if($result3->num_rows> 0){
+                       $semesters= mysqli_fetch_all($result3, MYSQLI_ASSOC);
+                       }
+
+                    ?>
                   <select class="form-select" name="semester" aria-label="Default select example">
                     <option selected>Semester</option>
-                    <option value="1">I</option>
-                    <option value="2">II</option>
+                    <?php 
+						         foreach ($semesters as $semester) {
+						        ?>
+                    <option value="<?php echo $semester['semester']; ?>"><?php echo $semester['semester']; ?></option>
+                    <?php 
+						        	}
+						        ?>
                   </select>
                 </div>
               </div>
@@ -87,18 +111,22 @@
           <div class="card">
             <div class="card-body">
               <p class="card-title">Evaluation Results</p>
-            </div>
+               </div>
 
-            <div class="container-fluid mb-3">
+               <?php                  
+               //fetching evaluation data
+               $couses = fetchCourse();
+               $courseRes = [];
+               while ($row = $couses->fetch_assoc()) {
+               $row["totalResponses"] = getCourseResponse($row["course_code"]);
+               array_push($courseRes, $row);
+               }
+               ?>
 
-
-              <?php
-
-
-              foreach ($courseRes as $course) {
-              ?>
-
-
+                <div class="container-fluid mb-3">
+                  <?php 
+                     foreach ($courseRes as $course) {
+                  ?>
                 <div class="card mb-1">
                   <div class="card-body">
                     <div class="row">
@@ -132,16 +160,10 @@
               <?php
               }
               ?>
-
-
-
             </div>
           </div>
         </div>
-
-
-
-    </section>
+          </section>
 
 
 

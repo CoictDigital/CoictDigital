@@ -8,7 +8,6 @@
   require_once("../includes/headerContent.php");
   require_once("../includes/sessionStuffs.php");
   require_once("../includes/db.php");
-  require_once("../includes/fetchcoursecode.php");
 
 
 
@@ -17,14 +16,12 @@
   } else {
   }
 
-
   $programId = fetchProgramId($_SESSION["userData"]["student_programme"]);
-  
-
   // $programId = $programId["id"];
   $_SESSION["userData"]["programme_id"] = $programId;
+  $programId = $programId["id"];
+  
   ?>
-
 </head>
 
 <body>
@@ -65,16 +62,80 @@
 				<p class="text-center pt-3">Please select course</p>
   
 				<div class="mb-3">
+          <!----------------- computer science courses------------------------------------>
+          <?php
+             if ($_SESSION["userData"]["student_programme"] == "BSC IN CS") {
+                      
+                     
+                      $query ="SELECT course_code FROM programme_course WHERE id_programme=1";
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                      }
+          ?>
 				   <select class="form-select" aria-label="Default select example" name="course_code" required>
 					 <option>Course code</option>
 						  <?php 
 						  foreach ($options as $option) {
 						  ?>
 					 <option><?php echo $option['course_code']; ?> </option>
+              <?php 
+						  	}
+					    ?>    
+				   </select>
+           <?php 
+							}
+						  ?> 
+         <!----------------- computer engineering courses------------------------------------>
+         <?php
+             if ($_SESSION["userData"]["student_programme"] == "BSC IN CEIT") {
+                      
+                     
+                      $query ="SELECT course_code FROM programme_course WHERE id_programme=2";
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                      }
+          ?>
+				   <select class="form-select" aria-label="Default select example" name="course_code" required>
+					 <option>Course code</option>
 						  <?php 
+						  foreach ($options as $option) {
+						  ?>
+					 <option><?php echo $option['course_code']; ?> </option>
+           <?php 
 							}
 						  ?>    
 				   </select>
+           <?php 
+							}
+						  ?> 
+        <!----------------- BIT courses------------------------------------>
+        <?php
+             if ($_SESSION["userData"]["student_programme"] == "BSC IN BIT") {
+                      
+                     
+                      $query ="SELECT course_code FROM programme_course WHERE id_programme=3";
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                      }
+          ?>
+				   <select class="form-select" aria-label="Default select example" name="course_code" required>
+					 <option>Course code</option>
+						  <?php 
+						  foreach ($options as $option) {
+						  ?>
+					 <option><?php echo $option['course_code']; ?> </option>
+           <?php 
+							}
+						  ?>    
+				   </select>
+           <?php 
+							}
+						  ?> 
+
+          
 				</div>
   
 				<div class="text-center">

@@ -32,8 +32,8 @@ if (isset($_POST["login"])) {
 
     if ($allOkey) {
         $_SESSION["evaluationFilled"] = $result;
-        while($row=mysqli_fetch_assoc($result)){
-            echo $row;
+        while($filled=mysqli_fetch_assoc($result)){
+            echo $filled;
         }
         header("Location: public/courseevaluation.php");
     }
@@ -45,21 +45,6 @@ if (isset($_POST["login"])) {
         $_SESSION["studentFilledCount"] = $result;
         header("Location: public/courseevaluation.php");
     }
-// } elseif (isset($_POST["teaching"])) {
-//     $allOkey = true;
-//     $studyYear = $_POST["study_year"];
-//     $semester = $_POST["semester"];
-//     $programme = $_POST["student_programme"];
-//     $coursecode = $_POST["course_code"];
-//     $result = fetchteaching($studyYear, $semester, $programme, $coursecode);
-
-//     print_r($result);
-//     if ($allOkey) {
-//         $_SESSION["teachingFilled"] = $result;
-//         header("Location: public/monitoringresults.php");
-//     } else {
-//         echo "wrong";
-//     }
 
     
 } elseif (isset($_POST["monitoringQn"])) {
