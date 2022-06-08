@@ -23,11 +23,8 @@
   } else {
     header("Location: ./department2.php");
   }
-
   ?>
-
 </head>
-
 
 <body>
 
@@ -39,12 +36,8 @@
   require_once("../includes/leftNav.php");
   ?>
 
-
   <main id="main">
-
-
-    <!-- ======= Form Section ======= -->
-
+    <!-- ======= Results Section ======= -->
     <section id="evaluation" class="services">
       <div class="container-fluid" id="results">
         <div class="section-title">
@@ -54,7 +47,7 @@
           <h2>Undergraduate Programmes</h2>
         </div>
 
-        <div class="container">
+        <div class="p-3">
           <div class="row text-center">
             <h5>There are <span style="color: #0864af;"><?php echo $partA["totalResponse"]; ?></span> responses.</h5>
           </div>
@@ -314,40 +307,7 @@
   <!-- download results script -->
 
   <script type="text/javascript">
-    $(document).ready(function($) {
-
-      $(document).on('click', '.btn_print', function(event) {
-        event.preventDefault();
-
-        var element = document.getElementById('results');
-
-        //more custom settings
-        var opt = {
-          margin: 1,
-          filename: 'evaluationresults.pdf',
-          image: {
-            type: 'jpeg',
-            quality: 0.98
-          },
-          html2canvas: {
-            scale: 2
-          },
-          jsPDF: {
-            unit: 'in',
-            format: 'letter',
-            orientation: 'portrait'
-          }
-        };
-
-        // New Promise-based usage:
-        html2pdf().set(opt).from(element).save();
-
-
-      });
-
-
-
-    });
+   
   </script>
 
   <!-- html2pdf js file -->
@@ -364,6 +324,8 @@
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
   <!-- Chart Js-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js"></script>
+  <!-- jspdf Js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 
 </body>

@@ -32,36 +32,42 @@
 
         <div class="row">
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-briefcase"></i></div>
-            <h4 class="title"><a href="">Course Evaluation</a></h4>
-            <p class="description">Course evaluation is a short survey conducted by students at the end of a class or course of study. The evaluation form aims to collect general information on what each student liked and disliked most about the class with the goal of improving the educational experience for future students</p>
+          <div class="icon"><i class="fas fa-light fa-dna"></i></div>
+                        <h4 class="title">Course Evaluation</h4>
+                        <p class="description">
+                            Students can fill evaluation forms and view evaluation results for respective courses.Evaluation results are real time and can be seen by both students and staff.
+                        </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-            <h4 class="title"><a href="">Teaching Monitoring</a></h4>
-            <p class="description">Teaching monitoring is a vital element in improving the quality of education which simultaneously gives positive benefits to students' learning outcomes. The significance of teaching monitoring is to improve the quality of teaching done by the lecturers as the main basis improvement in teaching and learning processes</p>
+          <div class="icon"><i class="fas fa-thin fa-clipboard"></i></div>
+                        <h4 class="title">Alumni Records</h4>
+                        <p class="description">
+                            Alumni from the University of Dar es salaam can have accounts with their information after they graduate for easy contact from the University. </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="bi bi-bar-chart"></i></div>
-            <h4 class="title"><a href="">Alumni Record</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
+          <div class="icon"><i class="fas fa-thin fa-chalkboard"></i></div>
+                        <h4 class="title">Teaching Monitoring</h4>
+                        <p class="description">
+                            Teaching can be easily monitored from the system where class representatives fill monitoring forms that are submitted to the respective unit after every class </p>
+                    </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="bi bi-binoculars"></i></div>
-            <h4 class="title"><a href="">Exam Invigilation</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </div>
+          <div class="icon"><i class="fas fa-thin fa-book"></i></div>
+                        <h4 class="title">Course Allocation</h4>
+                        <p class="description">
+                            Course allocation for staff is made easy in the system.Staff can easily login into their accounts to see allocated courses and suggest edits where necessary.</p>
+                    </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon"><i class="bi bi-brightness-high"></i></div>
-            <h4 class="title"><a href="">Course Allocation</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-          </div>
-          <!-- <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+          <div class="icon"><i class="fas fa-thin fa-file"></i></div>
+                        <h4 class="title">Exam Invigilation</h4>
+                        <p class="description">
+                            Invigilators for exams are easily assigned through the system.Staff can see where they're assigned to invigilate and students can see who their invigilator is for the exams.</p>
+                    </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
             <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+            <h4 class="title"><a href="">Reports</a></h4>
             <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
           </div>
-        </div> -->
+        </div>
 
                     </p>
                 </div>

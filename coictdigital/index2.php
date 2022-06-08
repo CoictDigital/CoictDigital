@@ -1,6 +1,6 @@
 <?php
 
-$password = "secondyear";
+$password = "kheri";
 
 $hashed_password =
     password_hash($password, PASSWORD_DEFAULT);

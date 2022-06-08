@@ -314,7 +314,7 @@
           </form>
         </div>
 
-        <!-- fading evaluation submit-->
+        <!-- fading evaluation submit after response-->
         <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -328,7 +328,7 @@
                 <p>You and other <?php echo ($_SESSION["studentFilledCount"] - 1);
                                   echo $_SESSION["studentFilledCount"] - 1 > 1 ?  " students " : " student "   ?>have filled this form.</p>
 
-                <button type="submit" class="mx-auto button1"><a href="./index.php">Exit</a></button>
+                <button type="submit" class="button"><a href="./index.php">Exit</a></button>
               </div>
             </div>
           </div>
