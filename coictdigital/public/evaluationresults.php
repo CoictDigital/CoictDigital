@@ -39,7 +39,8 @@
   <main id="main">
     <!-- ======= Results Section ======= -->
     <section id="evaluation" class="services">
-      <div class="container-fluid" id="results">
+      <div class="container-fluid">
+        <div id="test">
         <div class="section-title">
           <h3>UNIVERSITY OF DAR ES SALAAM</h3>
           <h3>Quality Assurance Bureau (QAB)</h3>
@@ -174,30 +175,55 @@
 
           <!-- end here -->
 
-
-
-          <div class="form-group">
-          <input type="button" id="rep" value="Print results" class="button1 btn_print">
           </div>
-        </div>
+
+          <!-- <div id="editor" class="form-group">
+          <a href="javascript:generatePDF()"><button class="btn btn-primary" >Dowload PDF</button></a>
+          </div>
+        </div> -->
     </section><!-- End Form Section -->
-
-
+    
 
   </main>
   <!-- End #main -->
 
+      <!-- download results script -->
+  <script>
+    function generatePDF() {
+      var canvas = document.getElementById("test");      
+	    var doc = new jsPDF('landscape');
+  // page element which you want to print as PDF
+	 doc.fromHTML(canvas,20,5, {'width': 200},
+   
+	 function(a) 
+	  {
+	   doc.save("HTML2PDF.pdf");
+	 });
+   }
+  </script>
+    <!-- function generatePDF(a) {
+      var canvas = document.getElementById("test");
+      //create image from the div
+      var canvasImage = canvas.toDataURL('image/jpeg');
+      //image created must be turned to pdf
+      let pdf = new jsPDF('landscape');
+      pdf.setFontSize(20);
+      pdf.addImage(canvasImage, 'JPEG',10,10,150,100);
+      pdf.save('EvaluationResults.pdf');
+	 
+   } -->
+
+
+
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <!-- <footer id="footer">
     <div class="container">
-      <!-- <div class="copyright">
+      <div class="copyright">
         &copy; Copyright <strong><span>coictdigital@udsm.co.tz</span></strong>
-      </div> -->
+      </div>
 
     </div>
-  </footer><!-- End  Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
+  </footer>End  Footer -->
   <script src="./assets/js/plugins/chartjs.min.js"></script>
   <script>
     <?php
@@ -302,14 +328,6 @@
     <?php }  ?>
   </script>
 
-
-
-  <!-- download results script -->
-
-  <script type="text/javascript">
-   
-  </script>
-
   <!-- html2pdf js file -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"></script>
   <!-- fontawesome js file -->
@@ -324,8 +342,9 @@
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
   <!-- Chart Js-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js"></script>
-  <!-- jspdf Js-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- html2canvas & jspdf Js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" ></script>
 
 
 </body>
