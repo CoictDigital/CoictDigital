@@ -45,8 +45,6 @@ if (isset($_POST["login"])) {
         $_SESSION["studentFilledCount"] = $result;
         header("Location: public/courseevaluation.php");
     }
-<<<<<<< HEAD
-=======
 } elseif (isset($_POST["teaching"])) {
     $allOkey = true;
     // $studyYear = $_POST["study_year"];
@@ -62,7 +60,6 @@ if (isset($_POST["login"])) {
     } else {
         echo "wrong";
     }
->>>>>>> b755392a989b21fbd550c6e338aad92abbf5cdff
 
     
 } elseif (isset($_POST["monitoringQn"])) {

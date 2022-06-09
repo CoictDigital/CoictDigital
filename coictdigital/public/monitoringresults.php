@@ -94,7 +94,7 @@ $result = $conn->query($sql);// or die($conn->error);
               <p>Venue: <?php echo $row['venue']; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Venue capacity:</p>
+              <p>Venue capacity: <?php echo $row['venue_capacity']; ?></p>
             </div>
           </div>
 
@@ -116,10 +116,10 @@ $result = $conn->query($sql);// or die($conn->error);
             </div> -->
           </div>
 <!-- attendance -->
-          <h4>Attendance in class</h4>
+          <h4>Instructor's attendance in class</h4>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p value = "<?php echo $row['attendance']; ?>" id ="instructorattendance">Instructor's attendance state: <?php echo $row['attendance']; ?> </p>
+              <p value = "<?php echo $row['attendance']; ?>" id ="instructorattendance">Attendance state: <?php echo $row['attendance']; ?> </p>
             </div>
           <div class="row">
             <div class="col-sm-6 mb-1" id = "absencereason">
@@ -171,6 +171,7 @@ $result = $conn->query($sql);// or die($conn->error);
   <tr>
     
     <th>Venue condition</th>
+    
     <th>Rating</th>
     
   </tr>
