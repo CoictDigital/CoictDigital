@@ -1068,91 +1068,9 @@ h5{
   }
 }
 
-<<<<<<< HEAD
-@charset "UTF-8";
-
-body {
-  font-family: "Helvetica", sans-serif;
-  color: #000;
-}
-
-a {
-  color: #;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #f6b418;
-  text-decoration: none;
-}
-
-h1, h2, h3, h4, h6 {
-  font-family: "Helvetica", sans-serif;
-}
-
-/* evaluation form start*/
-
-h5{
-  font-family: "Helvetica", sans-serif;
-  font-size: 16px;
-  padding-bottom: 40px;
-  padding-top: 30px;
-  font-weight: bold;
-}
-
-.button1{
-  background-color:#0864af ;
-  border: none;
-  border-radius: 40px;
-  width: 120px;
-  height: 35px;
-  color: white;
-  }
-
-/* evaluation form end*/
-
-/* evaluation results start*/
-.chart{
-  width: 200px;
-  height: 250px;
-}
-
-/* evaluation results end*/
-
-.login {
-  margin-left: auto;
-  margin-right:auto;
-  width: 320px;
-  height: 400px;
-  color: #000000;
-  margin-top: 40px;
-  font-size: 15px;
-  }
-
-  .mb-3{
-    border: none;
-    border-radius: 40px;
-  }
- 
- .button{
-     background-color:#0864af ;
-     border: none;
-     border-radius: 40px;
-     width: 100px;
-     height: auto;
-     color: white;
-     margin-top: auto;
-     }
-
- .shadow{
-  box-shadow: 5px 5px 10px 2px rgba(0,0,0,.9);
-  
-  }
-=======
 /*----------------------------------------------------
       login form
 -----------------------------------------------------*/
->>>>>>> refs/remotes/origin/main
 
 .coict-image{
   color: #ffffff;
@@ -1168,48 +1086,5 @@ h5{
 
 .coict-image h1{
   text-align: center;
-<<<<<<< HEAD
-  width: 36px;
-  height: 36px;
-  transition: 0.3s;
-}
-
-.social-links a:hover {
-  background: #f6b418;
-  color: #fff;
-  text-decoration: none;
-} 
-#footer {
-  padding: 15px;
-  color: #fff;
-  font-size: 14px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  z-index: 9999;
-  background: #0864af;
-}
-
-#footer .copyright {
-  text-align: center;
-}
-
-#footer .credits {
-  padding-top: 5px;
-  text-align: center;
-  font-size: 13px;
-  color: #fff;
-}
-
-@media (max-width: 1199px) {
-  #footer {
-    position: static;
-    width: auto;
-    padding-right: 20px 15px;
-  }
-}
-=======
   padding-top: 35%;
 }
->>>>>>> refs/remotes/origin/main
