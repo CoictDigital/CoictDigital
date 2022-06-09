@@ -1,4 +1,16 @@
 @charset "UTF-8";
+/* monitoring */
+.note {
+  color: red;
+}
+.question{
+  padding-top: 10px;
+}
+h4{
+  padding-top: 10px;
+  font-size: 20px;
+}
+/* end of monitoring */
 
 body {
   font-family: "Helvetica", sans-serif;
@@ -25,11 +37,12 @@ h1, h2, h3, h4, h6 {
 h5{
   font-family: "Helvetica", sans-serif;
   font-size: 16px;
-  padding-bottom: 10px;
-  padding-top: 30px;
+  padding-bottom: 0px;
+  padding-top: 20px;
   font-style: italic;
   text-align: left;
 }
+
 
 .button1{
   background-color:#0864af ;
@@ -353,12 +366,7 @@ section {
   margin-bottom: 5px;
   
 }
-/* h3{
-  padding-top: 10px;
-}
-h5{
-  text-align: left;
-} */
+
 
 .section-title p {
   margin-bottom: 0;

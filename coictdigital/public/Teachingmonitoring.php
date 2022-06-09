@@ -4,19 +4,10 @@
 <head>
 
 <?php
-require_once '../includes/headerContent.php';
-require_once '../includes/sessionStuffs.php';
-require_once("../includes/db.php");
-// require_once("../includes/fetchvenue.php");
+require_once ("../includes/headerContent.php");
+require_once ("../includes/sessionStuffs.php");
+require_once ("../includes/db.php");
 require_once("../includes/fetchcoursecode.php");
-
-// if (isset($_SESSION["teachingFilled"])) {
-  
-//   echo "all good";
-// } else {
-//   header("Location: index.php");
-// }
-
 ?>
 
 
@@ -335,12 +326,11 @@ require_once("../includes/fetchcoursecode.php");
       <!-- teaching venue conditions -->
         <div class="question">
         <h3>Teaching venue conditions</h3>
-        <div class= "note">
+        <!-- <div class= "note">
           <h6><u>NOTE:</u></h6>
-        </div>
+        </div> -->
         <div class="form-group row">
-          <h5>Please rate the condition of the teaching room using the given standards. Put a tick in the appropiate box found on the extreme right.
-            1 = Very poor, 2 = Poor, 3 = Good, 4 = Very good, 5 = Excellent, NA = Not Applicable
+          <h5>Please rate the condition of the teaching venue. Put a tick in the appropiate box found on the extreme right.
           </h5>
         </div>
         <div class="form-group row">
@@ -349,112 +339,112 @@ require_once("../includes/fetchcoursecode.php");
             <thead class="table-secondary">
               <tr>
                 <th scope="col">Conditions</th>
-                <th scope="col">5</th>
-                <th scope="col">4</th>
-                <th scope="col">3</th>
-                <th scope="col">2</th>
-                <th scope="col">1</th>
-                <th scope="col">NA</th>
+                <th scope="col">Excellent</th>
+                <th scope="col">Very good</th>
+                <th scope="col">Good</th>
+                <th scope="col">Poor</th>
+                <th scope="col">Very poor</th>
+                <th scope="col">Not Applicable</th>
                 
               </tr>
             </thead>
             <tbody>
             <tr>
               <td>A. Sitting arrangements of students</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="Not Applicable" id="flexRadioDefault"></td>
               </tr>
 
              <tr>
               <td>B. Lighting</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="Not Applicable" id="flexRadioDefault"></td>
               </tr>        
                 <td>C. Chairs and Tables</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="Not Applicable" id="flexRadioDefault"></td>
               </tr>
 
               <tr>
                <td>D. Fixed LCD projector system (if any)</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="Not applicable" id="flexRadioDefault"></td>
               </tr>
 
               <tr>
                 <td>E. Display and Visibility</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="Not Applicable" id="flexRadioDefault"></td>
               </tr>
 
               <tr>
               <td>F. General physical condition of the room</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="Not applicable" id="flexRadioDefault"></td>
               </tr>
 
               <tr>
                 <td>G. Public address system (if any)</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="Not Applicable" id="flexRadioDefault"></td>
               </tr>
 
               <tr>
                 <td>H. Availability of brash and chalks/markers</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="Not Applicable" id="flexRadioDefault"></td>
               </tr>
 
               <tr>
                 <td>I. Use of whiteboard/blackboard</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="Not Applcable" id="flexRadioDefault"></td>
               </tr>
 
               <tr>
                 <td>J. Room ventilation</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="5" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="4" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="3" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="2" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="1" id="flexRadioDefault"></td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="NA" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="Excellent" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="Very good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="Good" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="Poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="Very poor" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="Not Applicable" id="flexRadioDefault"></td>
               </tr>
               
             </tbody>
