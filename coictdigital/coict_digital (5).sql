@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2022 at 07:20 PM
+-- Generation Time: Jun 09, 2022 at 08:41 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -36,31 +36,33 @@ CREATE TABLE `courses` (
   `department` varchar(200) DEFAULT NULL,
   `college` varchar(200) DEFAULT NULL,
   `assistant` varchar(100) DEFAULT NULL,
-  `semester` int(2) DEFAULT NULL
+  `semester` int(2) DEFAULT NULL,
+  `venue_capacity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`course_code`, `course_title`, `instructor`, `venue`, `class_size`, `department`, `college`, `assistant`, `semester`) VALUES
-(' MK 301', 'ENTREPRENEURSHIP', 'DR WINNIE NGUNI', 'YOMBO 5', 35, 'CSE', 'COICT', '', 2),
-('CS 334', 'PRINCIPLES OF OPERATING SYSTEM', 'DR. FATUMA SIMBA', 'B307', 244, 'CSE', 'COICT', NULL, 1),
-('CS 335', 'SOFTWARE ENGINEERING', 'Dr. JUMA H. LUNGO', 'DO1', 269, 'CSE', 'COICT', NULL, 1),
-('GM 300', 'STRATEGIC MANAGEMENT', 'Dr. WINFRIDA', 'YOMBO5', 350, 'CSE', 'COICT', NULL, 1),
-('IE 445', 'ENTREPRENEURSHIP FOR ENGINEERS', 'DR TAIFA', 'YOMBO 5', 244, 'CSE', 'COICT', NULL, 2),
-('IS 335', 'FYP', 'DR COSMAS MUSHI', 'COICT', 244, 'CSE', 'COICT', NULL, 2),
-('IS 336', 'PRINCIPLE OF SYSTEM SECURITY', 'DR HELLEN MAZIKU', 'B302', 244, 'CSE', 'COICT', NULL, 2),
-('IS 337', 'MOBILE COMPUTING', 'DR JIMMY MBELWA', 'B 305', 244, 'CSE', 'COICT', NULL, 2),
-('IS 343', 'PRACTICAL TRAINING 2', 'DR. GODFREY JUSTO', 'B302', 415, 'CSE', 'COICT', NULL, 1),
-('IS 344', 'HUMAN COMPUTER INTERACTION', 'DR. JOSEPH MUSHI', 'B310', 244, 'CSE', 'COICT', NULL, 1),
-('IS 365', 'ARTIFICIAL INTELLIGENCE', 'DR CHAMBUA', 'B305', 244, 'CSE', 'COICT', NULL, 2),
-('IS 368', 'DATA MINING AND WAREHOUSING', 'DR KENNEDY', 'B307', 244, 'CSE', 'COICT', NULL, 2),
-('IS 369', 'IT AUDIT AND CONTROLS', 'Dr. ARON R. KONDORO', 'B305', 108, 'CSE', 'COICT', NULL, 1),
-('IS 384', 'SOFTWARE PROJECT MANAGEMENT', 'DR MATHEW MNDEME', 'B307', 35, 'CSE', 'COICT', '', 2),
-('IS 385', 'BUSINESS INTELLIGENCE', 'DR GODFREY N. JUSTO', 'B307', 35, 'CSE', 'COICT', '', 2),
-('IS 386', 'ENTERPRISE SYSTEMS', 'DR HONEST C. KIMARO', 'B 307', 35, 'CSE', 'COICT', '', 2),
-('IS 387', 'ENVIRONMENTAL MANAGEMENT INFORMATION SYSTEM', 'Dr. WILFRED SENYONI', 'B307', 35, 'CSE', 'COICT', NULL, 1);
+INSERT INTO `courses` (`course_code`, `course_title`, `instructor`, `venue`, `class_size`, `department`, `college`, `assistant`, `semester`, `venue_capacity`) VALUES
+('', '', NULL, NULL, 0, NULL, NULL, NULL, NULL, 300),
+(' MK 301', 'ENTREPRENEURSHIP', 'DR WINNIE NGUNI', 'YOMBO5', 35, 'CSE', 'COICT', '', 2, 500),
+('CS 334', 'PRINCIPLES OF OPERATING SYSTEM', 'DR. FATUMA SIMBA', 'B307', 244, 'CSE', 'COICT', NULL, 1, 260),
+('CS 335', 'SOFTWARE ENGINEERING', 'Dr. JUMA H. LUNGO', 'DO1', 269, 'CSE', 'COICT', NULL, 1, 300),
+('GM 300', 'STRATEGIC MANAGEMENT', 'Dr. WINFRIDA', 'YOMBO5', 350, 'CSE', 'COICT', NULL, 1, 500),
+('IE 445', 'ENTREPRENEURSHIP FOR ENGINEERS', 'DR TAIFA', 'YOMBO5', 244, 'CSE', 'COICT', NULL, 2, 500),
+('IS 335', 'FYP', 'DR COSMAS MUSHI', 'COICT', 244, 'CSE', 'COICT', NULL, 2, 0),
+('IS 336', 'PRINCIPLE OF SYSTEM SECURITY', 'DR HELLEN MAZIKU', 'B302', 244, 'CSE', 'COICT', NULL, 2, 200),
+('IS 337', 'MOBILE COMPUTING', 'DR JIMMY MBELWA', 'B305', 244, 'CSE', 'COICT', NULL, 2, 250),
+('IS 343', 'PRACTICAL TRAINING 2', 'DR. GODFREY JUSTO', 'B302', 415, 'CSE', 'COICT', NULL, 1, 200),
+('IS 344', 'HUMAN COMPUTER INTERACTION', 'DR. JOSEPH MUSHI', 'B310', 244, 'CSE', 'COICT', NULL, 1, 270),
+('IS 365', 'ARTIFICIAL INTELLIGENCE', 'DR CHAMBUA', 'B305', 244, 'CSE', 'COICT', NULL, 2, 250),
+('IS 368', 'DATA MINING AND WAREHOUSING', 'DR KENNEDY', 'B307', 244, 'CSE', 'COICT', NULL, 2, 260),
+('IS 369', 'IT AUDIT AND CONTROLS', 'Dr. ARON R. KONDORO', 'B305', 108, 'CSE', 'COICT', NULL, 1, 250),
+('IS 384', 'SOFTWARE PROJECT MANAGEMENT', 'DR MATHEW MNDEME', 'B307', 35, 'CSE', 'COICT', '', 2, 260),
+('IS 385', 'BUSINESS INTELLIGENCE', 'DR GODFREY N. JUSTO', 'B307', 35, 'CSE', 'COICT', '', 2, 260),
+('IS 386', 'ENTERPRISE SYSTEMS', 'DR HONEST C. KIMARO', 'B307', 35, 'CSE', 'COICT', '', 2, 260),
+('IS 387', 'ENVIRONMENTAL MANAGEMENT INFORMATION SYSTEM', 'Dr. WILFRED SENYONI', 'B307', 35, 'CSE', 'COICT', NULL, 1, 260);
 
 -- --------------------------------------------------------
 
@@ -166,11 +168,11 @@ CREATE TABLE `samples` (
 
 CREATE TABLE `teachingmonitoring_questions` (
   `id` int(11) NOT NULL,
+  `semester` int(11) NOT NULL,
   `course_code` varchar(200) NOT NULL,
   `starting_time` time NOT NULL,
   `ending_time` time NOT NULL,
   `venue` varchar(150) NOT NULL,
-  `venue_capacity` int(200) NOT NULL,
   `Number_of_students` int(10) NOT NULL,
   `attendance` varchar(200) NOT NULL,
   `reason_for_absence` varchar(200) DEFAULT NULL,
@@ -192,28 +194,23 @@ CREATE TABLE `teachingmonitoring_questions` (
   `i` varchar(200) NOT NULL,
   `j` varchar(200) NOT NULL,
   `special_matters` varchar(200) NOT NULL,
-  `specialmatters_explanation` text DEFAULT NULL
+  `specialmatters_explanation` text DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `teachingmonitoring_questions`
 --
 
-INSERT INTO `teachingmonitoring_questions` (`id`, `course_code`, `starting_time`, `ending_time`, `venue`, `venue_capacity`, `Number_of_students`, `attendance`, `reason_for_absence`, `student_informed`, `session_starting_time`, `reason_for_startinglate`, `session_type`, `teaching_mode`, `teaching_method`, `medium_of_instruction`, `a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `special_matters`, `specialmatters_explanation`) VALUES
-(27, '', '10:01:00', '10:02:00', 'venue45', 8, 0, 'absent', 'Out of university campus, travelled', 'no', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(28, '', '10:03:00', '10:03:00', '8', 8, 0, 'present', '', '', 'started_on_time', '', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in English and English is used through out', '3', '3', '3', '2', '2', '2', '2', '2', '2', '2', 'yes', 'electricity shortage'),
-(29, '', '12:55:00', '12:55:00', '', 100, 78, 'present', '', '', 'started_on_time', '', 'Practical', 'Student centred', 'Conventional overhead projector', 'Course in English but code-switching to Kiswahili', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'yes', 'no electricity'),
-(30, '', '13:01:00', '13:01:00', 'B302', 78, 89, 'present', '', '', 'Started late between 15-30 minutes', 'Sitting arrangement', 'Lecture', 'Student centred', 'Student Presentation and practical', 'Course in English but code-switching to Kiswahili', '1', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'no', ''),
-(31, '', '15:59:00', '15:59:00', 'B310', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(32, '', '15:59:00', '15:59:00', 'B310', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(33, '', '15:59:00', '15:59:00', 'B310', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(34, '', '15:59:00', '15:59:00', 'B310', 89, 90, 'present', 'Out of university campus, travelled', 'yes', 'started_on_time', '', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in Kiswahili but code-switching to English', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'yes', 'no umeme'),
-(35, '', '16:17:00', '16:17:00', 'B307', 45, 34, 'present', '', '', 'started_on_time', '', 'Seminar', 'Student centred', 'Student Presentation and practical', 'Course in Kiswahili but code-switching to English', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'no', ''),
-(36, '', '16:17:00', '16:17:00', 'B307', 45, 34, 'present', '', '', 'started_on_time', '', 'Seminar', 'Student centred', 'Student Presentation and practical', 'Course in Kiswahili but code-switching to English', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'no', ''),
-(37, '', '22:35:00', '22:35:00', 'B307', 34, 45, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(38, '', '22:38:00', '22:38:00', 'B307', 89, 90, 'absent', 'Out of university campus, travelled', 'yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(39, '', '13:35:00', '13:35:00', 'B302', 1, 9, 'absent', 'Instructor has attended a meeting', 'no', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(40, '', '14:59:00', '14:59:00', 'B307', 89, 9, 'present', '', '', 'started_on_time', '', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in English but code-switching to Kiswahili', '4', '3', '4', '3', '3', '3', '3', '3', '3', '3', 'yes', 'no electricity');
+INSERT INTO `teachingmonitoring_questions` (`id`, `semester`, `course_code`, `starting_time`, `ending_time`, `venue`, `Number_of_students`, `attendance`, `reason_for_absence`, `student_informed`, `session_starting_time`, `reason_for_startinglate`, `session_type`, `teaching_mode`, `teaching_method`, `medium_of_instruction`, `a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `special_matters`, `specialmatters_explanation`, `date`) VALUES
+(51, 0, 'GM 300', '21:25:00', '23:25:00', 'YOMBO5', 90, 'absent', 'Sickness', 'Yes', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2022-06-09 09:34:32'),
+(52, 0, 'IS 385', '12:23:00', '14:23:00', 'B307', 56, 'present', '', '', 'Started late between 15-30 minutes', 'No initial teaching preparations', 'Practical', 'Student centred', 'Conventional overhead projector', 'Course in English but code-switching to Kiswahili', '5', '4', '4', '4', '4', '4', '4', '4', '4', '4', 'yes', 'no electricity', '2022-06-09 09:34:32'),
+(53, 1, 'IS 384', '21:23:00', '15:22:00', 'B307', 2, 'present', '', '', 'started_on_time', '', 'Lecture', 'Student centred', 'Power point presentation with LCD projector', '', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', 'yes', 'n kml,lkijuygtftg', '2022-06-09 09:34:32'),
+(54, 2, 'CS 335', '21:09:00', '23:09:00', 'DO1', 78, 'present', '', '', 'Started late between 15-30 minutes', 'Change of Venue due to collision', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in English but code-switching to Kiswahili', '4', '3', '2', '2', '2', '2', '1', '1', '1', '1', 'no', '', '2022-06-09 09:34:32'),
+(55, 2, 'IE 445', '02:47:00', '02:48:00', 'YOMBO5', 1, 'absent', 'Out of university campus, travelled', 'No', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2022-06-09 09:34:32'),
+(56, 2, 'IS 387', '04:17:00', '04:17:00', 'B310', 23, 'present', '', '', 'started_on_time', '', 'Other', 'Student lead with instructor supervisor', 'Other', 'Course in Kiswahili but code-switching to English', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'yes', 'students are not attentive', '2022-06-09 09:34:32'),
+(57, 1, 'IS 387', '04:29:00', '04:29:00', 'B310', 34, 'absent', 'Not informed', 'No', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2022-06-09 09:34:32'),
+(58, 1, 'IS 343', '04:51:00', '04:51:00', 'DO1', 400, 'present', '', '', 'Started late between 15-30 minutes', 'late arrival of the students', 'Practical', 'Student centred', 'Student Presentation and practical', 'Course in English and English is used through out', 'Excellent', 'VEry good', 'Good', 'Poor', 'Very poor', 'Not applicable', 'Very poor', 'Poor', 'Good', 'Very good', 'no', '', '2022-06-09 09:34:32');
 
 -- --------------------------------------------------------
 
@@ -448,7 +445,7 @@ ALTER TABLE `samples`
 -- AUTO_INCREMENT for table `teachingmonitoring_questions`
 --
 ALTER TABLE `teachingmonitoring_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -470,7 +467,8 @@ ALTER TABLE `venue`
 -- Constraints for table `teachingmonitoring_questions`
 --
 ALTER TABLE `teachingmonitoring_questions`
-  ADD CONSTRAINT `teachingmonitoring_questions_ibfk_1` FOREIGN KEY (`course_code`) REFERENCES `courses` (`course_code`);
+  ADD CONSTRAINT `teachingmonitoring_questions_ibfk_1` FOREIGN KEY (`course_code`) REFERENCES `courses` (`course_code`),
+  ADD CONSTRAINT `teachingmonitoring_questions_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `courses` (`course_code`);
 
 --
 -- Constraints for table `users`
