@@ -111,9 +111,9 @@ $result = $conn->query($sql);// or die($conn->error);
             <div class="col-sm-6 mb-1">
               <p>Class size: <?php echo $row['class_size']; ?> </p>
             </div>
-            <!-- <div class="col-sm-6 mb-1">
-              
-            </div> -->
+            <div class="col-sm-6 mb-1">
+              <p>Evaluation time: <?php echo $row['date']; ?> </p>
+            </div> 
           </div>
 <!-- attendance -->
           <h4>Instructor's attendance in class</h4>
@@ -166,7 +166,7 @@ $result = $conn->query($sql);// or die($conn->error);
 
 <!-- teaching venue -->
           <h4>Teaching venue conditions</h4>
-
+<h5>Below are the ratings of the teaching venue condition:</h5>
           <table>
   <tr>
     
