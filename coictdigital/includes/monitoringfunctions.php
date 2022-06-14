@@ -2,6 +2,22 @@
 //require_once("functionHelpers.php");
 require_once("db.php");
 
+
+function getStudyYear($courseCode)
+{
+    $courseNo = explode(" ", $courseCode)[1];
+
+    if ($courseNo < 200) {
+        return 1;
+    } else if ($courseNo < 300) {
+        return 2;
+    } else if ($courseNo < 400) {
+        return 3;
+    } else {
+        return 4;
+    }
+}
+
 function fetchviewresult($course)
 {
     global $conn;
@@ -83,4 +99,3 @@ function confirm_query($conn, $result_set)
 
 //     ];
 // }
-?>

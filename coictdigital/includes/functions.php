@@ -29,10 +29,57 @@ function getCourseResponse($course_code)
     return $count;
 }
 
-function fetchCourse()
+function fetchCourse($year = "", $prog = "", $sem = "")
 {
     global $conn;
-    $sql = "SELECT DISTINCT course_code,assistant,class_size,college,course_title,department,instructor,semester,venue FROM `courses`";
+
+    $sql = "";
+    if ($year != "" && $prog != "" && $sem != "") { //all are year,prog and sem given
+        $sql = "SELECT DISTINCT `courses`.`course_code`, assistant,class_size,college,course_title,department,instructor,semester,venue 
+        FROM `courses`,`programme`,`programme_course`
+         WHERE `programme`.`student_programme`='$prog' AND
+          `programme`.`id`=`programme_course`.`id_programme`
+           AND `programme_course`.`course_code`=`courses`.`course_code`
+            AND `study_year`='$year' AND
+         `semester`='$sem'";
+    } else if ($year != "" && $prog != "" && $sem == "") { //only sem not given
+        $sql = "SELECT DISTINCT `courses`.`course_code`, assistant,class_size,college,course_title,department,instructor,semester,venue 
+        FROM `courses`,`programme`,`programme_course`
+         WHERE `programme`.`student_programme`='$prog' AND
+          `programme`.`id`=`programme_course`.`id_programme`
+           AND `programme_course`.`course_code`=`courses`.`course_code`
+            AND `study_year`='$year'";
+    } else if ($year != "" && $sem != "" && $prog == "") { //only prog not given
+        $sql = "SELECT DISTINCT `courses`.`course_code`, assistant,class_size,college,course_title,department,instructor,semester,venue 
+        FROM `courses`,`programme`,`programme_course`
+         WHERE  `study_year`='$year' AND
+         `semester`='$sem'";
+    } else if ($prog != "" && $sem != "" && $year == "") { //only year not given
+        $sql = "SELECT DISTINCT `courses`.`course_code`, assistant,class_size,college,course_title,department,instructor,semester,venue 
+        FROM `courses`,`programme`,`programme_course`
+         WHERE `programme`.`student_programme`='$prog' AND
+          `programme`.`id`=`programme_course`.`id_programme`
+           AND `programme_course`.`course_code`=`courses`.`course_code` AND `semester`='$sem'";
+        //only one is set
+    } else if ($year != "" && $prog == "" && $sem == "") { //only year given
+        $sql = "SELECT DISTINCT `courses`.`course_code`, assistant,class_size,college,course_title,department,instructor,semester,venue 
+        FROM `courses`,`programme`,`programme_course`
+         WHERE  `study_year`='$year'";
+    } else if ($sem != "" && $year == "" && $prog == "") { //only sem given
+        $sql = "SELECT DISTINCT `courses`.`course_code`, assistant,class_size,college,course_title,department,instructor,semester,venue 
+        FROM `courses`,`programme`,`programme_course`
+         WHERE `semester`='$sem'";
+    } else if ($prog != "" && $sem == "" && $year == "") { //only prog given
+        $sql = "SELECT DISTINCT `courses`.`course_code`, assistant,class_size,college,course_title,department,instructor,semester,venue 
+        FROM `courses`,`programme`,`programme_course`
+         WHERE `programme`.`student_programme`='$prog' AND
+          `programme`.`id`=`programme_course`.`id_programme`
+           AND `programme_course`.`course_code`=`courses`.`course_code`";
+    } else {    //none is given
+        //none is set
+        $sql = "SELECT DISTINCT course_code,assistant,class_size,college,course_title,department,instructor,semester,venue FROM `courses`";
+    }
+
     $results = mysqli_query($conn, $sql);
     return $results;
 }
@@ -302,7 +349,7 @@ function fetchProceedEvalutation($course)
 }
 
 
-function fetchteaching($semester,$coursecode)
+function fetchteaching($semester, $coursecode)
 {
     global $conn;
     //write query
