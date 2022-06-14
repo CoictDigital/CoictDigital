@@ -40,6 +40,7 @@
                         echo "leacturerinvigilation.php";
                       }
                       ?>" class="nav-link scrollto"> <span>Exam Invigilation</span></a></li>
+        <li><a href="./../logout.php" class="nav-link scrollto"> <span>Logout</span></a></li>
       
       </ul>
     </nav><!-- .nav-menu -->
