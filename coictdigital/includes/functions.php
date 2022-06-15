@@ -339,3 +339,22 @@ function redirect($location)
     header("Location: $location");
     exit;
 }
+
+// function inserts()
+// {
+// 	global $conn;
+
+// 	// receive all input values from the form
+//   $course = e($_POST["course"]);
+//   $instructor = e($_POST["instructor"]);
+//   $semester = e($_POST["semester"]);
+//   $TA = e($_POST["TA"]);
+//   $assistant= e($_POST["assistant"]);
+ 
+
+//   $sql = "INSERT INTO `course_allocation` (`instructor`,`course_name`,`semister`,`TA`,`assistant`) VALUES ('$instructor','$course','$semester','$TA ','$assistant')";
+//   $result =  mysqli_query($conn, $sql);
+//   confirm_query($conn, $result);
+ 
+
+// }

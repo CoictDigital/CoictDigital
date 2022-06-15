@@ -57,3 +57,25 @@ if (isset($_POST["login"])) {
         header("Location: public/courseevaluation.php");
     }
 }
+// elseif (isset($_POST["allocate"])) {
+//     $allOkey = true;
+//     $result = inserts($_POST);
+//     print_r($result);
+
+//     if($result){
+//         header("location: index.php");
+//           exit();
+//       }
+//       else{
+//           echo	"wrong code";
+//       }
+    
+
+    // if ($allOkey) {
+    //     $_SESSION["evaluationFilled"] = $result;
+    //     while($filled=mysqli_fetch_assoc($result)){
+    //         echo $filled;
+    //     }
+    //     header("Location: public/courseevaluation.php");
+    // }
+    //}

@@ -6,7 +6,7 @@
 <?php
 require_once("../includes/db.php");
 require_once("../includes/headerContent.php");
-require_once("../includes/sessionStuffs.php");
+// require_once("../includes/sessionStuffs.php");
 
 unset($_SESSION["studentFilledCount"]);
 
@@ -36,7 +36,7 @@ unset($_SESSION["studentFilledCount"]);
           <div class="section-title">
             <h2>COURSE ALLOCATION</h2>
           </div>
-          <div class="container">
+          <div class="">
           <form>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Search</label>
@@ -59,11 +59,10 @@ unset($_SESSION["studentFilledCount"]);
                 <thead class="table-secondary">
                   <tr>
                   <th scope="col">Instructors</th>
-                      <th scope="col">NO  of Course </th>
-                      <th scope="col">Course Code</th>
                       <th scope="col">Course Name</th>
-                      <th scope="col">Program</th>
+                       <th scope="col">Evaluator</th> 
                       <th scope="col">Practical	/	Tutorial	Assistant</th> 
+                      <th scope="col">semester</th>
                       <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -81,14 +80,11 @@ unset($_SESSION["studentFilledCount"]);
                  
                 ?>
                   <tr>
-                   <td><?php echo $row['instructor']; ?></td>
-                   <td><?php echo $row['no_of_course']; ?></td>
-                   <td><?php echo $row['course_code']; ?></td>
-                   <td><?php echo $row['course_name']; ?></td>
-                   <td><?php echo $row['program']; ?></td>
-                   
-                   <td></td>
-                   <!-- <td><?php echo $row['#']; ?></td> -->
+                        <td><?php echo $row['instructor']; ?></td>
+                         <td><?php echo $row['course_name']; ?></td>
+                         <td><?php echo $row['evaluator']; ?></td>
+                         <td><?php echo $row['assistant']; ?></td>
+                         <td><?php echo$row['semester']; ?></td>
                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
                   </tr>
                   <?php }

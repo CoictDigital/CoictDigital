@@ -594,7 +594,6 @@ section {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
->>>>>>> ff7132a44bbdbf4140cf7fb62eb6e698d8baf199
 @charset "UTF-8";
 
 body {
@@ -1087,4 +1086,18 @@ h5{
 .coict-image h1{
   text-align: center;
   padding-top: 35%;
+}
+
+.allocationbutton {
+  background-color: #1c87c9;
+  border: 0;
+  border-radius: 0.5px;
+  color:#0864af  ;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
 }

@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 <head>
   
 <?php
-    require_once("../includes/db.php");
-    require_once("../includes/headerContent.php");
-    require_once("../includes/sessionStuffs.php");
-    require_once("../public/addnewallocation.php");
-  //  session_start();
- 
-
-  unset($_SESSION["studentFilledCount"]);
-
-
+   require_once("./../includes/functions.php");
+   require_once("../includes/headerContent.php");
+   require_once("../includes/scripts.php");
+  //  require_once("../includes/sessionStuffs.php");
+   require_once("../includes/db.php");
+  
   ?>
 
 </head>
@@ -61,8 +68,7 @@
 </div>
             
           </div>
-          <div class="container">
-          <form>
+          <div class="p-3">
             <div class="form-group row">
               <label class="col-sm-2 col-form-label"><i class="fa fa-search" aria-hidden="true"></i>Search</label>
               <div class="col-sm-5 mb-1">
@@ -74,13 +80,14 @@
 
            
      <form action="addnewallocation.php" method="POST">
-        <div class="container">
+        <div class="p-3">
         <div class="">
         <div class="card">
-          
-  <div class="card-body">
-  <?php
-           if(isset($_SESSION[ 'status']))
+              
+      <div class="card-body">
+      <?php
+
+              if(isset($_SESSION[ 'status']))
            {
              echo "<h4>".$_SESSION[ 'status']."</h4>";
              unset($_SESSION[ 'status']);
@@ -88,6 +95,13 @@
           ?>
     <p class="card-title">Allocate Courses for respective Instructor</p>
     <div class="row">
+    <?php 
+    $query ="SELECT * FROM courses";
+    $result = $conn->query($query);
+    if($result->num_rows> 0){
+      $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+    ?>
     <div class="col-sm-4">
                 <select class="form-select" name="course" aria-label="Default select example" >
                       
@@ -118,9 +132,9 @@
               </select>
               </div>
               <div class="col-sm-4">
-              <select class="form-select" name="TA" aria-label="Default select example">
+              <select class="form-select" name="supervisor" aria-label="Default select example">
                       
-                      <option value="">Select TA</option>
+                      <option value="">Select evaluator</option>
                       <?php 
                       foreach ($options as $option) {
                       ?>
@@ -153,82 +167,103 @@
                   <option value="2">II</option>
                 </select>
               </div>
-              <center><button  type="submit" name="allocate"  class="mx-auto button"  style="height:30px; width:70px; border-radius: 5px; ">allocate</button></center>
+             </div>
+            </div>    
+             </div>
+           </div>
           </div>
-            </div>
-            
-           
-            <!-- <button type="submit" name="submit" class="mx-auto button" >Allocate</button> -->
-          </div>
-          </div>
-         
-          </div>
-          
+        <center><button type="submit" name="allocate" class="mx-auto button" style="height:30px; width:70px; border-radius: 5px; ">Allocate</button> </center>       
      </form>
 
-           <div class="form-group row">
+           <div class="">
               <h5>Table of course allocation for staff</h5>
             </div>
-            <div class="form-group row">
-              <div class="centre">
+            <div class="limiter">
+            <div class="container-table100">
+        <div class="wrap-table100">
+        <div class="table100 ver1 m-b-110">
+        <div class="table100-head">
+        <table>
+          <thead>
+            <tr class="row100 head">
+            <th class="cell100 column1">Instructors</th>
+            <th class="cell100 column2">Course Name</th>
+            <th class="cell100 column3">supervisor</th>
+            <th class="cell100 column4">Practical	/	Tutorial	Assistant</th>
+            <th class="cell100 column5">semester</th>
+            <th class="cell100 column6">Action</th>
+            </tr>
+           </thead>
+</table>
+</div>
+<div class="table100-body js-pscroll">
+<table>
+<tbody>
+<?php 
+                 $sql = "SELECT * FROM course_allocation" ;
+                 $result = $conn->query($sql);
+                  if ($result->num_rows > 0) {
+                        
+                        while($row = $result->fetch_assoc()){
+                            extract($row);
+                              
+              ?>
+            <tr>
+                          <td class="cell100 column1"><?php echo $row['instructor']; ?></td>
+                          <td class="cell100 column2"><?php echo $row['course_name']; ?></td>
+                            <td class="cell100 column3"><?php echo $row['evaluator']; ?></td>
+                            <td class="cell100 column4"><?php echo $row['assistant']; ?></td>
+                            <td class="cell100 column5"><?php echo$row['semester']; ?></td>
+                             <td class="cell100 column6"><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                    </tr>
+                      <?php } 
+                  }
+                 ?> 
+          </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+              <!-- <div class="centre">
               <table class="table table-sm">
                 <thead class="table-secondary">
                   <tr>
-                  <th scope="col">Instructors</th>
-                      <!-- <th scope="col">NO  of Course </th> -->
-                      <!-- <th scope="col">Course Code</th> -->
-                      <th scope="col">Course Name</th>
-                       <th scope="col"> TA</th> 
-                      <th scope="col">Practical	/	Tutorial	Assistant</th> 
-                      <th scope="col">semister</th>
-                      <th scope="col">Action</th>
+                      <th class="cell100 column1">Instructors</th>
+                      <th class="cell100 column2">Course Name</th>
+                       <th class="cell100 column3">supervisor</th> 
+                      <th class="cell100 column4">Practical	/	Tutorial	Assistant</th> 
+                      <th class="cell100 column5">semester</th>
+                      <th class="cell100 column6">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                <?php 
-      //           $sql = "select * from course_allocation" ;
-      //           $result = $conn->query($sql);
-                 
-      //  // Performing insert query execution
-      //  // here our table name is college
-      
-           
-
-
-      //            if ($result->num_rows > 0) {
-      //            while($row = $result->fetch_assoc()){
-      //           extract($row);
-                 
-      //           ?>
-
-              
-      //             <tr>
-      //              <td><?php //echo $row['instructor']; ?></td>
-      //              <!-- <td><?php// echo $row['no_of_course']; ?></td> -->
-      //              <!-- <td><?php //echo $row['course_code']; ?></td> -->
-      //              <td><?php //echo$row['course_name']; ?></td>
-      //              <!-- <td><?php //echo $row['program']; ?></td> -->
-      //              <td></td>
-      //              <td></td>
-      //              <td></td>
-      //              <!-- <td><?php //echo $row['#']; ?></td> -->
-      //              <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-      //             </tr>
-      //             <?php //}
-      //            }
-      //            ?> 
+                      <?php 
+                            $sql = "SELECT * FROM course_allocation" ;
+                            $result = $conn->query($sql);
+                          if ($result->num_rows > 0) {
+                            
+                              while($row = $result->fetch_assoc()){
+                                  extract($row);
+                              
+                            ?>
+                              <tr>
+                              <td class="cell100 column1"><?php echo $row['instructor']; ?></td>
+                              <td class="cell100 column2"><?php echo $row['course_name']; ?></td>
+                                <td class="cell100 column3"><?php echo $row['evaluator']; ?></td>
+                            <td class="cell100 column4"><?php echo $row['assistant']; ?></td>
+                            <td class="cell100 column5"><?php echo$row['semester']; ?></td>
+                              <td class="cell100 column6"><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                              </tr>
+                      <?php } 
+                  }
+                 ?> 
                 
                 </tbody>
               </table>
-            </div>
-            </div>
-
-          </form>
-        </div>
-
-
-
-      </div>
+            </div> -->
+        
     </section><!-- End Form Section -->
     <!-- fading addnew form-->
     <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -308,7 +343,7 @@
                 <div class="form-group">
                   <input type="text" class="form-control" id="coursename" placeholder="New Course Name">
                 </div>
-                <button type="submit" class="mx-auto button">Save</button>
+                <input type="submit" name="allocate" class="mx-auto button">
               </form>
             </div>
           </div>
@@ -345,5 +380,169 @@
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
 </body>
-
+<style>
+/* Table codes */
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+  }
+  button:hover {
+  cursor: pointer;
+  } 
+iframe {
+    border: none !important;
+    } 
+    /*
+  [ Scroll bar ]*/
+  .js-pscroll {
+    position: relative;
+    overflow: hidden;
+    }
+    .table100 .ps__rail-y {
+    width: 9px;
+    background-color: none;
+    opacity: 1 !important;
+    right: 5px;
+    }
+    .table100 .ps__rail-y::before {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: #ebebeb;
+    border-radius: 5px;
+    width: 100%;
+    height: calc(100% - 30px);
+    left: 0;
+    top: 15px;
+    }
+    .table100 .ps__rail-y .ps__thumb-y {
+    width: 100%;
+    right: 0;
+    background-color: transparent;
+    opacity: 1 !important;
+    }
+    .table100 .ps__rail-y .ps__thumb-y::before {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: #cccccc;
+    border-radius: 5px;
+    width: 100%;
+    height: calc(100% - 30px);
+    left: 0;
+    top: 15px;
+    }
+    
+    .container-table100 {
+    width: 100%;
+    min-height: 100vh;
+    background:  #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 33px 30px;
+    }
+    .wrap-table100 {
+    width: 960px;
+    border-radius: 10px;
+    overflow: hidden;
+    }
+    .table100 {
+      background-color: #fff;
+      }
+      table {
+      width: 100%;
+      }
+      th, td {
+      font-weight: unset;
+      padding-right: 10px;
+      }
+      .column1 {
+      width: 25%;
+      padding-left: 40px;
+      }
+      .column2 {
+      width: 15%;
+      }
+      .column3 {
+      width: 22%;
+      }
+      .column4 {
+      width: 15%;
+      }
+      .column5 {
+      width: 10%;
+      }
+      .column6 {
+      width:13%;
+      }
+      .table100-head th {
+      padding-top: 18px;
+      padding-bottom: 18px;
+      }
+      .table100-body td {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      }
+      /*==================================================================
+      [ Fix header ]*/
+      .table100 {
+      position: relative;
+      padding-top: 60px;
+      }
+      .table100-head {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      }
+      .table100-body {
+      max-height: 585px;
+      overflow: auto;
+      }
+      /*==================================================================
+      [ Ver1 ]*/
+      .table100.ver1 th {
+      font-family: Lato-Bold;
+      font-size: 18px;
+      color: #fff;
+      line-height: 1.4;
+      background-color: #6c7ae0;
+      }
+      .table100.ver1 td {
+      font-family: Lato-Regular;
+      font-size: 15px;
+      color: #808080;
+      line-height: 1.4;
+      }
+      .table100.ver1 .table100-body tr:nth-child(even) {
+      background-color: #f8f6ff;
+      }
+      /*---------------------------------------------*/
+      .table100.ver1 {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+      -webkit-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+      -o-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+      -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+      }
+      .table100.ver1 .ps__rail-y {
+      right: 5px;
+      }
+      .table100.ver1 .ps__rail-y::before {
+      background-color: #ebebeb;
+      }
+      .table100.ver1 .ps__rail-y .ps__thumb-y::before {
+      background-color: #cccccc;
+      }
+    /*=================================================================*/
+  </style>
 </html>

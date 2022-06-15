@@ -36,7 +36,7 @@ unset($_SESSION["studentFilledCount"]);
           <div class="section-title">
             <h2>EXAM INVIGILATION</h2>
           </div>
-          <div class="container">
+          <div class="">
           <form>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label"> <i class="fa fa-search" aria-hidden="true"></i>Search</label>
