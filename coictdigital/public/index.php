@@ -27,7 +27,7 @@
 
         <div class="section-title">
           <h2>CoICT Digital</h2>
-          <p>A management information system that manages alumni records, monitors teaching and learning processes, course evaluation by students, allocattion of courses and exam invigilation to lecturers.</p>
+          <p>A management information system that manages course evaluation by students at the end of the semester, alumni records, monitors teaching and learning processes, allocation of courses and exam invigilators.</p>
         </div>
 
         <div class="row">
@@ -35,7 +35,7 @@
           <div class="icon"><i class="fas fa-light fa-dna"></i></div>
                         <h4 class="title">Course Evaluation</h4>
                         <p class="description">
-                            Students can fill evaluation forms and view evaluation results for respective courses. The results are real time and can be seen by both students and staff.
+                            At the end of the semester, courses are evaluated by students. The evaluation results are real time and reports are generated for the management.
                         </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">

@@ -49,7 +49,7 @@
         </div>
 
         <div class="p-3">
-          <div class="row text-center">
+          <div class="row">
             <h5>There are <span style="color: #0864af;"><?php echo $partA["totalResponse"]; ?></span> responses.</h5>
           </div>
           <div class="form-group row">
@@ -170,17 +170,14 @@
 
           <!-- pie chart and explanation box for the qtn on sexual harassment / its javascript is below with element id= mychart  -->
 
-
-
-
           <!-- end here -->
 
           </div>
 
-          <!-- <div id="editor" class="form-group">
+          <div id="editor" class="form-group">
           <a href="javascript:generatePDF()"><button class="btn btn-primary" >Dowload PDF</button></a>
           </div>
-        </div> -->
+        </div>
     </section><!-- End Form Section -->
     
 
@@ -201,29 +198,8 @@
 	 });
    }
   </script>
-    <!-- function generatePDF(a) {
-      var canvas = document.getElementById("test");
-      //create image from the div
-      var canvasImage = canvas.toDataURL('image/jpeg');
-      //image created must be turned to pdf
-      let pdf = new jsPDF('landscape');
-      pdf.setFontSize(20);
-      pdf.addImage(canvasImage, 'JPEG',10,10,150,100);
-      pdf.save('EvaluationResults.pdf');
-	 
-   } -->
 
-
-
-  <!-- ======= Footer ======= -->
-  <!-- <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>coictdigital@udsm.co.tz</span></strong>
-      </div>
-
-    </div>
-  </footer>End  Footer -->
+<!---------------- CHARTS --------------------------->
   <script src="./assets/js/plugins/chartjs.min.js"></script>
   <script>
     <?php
