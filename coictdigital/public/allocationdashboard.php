@@ -6,7 +6,7 @@
 <?php
 require_once("../includes/db.php");
 require_once("../includes/headerContent.php");
-// require_once("../includes/sessionStuffs.php");
+require_once("../includes/sessionStuffs.php");
 
 unset($_SESSION["studentFilledCount"]);
 
@@ -40,7 +40,7 @@ unset($_SESSION["studentFilledCount"]);
           <form>
               <H3>Hellow,</H3>
 
-              <B>Dr.Mlaki</B>
+              <B>Dr.Mlaki</B><?php echo $_SESSION['$userdata']; ?>
               <div><P> You have been allocated to  <h4>COURSE</h4></P>
                  <div> PRACTICAL ASSISTANT: </div>
                  <div> EVALUATOR: </div>
