@@ -111,6 +111,33 @@ require_once("../includes/fetchcoursecode.php");
       </div>
     </div>
 
+    <div class="row mb-3">
+        <label for="venue" class="col-sm-2 col-form-label">Week</label>
+        <div class="col-sm-10">
+       <select class="form-select" aria-label="Default select example" name="week" required>
+        <option hidden disabled selected value> -- Select week --</option>
+        <option>Week no.</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+       </select>
+      </div>
+    </div>
+
+    
+
     <!-- select course -->
     <div class="row mb-3">
         <label for="venue" class="col-sm-2 col-form-label">Course</label>
@@ -145,9 +172,7 @@ require_once("../includes/fetchcoursecode.php");
        if ($row['venue']!=$i) {
         $i=0;
            $i= $row['venue']
-        <option value="<?php echo $row['venue']; ?>">
-        <?php echo $row['venue']; ?>
-      </option>
+        <option value="<?php echo $row['venue']; ?>"><?php echo $row['venue']; ?></option>
        }
           <?php
              }

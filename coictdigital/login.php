@@ -45,7 +45,21 @@ if (isset($_POST["login"])) {
         $_SESSION["studentFilledCount"] = $result;
         header("Location: public/courseevaluation.php");
     }
+} elseif (isset($_POST["teaching"])) {
+    $allOkey = true;
+    // $studyYear = $_POST["study_year"];
+    $semester = $_POST["semester"];
+    // $programme = $_POST["student_programme"];
+    $coursecode = $_POST["course_code"];
+    $result = fetchteaching($semester,$coursecode);
 
+    print_r($result);
+    if ($allOkey) {
+        $_SESSION["teachingFilled"] = $result;
+        header("Location: public/monitoringresults.php?courseCode=$coursecode");
+    } else {
+        echo "wrong";
+    }
     
 } elseif (isset($_POST["monitoringQn"])) {
     $allOkey = true;
