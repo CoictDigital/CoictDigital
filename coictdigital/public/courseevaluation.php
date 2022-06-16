@@ -339,20 +339,6 @@
   </main>
   <!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <!-- <div class="copyright">
-        &copy; Copyright <strong><span>coictdigital@udsm.co.tz</span></strong>
-      </div> -->
-
-    </div>
-  </footer><!-- End  Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
-
-
-
   <?php
 
   require_once("./../includes/scripts.php");

@@ -1,31 +1,12 @@
 <?php
 require_once("../includes/db.php");
 
-
-
-?>
-
-<body>
-	
-	
-
-
-
-<?php 
     $query ="SELECT * FROM courses";
     $result = $conn->query($query);
     if($result->num_rows> 0){
       $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
-?>
-<?php 
-// update courses table from course allocation
-// $query ="UPDATE courses
-// INNER JOIN course_allocation ON (courses.instructor = course_allocation.instructor)
-// SET courses.course_title = course_allocation.course_name";
 
-?>
-<?php
 $semester ="";
 $course="";
 $instructor ="";
@@ -40,27 +21,24 @@ $invigilator="";
 
 
 if(isset($_POST["allocate"])){
-//  inserts();
 
-// function inserts()
-// {
 	global $conn;
-
 	// receive all input values from the form
   $course = e($_POST["course"]);
   $instructor = e($_POST["instructor"]);
-  $semester = e($_POST["semester"]);
-  $supervisor = e($_POST["supervisor"]);
+  $supervisor = e($_POST["supervisor"]);  
   $assistant= e($_POST["assistant"]);
+  $semester = e($_POST["semester"]);  
  
-  $sql = "INSERT INTO `course_allocation` (`instructor`,`course_name`,`semester`,`supervisor`,`assistant`) VALUES ('$instructor','$course','$semester','$supervisor','$assistant')";
-  $result =  mysqli_query($conn, $sql);
+  $sql = "INSERT INTO `course_allocation` (`course_name`,`instructor`,`evaluator`,`assistant`,`semester`) VALUES
+   ('$course','$instructor','$supervisor','$assistant','$semester')";
 
- if($result){
+  $result =  mysqli_query($conn, $sql);
+  if($result){
   header("location: courseallocation.php");
     exit();
-}
-else{
+ }
+ else{
     echo	"wrong code";
 }
 }
