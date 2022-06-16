@@ -42,7 +42,7 @@ if(isset($_REQUEST["id"]) && !empty(trim($_REQUEST["id"]))){
 
 <!-- ======= Header ======= -->
 <?php
-// require_once("../includes/leftNav.php");
+require_once("../includes/leftNav.php");
 ?>
 
 <main id="main">
