@@ -39,51 +39,19 @@
 
 
   <main id="main">
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="dropdown nav-link">
-          <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            User Profile
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item text-dark" href="#">
-              <p>Change Password</p>
-            </a>
-          </div>
+        <!-- ======= Form Section ======= -->
+       <section id="evaluation" class="services">
+      <div class="container-fluid">
+      <div class="section-title">
+          <h3>UNIVERSITY OF DAR ES SALAAM</h3>
+          <h3>Course Allocation Management</h3>
+          <h2>Undergraduate Programmes</h2>
         </div>
       </div>
-    </div>
-       <!-- ======= Form Section ======= -->
-       <section id="allocation" class="services">
-        <div class="container-fluid">            
-         <div class="section-title">
-         <section id="" class="services">
-      <div class="container-fluid">
-        <div class="section-title">
-          <h3>UNIVERSITY OF DAR ES SALAAM</h3>
-          <h2>Undergraduate Programmes</h2>
-          <h2>COURSE ALLOCATION</h2>   
-        </div>
-</div>
-            
-          </div>
-          <div class="p-3">
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label"><i class="fa fa-search" aria-hidden="true"></i>Search</label>
-              <div class="col-sm-5 mb-1">
-                <input type="text" class="form-control">
-              </div>
-             
-
-            </div>
-
-           
+   
      <form action="addnewallocation.php" method="POST">
-        <div class="p-3">
-        <div class="">
-        <div class="card">
-              
+        <div class="p-4">
+        <div class="card">              
       <div class="card-body">
       <?php
 
@@ -93,8 +61,8 @@
              unset($_SESSION[ 'status']);
            }
           ?>
-    <p class="card-title">Allocate Courses for respective Instructor</p>
-    <div class="row">
+    <p class="card-title">Allocation of courses to instructors</p>
+    <div class="row p-2">
     <?php 
     $query ="SELECT * FROM courses";
     $result = $conn->query($query);
@@ -134,7 +102,7 @@
               <div class="col-sm-4">
               <select class="form-select" name="supervisor" aria-label="Default select example">
                       
-                      <option value="">Select evaluator</option>
+                      <option value="">Select Evaluator</option>
                       <?php 
                       foreach ($options as $option) {
                       ?>
@@ -145,10 +113,12 @@
                             
               </select>
               </div>
+                      </div>
+              <div class="row p-2">
               <div class="col-sm-4">
               <select class="form-select" name="assistant" aria-label="Default select example">
                       
-                      <option value="">Select Practical Assistant</option>
+                      <option value="">Select PracticalS Assistant</option>
                       <?php 
                       foreach ($options as $option) {
                       ?>
@@ -162,107 +132,70 @@
 
               <div class="col-sm-4">
               <select class="form-select" name="semester" aria-label="Default select example">
-                  <option value="">Semester</option>
+                  <option value="">Select Semester</option>
                   <option value="1">I</option>
                   <option value="2">II</option>
                 </select>
               </div>
-             </div>
+              </div>
+
             </div>    
              </div>
            </div>
-          </div>
-        <center><button type="submit" name="allocate" class="mx-auto button" style="height:30px; width:70px; border-radius: 5px; ">Allocate</button> </center>       
+        <center><button type="submit" name="allocate" class="btn btn-primary">Allocate</button> </center>    
      </form>
 
-           <div class="">
-              <h5>Table of course allocation for staff</h5>
-            </div>
-            <div class="limiter">
-            <div class="container-table100">
-        <div class="wrap-table100">
-        <div class="table100 ver1 m-b-110">
-        <div class="table100-head">
-        <table>
-          <thead>
-            <tr class="row100 head">
-            <th class="cell100 column1">Instructors</th>
-            <th class="cell100 column2">Course Name</th>
-            <th class="cell100 column3">supervisor</th>
-            <th class="cell100 column4">Practical	/	Tutorial	Assistant</th>
-            <th class="cell100 column5">semester</th>
-            <th class="cell100 column6">Action</th>
-            </tr>
-           </thead>
-</table>
-</div>
-<div class="table100-body js-pscroll">
-<table>
-<tbody>
-<?php 
-                 $sql = "SELECT * FROM course_allocation" ;
-                 $result = $conn->query($sql);
-                  if ($result->num_rows > 0) {
-                        
-                        while($row = $result->fetch_assoc()){
-                            extract($row);
-                              
-              ?>
-            <tr>
-                          <td class="cell100 column1"><?php echo $row['instructor']; ?></td>
-                          <td class="cell100 column2"><?php echo $row['course_name']; ?></td>
-                            <td class="cell100 column3"><?php echo $row['evaluator']; ?></td>
-                            <td class="cell100 column4"><?php echo $row['assistant']; ?></td>
-                            <td class="cell100 column5"><?php echo$row['semester']; ?></td>
-                             <td class="cell100 column6"><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                    </tr>
-                      <?php } 
-                  }
-                 ?> 
-          </tbody>
-            </table>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-              <!-- <div class="centre">
-              <table class="table table-sm">
-                <thead class="table-secondary">
+     <!--------------table of staff-------------------------------------------------------------->
+     <div class="p-4">
+     <div class="card"> 
+     <div class="card-body">
+     <p class="card-title">Allocated Instructors</p>
+     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+    <th class="th-lg">Instructors</th>
+    <th class="th-lg">Course Name</th>
+    <th class="th-lg">Evaluator</th>
+    <th class="th-lg">Practical	/	Tutorial	Assistant</th>
+    <th class="th-lg">Semester</th>
+    <th class="th-lg">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+                <?php   
+                $sql = "select * from course_allocation" ;
+              //   $sql = "SELECT id, firstname, lastname FROM MyGuests";
+              //  $result = $conn->query($sql);
+
+                $result = $conn->query($sql);
+
+                 if ($result->num_rows > 0) {
+                 while($row = $result->fetch_assoc()){
+                extract($row);
+                 
+                ?>
                   <tr>
-                      <th class="cell100 column1">Instructors</th>
-                      <th class="cell100 column2">Course Name</th>
-                       <th class="cell100 column3">supervisor</th> 
-                      <th class="cell100 column4">Practical	/	Tutorial	Assistant</th> 
-                      <th class="cell100 column5">semester</th>
-                      <th class="cell100 column6">Action</th>
+                  <td ><?php echo $row['instructor']; ?></td>
+                  <td ><?php echo $row['course_name']; ?></td>
+                  <td ><?php echo $row['evaluator']; ?></td>
+                  <td ><?php echo $row['assistant']; ?></td>
+                  <td ><?php echo$row['semester']; ?></td>
+                  <td ><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
                   </tr>
-                </thead>
-                <tbody>
-                      <?php 
-                            $sql = "SELECT * FROM course_allocation" ;
-                            $result = $conn->query($sql);
-                          if ($result->num_rows > 0) {
-                            
-                              while($row = $result->fetch_assoc()){
-                                  extract($row);
-                              
-                            ?>
-                              <tr>
-                              <td class="cell100 column1"><?php echo $row['instructor']; ?></td>
-                              <td class="cell100 column2"><?php echo $row['course_name']; ?></td>
-                                <td class="cell100 column3"><?php echo $row['evaluator']; ?></td>
-                            <td class="cell100 column4"><?php echo $row['assistant']; ?></td>
-                            <td class="cell100 column5"><?php echo$row['semester']; ?></td>
-                              <td class="cell100 column6"><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                              </tr>
-                      <?php } 
-                  }
+                  <?php }
+                 }
                  ?> 
                 
+                      
+                     
+                    </tr>
                 </tbody>
-              </table>
-            </div> -->
+</table>
+</div>
+</div>
+</div>
+
+         
         
     </section><!-- End Form Section -->
     <!-- fading addnew form-->

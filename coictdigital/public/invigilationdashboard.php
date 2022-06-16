@@ -71,10 +71,27 @@ unset($_SESSION["studentFilledCount"]);
                     <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="assistantname"placeholder="Assistant Name">
+                  <li>
+                    <ul>
+                    <input type="radio" id="time" name="time" value=""
+                              checked>
+                        <label for="available">I will not be available at the moment</label>
+                    </ul>
+                    <ul>
+                    <input type="radio" id="Sick" name="sick" value=""
+                              >
+                        <label for="sick">I am sick at the Moment</label>
+                    </ul>
+                  </li>
+                        
+                       
+                        
                   </div>
+                  
                   <div class="form-group">
-                    <input type="text" class="form-control" id="coursename" placeholder="Course Name">
+                 <p>Any other Reasons</p>
+                    <textarea rows="4" cols="50" name="comment" form="usrform">
+                  Enter text here...</textarea>
                   </div>
                  
                   </div>
@@ -162,5 +179,14 @@ unset($_SESSION["studentFilledCount"]);
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
 </body>
+<style>
+  .label {
+    font: 1rem 'Fira Sans', sans-serif;
+}
 
+.input {
+    margin: .4rem;
+}
+
+</style>
 </html>

@@ -33,7 +33,7 @@
        <div class="col-sm-6 coict-image">
            <div class="coict-text">			
 				<h1>CoICT Digital</h1>
-				<p>Innovative Information System</p>
+				<p>Management Information System</p>
            </div>
 		</div>
 

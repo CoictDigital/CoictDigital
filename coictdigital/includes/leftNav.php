@@ -14,6 +14,8 @@
                         echo "department1.php";
                       } else if ($_SESSION["userData"]["role"] == 1) {
                         echo "evaluation1.php";
+                      } else if ($_SESSION["userData"]["role"] == 3) {
+                        echo "index.php";
                       }
                       ?>" class="nav-link scrollto"> <span>Course Evaluation</span></a></li>
         <li><a href="alumnirecords.php" class="nav-link scrollto"><span>Alumni Records</span></a></li>
@@ -23,6 +25,8 @@
                         echo "teachingresults.php";
                       } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "Teachingmonitoring.php";
+                      } else if ($_SESSION["userData"]["role"] == 1) {
+                        echo "index.php";
                       }
                       ?>" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
                       
