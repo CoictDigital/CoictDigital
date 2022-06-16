@@ -6,7 +6,7 @@
 <?php
 require_once("../includes/db.php");
 require_once("../includes/headerContent.php");
-// require_once("../includes/sessionStuffs.php");
+require_once("../includes/sessionStuffs.php");
 
 unset($_SESSION["studentFilledCount"]);
 
@@ -32,66 +32,41 @@ unset($_SESSION["studentFilledCount"]);
        <!-- ======= Form Section ======= -->
        <section id="invigilation" class="services">
         <div class="container-fluid">            
-          <span class="badge alert-success" style="float: right;">Admin</span>
+          
           <div class="section-title">
-            <h2>MY INVIGILATION</h2>
+            <h2>MY ALLOCATION</h2>
           </div>
           <div class="">
           <form>
-              Hellow,
+              <H3>Hellow,</H3>
 
-              Dr.Mlaki
-              <div><P> You have been assigned to Invigilate <h4>COICT,CS </h4>students.</P>
-                 <div> ASSISTANT(S): Tina ,Angella</div>
-                  <div>VENUE: D01</div> 
-                  <div>TIME: 1030 to 1230</div> 
+              <B>Dr.Mlaki</B><?php echo $_SESSION['$userdata']; ?>
+              <div><P> You have been allocated to  <h4>COURSE</h4></P>
+                 <div> PRACTICAL ASSISTANT: </div>
+                 <div> EVALUATOR: </div>
+                 
+                  <div>SEMESTER: </div> 
 
+
+                  
+                  <!-- <a href="http://" target="_blank" rel="noopener noreferrer">VIEW HISTORY</a> 
+              <a href="http://" target="_blank" rel="noopener noreferrer">OTHER ALLOCATION</a> -->
                 </div>
-                <a href="#declineModal"  data-toggle="modal" data-target="#declineModal" > <button type="submit"  class="mx-auto button">CANCEL</button></a>
-                  <button type="submit" formaction="http://localhost/coictdigital/coictdigital/public/acceptinvigilation.php" class="mx-auto button">ACCEPT</button>
-             <!-- <button type="submit" class="mx-auto button" >CANCEL</button> -->
-             <!-- <button type="submit" class="mx-auto button" >ACCEPT</button> -->
+                <button type="submit" formaction="http://localhost/coictdigital/coictdigital/public/previewhistory.php" class="allocationbutton">VIEW HISTORY</button>
+                    <button type="submit" formaction="http://localhost/coictdigital/coictdigital/public/lecturerallocation.php" class="allocationbutton">OTHER ALLOCATION</button>
           </form>
         </div>
-        <div class="modal fade" id="declineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-title text-center">
-                <h4>Reasons For Decline</h4>
-              </div>
-              <div class="d-flex flex-column text-center">
-                <form>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="assistantname"placeholder="Assistant Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursename" placeholder="Course Name">
-                  </div>
-                 
-                  </div>
-                  <button type="submit" class="mx-auto button" formaction="http://localhost/coictdigital/coictdigital/public/declineinvigilation.php" >SEND</button>
-                </form>
-              </div>
-            </div>
-          </div>
-           </div>
-       </div>
+
+
+        
+        </div>
       </section><!-- End Form Section -->
 
       <!-- end of fading edit form-->
 
 
     <!-- ======= Contact Section ======= -->
-    <!-- <section id="contact" class="contact">
+    <section id="contact" class="contact">
       <div class="container">
 
         <div class="section-title">
@@ -129,7 +104,7 @@ unset($_SESSION["studentFilledCount"]);
           </div>
       </div>
     </div>
-    </section> -->
+    </section>
 
 
 

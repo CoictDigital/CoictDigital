@@ -34,18 +34,14 @@
                       if ($_SESSION["userData"]["role"] == 2) {
                         echo "courseallocation.php";
                       } else if ($_SESSION["userData"]["role"] == 3) {
-                        echo "lecturerallocation.php";
-                      } else if ($_SESSION["userData"]["role"] == 1) {
-                        echo "index.php";
+                        echo "allocationdashboard.php";
                       }
                       ?>" class="nav-link scrollto"> <span>Course Allocation</span></a></li>
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
                         echo "examinvigilation.php";
                       } else if ($_SESSION["userData"]["role"] == 3) {
-                        echo "leacturerinvigilation.php";
-                      } else if ($_SESSION["userData"]["role"] == 1) {
-                        echo "index.php";
+                        echo "invigilationdashboard.php";
                       }
                       ?>" class="nav-link scrollto"> <span>Exam Invigilation</span></a></li>
         <li><a href="./../logout.php" class="nav-link scrollto"> <span>Logout</span></a></li>
