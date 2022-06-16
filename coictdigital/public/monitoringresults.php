@@ -42,6 +42,11 @@
        header('Location: ./index.php');
    }
    ?>
+
+<!-- for venue chart -->
+<!-- <canvas id="myChart" width="1000" height="600"></canvas> -->
+
+
   <!-- ======= Header ======= -->
 
   <?php require_once '../includes/leftNav.php'; 
@@ -60,7 +65,8 @@ $result = $conn->query($sql);// or die($conn->error);
 
 
 <section id="evaluation" class="services">        
- <div class="container-fluid">           
+ <div class="container-fluid"> 
+  <div id = "test">          
    <div class="section-title">          
      <h3>UNIVERSITY OF DAR ES SALAAM</h3>         
      <h3>Quality Assurance Bureau (QAB)</h3>
@@ -229,8 +235,25 @@ $result = $conn->query($sql);// or die($conn->error);
 </table>
 <!-- special matters -->
           <h4>Matters of immediate attention</h4>
-        </div>
 
+          <?php
+          
+$t = $row["special_matters"];
+
+if ($t == "no") {
+  echo "There are no matters of immediate response";
+} else {
+  echo "Identified matters: "; 
+
+  echo $row['specialmatters_explanation'];
+}
+?>
+                     
+        </div>
+</div>
+<div id="editor" class="form-group">
+          <a href="javascript:generatePDF()"><button class="btn btn-primary" >Dowload PDF</button></a>
+          </div>
       </div>
       
 </section>
@@ -240,13 +263,37 @@ $result = $conn->query($sql);// or die($conn->error);
 <script src="https://kit.fontawesome.com/0cdec3100d.js" crossorigin="anonymous"></script>
    <!-- main js file -->
   <script src="assets/js/main.js"></script>
+   <!-- html2canvas & jspdf Js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" ></script>
+
+  <!-- html2pdf js file -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"></script>
   <!-- jQuery -->
   <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
   <!-- Popper JS -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
   <!-- Bootstrap JS -->
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
-
+  <!-- script for chart -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+<!-- canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" ></script>
+<!-- //download report -->
+  <script>
+    function generatePDF() {
+      var canvas = document.getElementById("test");      
+	    var doc = new jsPDF('landscape');
+  // page element which you want to print as PDF
+	 doc.fromHTML(canvas,20,5, {'width': 200},
+   
+	 function(a) 
+	  {
+	   doc.save("HTML2PDF.pdf");
+	 });
+   }
+  </script>
 <!-- //script for instructor's attendance -->
 <script>
    
