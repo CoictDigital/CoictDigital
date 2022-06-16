@@ -13,11 +13,11 @@
     <!-- ======= Mobile nav toggle button ======= -->
     <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
-    <!-- ======= Header ======= -->
-    <?php
-    require_once("../includes/leftNav.php");
-    ?>
-    <!-- ======= End Header  ======= -->    
+   <!-- ======= Header ======= -->
+   <?php
+  require_once("../includes/leftNav.php");
+  ?>
+  <!-- ======= Header ======= -->  
 
     <main id="main">
 
@@ -27,7 +27,8 @@
 
         <div class="section-title">
           <h2>CoICT Digital</h2>
-          <p>A management information system that manages course evaluation by students at the end of the semester, alumni records, monitors teaching and learning processes, allocation of courses and exam invigilators.</p>
+          <p>A management information system that manages course evaluation by students at the end of the semester, alumni 
+            information once they graduate, monitors teaching and learning processes, allocation of courses and exam invigilators to staff in the college.</p>
         </div>
 
         <div class="row">
@@ -35,26 +36,30 @@
           <div class="icon"><i class="fas fa-light fa-dna"></i></div>
                         <h4 class="title">Course Evaluation</h4>
                         <p class="description">
-                            At the end of the semester, courses are evaluated by students. The evaluation results are real time and reports are generated for the management.
+                            At the end of the semester, courses are evaluated by students. The evaluation results are real time and
+                             reports are generated for the management.
                         </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
           <div class="icon"><i class="fas fa-thin fa-clipboard"></i></div>
                         <h4 class="title">Alumni Records</h4>
                         <p class="description">
-                             Alumni records provide information on the employment status of the alumni and can be used by the the college to analyse its quality of education. </p>
+                             Alumni records provide information on the employment status of the alumni and can be used by the the college 
+                             to analyse its quality of education. </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
           <div class="icon"><i class="fas fa-thin fa-chalkboard"></i></div>
                         <h4 class="title">Teaching Monitoring</h4>
                         <p class="description">
-                        Teaching monitoring is a vital element in improving the quality of education done by the lecturers to monitor the teaching and learning process.</p>
+                        Teaching monitoring is a vital element in improving the quality of education done by the lecturers to monitor the 
+                        teaching and learning process.</p>
                     </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
           <div class="icon"><i class="fas fa-thin fa-book"></i></div>
                         <h4 class="title">Course Allocation</h4>
                         <p class="description">
-                            The head of department allocates courses to lecturers who can view their allocation and suggest change of allocation where necessary.</p>
+                            The head of department allocates courses to lecturers who can view their allocation and suggest change of 
+                            allocation where necessary.</p>
                     </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
           <div class="icon"><i class="fas fa-thin fa-file"></i></div>
@@ -63,9 +68,9 @@
                             The head of department assigns lecturers exams to invigilate including the venue and time. Lecturers and students can view the exam invigilation details.</p>
                     </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-            <h4 class="title"><a href="">Reports</a></h4>
-            <p class="description">Useful reports can be generated from the system that are used to analyse different responses and views from the users.</p>
+          <div class="icon"><i class="fas fa-thin fa-clipboard"></i></div>
+            <h4 class="title">Reports</h4>
+            <p class="description">Useful reports can be generated from the system that are used to analyse different responses and views from both students and staff.</p>
           </div>
         </div>
 

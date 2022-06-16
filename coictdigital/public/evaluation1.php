@@ -67,7 +67,7 @@
              if ($_SESSION["userData"]["student_programme"] == "BSC IN CS") {
                       
                      
-                      $query ="SELECT course_code FROM programme_course WHERE id_programme=1";
+                      $query ="SELECT distinct course_code FROM programme_course WHERE id_programme=1";
                       $result = $conn->query($query);
                       if($result->num_rows> 0){
                         $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -91,7 +91,7 @@
              if ($_SESSION["userData"]["student_programme"] == "BSC IN CEIT") {
                       
                      
-                      $query ="SELECT course_code FROM programme_course WHERE id_programme=2";
+                      $query ="SELECT Distinct course_code FROM programme_course WHERE id_programme=2";
                       $result = $conn->query($query);
                       if($result->num_rows> 0){
                         $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -115,7 +115,7 @@
              if ($_SESSION["userData"]["student_programme"] == "BSC IN BIT") {
                       
                      
-                      $query ="SELECT course_code FROM programme_course WHERE id_programme=3";
+                      $query ="SELECT Distinct course_code FROM programme_course WHERE id_programme=3";
                       $result = $conn->query($query);
                       if($result->num_rows> 0){
                         $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
