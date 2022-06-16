@@ -7,7 +7,7 @@ function fetchStudentProgrammes($courseCode)
     global $conn;
     $studentProgrammes = [];
 
-    $sql = "SELECT programme.student_programme FROM programme,programme_course WHERE programme_course.course_code='$courseCode' AND programme.id=programme_course.id_programme";
+    $sql = "SELECT Distinct programme.student_programme FROM programme,programme_course WHERE programme_course.course_code='$courseCode' AND programme.id=programme_course.id_programme";
     $results = mysqli_query($conn, $sql);
     if ($results) {
         while ($row = mysqli_fetch_assoc($results)) {

@@ -38,10 +38,11 @@
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
-  <!-- ======= Header ======= -->
-  <?php
+   <!-- ======= Header ======= -->
+   <?php
   require_once("../includes/leftNav.php");
   ?>
+  <!-- ======= Header ======= -->
 
   <main id="main">
 
@@ -83,7 +84,7 @@
               <p>INSTRUCTOR: <?php echo $partA["instructor"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>DATE: <?php echo $partA["date"]; ?> </p>
+              <p>STUDENTS PROGRAMME: <?php echo $_SESSION["userData"]["student_programme"]; ?>  </p>
             </div>
           </div>
 
@@ -92,18 +93,16 @@
               <p>LECTURE VENUE: <?php echo $partA["venue"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>STUDENTS PROGRAMME: <?php echo $_SESSION["userData"]["student_programme"]; ?>  </p>
+              <p>STUDY YEAR: <?php echo $_SESSION["userData"]["study_year"]; ?> </p>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6 mb-1">
               <p>CLASS SIZE: <?php echo $partA["class_size"]; ?> </p>
-            </div>
-            <div class="col-sm-6 mb-1">
-              <p>STUDY YEAR: <?php echo $partA["study_year"]; ?> </p>
-            </div>
+            </div>            
           </div>
+          
           <form action="./../login.php" method="POST">
             <div class="form-group row">
               <h5>Please rate the instructor and the course appropriately.Put a tick in the appropiate box found on the extreme right.</h5>

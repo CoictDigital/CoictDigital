@@ -10,8 +10,6 @@
 
   if (isset($_GET["courseCode"])) {
     $courseCode = $_GET["courseCode"];
-
-
     $resultA = fetchProceedEvalutation($courseCode);
     $resultB = fetchCourseEvaluationResults($courseCode);
     $resultA = array_merge($resultA, ["totalResponse" => countEvaluationResponse($courseCode)]);
@@ -21,7 +19,7 @@
 
     $studentProgrammes = fetchStudentProgrammes($courseCode);
   } else {
-    header("Location: ./department2.php");
+    header("Location: ./department1.php");
   }
   ?>
 </head>
@@ -78,18 +76,6 @@
               <p>INSTRUCTOR: <?php echo $partA["instructor"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>DATE: <?php
-                        $date = date('d-M-Y', strtotime($partA["date"]));
-
-                        echo $date; ?> </p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6 mb-1">
-              <p>LECTURE VENUE: <?php echo $partA["venue"]; ?> </p>
-            </div>
-            <div class="col-sm-6 mb-1">
               <p>STUDENTS PROGRAMME:
                 <?php
                 foreach ($studentProgrammes as $key => $value) {
@@ -106,11 +92,18 @@
 
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>CLASS SIZE: <?php echo $partA["class_size"]; ?> </p>
+              <p>LECTURE VENUE: <?php echo $partA["venue"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
               <p>STUDY YEAR: <?php echo $partA["study_year"]; ?> </p>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>CLASS SIZE: <?php echo $partA["class_size"]; ?> </p>
+            </div>
+            
           </div>
 
           <div class="form-group row">
@@ -175,7 +168,7 @@
           </div>
 
           <div id="editor" class="form-group">
-          <a href="javascript:generatePDF()"><button class="btn btn-primary" >Dowload PDF</button></a>
+          <a href="javascript:generatePDF()"><button class="btn btn-primary" >Dowload Results</button></a>
           </div>
         </div>
     </section><!-- End Form Section -->
