@@ -42,7 +42,7 @@
         <!-- ======= Form Section ======= -->
        <section id="evaluation" class="services">
       <div class="container-fluid">
-        <div class="section-title">
+      <div class="section-title">
           <h3>UNIVERSITY OF DAR ES SALAAM</h3>
           <h3>Course Allocation Management</h3>
           <h2>Undergraduate Programmes</h2>
