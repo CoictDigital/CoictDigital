@@ -7,7 +7,7 @@
   require_once("../includes/db.php");
 
 // Check existence of id parameter before processing further
-if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
+if(isset($_REQUEST["id"]) && !empty(trim($_REQUEST["id"]))){
     
     // Prepare a select statement
     $sql = "SELECT * FROM course_allocation where id=?"; 
@@ -17,23 +17,21 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         mysqli_stmt_bind_param($stmt, "i", $param_id);
         
         // Set parameters
-        $param_id = trim($_GET["id"]);
-        echo $param_id;
+        $param_id = trim($_REQUEST["id"]);
         
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
-
+            // print_r($result);
                 /* Fetch result row as an associative array. Since the result set
                 contains only one row, we don't need to use while loop */
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                
-                // Retrieve individual field value
-                $course = $row['course_name'];
-                $instructor = $row['instructor'];
-                $supervisor = $row['evaluator'];  
-                $assistant= $row['assistant'];
-                $semester = $row['semester']; 
+                // // Retrieve individual field value
+                // $course = $row['course_name'];
+                // $instructor = $row['instructor'];
+                // $supervisor = $row['evaluator'];  
+                // $assistant= $row['assistant'];
+                // $semester = $row['semester']; 
                
   ?>
 </head>

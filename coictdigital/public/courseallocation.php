@@ -172,6 +172,7 @@
                  if ($result->num_rows > 0) {
                  while($row = $result->fetch_assoc()){
                 extract($row);
+                $id = $row['id'];
                  
                 ?>
                   <tr>
@@ -181,7 +182,12 @@
                   <td ><?php echo $row['assistant']; ?></td>
                   <td ><?php echo$row['semester']; ?></td>
                   <!-----crud icons ------->
-                  <td class="col-1" ><a href="read.php?id='. $row['id'] .'" title="View Record"><i class="all-icons fa fa-eye"></i></a>
+                  <td class="col-1" >
+                    <form action="read.php" method="POST">
+                      <input type="hidden" name="id" value="<?php echo $id; ?>">
+                      <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
+                    </form>  
+                  
                        <a href="#editModal" data-toggle="modal" data-target="#editModal"><i class="all-icons fa fa-pencil"></i></a>  
                        <a href=""><i class="all-icons fa fa-trash"></i></a>
                   

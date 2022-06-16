@@ -51,7 +51,7 @@ if(isset($_POST["invigilate"])){
     global $conn;
   
     // receive all input values from the form
-    $day = e($_POST["day"]);
+    $day = e($_POST["date"]);
     $from_time = e($_POST["from_time"]);
     $to_time = e($_POST["to_time"]);
     $course_name = e($_POST["coursename"]);
