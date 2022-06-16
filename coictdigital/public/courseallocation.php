@@ -56,14 +56,11 @@
     </div>
        <!-- ======= Form Section ======= -->
        <section id="allocation" class="services">
-        <div class="container-fluid">            
-         <div class="section-title">
-         <section id="" class="services">
       <div class="container-fluid">
-        <div class="section-title">
+      <div class="section-title">
           <h3>UNIVERSITY OF DAR ES SALAAM</h3>
+          <h3>Course Allocation Management</h3>
           <h2>Undergraduate Programmes</h2>
-          <h2>COURSE ALLOCATION</h2>   
         </div>
 </div>
             
