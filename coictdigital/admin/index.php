@@ -153,10 +153,12 @@
                   <td ><?php echo $row['name']; ?></td>
                   <td ><?php echo $row['reg_no']; ?></td>
                   <!-----crud icons ------->
-                  <td>                    
+                  <td>
+                                                          
                     <a href="#editModal" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil"></i></a>  
-                    <form method="POST" action=""> 
-                      <input type="hidden" name="id" value="<?php $id; ?>">          
+
+                    <form method="POST" action="delete.php"> 
+                      <input type="hidden" name="id" value="<?php echo $id; ?>">          
                     <button type="submit" name="delete" class="btn btn-light"><i class="fa fa-trash"></i></button>
                     </form>                   
                   </td>
@@ -325,6 +327,57 @@
        </div>
 
       </div> 
+
+       <!-- fading update student list-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header border-bottom-0">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-title text-center">
+              <h4>Update student details</h4>
+            </div>
+            <div class="d-flex flex-column text-center">
+            <?php   
+                $sql = "select * from users where role=1 " ;
+                $result = $conn->query($sql);
+
+                 if ($result->num_rows > 0) {
+                  $row = $result->fetch_assoc();
+                  $id = $row['id'];
+                 
+                ?>
+              <form action="update.php" method="POST">
+              <input type="hidden" name="id" value="<?php echo $id; ?>"> 
+                <div class="form-group">
+                  <input type="text" class="form-control" name="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="reg_no" placeholder="Registration number">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="role" placeholder="Role">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="student_programme" placeholder="Student's programme">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="study_year" placeholder="Study year">
+                </div>
+                <center><button type="submit" name="update" class="btn btn-primary">Update</button> </center> 
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php }?>
+    <!-- end of fading update student list-->
 
     </section><!-- End Services Section -->
 
