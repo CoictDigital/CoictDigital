@@ -187,14 +187,7 @@
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
                       <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
                     </form>  
-                    <form action="delete.php" method="POST">
-                      <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
-                    </form>  
-                    <form action="edit.php" method="POST">
-                      <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
-                    </form>  
+                     
                        <a href="#editModal" data-toggle="modal" data-target="#editModal"><i class="all-icons fa fa-pencil"></i></a>  
                        <a href=""><i class="all-icons fa fa-trash"></i></a>
                   
