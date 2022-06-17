@@ -169,6 +169,9 @@ img{
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Desktop Navigation */
+.admin-nav a{
+  color: #ffffff;
+}
 
 .nav-menu {
   padding: 30px 10px 30px 0;
@@ -1100,4 +1103,7 @@ h5{
   font-size: 20px;
   margin: 4px 2px;
   cursor: pointer;
+}
+div.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

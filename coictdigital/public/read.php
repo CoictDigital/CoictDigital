@@ -22,16 +22,7 @@ if(isset($_REQUEST["id"]) && !empty(trim($_REQUEST["id"]))){
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
-            // print_r($result);
-                /* Fetch result row as an associative array. Since the result set
-                contains only one row, we don't need to use while loop */
-                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                // // Retrieve individual field value
-                // $course = $row['course_name'];
-                // $instructor = $row['instructor'];
-                // $supervisor = $row['evaluator'];  
-                // $assistant= $row['assistant'];
-                // $semester = $row['semester']; 
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                
   ?>
 </head>
@@ -58,23 +49,28 @@ require_once("../includes/leftNav.php");
 
       <!----------p-4 ------------------>
       <div class="p-4">
-        <div class="card">              
-      <div class="card-body">
-        <div class="row">
-<div class="col-sm-4">
-<div class="icon"><i class="fas fa-light fa-dna"></i></div>
+      <div class="row">
+        <h4 class="">Staff Allocation Details</br><em>Department of Computer Science and Engineering</em></h4>
+        </div> 
+        <div class="card">
+                    
+      <div class="card-body">        
 
-</div>
-<div class="col-sm-8">
-<h4 class="">Staff Allocation Details</br><em>Department of Computer Science and Engineering</em></h4>
-</div>
-        </div>
         <div class="row">
+
+        <div class="col-sm-4">
+        <div class="all-profile">
+        <img src="../assets/img/profile.png" alt="">
+        </div>
+        </div>
+
+        <div class="col-sm-8"> 
         <p>Instructor: <?php echo $row['instructor']; ?>  </p>
         <p>Course Name:  <?php echo $row['course_name']; ?></p>
-        <p>Evaluator:  <?php echo $row['course_name']; ?></p>
-        <p>Practical Assistant:  <?php echo $row['course_name']; ?></p>
-        <p>Semester:  <?php echo $row['course_name']; ?></p>
+        <p>Evaluator:  <?php echo $row['evaluator']; ?></p>
+        <p>Practical Assistant:  <?php echo $row['assistant']; ?></p>
+        <p>Semester:  <?php echo $row['semester']; ?></p>
+        </div>
         </div>
 
             </div>        

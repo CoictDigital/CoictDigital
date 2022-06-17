@@ -16,7 +16,15 @@ if (isset($_POST["login"])) {
         $_SESSION["userData"] = $email;
         unset($_SESSION['message']);
 
-        header("Location: public/index.php");
+        if ($_SESSION["userData"]["role"] == 1) {
+            header("Location: public/index.php");
+          } else if ($_SESSION["userData"]["role"] == 2) {
+            header("Location: public/index.php");
+          }else if ($_SESSION["userData"]["role"] == 3) {
+            header("Location: public/index.php");
+          }else if ($_SESSION["userData"]["role"] == 4) {
+            header("Location: admin/index.php");
+          }
     } else {
         $_SESSION["message"] = "not logged in";
         $_SESSION["failedToSignin"] = "yes";
