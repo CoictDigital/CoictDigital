@@ -21,6 +21,12 @@
   //  require_once("../includes/sessionStuffs.php");
    require_once("../includes/db.php");
   
+    
+function e($val)
+{
+	global $conn;
+	return mysqli_real_escape_string($conn, trim($val));
+}
   ?>
 
 </head>
@@ -150,7 +156,7 @@
      <div class="card"> 
      <div class="card-body">
      <p class="card-title">Allocated Instructors</p>
-     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+     <table id="dtBasicExample" class="table table-striped table-bordered table-lg" cellspacing="0" width="100%">
   <thead>
     <tr>
     <th class="th-lg">Instructors</th>
@@ -175,7 +181,7 @@
                 $id = $row['id'];
                  
                 ?>
-                  <tr>
+                  <tr >
                   <td ><?php echo $row['instructor']; ?></td>
                   <td ><?php echo $row['course_name']; ?></td>
                   <td ><?php echo $row['evaluator']; ?></td>
@@ -187,32 +193,17 @@
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
                       <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
                     </form>  
-                     
-                       <a href="#editModal" data-toggle="modal" data-target="#editModal"><i class="all-icons fa fa-pencil"></i></a>  
-                       <a href=""><i class="all-icons fa fa-trash"></i></a>
-                  
+
+                        <button data-toggle="modal" data-target="#updateModal<?php echo $id;?>"><i class="all-icons fa fa-pencil"></i></button>  
+                        <form action="deleteAllocation.php" method="POST">
+                      <input type="hidden" name="id" value="<?php echo $id; ?>">
+                      <button type="submit" title="Delete Record"><i class="all-icons fa fa-trash"></i></button>
+                    </form>
+                        <!-- <a  href="deleteAllocation.php? id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a> -->
                   </td>
                   </tr>
-                  <?php }
-                 }
-                 ?> 
-                
-                      
-                     
-                    </tr>
-                </tbody>
-</table>
-</div>
-</div>
-</div>
 
-         
-        
-    </section><!-- End Form Section -->
-   
-
-    <!-- fading edit allocation-->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateModal<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header border-bottom-0">
@@ -225,23 +216,29 @@
               <h4>Edit Allocation</h4>
             </div>
             <div class="d-flex flex-column text-center">
-              <form>
+              <form action="updateAllocation.php" method="POST">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="" placeholder="Instructor">
+                <input type="hidden" name="id" value="<?php echo $id;  ?>" >
+                  
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="" placeholder="Course Name">
+                  <input type="text" class="form-control <?php echo (!empty($instructor_err)) ? 'is-invalid' : ''; ?>" name="instructor"  value="<?php echo $instructor; ?>">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="" placeholder="Evaluator">
+                <input type="text" class="form-control <?php echo (!empty($evaluator_err)) ? 'is-invalid' : ''; ?>" name="evaluator"  value="<?php echo $evaluator; ?>">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="" placeholder="Practical Assistant">
+                <input type="text" class="form-control <?php echo (!empty($assistant_err)) ? 'is-invalid' : ''; ?>" name="assistant"  value="<?php echo $assistant; ?>">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="" placeholder="Semester">
+                <input type="text" class="form-control <?php echo (!empty($course_err)) ? 'is-invalid' : ''; ?>" name="course_name"  value="<?php echo $course_name; ?>">
                 </div>
-                <center><button type="submit" name="edit" class="btn btn-primary">Edit</button> </center> 
+                <div class="form-group">
+                <input type="text" class="form-control <?php echo (!empty($semester_err)) ? 'is-invalid' : ''; ?>" name="semester"  value="<?php echo $semester; ?>">
+                </div>
+                <button data-dismiss="modal" class="btn btn-secondary ml-2">Cancel</button>
+                <button type="submit" name="updateAllocation" class="btn btn-primary">Edit</button> 
+
               </form>
             </div>
           </div>
@@ -251,6 +248,26 @@
 
     <!-- end of fading edit allocation-->
 
+
+                  <?php }
+                 }
+                 ?> 
+                
+                      
+                     
+                    
+                </tbody>
+</table>
+</div>
+</div>
+</div>
+
+         
+        
+    </section><!-- End Form Section -->
+   
+
+    
 
   </main>
   <!-- End #main -->

@@ -80,5 +80,7 @@ function e($val)
 
 $conn->close();
 
+//////update allocation information
+
 
 ?>

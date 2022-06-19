@@ -4,6 +4,7 @@
 <head>
    
 <?php
+ require_once("./../includes/functions.php");
 require_once("../includes/db.php");
 require_once("../includes/headerContent.php");
 require_once("../includes/sessionStuffs.php");
