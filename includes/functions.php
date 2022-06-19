@@ -84,19 +84,33 @@ function fetchCourse($year = "", $prog = "", $sem = "")
     return $results;
 }
 
-function checkIfUserFilledEv($userId, $couseId)
+function alreadyFilled($user_id,$course_id)
 {
-    $userFilled = false;
     global $conn;
-    $sql = "SELECT * FROM `user_response` WHERE `user_id`='$userId' AND `course_code`='$couseId'";
+    //write query
+    $sql = "SELECT * FROM `user_response`";
+
+    //get results
+    $flag = false;
     $results = mysqli_query($conn, $sql);
 
-    // if (mysqli_num_rows($results) > 0) {
-    //     $userFilled = true;
-    // }
-    // return $results;
-}
+    while ($data = mysqli_fetch_assoc($results)) {
+        if (
+            ($data["user_id"] == $user_id && $data["course_code"] == $course_id)
+            
+        ) {
+            $flag = true;
+            break;
+        }
+    }
 
+    if ($flag) {
+        return $data; //so as to be assigned to the session
+
+    } else {
+        return false;
+    }
+}
 
 function fetchProgramId($programme)
 {
@@ -262,7 +276,6 @@ function submitEvaluationQnAns($qnAns)
     VALUES ('$course', '$_1', '$_2', '$_3', $_4, $_5,$_6,$_7,$_8,$_9,$_10,$_11,$_12,$_13,$_14,$_15,$_16,$_17,$_18,$_19,'$_20')";
 
     //mark user that he has filled the evaluation form
-    //mark user that he has filled the evaluation f
 
     $results = mysqli_query($conn, $sql);
     confirm_query($conn, $results);
@@ -311,9 +324,7 @@ function authenticate_user($username, $password)
     //write query
     $sql = "SELECT * FROM `users`";
     //get results
-
     $flag = false;
-
     $results = mysqli_query($conn, $sql);
 
     while ($data = mysqli_fetch_assoc($results)) {

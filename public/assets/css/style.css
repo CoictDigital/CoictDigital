@@ -39,7 +39,7 @@ h5{
   font-size: 16px;
   padding-bottom: 0px;
   padding-top: 20px;
-  font-style: italic;
+  font-weight: bold;
   text-align: left;
 }
 
@@ -491,10 +491,10 @@ section {
 }
 .container{
   width: 60%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  float: center;
+  padding: 70px 0;
+  margin: auto;
 }
-
 .coict-image h4{
   text-align: center;
   padding-top: 35%;

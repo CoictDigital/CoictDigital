@@ -33,18 +33,22 @@ if (isset($_POST["login"])) {
 } elseif (isset($_POST["proceedEvalutation"])) {
     $allOkey = true;
     $course = $_POST["course_code"];
-    $count= count($_POST["course_code"]);
-    $result = fetchProceedEvalutation($course);
+    // $count= count($_POST["course_code"]);
+    $user_id= $_SESSION["userData"]["id"];
+    $course_id= $_POST["course_code"];
 
-    echo $result;
+    $result = fetchProceedEvalutation($course);
+    $result1= alreadyFilled($user_id,$course_id);
 
     if ($allOkey) {
         $_SESSION["evaluationFilled"] = $result;
-        while($filled=mysqli_fetch_assoc($result)){
-            echo $filled;
-        }
         header("Location: public/courseevaluation.php");
     }
+    if ($result1) {
+        $_SESSION["alreadyFilled"] = $result1;
+        header("Location: public/filled.php");
+    }
+
 } elseif (isset($_POST["evaluationQn"])) {
     $allOkey = true;
     $result = submitEvaluationQnAns($_POST);
@@ -79,25 +83,3 @@ if (isset($_POST["login"])) {
         header("Location: public/courseevaluation.php");
     }
 }
-// elseif (isset($_POST["allocate"])) {
-//     $allOkey = true;
-//     $result = inserts($_POST);
-//     print_r($result);
-
-//     if($result){
-//         header("location: index.php");
-//           exit();
-//       }
-//       else{
-//           echo	"wrong code";
-//       }
-    
-
-    // if ($allOkey) {
-    //     $_SESSION["evaluationFilled"] = $result;
-    //     while($filled=mysqli_fetch_assoc($result)){
-    //         echo $filled;
-    //     }
-    //     header("Location: public/courseevaluation.php");
-    // }
-    //}

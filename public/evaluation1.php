@@ -39,7 +39,7 @@
   <main id="main">
 
   <section >
-		<div class="container" id="container">	
+		<div class="container align-items-center" id="container">	
 			<div class="row rounded shadow ">  
 
       <div class="col-sm-6 coict-image">
@@ -313,29 +313,33 @@
 		  
 		</div>
 	</div>
+  
 		</section>
+    <!-- fading evaluation submit after response-->
+  <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">              
+              <div class="modal-body text-center">
+                <p>Thankyou, but you have already evaluated this course. </p>
+               <button type="submit" class="button"><a href="./index.php">Cancel</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
    
   </main>
-  
-  <?php
-
-  if (isset($_SESSION["messageEvFilled"])) {
-  ?>
-    <script>
-      alert("Sorry, you have already filled evaluation form for this course");
-    </script>
-
-  <?php
-    unset($_SESSION['message']);   //to avoid unnecessary incorrect password alerts when one gaveup login in
-  }
-  ?>
-
+ 
   <script src="https://kit.fontawesome.com/939695db0f.js" crossorigin="anonymous"></script>
   <script src="./js/bootstrap.min.js"></script>
   <!-- jQuery -->
   <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
   <!-- Popper JS -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+
+  <?php
+
+  require_once("./../includes/scripts.php");
+  ?>
 
 </body>
 

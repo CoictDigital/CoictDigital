@@ -13,21 +13,12 @@
 
   if (isset($_SESSION["evaluationFilled"])) {
     $partA = $_SESSION["evaluationFilled"];
-    //check if user has already filled evaluation
-
-    $userFilledEvaluation = checkIfUserFilledEv($_SESSION["userData"]["id"],  $partA["course_code"]);
-
-    if ($userFilledEvaluation) {
-      $_SESSION["messageEvFilled"] = "You have already filled evaluation form for this course";
-      header("Location: ./evaluation1.php");
-    }
-
-    echo "";
-  } else {
-    header("Location: evaluation1.php");
-    // header("Location: ./evaluation1.php");
-  }
-
+    
+    
+  } 
+else{
+  header("Location: evaluation1.php");
+}
 
   ?>
 
@@ -58,7 +49,7 @@
 
         <div class="p-4">
 
-          <div class="form-group row">
+          <div class="form-group row table-secondary">
             <h5>Part A: The Participants</h5>
           </div>
           <div class="row">
@@ -105,7 +96,7 @@
           
           <form action="./../login.php" method="POST">
             <div class="form-group row">
-              <h5>Please rate the instructor and the course appropriately.Put a tick in the appropiate box found on the extreme right.</h5>
+              <h5>Please rate the instructor and the course below appropriately.Put a tick in the appropiate box found on the extreme right.</h5>
             </div>
 
             <div class="form-group row">
@@ -317,11 +308,7 @@
         <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-              <div class="modal-header border-bottom-0">
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button> -->
-              </div>
+              
               <div class="modal-body text-center">
                 <p>Thank you for your response. </p>
                 <p>You and other <?php echo ($_SESSION["studentFilledCount"] - 1);
