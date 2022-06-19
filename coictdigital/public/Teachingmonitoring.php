@@ -8,10 +8,13 @@ require_once ("../includes/headerContent.php");
 require_once ("../includes/sessionStuffs.php");
 require_once ("../includes/db.php");
 require_once("../includes/fetchcoursecode.php");
+
+// work in progress change
+
 ?>
 
-
 <script>
+  
     function showHidemycode(){
       if (document.getElementById("present").checked){
         document.getElementById("mycode").style.display = "block";
@@ -55,6 +58,9 @@ require_once("../includes/fetchcoursecode.php");
     }
   }
 </script>
+
+
+
 </head>
 
 <body>
@@ -88,25 +94,14 @@ require_once("../includes/fetchcoursecode.php");
                 <div class="row mb-3">
         <label for="venue" class="col-sm-2 col-form-label">Semester</label>
         <div class="col-sm-10">
-       <select class="form-select" aria-label="Default select example" name="semester" required>
+       <select class="form-select" aria-label="Default select example" name="semester" id="semester" required>
         <option hidden disabled selected value> -- Select semester --</option>
         <!-- <option>Semester</option> -->
-        <?php
-                $query = "select DISTINCT semester from courses";
-                  //$query1 = mysqli_query($conn, $qr);
-                $result = $conn->query($query);
-                 if ($result->num_rows > 0) {
-               while ($row = mysqli_fetch_assoc($result)) {
-              ?>
-       if ($row['semester']!=$i) {
-        $i=0;
-           $i= $row['semester']
-        <option value="<?php echo $row['semester']; ?>"><?php echo $row['semester']; ?></option>
-       }
-          <?php
-             }
-             }
-              ?>
+        <option>Semester</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+
+
        </select>
       </div>
     </div>

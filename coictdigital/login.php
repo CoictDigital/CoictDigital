@@ -56,7 +56,7 @@ if (isset($_POST["login"])) {
     print_r($result);
     if ($allOkey) {
         $_SESSION["teachingFilled"] = $result;
-        header("Location: public/monitoringresults.php?courseCode=$coursecode");
+        header("Location: public/monitoring.php?courseCode=$coursecode");
     } else {
         echo "wrong";
     }

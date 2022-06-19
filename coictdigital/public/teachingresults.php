@@ -8,6 +8,8 @@
     require_once("../includes/sessionStuffs.php");
     require_once("../includes/db.php");
     require_once("../includes/fetchcoursecode.php");
+
+    $_SESSION["semester"] = 1;
     //get number of responses
   //   $couses = fetchCourse();
   // $courseRes = [];

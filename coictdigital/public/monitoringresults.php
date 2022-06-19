@@ -25,21 +25,18 @@
    require_once '../includes/monitoringfunctions.php';
    require_once '../includes/db.php';
 
-
-
-
    if (isset($_GET['courseCode'])) {
        $courseCode = $_GET['courseCode'];
-
-       $result1 = fetchviewresult($courseCode);
-       $result2 = fetchmonitoringresults($courseCode);
+       $_sem = $_GET['semester'];
+       //$result1 = fetchviewresult($courseCode);
+       $result2 = fetchmonitoringresults($courseCode, $_sem);
 
        $row = $result1;
        $row = $result2;
 
        //$studentProgrammes = fetchStudentProgrammes($courseCode);
    } else {
-       header('Location: ./index.php');
+       header('Location: ./monitoringresults.php');
    }
    ?>
 
@@ -49,15 +46,7 @@
 
   <!-- ======= Header ======= -->
 
-  <?php require_once '../includes/leftNav.php'; 
-  
- $sql = "SELECT * FROM teachingmonitoring_questions, courses 
- WHERE courses.course_code = teachingmonitoring_questions.course_code 
- AND teachingmonitoring_questions.course_code = '$courseCode'";
-//$results = mysqli_query($conn, $sql);
-$result = $conn->query($sql);// or die($conn->error);
- $row = $result->fetch_assoc();
- ?> 
+  <?php require_once '../includes/leftNav.php';?> 
 
   <main id="main">
 
