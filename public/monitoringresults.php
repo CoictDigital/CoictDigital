@@ -24,40 +24,39 @@
    <?php
    require_once '../includes/monitoringfunctions.php';
    require_once '../includes/db.php';
+   require_once '../includes/leftNav.php'; 
 
 
 
+  //  if (isset($_GET['courseCode'])) {
+  //      $courseCode = $_GET['courseCode'];
 
-   if (isset($_GET['courseCode'])) {
-       $courseCode = $_GET['courseCode'];
+  //      $result1 = fetchviewresult($courseCode);
+  //      $result2 = fetchmonitoringresults($courseCode);
 
-       $result1 = fetchviewresult($courseCode);
-       $result2 = fetchmonitoringresults($courseCode);
+  //      $row = $result1;
+  //      $row = $result2;
 
-       $row = $result1;
-       $row = $result2;
-
-       //$studentProgrammes = fetchStudentProgrammes($courseCode);
-   } else {
-       header('Location: ./index.php');
-   }
+  //      //$studentProgrammes = fetchStudentProgrammes($courseCode);
+  //  } else {
+  //      header('Location: ./index.php');
+  //  }
    ?>
 
-<!-- for venue chart -->
-<!-- <canvas id="myChart" width="1000" height="600"></canvas> -->
+
 
 
   <!-- ======= Header ======= -->
 
-  <?php require_once '../includes/leftNav.php'; 
+  <?php 
   
- $sql = "SELECT * FROM teachingmonitoring_questions, courses 
- WHERE courses.course_code = teachingmonitoring_questions.course_code 
- AND teachingmonitoring_questions.course_code = '$courseCode'";
-//$results = mysqli_query($conn, $sql);
-$result = $conn->query($sql);// or die($conn->error);
- $row = $result->fetch_assoc();
- ?> 
+//   $sql = "SELECT * FROM teachingmonitoring_questions, courses 
+//   WHERE courses.course_code = teachingmonitoring_questions.course_code 
+//   AND teachingmonitoring_questions.course_code = '$courseCode'";
+//  //$results = mysqli_query($conn, $sql);
+//  $result = $conn->query($sql);// or die($conn->error);
+//   $row = $result->fetch_assoc();
+  ?>
 
   <main id="main">
 
