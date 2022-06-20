@@ -26,6 +26,15 @@
    require_once '../includes/db.php';
    require_once '../includes/leftNav.php'; 
 
+   if (isset($_GET["courseCode"])) {
+    $courseCode = $_GET["courseCode"];
+
+    //$row = "";
+    
+  } else {
+    header("Location: ./testmonitoring.php");
+  }
+
 
 
   //  if (isset($_GET['courseCode'])) {

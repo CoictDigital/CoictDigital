@@ -44,13 +44,24 @@
 <?php 
   $sql = "SELECT * FROM teachingmonitoring_questions, courses 
   WHERE courses.course_code = teachingmonitoring_questions.course_code 
-  AND teachingmonitoring_questions.course_code = '$courseCode'";
- //$results = mysqli_query($conn, $sql);
- $result = $conn->query($sql);// or die($conn->error);
-  $row = $result->fetch_assoc();
+  AND teachingmonitoring_questions.course_code = '$courseCode'
+  ORDER BY week ASC";
+ $results = mysqli_query($conn, $sql);
+ //$result = $conn->query($sql);// or die($conn->error);
+  //$row = $result->fetch_assoc();
+  $courseRes = [];
 
+  if ($results->num_rows == 0) {
+    echo "<b> No courses found for those filters</b>";
+ }else{
+  while($row = mysqli_fetch_assoc($results)) {
+    array_push($courseRes, $row);
+       }
+  mysqli_close($conn);
+?>
   
-  ?> 
+
+
 
 <main id="main">
     <!-- ======= Main  Section ======= -->
@@ -86,26 +97,34 @@
           </div>
 <!-- 
             fetch monitoring data here -->
-
+          <div class="container-fluid mb-3">
+            <?php
+                foreach ($courseRes as $coursecode) {
+                ?>
                  <div class="card mb-1">
                     <div class="card-body">
                       <div class="row">
                         <div class="col-10">
                         
-                          <p class=""><?php echo $courseCode["course_code"] . " - " . $courseCode["week"]; ?></p>
+                          <p class=""><?php echo $coursecode["course_code"] . " - Week " . $coursecode["week"]; ?></p>
                           
                         </div>
 
                         <!-- view button -->
                         <div class="col-2">
-                          <a href="./monitoringresults.php?<?php echo "courseCode=" . $courseCode["course_code"];?>" class="btn btn-primary">View</a>
+                          
+                          <a href="./monitoringresults.php?<?php echo "courseCode=" . $coursecode["course_code"];?>" class="btn btn-primary">View</a>
                         </div>
                       </div>
                     </div>
-
-
                   </div>
-           
+                  <?php
+                }
+                ?>
+                </div>        
+           <?php 
+ }
+ ?>
 
           </div>
         </div>
