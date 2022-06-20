@@ -1,7 +1,7 @@
 <?php
 require_once("functionHelpers.php");
 require_once("db.php");
-
+// function to fetch students
 function fetchStudentProgrammes($courseCode)
 {
     global $conn;
