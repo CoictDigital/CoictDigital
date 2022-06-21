@@ -491,17 +491,29 @@ require_once("../includes/fetchcoursecode.php");
 </div>
 
             <div class="form-group">
-              <!-- <a href="#evaluationModal"  data-toggle="modal" data-target="#evaluationModal" >  -->
               <button type="submit" class="mx-auto button1" name="monitoringQn">Submit</button>
-              <!-- </a> -->
             </div>
               </div>
             </div>
             
           </div>
 
+             <!-- fading evaluation submit after response-->
+        <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              
+              <div class="modal-body text-center">
+                <p>Thank you for your response. </p>
+
+                <button type="submit" class="button"><a href="./index.php">Exit</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
              <!-- fading evaluation submit-->
-       <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <!-- <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header border-bottom-0">
@@ -516,7 +528,7 @@ require_once("../includes/fetchcoursecode.php");
             </div>
           </div>
            </div>
-      </div>
+      </div> -->
 
           
           </form>

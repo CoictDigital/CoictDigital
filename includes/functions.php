@@ -399,6 +399,8 @@ function redirect($location)
     exit;
 }
 
+
+
 // function inserts()
 // {
 // 	global $conn;

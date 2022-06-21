@@ -28,8 +28,9 @@
 
    if (isset($_GET["courseCode"])) {
     $courseCode = $_GET["courseCode"];
+    $resultA = fetchProceedmonitoring($courseCode);
 
-    //$row = "";
+    $row = $resultA;
     
   } else {
     header("Location: ./testmonitoring.php");
@@ -51,21 +52,8 @@
   //      header('Location: ./index.php');
   //  }
    ?>
-
-
-
-
   <!-- ======= Header ======= -->
 
-  <?php 
-  
-//   $sql = "SELECT * FROM teachingmonitoring_questions, courses 
-//   WHERE courses.course_code = teachingmonitoring_questions.course_code 
-//   AND teachingmonitoring_questions.course_code = '$courseCode'";
-//  //$results = mysqli_query($conn, $sql);
-//  $result = $conn->query($sql);// or die($conn->error);
-//   $row = $result->fetch_assoc();
-  ?>
 
   <main id="main">
 

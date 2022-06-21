@@ -1,6 +1,23 @@
 <?php
 //require_once("functionHelpers.php");
 require_once("db.php");
+// monitoring
+function fetchProceedmonitoring($coursecode)
+{
+    global $conn;
+    //write query
+$sql = "SELECT * FROM teachingmonitoring_questions, courses 
+WHERE courses.course_code = teachingmonitoring_questions.course_code 
+AND teachingmonitoring_questions.course_code = '$coursecode'";
+   // $sql = "SELECT * FROM courses WHERE `course_code`='$coursecode'";
+
+    $results = mysqli_query($conn, $sql);
+    confirm_query($conn, $results);
+
+    $results =  mysqli_fetch_assoc($results);
+
+    return $results;
+}
 
 
 function getStudyYear($courseCode)
