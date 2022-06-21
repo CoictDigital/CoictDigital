@@ -1,11 +1,22 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 <head>
 <?php
      require_once("./../includes/functions.php");
      require_once("../includes/headerContent.php");
+     require_once("../includes/scripts.php");
     //  require_once("../includes/sessionStuffs.php");
      require_once("../includes/db.php");
     
@@ -26,12 +37,12 @@
 
   <main id="main">
 
-     <div class="row" >
+     <!-- <div class="row" >
       <div class="col-md-12"><div class="dropdown" style="float: right; width: 100px;">
-          <!-- <button class="dropbtn">user<i class="fa fa-caret-down"></i></button>
+          <button class="dropbtn">user<i class="fa fa-caret-down"></i></button>
           <div class="dropdown-content">
             <a href="#">Profile</a>
-            <a href="#">Logout</a> --> 
+            <a href="#">Logout</a> 
             <div class="dropdown nav-link">
           <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             User Profile
@@ -42,34 +53,37 @@
           </div>
           </div>
       </div>
-    </div>
+    </div> -->
       
-      </div>
-    </div>
+      <!-- </div> -->
+    <!-- </div> -->
        <!-- ======= Form Section ======= -->
        <section id="invigilation" class="services">
         <div class="container-fluid">            
          
           <div class="section-title">
-            <h2>EXAM INVIGILATION</h2>
+          <h3>UNIVERSITY OF DAR ES SALAAM</h3>
+          <h3>Exam Invigilation Management</h3>
+          <h2>Undergraduate Programmes</h2>
+          </div>
           </div>
           <div class="">
           
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-sm-2 col-form-label"><i class="fa fa-search" aria-hidden="true"></i> Search</label>
               <div class="col-sm-5 mb-1">
                 <input type="text" class="form-control">
               </div>
-              <!-- <div class="col-sm-5 mb-1">
+               <div class="col-sm-5 mb-1">
               <a href="#addnewModal"  data-toggle="modal" data-target="#addnewModal" > 
                 <button type="submit" class="mx-auto button" style="float: right; height: 40px;">Add New</button>
               </a>
-              </div> -->
-            </div>
+              </div> 
+            </div> -->
 
    <form action="addnewallocation.php" method="POST">
                <div class="">
-                 <div class="">
+                 <div class="p-4">
                   <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -80,7 +94,10 @@
                         $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
                                           }
                      ?>
+                     <h4><b>Add Invigilator</b></h4>
+             <div class="row p-2">    
                 <div class="col-sm-4">
+                  
                 <select class="form-select" name="coursename" aria-label="Default select example">
                       
                           <option selected>Select Course</option>
@@ -122,11 +139,11 @@
                       ?>
                 </select>
               </div>
+              
+              <div class="row p-2">
               <div class="col-sm-4">
                  
                   <input class="form-select" type="date" name="date" placeholder="Select day">
-                
-              
                
               </div>
               <div class="col-sm-4">
@@ -160,30 +177,27 @@
               </div>
               </div>
               </div>
+              </div>
      </form>
         
-           <div class="form-group row">
-              <h5>Table of selected exam Invigilators</h5>
-            </div>
-            <div class="limiter">
-            <div class="container-table100">
-        <div class="wrap-table100">
-        <div class="table100 ver1 m-b-110">
-        <div class="table100-head">
-        <table>
-                <thead>
-                <tr  class="row100 head">
-                    <th class="cell100 column1">Day</th>
-                    <th class="cell100 column2">Time</th>
-                    <th class="cell100 column3">Course Name</th>
-                    <th class="cell100 column4">Venue</th>
-                    <th class="cell100 column5">Invigilators</th>
-                    <th class="cell100 column6">Action</th>
+     <div class="p-4">
+     <div class="card"> 
+     <div class="card-body">
+     <p class="card-title">Allocated Invigilators</p>
+     <table id="dtBasicExample" class="table table-striped table-bordered table-lg" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+                    <th class="th-lg">Day</th>
+                    <th class="th-lg">Time</th>
+                    <th class="th-lg">Course Name</th>
+                    <th class="th-lg">Venue</th>
+                    <th class="th-lg">Invigilators</th>
+                    <th class="th-lg">Action</th>
                   </tr>
                 </thead>
           </table>
           </div>
-            <div class="table100-body js-pscroll">
+            <div class="">
             <table>
                 <tbody>
                 <?php 
@@ -196,14 +210,24 @@
                               
                             ?>
                   <tr>
-                   <td class="cell100 column1"><?php echo $row['day']; ?></td>
-                   <td class="cell100 column2"><?php echo $row['from_time'] ;?> - <?php echo $row['to_time'] ;?></td>
-                   <td class="cell100 column3"><?php echo $row['course_name']; ?></td>
-                   <td class="cell100 column4"><?php echo $row['venue']; ?></td>
-                   <td class="cell100 column5"><?php echo $row['invigilators']; ?></td>
+                   <td ><?php echo $row['day']; ?></td>
+                   <td ><?php echo $row['from_time'] ;?> - <?php echo $row['to_time'] ;?></td>
+                   <td ><?php echo $row['course_name']; ?></td>
+                   <td ><?php echo $row['venue']; ?></td>
+                   <td ><?php echo $row['invigilators']; ?></td>
                    
-                   <!-- <td><?php echo $row['#']; ?></td> -->
-                   <td class="cell100 column6"><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
+                   <!-----crud icons ------->
+                  <td class="col-1" >
+                    <form action="read.php" method="POST">
+                      <input type="hidden" name="id"  value="<?php echo $id; ?>">
+                      <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
+                    </form>  
+                     
+                       <a href="#updateModal" data-toggle="modal" data-target="#updateModal"><i class="all-icons fa fa-pencil"></i></a>  
+                         <a  href="deleteAllocation.php? id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>
+                       
+                  
+                  </td>
                   </tr>
                   <?php }
                  }
@@ -324,7 +348,7 @@
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
 </body>
-<style>
+<!-- <style>
 /* Table codes */
 button {
   outline: none !important;
@@ -342,14 +366,14 @@ iframe {
   .js-pscroll {
     position: relative;
     overflow: hidden;
-    }
-    .table100 .ps__rail-y {
+    } 
+    /* .table100 .ps__rail-y {
     width: 9px;
     background-color: none;
     opacity: 1 !important;
     right: 5px;
-    }
-    .table100 .ps__rail-y::before {
+    } */
+    /* .table100 .ps__rail-y::before {
     content: "";
     display: block;
     position: absolute;
@@ -436,7 +460,7 @@ iframe {
       }
       /*==================================================================
       [ Fix header ]*/
-      .table100 {
+      /* .table100 {
       position: relative;
       padding-top: 60px;
       }
@@ -452,7 +476,7 @@ iframe {
       }
       /*==================================================================
       [ Ver1 ]*/
-      .table100.ver1 th {
+      /* .table100.ver1 th {
       font-family: Lato-Bold;
       font-size: 18px;
       color: #fff;
@@ -468,7 +492,7 @@ iframe {
       .table100.ver1 .table100-body tr:nth-child(even) {
       background-color: #f8f6ff;
       }
-      /*---------------------------------------------*/
+      /*---------------------------------------------
       .table100.ver1 {
       border-radius: 10px;
       overflow: hidden;
@@ -486,9 +510,9 @@ iframe {
       }
       .table100.ver1 .ps__rail-y .ps__thumb-y::before {
       background-color: #cccccc;
-      }
-    /*=================================================================*/
-  </style>
+      }  */ 
+    /*=================================================================
+  </style>*/-->
 
 
 </html>
