@@ -23,19 +23,14 @@
       <img src="../assets/img/udsmlogo.jpg" alt="" class="img-fluid rounded-circle">
     </div>
 
-    <center><p class="text-white">Welcome </br>
-  <?php
-               echo $_SESSION["userData"]["name"];
-              ?></p></center>
+   
+    <nav id="navbar" class="text-center admin-nav nav-menu pt-5">
 
-    <nav id="navbar" class="text-center admin-nav">
-
-        <a href="index.php" class="nav-link scrollto"> <span>Dashboard</span></a>
+        <a href="index.php" class="nav-link scrollto" active> <span>Dashboard</span></a>
         <a href="students.php" class="nav-link scrollto"> <span>Students</span></a>
         <a href="alumni.php" class="nav-link scrollto"><span>Alumni</span></a>
         <a href="instructors.php" class="nav-link scrollto"> <span>Instructors</span></a>                      
         <a href="courses.php" class="nav-link scrollto"> <span>Courses</span></a>
-        <a href="department.php" class="nav-link scrollto"> <span>Departments</span></a>
         <a href="./../logout.php" class="nav-link scrollto"> <span>Logout</span></a>
       
     </nav><!-- .nav-menu -->
@@ -127,15 +122,16 @@
     </script>  
         <div class="row">
         <div class="card">
-          <div class="admin-values">            
+          <div class="">            
             <div class="card-body">
             <h4 class="count-yellow">Students List</h4>
-     <table id="myTable1" class="table table-bordered table-sm" cellspacing="0" width="100%">
-  <thead>
+     <table id="myTable1" class="table table-sm" cellspacing="0" width="100%">
+  <thead class="table-secondary">
     <tr>
     <th class="th-lg">Name</th>
     <th class="th-lg">Registration Number</th>
     <th class="th-lg">Action</th>
+</tr>
   </thead>
   <tbody>
     
@@ -182,16 +178,17 @@
 <div class="p-4">
        <div class="row">
         <div class="card">
-        <div class="admin-values">
+        <div class="">
             
             <div class="card-body">
             <h4 class="count-yellow">Instructors List</h4>
-     <table id="myTable2" class="table table-bordered table-sm" cellspacing="0" width="100%">
-  <thead>
+     <table id="myTable2" class="table table-sm" cellspacing="0" width="100%">
+  <thead class="table-secondary">
     <tr>
     <th class="th-lg">Name</th>
     <th class="th-lg">Course</th>
     <th class="th-lg">Action</th>
+</tr>
   </thead>
   <tbody>
   <?php   
@@ -234,15 +231,16 @@
     </script>       
         <div class="row">
         <div class="card">
-          <div class="admin-values">            
+          <div class="">            
             <div class="card-body">
             <h4 class="count-yellow">Courses List</h4>
-     <table id="myTable3" class="table table-bordered table-sm" cellspacing="0" width="100%">
-  <thead>
+     <table id="myTable3" class="table table-sm" cellspacing="0" width="100%">
+  <thead class="table-secondary">
     <tr>
     <th class="th-lg">Course Code</th>
     <th class="th-lg">Course Title</th>
     <th class="th-lg">Action</th>
+</tr>
   </thead>
   <tbody>
   <?php   
@@ -283,16 +281,17 @@
 <div class="p-4">
        <div class="row">
         <div class="card">
-        <div class="admin-values">
+        <div class="">
             
             <div class="card-body">
             <h4 class="count-yellow">Alumni List</h4>
-     <table id="myTable4" class="table table-bordered table-sm" cellspacing="0" width="100%">
-  <thead>
+     <table id="myTable4" class="table table-sm" cellspacing="0" width="100%">
+  <thead class="table-secondary">
     <tr>
     <th class="th-lg">Name</th>
     <th class="th-lg">Email</th>
     <th class="th-lg">Action</th>
+</tr>
   </thead>
   <tbody>
   <?php   
