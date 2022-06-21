@@ -1,6 +1,6 @@
 <?php
 
-$password = "admin";
+$password = "";
 
 $hashed_password =
     password_hash($password, PASSWORD_DEFAULT);

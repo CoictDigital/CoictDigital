@@ -1,12 +1,12 @@
 <?php
 require_once("functionHelpers.php");
 require_once("db.php");
-
+// function to fetch students
 function fetchStudentProgrammes($courseCode)
 {
     global $conn;
     $studentProgrammes = [];
-
+//sql query
     $sql = "SELECT Distinct programme.student_programme FROM programme,programme_course WHERE programme_course.course_code='$courseCode' AND programme.id=programme_course.id_programme";
     $results = mysqli_query($conn, $sql);
     if ($results) {
@@ -398,6 +398,8 @@ function redirect($location)
     header("Location: $location");
     exit;
 }
+
+
 
 // function inserts()
 // {

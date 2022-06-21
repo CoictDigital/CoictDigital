@@ -68,18 +68,18 @@ if (isset($_POST["login"])) {
     print_r($result);
     if ($allOkey) {
         $_SESSION["teachingFilled"] = $result;
-        header("Location: public/monitoringresults.php?courseCode=$coursecode");
+        header("Location: public/testmonitoring.php?courseCode=$coursecode");
     } else {
         echo "wrong";
     }
     
 } elseif (isset($_POST["monitoringQn"])) {
     $allOkey = true;
-    $result = submitEvaluationQnAns($_POST);
+   // $result = submitEvaluationQnAns($_POST);
 
 
     if ($allOkey) {
         $_SESSION["studentFilledCount"] = $result;
-        header("Location: public/courseevaluation.php");
+        header("Location: public/Teachingmonitoring.php");
     }
 }

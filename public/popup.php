@@ -38,7 +38,7 @@
 <div class="modal-body text-center">
               <p>Thankyou for your response!</p>
               
-              <button type="submit" class="mx-auto button2" ><a href="index.php">Exit</a></button>                             
+              <button type="submit" class="mx-auto button2" name="exitmonitoring"><a href="index.php">Exit</a></button>                             
             </div>
 <!-- <p class="text-center pt-3">Thank you for your response!</p> -->
 <!-- <button type="submit" class="mx-auto button" name="teaching">Proceed</button> -->
