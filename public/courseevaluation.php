@@ -115,7 +115,7 @@ else{
                   <tbody>
                     <tr>
                       <td>1. Instructor's preparedness on the subject matter</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="1" id="flexRadioDefault" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="2" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="3" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault1" value="4" id="flexRadioDefault"></td>
@@ -123,7 +123,7 @@ else{
                     </tr>
                     <tr>
                       <td>2. Instructor's possession of up-to-date skills and knowledge in the subject matter</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="1" id="flexRadioDefault"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="1" id="flexRadioDefault" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="2" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="3" id="flexRadioDefault"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault2" value="4" id="flexRadioDefault"></td>
@@ -131,7 +131,7 @@ else{
                     </tr>
                     <tr>
                       <td>3. Instructor's mode of delivery of the subject matter(techniques and styles)</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault3" value="4" id="flexRadioDefault1"></td>
@@ -139,7 +139,7 @@ else{
                     </tr>
                     <tr>
                       <td>4. Instructor's management of time during teaching</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault4" value="4" id="flexRadioDefault1"></td>
@@ -147,7 +147,7 @@ else{
                     </tr>
                     <tr>
                       <td>5. Instructor's fairness in grading of assignments and tests against marking scheme</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault5" value="4" id="flexRadioDefault1"></td>
@@ -155,7 +155,7 @@ else{
                     </tr>
                     <tr>
                       <td>6. Instructor's capacity to provide timely feedback on assigments and tests(within 2 weeks)</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault6" value="4" id="flexRadioDefault1"></td>
@@ -163,7 +163,7 @@ else{
                     </tr>
                     <tr>
                       <td>7. Instructor's attendance in the class</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault7" value="4" id="flexRadioDefault1"></td>
@@ -171,7 +171,7 @@ else{
                     </tr>
                     <tr>
                       <td>8. Instructor's availability for consultations</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault8" value="4" id="flexRadioDefault1"></td>
@@ -179,7 +179,7 @@ else{
                     </tr>
                     <tr>
                       <td>9. Manner in which instructor interacts with students in class?</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault9" value="4" id="flexRadioDefault1"></td>
@@ -187,7 +187,7 @@ else{
                     </tr>
                     <tr>
                       <td>10. Generally, how do you rate the competency of the instructor to meet your learning satisfaction?</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault10" value="4" id="flexRadioDefault1"></td>
@@ -200,7 +200,7 @@ else{
                 <p>11. Instructor observed or complied with UDSM Sexual Harassment Code?</p>
 
                 <div class="form-check col-sm-1">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault11" value="1" id="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault11" value="1" id="flexRadioDefault1" required>
                   <label class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check col-sm-1">
@@ -225,7 +225,7 @@ else{
                   <tbody>
                     <tr>
                       <td>12. How clear was the objective of the course</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault12" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault12" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault12" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault12" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault12" value="4" id="flexRadioDefault1"></td>
@@ -233,7 +233,7 @@ else{
                     </tr>
                     <tr>
                       <td>13. How well was the course content coverage</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault13" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault13" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault13" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault13" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault13" value="4" id="flexRadioDefault1"></td>
@@ -241,7 +241,7 @@ else{
                     </tr>
                     <tr>
                       <td>14. How well was the mode of assessment?(e.g sufficient tests, assignments, timed essays)</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault14" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault14" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault14" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault14" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault14" value="4" id="flexRadioDefault1"></td>
@@ -249,7 +249,7 @@ else{
                     </tr>
                     <tr>
                       <td>15. How well were the teaching methods(Class participation, demonstration, etc )</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault15" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault15" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault15" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault15" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault15" value="4" id="flexRadioDefault1"></td>
@@ -257,7 +257,7 @@ else{
                     </tr>
                     <tr>
                       <td>16. How well(updated) were the lecture notes and handouts?</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault16" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault16" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault16" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault16" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault16" value="4" id="flexRadioDefault1"></td>
@@ -265,7 +265,7 @@ else{
                     </tr>
                     <tr>
                       <td>17. How well did the course link theory and practise?</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault17" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault17" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault17" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault17" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault17" value="4" id="flexRadioDefault1"></td>
@@ -273,7 +273,7 @@ else{
                     </tr>
                     <tr>
                       <td>18. How adequate were the tutorials, seminars and practicals</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault18" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault18" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault18" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault18" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault18" value="4" id="flexRadioDefault1"></td>
@@ -281,7 +281,7 @@ else{
                     </tr>
                     <tr>
                       <td>19. Generally, how do you rate the relevance of the course to meet your expectations?</td>
-                      <td><input class="form-check-input" type="radio" name="flexRadioDefault19" value="1" id="flexRadioDefault1"></td>
+                      <td><input class="form-check-input" type="radio" name="flexRadioDefault19" value="1" id="flexRadioDefault1" required></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault19" value="2" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault19" value="3" id="flexRadioDefault1"></td>
                       <td><input class="form-check-input" type="radio" name="flexRadioDefault19" value="4" id="flexRadioDefault1"></td>

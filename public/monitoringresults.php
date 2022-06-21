@@ -24,40 +24,36 @@
    <?php
    require_once '../includes/monitoringfunctions.php';
    require_once '../includes/db.php';
+   require_once '../includes/leftNav.php'; 
+
+   if (isset($_GET["courseCode"])) {
+    $courseCode = $_GET["courseCode"];
+    $resultA = fetchProceedmonitoring($courseCode);
+
+    $row = $resultA;
+    
+  } else {
+    header("Location: ./testmonitoring.php");
+  }
 
 
 
+  //  if (isset($_GET['courseCode'])) {
+  //      $courseCode = $_GET['courseCode'];
 
-   if (isset($_GET['courseCode'])) {
-       $courseCode = $_GET['courseCode'];
+  //      $result1 = fetchviewresult($courseCode);
+  //      $result2 = fetchmonitoringresults($courseCode);
 
-       $result1 = fetchviewresult($courseCode);
-       $result2 = fetchmonitoringresults($courseCode);
+  //      $row = $result1;
+  //      $row = $result2;
 
-       $row = $result1;
-       $row = $result2;
-
-       //$studentProgrammes = fetchStudentProgrammes($courseCode);
-   } else {
-       header('Location: ./index.php');
-   }
+  //      //$studentProgrammes = fetchStudentProgrammes($courseCode);
+  //  } else {
+  //      header('Location: ./index.php');
+  //  }
    ?>
-
-<!-- for venue chart -->
-<!-- <canvas id="myChart" width="1000" height="600"></canvas> -->
-
-
   <!-- ======= Header ======= -->
 
-  <?php require_once '../includes/leftNav.php'; 
-  
- $sql = "SELECT * FROM teachingmonitoring_questions, courses 
- WHERE courses.course_code = teachingmonitoring_questions.course_code 
- AND teachingmonitoring_questions.course_code = '$courseCode'";
-//$results = mysqli_query($conn, $sql);
-$result = $conn->query($sql);// or die($conn->error);
- $row = $result->fetch_assoc();
- ?> 
 
   <main id="main">
 
@@ -73,7 +69,7 @@ $result = $conn->query($sql);// or die($conn->error);
      <h3>Teaching and learning Monitoring</h3>      
    </div>
    <div class="p-3">
- 
+  
           <div class="form-group row">
             <h4>General information</h4>
           </div>
@@ -172,66 +168,69 @@ $result = $conn->query($sql);// or die($conn->error);
 
 <!-- teaching venue -->
           <h4>Teaching venue conditions</h4>
-<h5>Below are the ratings of the teaching venue condition:</h5>
-          <table>
-  <tr>
-    
-    <th>Venue condition</th>
-    
-    <th>Rating</th>
-    
-  </tr>
-  <tr>
-    
-    <td>A. Sitting arrangements of students</td>
-    <td><?php echo $row['a']; ?></td>
-    
-  </tr>
-  <tr>
-    <td>B. Lighting</td>
+<h6>The table below displays the rating of the venue conditions that is either excellent, very good, good, poor, very poor and not applicable. </h6>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Venue condition</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">A</th>
+      <td>Sitting arrangements of students</td>
+      <td><?php echo $row['a']; ?></td>
+    </tr>
+    <tr>
+        <th scope="row">B</th>
+        <td>Lighting</td>
     <td><?php echo $row['b']; ?></td>
-    
-  </tr>
-  <tr>
-    <td>C. Chairs and Tables</td>
+      </tr>
+    <tr>
+        <th scope="row">C</th>
+        <td>Chairs and Tables</td>
     <td><?php echo $row['c']; ?></td>
-    
-  </tr>
-  <tr>
-    <td>D. Fixed LCD projector system (if any)</td>
+      </tr>
+      <tr>
+        <th scope="row">D</th>
+        <td>Fixed LCD projector system (if any)</td>
     <td><?php echo $row['d']; ?></td>
-    
-  </tr>
-  <tr>
-    <td>E. Display and Visibility</td>
+      </tr>
+      <tr>
+        <th scope="row">E</th>
+        <td>Display and Visibility</td>
     <td><?php echo $row['e']; ?></td>
-    
-  </tr>
-  <tr>
-    <td>F. General physical condition of the room</td>
+      </tr>
+      <tr>
+        <th scope="row">F</th>
+        <td>General physical condition of the room</td>
     <td><?php echo $row['f']; ?></td>
-    
-  </tr>
-  <tr>
-    <td>G. Public address system (if any)</td>
+      </tr>
+      <tr>
+        <th scope="row">G</th>
+        <td>Public address system (if any)</td>
     <td><?php echo $row['g']; ?></td>
-    
-  </tr>
-  <tr>
-    <td>H. Availability of brash and chalks/markers</td>
+      </tr>
+      <tr>
+        <th scope="row">H</th>
+        <td>Availability of brash and chalks/markers</td>
     <td><?php echo $row['h']; ?></td>
-    
-  </tr>
-  <tr>
-    <td>I. Use of whiteboard/blackboard</td>
+      </tr>
+      <tr>
+        <th scope="row">I</th>
+        <td>Use of whiteboard/blackboard</td>
     <td><?php echo $row['i']; ?></td>
-    
-  </tr>
-  <tr>
-    <td>J. Room ventilation</td>
+      </tr>
+      <tr>
+        <th scope="row">J</th>
+        <td>Room ventilation</td>
     <td><?php echo $row['j']; ?></td>
+      </tr>
+
     
-  </tr>
+  </tbody>
 </table>
 <!-- special matters -->
           <h4>Matters of immediate attention</h4>
@@ -332,6 +331,3 @@ if ($t == "no") {
 
 </body>
 </html>
-
-
-          

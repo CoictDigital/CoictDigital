@@ -79,30 +79,6 @@
 </select> 
 </div>
 
-<div class="mb-3">
-<select class="form-select" aria-label="Default select example" name="week" required>
-<option value="">Week</option>
-        <?php
-        
-         $query = "select DISTINCT week from teachingmonitoring_questions order by week ASC";
-         //$query1 = mysqli_query($conn, $qr);
-         $result = $conn->query($query);
-         if ($result->num_rows > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-       ?>
-
-      if ($row['week']!=$i) {
-        $i=0;
-           $i= $row['week']
-        <option value="<?php echo $row['week']; ?>"><?php echo $row['week']; ?></option>
-       }
-<?php
-    }
-}
-
-?>
-</select> 
-</div>
 
 <div class="mb-3">
 <select class="form-select" aria-label="Default select example" name="course_code" required>
