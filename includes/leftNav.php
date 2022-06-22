@@ -12,8 +12,6 @@
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
                         echo "department1.php";
-                      } else if ($_SESSION["userData"]["role"] == 1) {
-                        echo "evaluation1.php";
                       } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "index.php";
                       }
@@ -25,8 +23,6 @@
                         echo "teachingresults.php";
                       } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "Teachingmonitoring.php";
-                      } else if ($_SESSION["userData"]["role"] == 1) {
-                        echo "index.php";
                       }
                       ?>" class="nav-link scrollto"> <span>Teaching Monitoring</span></a></li>
                       

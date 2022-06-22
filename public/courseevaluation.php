@@ -17,7 +17,7 @@
     
   } 
 else{
-  header("Location: evaluation1.php");
+  header("Location: ../student/course.php");
 }
 
   ?>
@@ -30,24 +30,36 @@ else{
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
    <!-- ======= Header ======= -->
-   <?php
-  require_once("../includes/leftNav.php");
-  ?>
+   <!-- <header id="header">
+  <div class="d-flex flex-column">
+    <div class="row">
+  <a href="../student/index.php" class="p-3 d-flex align-items-center">
+        <h3 class="d-flex align-items-center" >CoICT Digital</h3>
+      </a>
+      </div>
+      <div class="row"></div>
+  </div>
+</header> -->
   <!-- ======= Header ======= -->
 
-  <main id="main">
+  <div>
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/course.jpg'); background-size: cover;">
+      <div class="container position-relative d-flex flex-column align-items-center">
+     
+        <h3 class="text-white">UNIVERSITY OF DAR ES SALAAM</h3>
+        <h3 class="text-white">Quality Assurance Bureau (QAB)</h3>
+        <h3 class="text-white">Student Course Evaluation Form</h3>
+        <h3 class="text-white">Undergraduate Programmes</h3>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
 
     <!-- ======= Form Section ======= -->
     <section id="evaluation" class="services">
       <div class="container-fluid">
-        <div class="section-title">
-          <h3>UNIVERSITY OF DAR ES SALAAM</h3>
-          <h3>Quality Assurance Bureau (QAB)</h3>
-          <h3>Student Course Evaluation Form</h3>
-          <h2>Undergraduate Programmes</h2>
-        </div>
-
-        <div class="p-4">
+      
+        <div class="p-5">
 
           <div class="form-group row table-secondary">
             <h5>Part A: The Participants</h5>
@@ -294,9 +306,9 @@ else{
             </div>
 
 
-            <div class="form-group">
+            <div class="text-center">
               <!-- <a href="#evaluationModal" data-toggle="modal" data-target="#evaluationModal"> -->
-              <button type="submit" class="mx-auto button1" name="evaluationQn" value="submit">Submit</button>
+              <button type="submit" class="btn-get-started" name="evaluationQn" value="submit">Submit</button>
             </div>
 
 
@@ -304,38 +316,18 @@ else{
           </form>
         </div>
 
-        <!-- fading evaluation submit after response-->
-        <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              
-              <div class="modal-body text-center">
-                <p>Thank you for your response. </p>
-                <p>You and other <?php echo ($_SESSION["studentFilledCount"] - 1);
-                                  echo $_SESSION["studentFilledCount"] - 1 > 1 ?  " students " : " student "   ?>have filled this form.</p>
-
-                <button type="submit" class="button"><a href="./index.php">Exit</a></button>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </section><!-- End Form Section -->
 
 
-  </main>
+</div>
   <!-- End #main -->
 
   <?php
 
   require_once("./../includes/scripts.php");
   ?>
-
-  <?php if (isset($_SESSION["studentFilledCount"])) { ?>
-    <script>
-      $("#evaluationModal").modal('show')
-    </script>
-  <?php  } ?>
 
 </body>
 
