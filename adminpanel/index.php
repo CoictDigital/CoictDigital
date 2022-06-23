@@ -9,7 +9,7 @@
     require_once("../includes/functions.php");
     require_once("../includes/scripts.php");
     ?>
-    
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -87,11 +87,17 @@
       
     </div>
     <div class="member-info">
+    <?php 
+          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE role ='1'";
+          $result = $conn->query($query);
+          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          if($result->num_rows> 0){
+    ?>
       <h5>Total students</h5>
-      <span>260</span>
+      <span><?php echo $count; } ?></span>
     </div>
   </div>
-</div><!-- End Team Member -->
+</div><!-- End students -->
 
 <div class="col-lg-3 col-md-6 shadow" data-aos="fade-up" data-aos-delay="200">
   <div class="team-member">
@@ -100,11 +106,17 @@
      
     </div>
     <div class="member-info">
+    <?php 
+          $query ="SELECT COUNT(*) AS number_of_alumni FROM alumni";
+          $result = $conn->query($query);
+          $count = mysqli_fetch_assoc($result)["number_of_alumni"];
+          if($result->num_rows> 0){
+    ?>
       <h5>Total alumni</h5>
-      <span>1</span>
+      <span><?php echo $count; } ?></span>
     </div>
   </div>
-</div><!-- End Team Member -->
+</div><!-- End alumni -->
 
 <div class="col-lg-3 col-md-6 shadow" data-aos="fade-up" data-aos-delay="300">
   <div class="team-member">
@@ -113,11 +125,17 @@
     
     </div>
     <div class="member-info">
+    <?php 
+          $query ="SELECT Distinct COUNT(instructor) AS number_of_instructors FROM courses WHERE instructor is not null";
+          $result = $conn->query($query);
+          $count = mysqli_fetch_assoc($result)["number_of_instructors"];
+          if($result->num_rows> 0){
+    ?>
       <h5>Total instructors</h5>
-      <span>50</span>
+      <span><?php echo $count; } ?></span>
     </div>
   </div>
-</div><!-- End Team Member -->
+</div><!-- End instructors -->
 
 <div class="col-lg-3 col-md-6 shadow" data-aos="fade-up" data-aos-delay="400">
   <div class="team-member">
@@ -126,11 +144,17 @@
      
     </div>
     <div class="member-info">
+    <?php 
+          $query ="SELECT Distinct COUNT(course_code) AS number_of_courses FROM courses WHERE course_code is not null";
+          $result = $conn->query($query);
+          $count = mysqli_fetch_assoc($result)["number_of_courses"];
+          if($result->num_rows> 0){
+    ?>
       <h5>Total courses</h5>
-      <span>50</span>
+      <span><?php echo $count; } ?></span>
     </div>
   </div>
-</div><!-- End Team Member -->
+</div><!-- End courses -->
 
 </div>
 

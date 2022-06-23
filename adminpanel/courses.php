@@ -49,10 +49,10 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.php" >Dashboard</a></li>
-          <li><a href="students.php" class="active">Students</a></li>
+          <li><a href="students.php" >Students</a></li>
           <li><a href="instructors.php">Instructors</a></li>
           <li><a href="alumni.php">Alumni</a></li>
-          <li><a href="courses.php">Courses</a></li>
+          <li><a href="courses.php" class="active">Courses</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -65,10 +65,10 @@
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/services-header.jpg');">
       <div class="container position-relative d-flex flex-column align-items-center">
 
-        <h2>Students</h2>
+        <h2>Courses</h2>
         <ol>
           <li><a href="index.php">Home</a></li>
-          <li>Students</li>
+          <li>Courses</li>
         </ol>
 
       </div>
@@ -86,12 +86,13 @@
             <div>
               <h4 class="title"><a href="#" class="stretched-link">Computer Science</a></h4>
               <?php 
-          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE student_programme ='BSC IN CS'";
+          $query ="SELECT Distinct COUNT(course_code) AS number_of_courses FROM programme_course WHERE id_programme='1'";
           $result = $conn->query($query);
-          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          $count = mysqli_fetch_assoc($result)["number_of_courses"];
           if($result->num_rows> 0){
     ?>
-              <p class="description"><?php echo $count; } ?> total students</p>
+      
+              <p class="description"><?php echo $count; } ?> total courses</p>
             </div>
           </div>
           <!-- End Service Item -->
@@ -101,12 +102,13 @@
             <div>
               <h4 class="title"><a href="#" class="stretched-link">Computer Engineering and IT</a></h4>
               <?php 
-          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE student_programme ='BSC IN CEIT'";
+          $query ="SELECT Distinct COUNT(course_code) AS number_of_courses FROM programme_course WHERE id_programme='2'";
           $result = $conn->query($query);
-          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          $count = mysqli_fetch_assoc($result)["number_of_courses"];
           if($result->num_rows> 0){
     ?>
-              <p class="description"><?php echo $count; } ?> total students</p>
+      
+              <p class="description"><?php echo $count; } ?> total courses</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -115,12 +117,13 @@
             <div>
               <h4 class="title"><a href="#" class="stretched-link">Business in IT</a></h4>
               <?php 
-          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE student_programme ='BSC IN BIT'";
+          $query ="SELECT Distinct COUNT(course_code) AS number_of_courses FROM programme_course WHERE id_programme='3'";
           $result = $conn->query($query);
-          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          $count = mysqli_fetch_assoc($result)["number_of_courses"];
           if($result->num_rows> 0){
     ?>
-              <p class="description"><?php echo $count; } ?> total students</p>
+      
+              <p class="description"><?php echo $count; } ?> total courses</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -129,12 +132,13 @@
             <div>
               <h4 class="title"><a href="#" class="stretched-link">First Year</a></h4>
               <?php 
-          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE study_year ='1'";
+          $query ="SELECT Distinct COUNT(course_code) AS number_of_courses FROM courses WHERE study_year='1'";
           $result = $conn->query($query);
-          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          $count = mysqli_fetch_assoc($result)["number_of_courses"];
           if($result->num_rows> 0){
     ?>
-              <p class="description"><?php echo $count; } ?> total students</p>
+      
+              <p class="description"><?php echo $count; } ?> total courses</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -143,12 +147,13 @@
             <div>
               <h4 class="title"><a href="#" class="stretched-link">Second Year</a></h4>
               <?php 
-          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE study_year ='2'";
+          $query ="SELECT Distinct COUNT(course_code) AS number_of_courses FROM courses WHERE study_year='2'";
           $result = $conn->query($query);
-          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          $count = mysqli_fetch_assoc($result)["number_of_courses"];
           if($result->num_rows> 0){
     ?>
-              <p class="description"><?php echo $count; } ?> total students</p>
+      
+              <p class="description"><?php echo $count; } ?> total courses</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -157,12 +162,12 @@
             <div>
               <h4 class="title"><a href="#" class="stretched-link">Third Year</a></h4>
               <?php 
-          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE study_year ='3'";
+          $query ="SELECT Distinct COUNT(course_code) AS number_of_courses FROM courses WHERE study_year='3'";
           $result = $conn->query($query);
-          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          $count = mysqli_fetch_assoc($result)["number_of_courses"];
           if($result->num_rows> 0){
     ?>
-              <p class="description"><?php echo $count; } ?> total students</p>
+              <p class="description"><?php echo $count; } ?> total courses</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -177,72 +182,65 @@
 
         <div class="row gy-4">
         <div class="p-4">
-        <h4 class="text-center">List of all students</h4>
+        <h4 class="text-center">List of all courses</h4>
       
-    <!----------------Students List-------------------------->  
-    <script>
+  <!----------------Courses List--------------------------> 
+  <script>
       $(document).ready(function () {
-      $('#myTable1').DataTable();
+      $('#myTable3').DataTable();
   });
-    </script>  
+    </script>       
         <div class="row">
         <div class="card">
           <div class="">            
             <div class="card-body">
-            
-     <table id="myTable1" class="table table-sm" cellspacing="0" width="100%">
+     <table id="myTable3" class="table table-sm" cellspacing="0" width="100%">
   <thead class="table-secondary">
     <tr>
-    <th class="th-lg">Name</th>
-    <th class="th-lg">Registration Number</th>
+    <th class="th-lg">Course Code</th>
+    <th class="th-lg">Course Title</th>
     <th class="th-lg">Action</th>
 </tr>
   </thead>
   <tbody>
-    
+ 
+                       <?php 
   
-                 <?php 
-
-                  $query ="SELECT * FROM users WHERE role='1' ";
-                  $result = $conn->query($query);
-                  if($result->num_rows> 0){
-                  $students= mysqli_fetch_all($result, MYSQLI_ASSOC); 
-                                  
-
-                    ?>
-                  <tr>
-                  <?php 
-                      foreach ($students as $student) {
+                   $query ="SELECT * FROM courses WHERE course_code is not null ";
+                   $result = $conn->query($query);
+                    if($result->num_rows> 0){
+                   $instructors= mysqli_fetch_all($result, MYSQLI_ASSOC);                                   
+                    ?>                   
+                    <tr>
+                    <?php 
+                      foreach ($instructors as $instructor) {
 
                     ?>
-                  <td ><?php echo $student['name']; ?></td>
-                  <td ><?php echo $student['reg_no']; ?></td>
+                  <td ><?php echo $instructor['course_code']; ?></td>
+                  <td ><?php echo $instructor['course_title']; ?></td>
                   <!-----crud icons ------->
-                  <td>
-                                                          
-                    <a href="updatestudent.php?<?php echo "studentId=" . $student["id"]; ?>" ><i class="bi bi-pencil-square" style="color: #1335f5;"></i></a>  
-                    <a href="deletestudent.php?<?php echo "studentId=" . $student["id"]; ?>" ><i class="bi bi-trash" style="color: #d90769;"></i></a> 
-                    </form>                   
+                  <td>                    
+                  <a href="updatecourse.php?<?php echo "courseId=" . $instructor['course_code']; ?>" data-toggle="modal" data-target="#editModal"><i class="bi bi-pencil-square" style="color: #1335f5;"></i></a>  
+                  <a href="deletecourse.php?<?php echo "courseId=" . $instructor['course_code']; ?>" data-toggle="modal" data-target="#editModal"><i class="bi bi-trash" style="color: #d90769;"></i></a> 
+                                      
                   </td>
                   </tr> 
-                  <?php } }
-                       
+                  <?php }
+                        }
                  ?> 
                 </tbody>
 </table>
-
 </div>
        </div>
        </div>
- 
        </div>
-                      </div>
+       </div>
   
 
         </div>
 
              <div class="text-center">             
-        <a href="addnewstudent.php" class="btn-get-started">Add New Student</a>
+        <a href="addnewcourse.php" class="btn-get-started">Add New Course</a>
         </div>
 
       </div>

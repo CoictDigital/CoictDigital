@@ -118,7 +118,7 @@
             </div>
 
             <?php
-            //fetching evaluation data
+            //fetching evaluation results data
             $couses = fetchCourse($_year, $_prog, $_sem);
             $courseRes = [];
             if ($couses->num_rows == 0) {

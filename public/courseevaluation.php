@@ -66,34 +66,34 @@ else{
           </div>
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>COURSE CODE: <?php echo $partA["course_code"]; ?></p>
+              <p>Course code: <?php echo $partA["course_code"]; ?></p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>DEPARTMENT: <?php echo $partA["department"]; ?> </p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6 mb-1">
-              <p>COURSE TITLE: <?php echo $partA["course_title"]; ?> </p>
-            </div>
-            <div class="col-sm-6 mb-1">
-              <p>COLLEGE: <?php echo $partA["college"]; ?> </p>
+              <p>Department: <?php echo $partA["department"]; ?> </p>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>INSTRUCTOR: <?php echo $partA["instructor"]; ?> </p>
+              <p>Course title: <?php echo $partA["course_title"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>STUDENTS PROGRAMME: <?php echo $_SESSION["userData"]["student_programme"]; ?>  </p>
+              <p>College: <?php echo $partA["college"]; ?> </p>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>LECTURE VENUE: <?php echo $partA["venue"]; ?> </p>
+              <p>Instructor: <?php echo $partA["instructor"]; ?> </p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Students programme: <?php echo $_SESSION["userData"]["student_programme"]; ?>  </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 mb-1">
+              <p>Lecture venue: <?php echo $partA["venue"]; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
               <p>STUDY YEAR: <?php echo $_SESSION["userData"]["study_year"]; ?> </p>
@@ -102,7 +102,7 @@ else{
 
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>CLASS SIZE: <?php echo $partA["class_size"]; ?> </p>
+              <p>Class size: <?php echo $partA["class_size"]; ?> </p>
             </div>            
           </div>
           
