@@ -2,6 +2,11 @@
 body {
   font-family: "Helvetica", sans-serif;
   color: #000;
+  background: linear-gradient(rgba(27, 47, 69, 0.8), rgba(27, 47, 69, 0.8));
+}
+
+.col-sm-6{
+  background: #fff;
 }
 
 

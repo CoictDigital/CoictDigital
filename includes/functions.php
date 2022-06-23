@@ -29,12 +29,39 @@ function getCourseResponse($course_code)
     return $count;
 }
 
+
+function fetchStudentRow($id)
+{
+    global $conn;
+    $sql = "SELECT * from users where id=$id " ;
+    $results = mysqli_query($conn, $sql);
+    confirm_query($conn, $results);
+
+    $results =  mysqli_fetch_assoc($results);
+
+    return $results;
+
+}
+
+function fetchCourseRow($coue)
+{
+    global $conn;
+    $sql = "SELECT * from `courses` where `course_code`='$coue'" ;
+    $results = mysqli_query($conn, $sql);
+    confirm_query($conn, $results);
+
+    $results =  mysqli_fetch_assoc($results);
+
+    return $results;
+
+}
+
 function fetchCourse($year = "", $prog = "", $sem = "")
 {
     global $conn;
 
     $sql = "";
-    if ($year != "" && $prog != "" && $sem != "") { //all are year,prog and sem given
+    if ($year != "" && $prog != "" && $sem != "") { //all are year,prog and sem when given
         $sql = "SELECT DISTINCT `courses`.`course_code`, assistant,class_size,college,course_title,department,instructor,semester,venue 
         FROM `courses`,`programme`,`programme_course`
          WHERE `programme`.`student_programme`='$prog' AND

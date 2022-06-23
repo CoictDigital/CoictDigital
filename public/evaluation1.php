@@ -22,6 +22,10 @@
   $programId = $programId["id"];
   
   ?>
+
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,21 +34,20 @@
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
   <!-- ======= Header ======= -->
-  <?php
-  require_once("../includes/leftNav.php");
-  ?>
+
   <!-- ======= Header ======= -->
 
 
-  <main id="main">
-
+ 
   <section >
-		<div class="container align-items-center" id="container">	
-			<div class="row rounded shadow ">  
+		<div class="container1 align-items-center" id="container">	
+			<div class="row shadow">  
 
       <div class="col-sm-6 coict-image">
 			   <div class="coict-text">	
+      
 					<h4>Welcome!</h4>
+      
 					<p><?php
                echo $_SESSION["userData"]["name"];
               ?> 
@@ -57,9 +60,12 @@
 			</div>
 	
 	
-		<div class="col-sm-6 p-5">    
+		<div class="col-sm-6 p-5">  
+    <div class="profile">
+      <img src="../assets/img/udsmlogo.jpg" alt="" class="img-fluid rounded-circle">
+    </div>  
 			<form action="./../login.php" method="POST">
-				<p class="text-center pt-3">Please select course</p>
+				<p class="text-center pt-3">Please select course to proceed with evaluation</p>
   
 				<div class="mb-3">
          <!----------------- computer science first year courses------------------------------------>
@@ -304,7 +310,7 @@
 				<div class="text-center">
 				   <button type="submit" class="button" name="proceedEvalutation" value="proceed">Proceed</button>
 				</div>
-				   <a href="./index.php">
+				   <a href="../student/index.php">
 					 <p class="text-center text-dark pt-3">Cancel</p>
 				   </a>
 			  </form>
@@ -321,13 +327,16 @@
             <div class="modal-content">              
               <div class="modal-body text-center">
                 <p>Thankyou, but you have already evaluated this course. </p>
-               <button type="submit" class="button"><a href="./index.php">Cancel</a></button>
+               <button type="submit" class="button"><a href="student/index.php">Cancel</a></button>
               </div>
             </div>
           </div>
         </div>
    
-  </main>
+    
+
+        
+ 
  
   <script src="https://kit.fontawesome.com/939695db0f.js" crossorigin="anonymous"></script>
   <script src="./js/bootstrap.min.js"></script>
@@ -335,6 +344,12 @@
   <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
   <!-- Popper JS -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+
+   <!-- Vendor JS Files -->
+   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <?php
 
