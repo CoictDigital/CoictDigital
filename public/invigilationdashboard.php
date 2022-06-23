@@ -32,23 +32,24 @@ unset($_SESSION["studentFilledCount"]);
        <!-- ======= Form Section ======= -->
        <section id="invigilation" class="services">
         <div class="container-fluid">            
-          <span class="badge alert-success" style="float: right;">Admin</span>
+          <!-- <span class="badge alert-success" style="float: right;">Admin</span> -->
           <div class="section-title">
-            <h2>MY INVIGILATION</h2>
+            <h2>Exam Invigilation</h2> 
           </div>
           <div class="">
           <form>
               Hellow,
 
               Dr.Mlaki
-              <div><P> You have been assigned to Invigilate <h4>COICT,CS </h4>students.</P>
-                 <div> ASSISTANT(S): Tina ,Angella</div>
+              <div><P> You have been assigned to Invigilate <h4>Programming in java</h4></P>
+                 <!-- <div> ASSISTANT(S): Tina ,Angella</div> -->
                   <div>VENUE: D01</div> 
                   <div>TIME: 1030 to 1230</div> 
 
                 </div>
-                <a href="#declineModal"  data-toggle="modal" data-target="#declineModal" > <button type="submit"  class="mx-auto button">CANCEL</button></a>
-                  <button type="submit" formaction="http://localhost/coictdigital/coictdigital/public/acceptinvigilation.php" class="mx-auto button">ACCEPT</button>
+                <p>if not available on assigned allocation leave your feedback   <a href="#declineModal"  data-toggle="modal" data-target="#declineModal" ><button>Here</button> </a></p>
+               
+                  <button type="submit" formaction="http://localhost/coictdigital/public/acceptinvigilation.php" class="mx-auto button">Other Invigilation</button>
              <!-- <button type="submit" class="mx-auto button" >CANCEL</button> -->
              <!-- <button type="submit" class="mx-auto button" >ACCEPT</button> -->
           </form>
