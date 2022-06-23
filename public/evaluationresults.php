@@ -26,7 +26,7 @@
 
 <body>
 
-  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- ======= Mobile nav toggle button ====== -->
   <i class="fas fa-stream mobile-nav-toggle d-xl-none"></i>
 
   <!-- ======= Header ======= -->

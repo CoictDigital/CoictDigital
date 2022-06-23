@@ -57,25 +57,20 @@
 <p class="text-center pt-3">Please select the corresponding details</p>
 
 <div class="mb-3">
-<select class="form-select" aria-label="Default select example" name="semester" required>
-<option value="">Semester</option>
-        <?php
-         $query = "select DISTINCT semester from courses";
-         //$query1 = mysqli_query($conn, $qr);
-         $result = $conn->query($query);
-         if ($result->num_rows > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-       ?>
-      if ($row['semester']!=$i) {
-        $i=0;
-           $i= $row['semester']
-        <option value="<?php echo $row['course_code']; ?>"><?php echo $row['semester']; ?></option>
-       }
-<?php
-    }
-}
+<select class="form-select" aria-label="Default select example" name="study_year" id="year" required>
+<option value="">Year of study</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select> 
+</div>
 
-?>
+<div class="mb-3">
+<select class="form-select" aria-label="Default select example" name="semester" id="semester" required>
+<option value="">Semester</option>
+<option value="1">1</option>
+<option value="2">2</option>
 </select> 
 </div>
 
@@ -134,5 +129,24 @@
 <!-- Popper JS -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
 
+
+<script>
+  var study_year = "";
+$(function(){
+  $("#year").change(function(){
+      
+      var displayresult=$("#year option:selected").text();
+      study_year =displayresult;
+  });
+});
+  $(function(){
+  $("#semester").change(function(){
+      
+      var displayresult=$("#semester option:selected").text();
+      
+  });
+    });
+    </script>
+    
   </body>
 </html>

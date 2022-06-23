@@ -1,4 +1,13 @@
 <?php 
+
+//$data['year'] = $_POST['Study_year'];
+//$data['sem'] = $_POST['semester'];
+
+//echo json_encode($data);
+// exit;
+
+
+
     require_once("db.php");
     $query ="SELECT course_code FROM courses";
     $result = $conn->query($query);

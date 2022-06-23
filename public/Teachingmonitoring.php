@@ -12,10 +12,14 @@ require_once("../includes/fetchcoursecode.php");
 // work in progress change
 
 ?>
+<!-- selected value in selectbox -->
 
+
+
+
+<!-- present and absent button -->
 <script>
-  
-    function showHidemycode(){
+  function showHidemycode(){
       if (document.getElementById("present").checked){
         document.getElementById("mycode").style.display = "block";
   
@@ -90,6 +94,21 @@ require_once("../includes/fetchcoursecode.php");
             <!-- ======= General info ======= -->
         <div class="question">
           <h3>General information</h3>
+          <!-- select year study -->
+          <div class="row mb-3">
+        <label for="venue" class="col-sm-2 col-form-label">Year of study</label>
+        <div class="col-sm-10">
+       <select class="form-select" aria-label="Default select example" name="yearofstudy" id="studyyear" required>
+        <option hidden disabled selected value> -- Select year of study --</option>
+        <option>Year of study</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+
+       </select>
+      </div>
+    </div>
 <!-- select semester -->
                 <div class="row mb-3">
         <label for="venue" class="col-sm-2 col-form-label">Semester</label>
@@ -151,6 +170,10 @@ require_once("../includes/fetchcoursecode.php");
       </div>
     </div>
 
+    
+
+
+
     <!-- select venue -->
     <div class="row mb-3">
         <label for="venue" class="col-sm-2 col-form-label">Venue</label>
@@ -178,18 +201,7 @@ require_once("../includes/fetchcoursecode.php");
     </div>
 
 <!-- starting time -->
-         <div class="row mb-3">
-          <label for="Session time" class="col-sm-2 col-form-label">Starting time</label>
-           <div class="col-sm-10">
-              <input type="time" class="form-control" name="starting_time" placeholder="" required>
-           </div>
-         </div>
-       <div class="row mb-3">
-          <label for="Session time" class="col-sm-2 col-form-label">Ending time</label>
-          <div class="col-sm-10">
-              <input type="time" class="form-control" name="ending_time" placeholder="" required>
-          </div>
-       </div>
+        
 
     <!-- number of students -->
       <div class="row mb-3">
@@ -253,6 +265,20 @@ require_once("../includes/fetchcoursecode.php");
           <div id="mycode">
 <div class="question">
          <h3>Time management</h3>
+         <h4>Session duration:</h4>
+         <div class="row mb-3">
+          <label for="Session time" class="col-sm-2 col-form-label">From:</label>
+           <div class="col-sm-10">
+              <input type="time" class="form-control" name="starting_time" placeholder="">
+           </div>
+         </div>
+       <div class="row mb-3">
+          <label for="Session time" class="col-sm-2 col-form-label">To:</label>
+          <div class="col-sm-10">
+              <input type="time" class="form-control" name="ending_time" placeholder="">
+          </div>
+       </div>
+<!-- session starting time -->
             <h5>Please select the session starting time</h5>
             <div class="row">
               <div class="col-md-6">
@@ -337,7 +363,7 @@ require_once("../includes/fetchcoursecode.php");
           <label for="Medium of instruction">Please select the medium of instruction used:</label>
           <select class="form-select" aria-label="Default select example" name="medium_of_instruction">
           <option hidden disabled selected value> -- select an option --</option>
-            <option value="Course in English and English is used through out">Course in English and English is used through out</option>
+            <option value="Course in English and English is used throughout">Course in English and English is used throughout</option>
             <option value="Course in English but code-switching to Kiswahili">Course in English but code-switching to Kiswahili</option>
             <option value="Course in Kiswahili but code-switching to English">Course in Kiswahili but code-switching to English</option>
           </select>
@@ -533,9 +559,6 @@ require_once("../includes/fetchcoursecode.php");
           
           </form>
         </div>
-
-
-        
         </div>
       </section><!-- End Form Section -->
 
@@ -567,16 +590,49 @@ require_once("../includes/fetchcoursecode.php");
   <!-- Bootstrap JS -->
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
-
+<!-- submit button for instructor absent displayed when yes or no is selected -->
 <script>
 $(document).ready(function(){
+
+   var study_year = "";
+
   console.log("ASDfa")
+
   //document.getElementById("inform").style.display = "none";
   // hide submit by default
   $('#button1').hide();
   $("input[value='Yes']").click(function(){
     $("#button1").show();
 });
+// pick studyyear selected by user 
+$("#studyyear").change(function(){
+      
+      var displaycourse=$("#studyyear option:selected").text();
+      study_year =displaycourse;
+    });
+
+    // pick semester selected by user
+    $("#semester").change(function(){
+      var displaycourse=$("#semester option:selected").text(); alert(study_year)
+
+  //     $.ajax({
+  //   type: "POST",
+  //   url: "fetchcousecode.php",
+  //   data: {
+  //     year: study_year;
+  //     sem: semester;
+  //   },
+  //   cache: false,
+  //   success: function(data) {
+  //     alert(data);
+  //   },
+  //   error: function(xhr, status,error){
+  //     console.error(xhr);
+  //   }
+  // });
+//
+  });
+
 });
 </script>
 <script>
@@ -588,25 +644,6 @@ $(document).ready(function(){
 });
 });
 </script>
-
-<!-- <script>
-  $(document).ready(function(){
-  // hide submit by default
-  $('#button1').hide();
-  $("input[value='No']").click(function(){
-    $(".Submit").show();
-});
-});
-
-$(document).ready(function(){
-  // hide submit by default
-  $('#button1').hide();
-  $("input[value='Yes']").click(function(){
-    $(".Submit").show();
-});
-});
-</script> -->
-
 </body>
 
 </html>

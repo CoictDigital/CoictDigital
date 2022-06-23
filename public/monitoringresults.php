@@ -32,6 +32,7 @@
 
     $row = $resultA;
     
+    
   } else {
     header("Location: ./testmonitoring.php");
   }
@@ -96,7 +97,7 @@
               <p>Venue: <?php echo $row['venue']; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Venue capacity: <?php echo $row['venue_capacity']; ?></p>
+              <p>Venue capacity: </p>
             </div>
           </div>
 

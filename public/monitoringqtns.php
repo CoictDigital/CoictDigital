@@ -5,14 +5,14 @@ require_once("../includes/db.php");
 $semester ="";
 $week ="";
 $course_code ="";
-$starting_time ="";
-$ending_time = "";
 $venue= "";
 //$venue_capacity  = "";
 $no_of_students = "";
 $attendance = "";
 $absence_reason = "";
 $student_informed = "";
+$starting_time ="";
+$ending_time = "";
 $time = "";
 $started_late = "";
 $teaching_mode = "";
@@ -87,8 +87,8 @@ function inserts()
 			//$query = "INSERT INTO teachingmonitoring_questions (starting_time,ending_time,venue,venue_capacity,Number_of_students,attendance,reason_for_absence,session_starting_time,reason_for_startinglate,session_type,teaching_mode,teaching_method,medium_of_instruction,1, 2, 3, 4, 5, 6, 7, 8, 9, 10,special_matters,specialmatters_explanation) 
 				//	  VALUES('$starting_time','$ending_time','$venue','$venue_capacity','$no_of_students','$attendance','$absence_reason','$time','$started_late','$session_type','$teaching_mode','$teaching_method','$medium_of_instruction','$flexRadioDefault1','$flexRadioDefault2','$flexRadioDefault3','$flexRadioDefault4','$flexRadioDefault5','$flexRadioDefault6','$flexRadioDefault7','$flexRadioDefault8','$flexRadioDefault9','$flexRadioDefault10','$special_matters','$identified_matters')";
 
-    echo $query = "INSERT INTO teachingmonitoring_questions (semester,week,course_code,starting_time,ending_time,venue,Number_of_students,attendance,reason_for_absence,student_informed,session_starting_time,reason_for_startinglate,session_type,teaching_mode,teaching_method,medium_of_instruction, a, b, c, d, e, f, g, h, i, j,special_matters,specialmatters_explanation) 
-    VALUES('$semester','$week','$course_code','$starting_time','$ending_time','$venue','$no_of_students','$attendance','$absence_reason','$student_informed','$time','$started_late','$session_type','$teaching_mode','$teaching_method','$medium_of_instruction','$flexRadioDefault1','$flexRadioDefault2','$flexRadioDefault3','$flexRadioDefault4','$flexRadioDefault5','$flexRadioDefault6','$flexRadioDefault7','$flexRadioDefault8','$flexRadioDefault9','$flexRadioDefault10','$special_matters','$identified_matters')";
+    echo $query = "INSERT INTO teachingmonitoring_questions (semester,week,course_code,venue,Number_of_students,attendance,reason_for_absence,student_informed,starting_time,ending_time,session_starting_time,reason_for_startinglate,session_type,teaching_mode,teaching_method,medium_of_instruction, a, b, c, d, e, f, g, h, i, j,special_matters,specialmatters_explanation) 
+    VALUES('$semester','$week','$course_code','$venue','$no_of_students','$attendance','$absence_reason','$student_informed','$starting_time','$ending_time','$time','$started_late','$session_type','$teaching_mode','$teaching_method','$medium_of_instruction','$flexRadioDefault1','$flexRadioDefault2','$flexRadioDefault3','$flexRadioDefault4','$flexRadioDefault5','$flexRadioDefault6','$flexRadioDefault7','$flexRadioDefault8','$flexRadioDefault9','$flexRadioDefault10','$special_matters','$identified_matters')";
     
     $result = 	mysqli_query($conn, $query);
     
