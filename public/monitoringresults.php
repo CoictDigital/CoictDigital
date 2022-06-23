@@ -32,6 +32,7 @@
 
     $row = $resultA;
     
+    
   } else {
     header("Location: ./testmonitoring.php");
   }
