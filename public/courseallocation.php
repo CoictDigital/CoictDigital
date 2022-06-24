@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link href="public\assets\css\style.css" rel="stylesheet">
 <head>
   
 <?php
@@ -189,13 +190,13 @@ function e($val)
                   <td ><?php echo$row['semester']; ?></td>
                   <!-----crud icons ------->
                   <td class="col-1" >
-                    <form action="read.php" method="POST">
+                    <form class="form_action" action="read.php" method="POST">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
                       <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
                     </form>  
 
-                        <button data-toggle="modal" data-target="#updateModal<?php echo $id;?>"><i class="all-icons fa fa-pencil"></i></button>  
-                        <form action="deleteAllocation.php" method="POST">
+                      <button data-toggle="modal" data-target="#updateModal<?php echo $id; ?>"><i class="all-icons fa fa-pencil"></i></button>  
+                        <form class="form_action" action="deleteAllocation.php" method="POST">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
                       <button type="submit" title="Delete Record"><i class="all-icons fa fa-trash"></i></button>
                     </form>
@@ -223,6 +224,7 @@ function e($val)
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control <?php echo (!empty($instructor_err)) ? 'is-invalid' : ''; ?>" name="instructor"  value="<?php echo $instructor; ?>">
+                  
                 </div>
                 <div class="form-group">
                 <input type="text" class="form-control <?php echo (!empty($evaluator_err)) ? 'is-invalid' : ''; ?>" name="evaluator"  value="<?php echo $evaluator; ?>">
@@ -291,5 +293,19 @@ function e($val)
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
 </body>
+<style>
+   
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #04AA6D;
+  border-radius: 60%;
+  border: none;
+  /* color: white; */
+  padding: 10px 12px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+
 
 </html>

@@ -34,7 +34,7 @@ unset($_SESSION["studentFilledCount"]);
         <div class="container-fluid">            
           
           <div class="section-title">
-            <h2>MY ALLOCATION</h2>
+            <h2>COURSE ALLOCATION</h2>
           </div>
           <!-- <div class="">
           <form>
@@ -84,8 +84,8 @@ unset($_SESSION["studentFilledCount"]);
                   <div>Semester:  <?php echo $row['semester']; ?></div> 
 
                 </div>
-                <button type="submit" formaction="http://localhost/coictdigital/coictdigital/public/previewhistory.php" class="allocationbutton">VIEW HISTORY</button>
-                <button type="submit" formaction="http://localhost/coictdigital/coictdigital/public/lecturerallocation.php" class="allocationbutton">OTHER ALLOCATION</button>
+                <button type="submit" formaction="http://localhost/coictdigital/public/previewhistory.php" class="allocationbutton">VIEW HISTORY</button>
+                <button type="submit" formaction="http://localhost/coictdigital/public/lecturerallocation.php" class="allocationbutton">OTHER ALLOCATION</button>
           </form>
         <!-- <p>Instructor: <?php echo $row['instructor']; ?>  </p> -->
         <!-- <p>Course Name:  <?php echo $row['course_name']; ?></p>
