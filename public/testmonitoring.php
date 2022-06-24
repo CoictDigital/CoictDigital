@@ -113,7 +113,7 @@
                         <!-- view button -->
                         <div class="col-2">
                           
-                          <a href="./monitoringresults.php?<?php echo "courseCode=" . $coursecode["course_code"];?>" class="btn btn-primary">View</a>
+                          <a href="./monitoringresults.php?<?php echo "courseCode=" . $coursecode["course_code"]."&week=".$coursecode['week'];?>" class="btn btn-primary">View</a>
                         </div>
                       </div>
                     </div>
