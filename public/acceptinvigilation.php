@@ -198,132 +198,13 @@ unset($_SESSION["studentFilledCount"]);
           </div>
            </div>
       </div>
-      <!-- fading addnew form-->
-      <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-title text-center">
-                <h4>Add New Invigilator</h4>
-              </div>
-              <div class="d-flex flex-column text-center">
-                <form>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursename" placeholder="Course Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="venue" placeholder="Venue">
-                  </div>
-                  <div class="form-group">
-                    <input type="time" class="form-control" id="time" placeholder="Time">
-                  </div>
-                  <button type="submit" class="mx-auto button" >Save</button>
-                </form>
-              </div>
-            </div>
-          </div>
-           </div>
-      </div>
-
-      <!-- end of fading aadnew form-->
       
-      <!-- fading edit form-->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-title text-center">
-                <h4>Edit Invigilation</h4>
-              </div>
-              <div class="d-flex flex-column text-center">
-                <form>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="assistantname"placeholder="Assistant Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursename" placeholder="Course Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursetoinvigilate" placeholder="Invigilation Course ">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="venue" placeholder="Venue">
-                  </div>
-                  <div class="form-group">
-                    <input type="time" class="form-control" id="time" placeholder="Time">
-                  </div>
-                  <button type="submit" class="mx-auto button" >Save</button>
-                </form>
-              </div>
-            </div>
-          </div>
-           </div>
-      </div>
-
-      <!-- end of fading edit form-->
+      
+      
 
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Get in touch</h2>
-         </div>
-        <div class="info">
-          <div class="row d-flex align-items-center">
-           
-              <div class="col-sm-4 address">
-                <i class="fas fa-map-marker-alt"></i>
-                <h4>Our Location</h4>
-                <p>Kijitonyama, Dar es salaam Tz</p>
-              </div>
-
-              <div class="col-sm-4 email">
-                <i class="far fa-envelope"></i>
-                <h4>Our Email</h4>
-                <p>coictdigital@udsm.co.tz</p>
-              </div>
-
-              <div class="col-sm-4 phone">
-                <i class="fas fa-phone-alt"></i>
-                <h4>Call us at</h4>
-                <p>+255 123 456 789</p>
-              </div>
-             
-            </div>
-
-         
-          <div class="row d-flex align-items-center ">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15847.948246895608!2d39.2399597!3d-6.7714281!3m2
-            !1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x31c34ce3703cc9eb!2sCollege%20of%20Information%20and%20Communication%20Technologi
-            es%20(CoICT)%20-%20University%20of%20Dar%20es%20salaam!5e0!3m2!1sen!2stz!4v1648727896321!5m2!1sen!2stz" width="600" 
-            height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-      </div>
-    </div>
-    </section>
-
-
-
-
-    <!-- End Contact Section -->
+   
 
   </main>
   <!-- End #main -->

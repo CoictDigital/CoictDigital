@@ -87,13 +87,7 @@
                   <div class="card">
                   <div class="card-body">
                   
-                    <?php 
-                      $query ="SELECT * FROM courses";
-                      $result = $conn->query($query);
-                      if($result->num_rows> 0){
-                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
-                                          }
-                     ?>
+                    
                      <h4><b>Add Invigilator</b></h4>
              <div class="row p-2">    
                 <div class="col-sm-4">
@@ -113,21 +107,42 @@
               </div>
 
               <div class="col-sm-4">
-              <select class="form-select" name="invigilator" aria-label="Default select example">
+
+               <?php
+             if ($_SESSION["userData"]["role"] == "2") {
                       
-                      <option selected>Select Instructor</option>
+                     
+                      $query ="SELECT users.name FROM users where users.role ='3'";
+                      
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                      }
+          ?>
+          <select class="form-select" name="name" aria-label="Default select example" required>
+                      <option value="">Select Instructor</option>
                       <?php 
                       foreach ($options as $option) {
                       ?>
-                        <option><?php echo $option['instructor']; ?> </option>
+                        <option value="<?php echo $option['name']; ?>"><?php echo $option['name']; ?> </option>
                         <?php 
                         }
                       ?>
                             
               </select>
+              <?php 
+							}
+						  ?>
               </div>
 
               <div class="col-sm-4">
+              <?php 
+                      $query ="SELECT DISTINCT courses.venue FROM courses";
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                                          }
+                     ?>
               <select class="form-select" name="venue" aria-label="Default select example">
                   <option selected>venue</option>
                   <?php 
@@ -235,44 +250,57 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header border-bottom-0">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Invigilation </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
             <div class="modal-body">
               <div class="form-title text-center">
-                <h4>Edit Invigilation</h4>
+               
               </div>
-              <div class="d-flex flex-column text-center">
+              <div class="">
               <form action="updateinvigilation.php" method="POST">
                   <div class="form-group">
                     <input type="text" class="form-control"<?php echo (!empty($invigilator_err)) ? 'is-invalid' : ''; ?> id="staffname" placeholder="<?php echo $invigilator; ?>">
+                    
                   </div>
                   
                   <div class="form-group">
                     <input type="text" class="form-control"<?php echo (!empty($course_err)) ? 'is-invalid' : ''; ?> id="course_name" placeholder="<?php echo $course; ?>">
+                   
                   </div>
                   
                   <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Venue:</label>
                     <input type="text" class="form-control"<?php echo (!empty($venue_err)) ? 'is-invalid' : ''; ?> id="venue" placeholder="<?php echo $venue; ?>">
                   </div>
                   <div class="row">
                   <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Day:</label>
                     <input type="text" class="form-control"<?php echo (!empty($day_err)) ? 'is-invalid' : ''; ?> id="day" placeholder="<?php echo $day; ?>">
                   </div>
                   <div class="row">
-                    <div><p>From Time</p></div>
+                    <div></div>
                   <div class="form-group">
-                    <input type="time" class="form-control"<?php echo (!empty($from_time_err)) ? 'is-invalid' : ''; ?> id="from_time" placeholder="<?php echo $from_time; ?>">
+                  <label for="recipient-name" class="col-form-label">From Time:</label>
+                  <input type="time" class="form-control"<?php echo (!empty($from_time_err)) ? 'is-invalid' : ''; ?> id="from_time" placeholder="<?php echo $from_time; ?>">
                   </div>
-                  <div><p>To Time</p></div>
+                  
                   <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">To Time:</label>
                     <input type="time" class="form-control"<?php echo (!empty($to_time_err)) ? 'is-invalid' : ''; ?> id="to_time" placeholder="<?php echo $to_time; ?>">
                   </div>
                   </div>
+                  <!-- footer -->
                   
-                  <button data-dismiss="modal" class="btn btn-secondary ml-2">Cancel</button>
-                <button type="submit" name="updateinvingator" class="btn btn-primary">Edit</button> 
+                        <div class="modal-footer">  
+                  <button data-dismiss="modal" class="btn btn-secondary btn-sm">Cancel</button>
+                <button type="submit" name="updateinvingator" class="btn btn-primary btn-sm">Edit</button> 
+                        </div>
+                   
+                   
+                  <!-- end footer -->
                 </form>
               </div>
             </div>

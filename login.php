@@ -10,7 +10,7 @@ if (isset($_POST["login"])) {
 
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $email = authenticate_user($username, $password); //use this to store in an session
+    $email = authenticate_user($username, $password); //use this to store in a session
 
     if ($email) { // user verfied
         $_SESSION["userData"] = $email;
@@ -24,6 +24,9 @@ if (isset($_POST["login"])) {
             header("Location: public/index.php");
           }else if ($_SESSION["userData"]["role"] == 4) {
             header("Location: adminpanel/index.php");
+          }
+          else if ($_SESSION["userData"]["role"] == 5) {
+            header(" Location: public/index.phpp");
           }
     } else {
         $_SESSION["message"] = "not logged in";

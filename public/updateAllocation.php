@@ -157,22 +157,6 @@ mysqli_close($conn);
 }
 
 
-// if (isset($_POST["updateAllocation"])) {
-//     if(count($_POST)>0){
-//   $query="UPDATE `course_allocation` SET `course_name`='$course',`instructor`='$instructor',`evaluator`='$evaluator',`assistant`='$assistant',
-//   `semester`='$semester'  WHERE id='$id' ";
-//   $results=mysqli_query($conn,$query);
-
-//   if ($results) {
-//     header("Location: courseallocation.php");
-
-// } else{
-//     echo"<script>alert('Data Not Deleted')</script>";
-// }
-// }
-// }else{
-//     echo "Form Data has not been updated in PHP";
-//   }
 
 
   

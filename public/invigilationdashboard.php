@@ -37,68 +37,106 @@ unset($_SESSION["studentFilledCount"]);
             <h2>Exam Invigilation</h2> 
           </div>
           <div class="">
-          <form>
-              Hellow,
+          <div class="row">
+        <h4 class="">Staff Invigilation Details</h4>
+        </div> 
+        <div class="card">
+                    
+      <div class="card-body">        
 
-              Dr.Mlaki
-              <div><P> You have been assigned to Invigilate <h4>Programming in java</h4></P>
-                 <!-- <div> ASSISTANT(S): Tina ,Angella</div> -->
-                  <div>VENUE: D01</div> 
-                  <div>TIME: 1030 to 1230</div> 
+        <div class="row">
+
+        <div class="col-sm-4">
+        <div class="all-profile">
+        <img src="../assets/img/profile.png" alt="">
+        </div>
+        </div>
+
+        <div class="col-sm-8"> 
+        <form>
+              <H3>Hellow,</H3>
+              <DIV><h4><B>Instructor:</B>Dr.Salome Maro</h4></DIV> 
+              <div>You have been allocated to  
+                 <div><h4><b>Course:</b>Programming in java</h4></div>
+
+                 <div> <h4><b>Venue: </b>D01 </h4></div>
+
+                 <div> <h4><b>Time: </b> 10:30 to 12:30 </h4></div>
+                 
+                   
 
                 </div>
-                <p>if not available on assigned allocation leave your feedback   <a href="#declineModal"  data-toggle="modal" data-target="#declineModal" ><button>Here</button> </a></p>
+                <p>For any excuse on assigned invigilation leave your feedback   <a href="#declineModal"  data-toggle="modal" data-target="#declineModal" ><button type="button" class="btn btn-link">Here</button> </a></p>
                
-                  <button type="submit" formaction="http://localhost/coictdigital/public/acceptinvigilation.php" class="mx-auto button">Other Invigilation</button>
-             <!-- <button type="submit" class="mx-auto button" >CANCEL</button> -->
-             <!-- <button type="submit" class="mx-auto button" >ACCEPT</button> -->
+               <button type="submit" formaction="http://localhost/coictdigital/public/acceptinvigilation.php" class="btn btn-info">Other Invigilation</button>
           </form>
+        <!-- <p>Instructor: <?php echo $row['instructor']; ?>  </p> -->
+        <!-- <p>Course Name:  <?php echo $row['course_name']; ?></p>
+        <p>Evaluator:  <?php echo $row['evaluator']; ?></p>
+        <p>Practical Assistant:  <?php echo $row['assistant']; ?></p>
+        <p>Semester:  <?php echo $row['semester']; ?></p>
+        </div> -->
+        </div>
+
+            </div>        
+        </div>
+    </div>
+          <!-- <form>
+              Hellow,
+
+              Dr.Salome Maro
+              <div><P> You have been assigned to Invigilate,  </p> 
+              Course:  Programming in java
+              </div>
+                  <div> ASSISTANT(S): Tina ,Angella</div> 
+                  <div>Venue: D01</div> 
+                  <div>Time: 10:30 to 12:30</div> 
+
+                
+                <p>For any excuse on assigned invigilation leave your feedback   <a href="#declineModal"  data-toggle="modal" data-target="#declineModal" ><button type="button" class="btn btn-link">Here</button> </a></p>
+               
+                  <button type="submit" formaction="http://localhost/coictdigital/public/acceptinvigilation.php" class="btn btn-info">Other Invigilation</button>
+              <button type="submit" class="mx-auto button" >CANCEL</button> -->
+             <!-- <button type="submit" class="mx-auto button" >ACCEPT</button> 
+          </form> -->
         </div>
         <div class="modal fade" id="declineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header border-bottom-0">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Report your Excuse </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
+               
               </button>
             </div>
             <div class="modal-body">
-              <div class="form-title text-center">
-                <h4>Reasons For Decline</h4>
-              </div>
-              <div class="d-flex flex-column text-center">
+              
+              <!-- <div class="d-flex flex-column text-center"> -->
                 <form>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
-                  </div>
+                  </div> -->
                   <div class="form-group">
-                  <li>
-                    <ul>
-                    <input type="radio" id="time" name="time" value=""
-                              checked>
-                        <label for="available">I will not be available at the moment</label>
-                    </ul>
-                    <ul>
-                    <input type="radio" id="Sick" name="sick" value=""
-                              >
-                        <label for="sick">I am sick at the Moment</label>
-                    </ul>
-                  </li>
-                        
-                       
+                  
+                   <label for="available">I will not be available at the moment.</label>
+          
                         
                   </div>
                   
                   <div class="form-group">
-                 <p>Any other Reasons</p>
+                  <label for="message-text" class="col-form-label">Message:</label>
                     <textarea rows="4" cols="50" name="comment" form="usrform">
-                  Enter text here...</textarea>
+                  Enter your reasons here...</textarea>
                   </div>
                  
                   </div>
-                  <button type="submit" class="mx-auto button" formaction="http://localhost/coictdigital/coictdigital/public/declineinvigilation.php" >SEND</button>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" formaction="http://localhost/coictdigital/coictdigital/public/declineinvigilation.php" >SEND</button>
+                  </div>
                 </form>
-              </div>
+              <!-- </div> -->
             </div>
           </div>
            </div>

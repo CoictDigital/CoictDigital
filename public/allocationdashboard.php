@@ -23,6 +23,17 @@ unset($_SESSION["studentFilledCount"]);
   <!-- ======= Header ======= -->
   <?php
     require_once("../includes/leftNav.php");
+    // (`semester`,`course_name`,`evaluator`,`asistant`,`instructor`) VALUES ('$semester','$course_name','$evaluator','$asistant','$instructor')
+$instructor_name= $_SESSION["userData"]['name'];
+    $sql = "SELECT * FROM  course_allocation where instructor==$instructor_name ";
+    $results = mysqli_query($conn, $sql);
+   
+
+    // confirm_query($conn, $results);
+    $results =  mysqli_fetch_assoc($results);
+    
+    print_r($sql);
+
     ?>
 
 
@@ -34,7 +45,7 @@ unset($_SESSION["studentFilledCount"]);
         <div class="container-fluid">            
           
           <div class="section-title">
-            <h2>COURSE ALLOCATION</h2>
+            <h2>Course Allocation</h2>
           </div>
           <!-- <div class="">
           <form>
@@ -73,19 +84,20 @@ unset($_SESSION["studentFilledCount"]);
 
         <div class="col-sm-8"> 
         <form>
-              <H3>Hellow,</H3>
+          <h3>Hellow,</h3>
+              <H4><B>Instructor:</B> <?php echo $_SESSION["userData"]["name"]; ?> </H4>
+              <div>You have been allocated to  
+                 <div><h4><b>Course:</b><?php echo $_SESSION["userData"]["course_name"]; ?> </h4></div>
 
-              <B>Dr.Mlaki</B><?php echo $row['instructor']; ?>  
-              <div><> You have been allocated to  
-                 <div><h4>Course:<?php echo $row['course_name']; ?></h4></div>
-                 <div> Practical/Tutorial Assistant: </div>
-                 <div> Evaluator:<?php echo $row['evaluator']; ?> </div>
+                 <div> <h4><b>Practical/Tutorial Assistant:</b></h4></div>
+
+                 <div> <h4><b>Evaluator:</b> </h4></div>
                  
-                  <div>Semester:  <?php echo $row['semester']; ?></div> 
+                  <div> <h4><b>Semester:</b>  </h4></div> 
 
                 </div>
-                <button type="submit" formaction="http://localhost/coictdigital/public/previewhistory.php" class="allocationbutton">VIEW HISTORY</button>
-                <button type="submit" formaction="http://localhost/coictdigital/public/lecturerallocation.php" class="allocationbutton">OTHER ALLOCATION</button>
+                <button type="submit" formaction="http://localhost/coictdigital/public/previewhistory.php" class="btn btn-info">VIEW HISTORY</button>
+                <button type="submit" formaction="http://localhost/coictdigital/public/lecturerallocation.php" class="btn btn-info">OTHER ALLOCATION</button>
           </form>
         <!-- <p>Instructor: <?php echo $row['instructor']; ?>  </p> -->
         <!-- <p>Course Name:  <?php echo $row['course_name']; ?></p>

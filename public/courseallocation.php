@@ -78,6 +78,7 @@ function e($val)
     }
     ?>
     <div class="col-sm-4">
+    
                 <select class="form-select" name="course" aria-label="Default select example" >
                       
                           <option value="">Select Course</option>
@@ -90,51 +91,94 @@ function e($val)
                           ?>
                                 
                   </select>
+                
               </div>
 
               <div class="col-sm-4">
-              <select class="form-select" name="instructor" aria-label="Default select example">
+              
+              <?php
+             if ($_SESSION["userData"]["role"] == "2") {
                       
+                     
+                      $query ="SELECT users.name FROM users where users.role ='3'";
+                      
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                      }
+          ?>
+          <select class="form-select" name="instructor" aria-label="Default select example" required>
                       <option value="">Select Instructor</option>
                       <?php 
                       foreach ($options as $option) {
                       ?>
-                        <option value="<?php echo $option['instructor']; ?>"><?php echo $option['instructor']; ?> </option>
+                        <option value="<?php echo $option['name']; ?>"><?php echo $option['name']; ?> </option>
                         <?php 
                         }
                       ?>
                             
               </select>
+              <?php 
+							}
+						  ?>
               </div>
               <div class="col-sm-4">
-              <select class="form-select" name="supervisor" aria-label="Default select example">
+              <?php
+             if ($_SESSION["userData"]["role"] == "2") {
+                      
+                     
+                      $query ="SELECT users.name FROM users where users.role ='3'";
+                      
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                      }
+          ?>
+              <select class="form-select" name="evaluator" aria-label="Default select example">
                       
                       <option value="">Select Evaluator</option>
                       <?php 
                       foreach ($options as $option) {
                       ?>
-                        <option value="<?php echo $option['instructor']; ?>"><?php echo $option['instructor']; ?> </option>
+                        <option value="<?php echo $option['name']; ?>"><?php echo $option['name']; ?> </option>
                         <?php 
                         }
                       ?>
                             
               </select>
+              <?php 
+							}
+						  ?>
               </div>
                       </div>
               <div class="row p-2">
               <div class="col-sm-4">
-              <select class="form-select" name="assistant" aria-label="Default select example">
+
+               <?php
+             if ($_SESSION["userData"]["role"] == "2") {
                       
+                     
+                      $query ="SELECT users.name FROM users where users.role ='5'";
+                      
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                      }
+          ?>
+          <select class="form-select" name="assistant" aria-label="Default select example" required>
                       <option value="">Select Practical Assistant</option>
                       <?php 
                       foreach ($options as $option) {
                       ?>
-                        <option value="<?php echo $option['instructor']; ?>"><?php echo $option['instructor']; ?> </option>
+                        <option value="<?php echo $option['name']; ?>"><?php echo $option['name']; ?> </option>
                         <?php 
                         }
                       ?>
                             
               </select>
+              <?php 
+							}
+						  ?>
               </div>
 
               <div class="col-sm-4">
@@ -192,13 +236,13 @@ function e($val)
                   <td class="col-1" >
                     <form class="form_action" action="read.php" method="POST">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
+                      <button type="submit" title="View Record" style="border:none; display: inline-block; background-color: transparent ;"><i class="all-icons fa fa-eye"></i></button>
                     </form>  
 
-                      <button data-toggle="modal" data-target="#updateModal<?php echo $id; ?>"><i class="all-icons fa fa-pencil"></i></button>  
+                      <button style="border:none; display: inline-block; background-color: transparent ;" data-toggle="modal" data-target="#updateModal<?php echo $id; ?>"><i class="all-icons fa fa-pencil"></i></button>  
                         <form class="form_action" action="deleteAllocation.php" method="POST">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <button type="submit" title="Delete Record"><i class="all-icons fa fa-trash"></i></button>
+                      <button style="border:none; display: inline-block; background-color: transparent; color: red;" type="submit" title="Delete Record"><i class="all-icons fa fa-trash"></i></button>
                     </form>
                         <!-- <a  href="deleteAllocation.php? id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a> -->
                   </td>
@@ -208,13 +252,14 @@ function e($val)
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header border-bottom-0">
+          <h4>Edit Allocation</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="form-title text-center">
-              <h4>Edit Allocation</h4>
+              
             </div>
             <div class="d-flex flex-column text-center">
               <form action="updateAllocation.php" method="POST">
@@ -223,8 +268,20 @@ function e($val)
                   
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control <?php echo (!empty($instructor_err)) ? 'is-invalid' : ''; ?>" name="instructor"  value="<?php echo $instructor; ?>">
                   
+                   <!-- <input type="text" class="form-control <?php echo (!empty($instructor_err)) ? 'is-invalid' : ''; ?>" name="instructor"  value="<?php echo $instructor; ?>"> --> 
+                  <select class="form-control" name="assistant" aria-label="Default select example"  >
+                      
+                      <option value="<?php echo $instructor; ?><?php echo $instructor; ?></option>
+                      <?php 
+                      foreach ($options as $option) {
+                      ?>
+                        <option value="<?php echo $option['instructor']; ?>"><?php echo $option['instructor']; ?> </option>
+                        <?php 
+                        }
+                      ?>
+                            
+              </select>
                 </div>
                 <div class="form-group">
                 <input type="text" class="form-control <?php echo (!empty($evaluator_err)) ? 'is-invalid' : ''; ?>" name="evaluator"  value="<?php echo $evaluator; ?>">
@@ -238,9 +295,11 @@ function e($val)
                 <div class="form-group">
                 <input type="text" class="form-control <?php echo (!empty($semester_err)) ? 'is-invalid' : ''; ?>" name="semester"  value="<?php echo $semester; ?>">
                 </div>
-                <button data-dismiss="modal" class="btn btn-secondary ml-2">Cancel</button>
-                <button type="submit" name="updateAllocation" class="btn btn-primary">Edit</button> 
-
+                 
+                <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-secondary btn-sm ">Cancel</button>
+                <button type="submit" name="updateAllocation" class="btn btn-dark btn-sm">Edit</button>
+                  </div>
               </form>
             </div>
           </div>
@@ -293,7 +352,7 @@ function e($val)
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 
 </body>
-<style>
+<!-- <style>
    
 input[type=button], input[type=submit], input[type=reset] {
   background-color: #04AA6D;
@@ -305,7 +364,7 @@ input[type=button], input[type=submit], input[type=reset] {
   margin: 4px 2px;
   cursor: pointer;
 }
-</style>
+</style> -->
 
 
 </html>
