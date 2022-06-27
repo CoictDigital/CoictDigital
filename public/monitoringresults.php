@@ -26,32 +26,17 @@
    require_once '../includes/db.php';
    require_once '../includes/leftNav.php'; 
 
-   if (isset($_GET["courseCode"])) {
-    $courseCode = $_GET["courseCode"];
-    $resultA = fetchProceedmonitoring($courseCode);
+   if (isset($_REQUEST["courseCode"])) {
+    $courseCode = trim($_REQUEST["courseCode"]);
+    $week = trim($_REQUEST["week"]);
+    $result = fetchProceedmonitoring($courseCode, $week);
 
-    $row = $resultA;
+    $row = $result;
     
-    
+    //echo $courseCode;
   } else {
     header("Location: ./testmonitoring.php");
   }
-
-
-
-  //  if (isset($_GET['courseCode'])) {
-  //      $courseCode = $_GET['courseCode'];
-
-  //      $result1 = fetchviewresult($courseCode);
-  //      $result2 = fetchmonitoringresults($courseCode);
-
-  //      $row = $result1;
-  //      $row = $result2;
-
-  //      //$studentProgrammes = fetchStudentProgrammes($courseCode);
-  //  } else {
-  //      header('Location: ./index.php');
-  //  }
    ?>
   <!-- ======= Header ======= -->
 
@@ -97,7 +82,7 @@
               <p>Venue: <?php echo $row['venue']; ?> </p>
             </div>
             <div class="col-sm-6 mb-1">
-              <p>Venue capacity: </p>
+              <p>Week No: <?php echo $row['week']; ?></p>
             </div>
           </div>
 
@@ -137,17 +122,29 @@
         <div class="p-3" id="instructorpresent">
           <!-- startingtime -->
           <h4>Time management</h4>
+
+          <div class="row">
+            <h6>Session duration:</h6>
+            <div class="col-sm-6 mb-1">
+              <p>Stating time: <?php echo $row['starting_time']; ?></p>
+            </div>
+            <div class="col-sm-6 mb-1">
+              <p>Ending time: <?php echo $row['ending_time']; ?> </p>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-sm-6 mb-1">
               <p>The session <?php echo $row['session_starting_time']; ?>  </p>
             </div>
-            <div class="row" >
+            <div class="" >
+
              <div class="col-sm-6 mb-1" id ="startedlate" >
                <p>Reason to why the session started late: <?php echo $row['reason_for_startinglate']; ?> </p>
              </div>
             </div>
           </div>
-
+<!-- teaching process -->
           <h4>Teaching process details</h4>
           <div class="row">
             <div class="col-sm-6 mb-1">
@@ -252,7 +249,7 @@ if ($t == "no") {
         </div>
 </div>
 <div id="editor" class="form-group">
-          <a href="javascript:generatePDF()"><button class="btn btn-primary" >Dowload PDF</button></a>
+          <a href="javascript:generatePDF()"><button class="btn btn-primary" download>Dowload PDF</button></a>
           </div>
       </div>
       
