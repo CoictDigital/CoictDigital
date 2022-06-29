@@ -83,9 +83,9 @@ unset($_SESSION["studentFilledCount"]);
                    
                    <!-----crud icons ------->
                   <td class="col-1" >
-                    <form action="viewinvigilation.php" method="POST">
+                    <form class="form_action" action="read.php" method="POST">
                       <input type="hidden" name="id"  value="<?php echo $id; ?>">
-                      <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
+                      <button type="submit" title="View Record"style="border:none;  background-color: transparent;"><i class="all-icons fa fa-eye"></i></button>
                     </form>
                   
                     

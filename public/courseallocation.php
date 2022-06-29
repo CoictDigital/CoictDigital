@@ -233,17 +233,22 @@ function e($val)
                   <td ><?php echo $row['assistant']; ?></td>
                   <td ><?php echo$row['semester']; ?></td>
                   <!-----crud icons ------->
-                  <td class="col-1" >
-                    <form class="form_action" action="read.php" method="POST">
+                  <!-- style="display:inline-flex; align: right;  justify-content:center; width: 100% margin: auto; -->
+                  <td class="col-1">
+                  <div class="btn-group">
+                  <form class="form_action" action="read.php" method="POST" style="border:none; width: 30px; background-color: transparent ;">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <button type="submit" title="View Record" style="border:none; display: inline-block; background-color: transparent ;"><i class="all-icons fa fa-eye"></i></button>
+                      <button type="submit" title="View Record" style="border:none;  background-color: transparent ;"><i class="all-icons fa fa-eye"></i></button>
                     </form>  
 
-                      <button style="border:none; display: inline-block; background-color: transparent ;" data-toggle="modal" data-target="#updateModal<?php echo $id; ?>"><i class="all-icons fa fa-pencil"></i></button>  
-                        <form class="form_action" action="deleteAllocation.php" method="POST">
+                      <button style="border:none;  background-color: transparent ;" data-toggle="modal" data-target="#updateModal<?php echo $id; ?>"><i class="all-icons fa fa-pencil"></i></button>  
+                        <form class="form_action"class="text-right"  action="deleteAllocation.php" method="POST" style="border:none;  align:right; background-color: transparent ;">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <button style="border:none; display: inline-block; background-color: transparent; color: red;" type="submit" title="Delete Record"><i class="all-icons fa fa-trash"></i></button>
+                      <button style="border:none; background-color: transparent; ;" type="submit" title="Delete Record"><i class="all-icons fa fa-trash"></i></button>
                     </form>
+                  </div>
+
+                    
                         <!-- <a  href="deleteAllocation.php? id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a> -->
                   </td>
                   </tr>
@@ -268,15 +273,15 @@ function e($val)
                 <input type="hidden" name="id" value="<?php echo $id;  ?>" >
                   
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   
-                   <!-- <input type="text" class="form-control <?php echo (!empty($instructor_err)) ? 'is-invalid' : ''; ?>" name="instructor"  value="<?php echo $instructor; ?>"> --> 
+                    <input type="text" class="form-control <?php echo (!empty($instructor_err)) ? 'is-invalid' : ''; ?>" name="instructor"  value="<?php echo $instructor; ?>"> 
                   <select class="form-control" name="instructor" aria-label="Default select example"  >
                       
                       <option value="<?php echo $instructor; ?><?php echo $instructor; ?></option>
                       <?php 
                       foreach ($options as $option) {
-                        print_r($options);
+                         print_r($options);
                       ?>
                         <option value="<?php echo $row['instructor']; ?>"><?php echo $row['instructor']; ?> </option>
                         <?php 
@@ -284,6 +289,9 @@ function e($val)
                       ?>
                             
               </select>
+                </div> -->
+                <div class="form-group">
+                <input type="text" class="form-control <?php echo (!empty($instructor_err)) ? 'is-invalid' : ''; ?>" name="instructor"  value="<?php echo $instructor; ?>" placeholder="">
                 </div>
                 <div class="form-group">
                 <input type="text" class="form-control <?php echo (!empty($evaluator_err)) ? 'is-invalid' : ''; ?>" name="evaluator"  value="<?php echo $evaluator; ?>">

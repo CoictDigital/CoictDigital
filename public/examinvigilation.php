@@ -164,14 +164,16 @@
               
               <div class="row p-2">
               <div class="col-sm-4">
-                 
+                 <label for="day">Day:</label>
                   <input class="form-select" type="date" name="date" placeholder="Select day">
                
               </div>
               <div class="col-sm-4">
+              <label for="day">From:</label>
               <input type="time" class="form-control" name="from_time" placeholder="From : time">
               </div>
               <div class="col-sm-4">
+              <label for="day">To:</label>
               <input type="time" class="form-control" name="to_time" placeholder="To : time">
                     </div>
               </div>
@@ -263,16 +265,19 @@
                    
                    <!-----crud icons ------->
                   <td class="col-1" >
-                    <form action="viewinvigilation.php" method="POST">
+                    <div class="btn-group">
+                    <form action="viewinvigilation.php" method="POST" style="border:none;  background-color: transparent ;">
                       <input type="hidden" name="id"  value="<?php echo $id; ?>">
-                      <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
+                      <button type="submit" title="View Record" style="border:none;  background-color: transparent ;"><i class="all-icons fa fa-eye"></i></button>
                     </form>
-                    <button type="button" data-toggle="modal" data-target="#updatemodel<?php echo $id; ?>"><i class="all-icons fa fa-pencil"></i></button> 
-                    <form class="form_action" action="deleteinvigilator.php" method="POST">
+                    <button type="button" data-toggle="modal" style="border:none;  background-color: transparent ;" data-target="#updatemodel<?php echo $id; ?>"><i class="all-icons fa fa-pencil"></i></button> 
+                    <form class="form_action" action="deleteinvigilator.php" method="POST"  style="border:none;  background-color: transparent ;">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <button type="submit" title="Delete Record"><i class="all-icons fa fa-trash" style="color: #d90769;"></i></button>
+                      <button type="submit" title="Delete Record" style="border:none;  background-color: transparent ;"><i class="all-icons fa fa-trash" style=""></i></button>
                     </form>
-                    <?php echo $button_view_excuse;?>
+                    <?php echo $button_view_excuse; ?>
+                    </div>
+                    
                   </td>
                   </tr>
          <div class="modal fade" id="updatemodel<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
