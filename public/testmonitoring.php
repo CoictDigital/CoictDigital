@@ -41,26 +41,7 @@
   ?>
 
     <!-- sql query for fetching data -->
-    <?php 
-  $sql = "SELECT * FROM teachingmonitoring_questions, courses 
-  WHERE courses.course_code = teachingmonitoring_questions.course_code 
-  AND teachingmonitoring_questions.course_code = '$courseCode'
-  ORDER BY week ASC";
- $results = mysqli_query($conn, $sql);
- //$result = $conn->query($sql);// or die($conn->error);
-  //$row = $result->fetch_assoc();
-  $courseRes = [];
-  
-
-  if ($results->num_rows == 0) {
-    //echo $courseCode;
-    echo "<b> No courses found for those filters</b>";
- }else{
-  while($row = mysqli_fetch_assoc($results)) {
-    array_push($courseRes, $row);
-       }
-  mysqli_close($conn);
-?>
+   
 
 
 
@@ -95,7 +76,28 @@
             <div class="p-4">
                 <div class="card">
                     <div class="card-body">
+                      
                         <p class="card-title">Teaching and Learning monitoring results</p>
+                        <?php 
+  $sql = "SELECT * FROM teachingmonitoring_questions, courses 
+  WHERE courses.course_code = teachingmonitoring_questions.course_code 
+  AND teachingmonitoring_questions.course_code = '$courseCode'
+  ORDER BY week ASC";
+ $results = mysqli_query($conn, $sql);
+ //$result = $conn->query($sql);// or die($conn->error);
+  //$row = $result->fetch_assoc();
+  $courseRes = [];
+  
+
+  if ($results->num_rows <= 0) {
+    //echo $courseCode;
+    echo "$courseCode is not yet monitored!";
+ }else{
+  while($row = mysqli_fetch_assoc($results)) {
+    array_push($courseRes, $row);
+       }
+  mysqli_close($conn);
+?>
                     </div>
                     <!-- 
             fetch monitoring data here -->
