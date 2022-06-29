@@ -12,4 +12,6 @@ System functions include:
 ● Management of course allocation
 ● Allocate exam invigilator
 
-
+# Getting Started
+To get started with exploring CoictDigital you can clone the repository and deploy it in your server.
+The database is called coict_digital.sql and it needs to be installed too and run in your server.
