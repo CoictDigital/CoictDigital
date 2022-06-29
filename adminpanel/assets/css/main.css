@@ -98,7 +98,7 @@ section {
 
 .breadcrumbs:before {
   content: "";
-  background-color: rgba(27, 47, 69, 0.7);
+  background-color: rgba(8,100,175,0.7);
   position: absolute;
   inset: 0;
 }
@@ -118,7 +118,7 @@ section {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color: var(--color-primary);
+  color:  #f6b418;
 }
 
 .breadcrumbs ol a {
@@ -250,7 +250,7 @@ section {
 }
 
 .header.sticked {
-  background: rgba(27, 47, 69, 0.9);
+  background: #0864af;
   padding: 12px 0;
 }
 
@@ -778,7 +778,7 @@ section {
 # Call To Action Section
 --------------------------------------------------------------*/
 .call-to-action {
-  background: linear-gradient(rgba(27, 47, 69, 0.8), rgba(27, 47, 69, 0.8)), url("../img/services-header.jpg") center center;
+  background: #0864af, url("../img/services-header.jpg") center center;
   background-size: cover;
   padding: 100px 0;
 }
