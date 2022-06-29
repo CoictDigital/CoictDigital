@@ -118,8 +118,6 @@ require_once("../includes/leftNav.php");
                                     <option>Semester</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
-
-
                                 </select>
                             </div>
                         </div>
@@ -766,19 +764,6 @@ require_once("../includes/leftNav.php");
             "study_year": null,
             "semester": null,
         };
-        // pick studyyear selected by user 
-        //         $("#studyyear").change(function() {
-
-        //             study_year = $("#studyyear option:selected").val();
-
-        //         });
-
-        //         // pick semester selected by user
-        //         $("#semester").change(function() {
-        //             semester = $("#semester option:selected").val();
-
-        // console.log(semester);
-        //         });
         const selectElement = document.getElementById('semester');
         const courseYear = document.getElementById("studyyear");
         courseYear.addEventListener('change', (event) => {
@@ -827,7 +812,7 @@ require_once("../includes/leftNav.php");
     });
     </script>
     <!-- refresh page on clicking browser's back button -->
-    <!-- <script>
+    <script>
     window.addEventListener("pageshow", function(event) {
         var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window
             .performance.navigation.type === 2);
@@ -837,7 +822,7 @@ require_once("../includes/leftNav.php");
             window.location.reload();
         }
     });
-    </script> -->
+    </script>
 
 </body>
 
