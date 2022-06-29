@@ -31,104 +31,125 @@ unset($_SESSION["studentFilledCount"]);
   
        <!-- ======= Form Section ======= -->
        <section id="invigilation" class="services">
-        <div class="container-fluid">            
+        <div class="">            
           <!-- <span class="badge alert-success" style="float: right;">Admin</span> -->
           <div class="section-title">
-            <h2>EXAM INVIGILATION</h2>
+            <h2>Exam Invigilation</h2>
           </div>
-          <div class="container">
+          <div class="">
           <form>
+           
+        
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label"> <i class="fa fa-search" aria-hidden="true"></i>Search</label>
-              <div class="col-sm-5 mb-1">
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-sm-5 mb-1">
-              <a href="#addnewModal"  data-toggle="modal" data-target="#addnewModal" > 
-                <!-- <button type="submit" class="mx-auto button" style="float: right; height: 40px;">Add New</button> -->
-              </a>
-              </div>
-            </div>
-           <div class="form-group row">
-              <h5>You have  just Accept  your allocation</h5>
-            </div>
-            <div class="form-group row">
-              <div class="centre">
-              <table class="table table-sm">
-                <thead class="table-secondary">
-                <tr>
-                    <th scope="col">Day</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Course Name</th>
-                    <th scope="col">Venue</th>
-                    <th scope="col">Invigilators</th>
-                    <th scope="col">Action</th>
+              <div class="">
+            
+        
+     <div class="p-4">
+     <div class="card"> 
+     <div class="card-body">
+     <p class="card-title">Allocated Invigilators</p>
+     <table id="dtBasicExample" class="table table-striped table-bordered table-lg" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+                    <th class="th-lg">Day</th>
+                    <th class="th-lg">Time</th>
+                    <th class="th-lg">Course Name</th>
+                    <th class="th-lg">Venue</th>
+                    <th class="th-lg">Invigilators</th>
+                    <th class="th-lg">Action</th>
                   </tr>
                 </thead>
+         
+          </div>
+            <div class="">
+            
                 <tbody>
+                <?php 
+                            $sql = "SELECT * FROM exam_invigilation" ;
+                            $result = $conn->query($sql);
+                          if ($result->num_rows > 0) {
+                            
+                              while($row = $result->fetch_assoc()){
+                                  extract($row);
+                                  $id = $row['id'];
+                              
+                            ?>
+                  <tr>
+                   <td ><?php echo $row['day']; ?></td>
+                   <td ><?php echo $row['from_time'] ;?> - <?php echo $row['to_time'] ;?></td>
+                   <td ><?php echo $row['course_name']; ?></td>
+                   <td ><?php echo $row['venue']; ?></td>
+                   <td ><?php echo $row['invigilators']; ?></td>
+                   
+                   <!-----crud icons ------->
+                  <td class="col-1" >
+                    <form action="viewinvigilation.php" method="POST">
+                      <input type="hidden" name="id"  value="<?php echo $id; ?>">
+                      <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
+                    </form>
+                  
+                    
+                  </td>
+                  </tr>
+         <div class="modal fade" id="updatemodel<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-title text-center">
+                <h4>Edit Invigilation</h4>
+              </div>
+              <div class="d-flex flex-column text-center">
+              <form action="updateinvigilation.php" method="POST">
+                  <div class="form-group">
+                    <input type="text" class="form-control"<?php echo (!empty($invigilator_err)) ? 'is-invalid' : ''; ?> id="staffname" placeholder="<?php echo $invigilator; ?>">
+                  </div>
+                  
+                  <div class="form-group">
+                    <input type="text" class="form-control"<?php echo (!empty($course_err)) ? 'is-invalid' : ''; ?> id="course_name" placeholder="<?php echo $course; ?>">
+                  </div>
+                  
+                  <div class="form-group">
+                    <input type="text" class="form-control"<?php echo (!empty($venue_err)) ? 'is-invalid' : ''; ?> id="venue" placeholder="<?php echo $venue; ?>">
+                  </div>
+                  <div class="row">
+                  <div class="form-group">
+                    <input type="text" class="form-control"<?php echo (!empty($day_err)) ? 'is-invalid' : ''; ?> id="day" placeholder="<?php echo $day; ?>">
+                  </div>
+                  <div class="row">
+                    <div><p>From Time</p></div>
+                  <div class="form-group">
+                    <input type="time" class="form-control"<?php echo (!empty($from_time_err)) ? 'is-invalid' : ''; ?> id="from_time" placeholder="<?php echo $from_time; ?>">
+                  </div>
+                  <div><p>To Time</p></div>
+                  <div class="form-group">
+                    <input type="time" class="form-control"<?php echo (!empty($to_time_err)) ? 'is-invalid' : ''; ?> id="to_time" placeholder="<?php echo $to_time; ?>">
+                  </div>
+                  </div>
+                  
+                  <button data-dismiss="modal" class="btn btn-secondary ml-2">Cancel</button>
+                <button type="submit" name="updateinvingator" class="btn btn-primary">Edit</button> 
+                </form>
+              </div>
+            </div>
+          </div>
+           </div>
+      </div>
+
+                  <?php }
+                 }
+                 ?> 
                  
-                  <tr>
-                    <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
-                  <tr>
-                  <td>1/2/2022</td>
-                    <td>8:00 -10:00</td>
-                    <td>Information Systems</td>
-                    <td>B302</td>
-                    <td>Mlaki,Japhet</td>
-                    <td><a href="#editModal"  class="fa fa-pencil" data-toggle="modal" data-target="#editModal"></a>  <a href="#"  class="fa fa-trash"></a> <a href="#"  class="fa fa-history"></a></td>
-                  </tr>
+                
                   
                 </tbody>
               </table>
             </div>
             </div>
-            <div class="col-sm-5 mb-1">
-              <a href="#declineModal"  data-toggle="modal" data-target="#declineModal" > 
-                <button type="submit" class="mx-auto button" style="float: right; height: 40px;">DECLINE Allocation</button>
-              </a>
-              </div>
-            <!-- <button type="submit" class="mx-auto button" ><a href="declineinvigilation.html"  class="fa fa-history"></a>DECLINE Allocation</button> -->
-          </form>
-        </div>
-
 
         
         </div>
@@ -165,144 +186,20 @@ unset($_SESSION["studentFilledCount"]);
           </div>
            </div>
       </div>
-      <!-- fading addnew form-->
-      <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-title text-center">
-                <h4>Add New Invigilator</h4>
-              </div>
-              <div class="d-flex flex-column text-center">
-                <form>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursename" placeholder="Course Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="venue" placeholder="Venue">
-                  </div>
-                  <div class="form-group">
-                    <input type="time" class="form-control" id="time" placeholder="Time">
-                  </div>
-                  <button type="submit" class="mx-auto button" >Save</button>
-                </form>
-              </div>
-            </div>
-          </div>
-           </div>
-      </div>
-
-      <!-- end of fading aadnew form-->
       
-      <!-- fading edit form-->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-title text-center">
-                <h4>Edit Invigilation</h4>
-              </div>
-              <div class="d-flex flex-column text-center">
-                <form>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="assistantname"placeholder="Assistant Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursename" placeholder="Course Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursetoinvigilate" placeholder="Invigilation Course ">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="venue" placeholder="Venue">
-                  </div>
-                  <div class="form-group">
-                    <input type="time" class="form-control" id="time" placeholder="Time">
-                  </div>
-                  <button type="submit" class="mx-auto button" >Save</button>
-                </form>
-              </div>
-            </div>
-          </div>
-           </div>
-      </div>
-
-      <!-- end of fading edit form-->
+      
+      
 
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Get in touch</h2>
-         </div>
-        <div class="info">
-          <div class="row d-flex align-items-center">
-           
-              <div class="col-sm-4 address">
-                <i class="fas fa-map-marker-alt"></i>
-                <h4>Our Location</h4>
-                <p>Kijitonyama, Dar es salaam Tz</p>
-              </div>
-
-              <div class="col-sm-4 email">
-                <i class="far fa-envelope"></i>
-                <h4>Our Email</h4>
-                <p>coictdigital@udsm.co.tz</p>
-              </div>
-
-              <div class="col-sm-4 phone">
-                <i class="fas fa-phone-alt"></i>
-                <h4>Call us at</h4>
-                <p>+255 123 456 789</p>
-              </div>
-             
-            </div>
-
-         
-          <div class="row d-flex align-items-center ">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15847.948246895608!2d39.2399597!3d-6.7714281!3m2
-            !1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x31c34ce3703cc9eb!2sCollege%20of%20Information%20and%20Communication%20Technologi
-            es%20(CoICT)%20-%20University%20of%20Dar%20es%20salaam!5e0!3m2!1sen!2stz!4v1648727896321!5m2!1sen!2stz" width="600" 
-            height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-      </div>
-    </div>
-    </section>
-
-
-
-
-    <!-- End Contact Section -->
+   
 
   </main>
   <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    <div class="container">
-      <!-- <div class="copyright">
-        &copy; Copyright <strong><span>coictdigital@udsm.co.tz</span></strong>
-      </div> -->
-     
-    </div>
+    
   </footer><!-- End  Footer -->
  
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>

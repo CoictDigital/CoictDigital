@@ -10,18 +10,18 @@ function e($val)
 }
 
 // Define variables and initialize with empty values
-$course= $instructor = $evaluator = "";
-$assistant = $semester = "";
-$course_err = $instructor_err = $semester_err = $evaluator_err =  $assistant_err ="";
+$course= $invigilator  = "";
+$venue= $from_time = $to_time = $day = "";
+$course_err = $invigilator_err = $from_time_err = $to_time_err =  $day_err = $venue_err ="";
 
 // $sql = "SELECT * FROM course_allocation where id=?"; 
 // //    $id =$_GET["id"] ;
 // if (isset($_POST["updateAllocation"])) {
     // $course = e($_POST["course_name"]);
-    // $instructor = e($_POST["instructor"]);
-    // $evaluator = e($_POST["evaluator"]);  
+    // $invigilator = e($_POST["invigilator"]);
+    // $invigilator = e($_POST["invigilator"]);  
     // $assistant= e($_POST["assistant"]);
-    // $semester = e($_POST["semester"]);
+    // $from_time = e($_POST["from_time"]);
 
     // Processing form data when form is submitted
     
@@ -29,10 +29,11 @@ $course_err = $instructor_err = $semester_err = $evaluator_err =  $assistant_err
         // Get hidden input value
         $id = $_POST["id"];
     $course = e($_POST["course_name"]);
-    $instructor = e($_POST["instructor"]);
-    $evaluator = e($_POST["evaluator"]);  
-    $assistant= e($_POST["assistant"]);
-    $semester = e($_POST["semester"]);
+    $invigilator = e($_POST["invigilators"]);  
+    $venue= e($_POST["venue"]);
+    $day= e($_POST["day"]);
+    $from_time = e($_POST["from_time"]);
+    $to_time = e($_POST["to_time"]);
 // Validate course name
    $input_course = trim($_POST["course_name"]);
     if(empty($input_course)){
@@ -42,56 +43,64 @@ $course_err = $instructor_err = $semester_err = $evaluator_err =  $assistant_err
     } else{
         $course = $input_course;
     }
-    //   Validate instructors
-      $input_instructor = trim($_POST["instructor"]);
-      if(empty($input_instructor)){
-          $instructor_err = "Please enter Instructor name.";     
+    //   Validate invigilators
+      $input_invigilator = trim($_POST["invigilators"]);
+      if(empty($input_invigilator)){
+          $invigilator_err = "Please enter invigilator name.";     
       } else{
-          $instructor = $input_instructor;
+          $invigilator = $input_invigilator;
       }
-      // Validate evaluator
-      $input_evaluator = trim($_POST["evaluator"]);
-      if(empty($input_evaluator)){
-          $evaluator_err = "Please enter evaluator name.";     
+      // Validate to time
+      $input_to_time = trim($_POST["to_time"]);
+      if(empty($input_to_time)){
+          $to_time_err = "Please enter to_time name.";     
       } else{
-          $evaluator = $input_evaluator;
+          $to_time = $input_to_time;
       }
-       // Validate assistant
-       $input_assistant = trim($_POST["assistant"]);
-       if(empty($input_assistant)){
-           $assistant_err = "Please enter assistant name.";     
+       // Validate venue
+       $input_venue = trim($_POST["venue"]);
+       if(empty($input_venue)){
+           $venue_err = "Please enter venue name.";     
        } else{
-           $assistant = $input_assistant;
+           $venue = $input_venue;
        }
-       // Validate semester
-       $input_semester = trim($_POST["semester"]);
-       if(empty($input_semester)){
-           $semester_err = "Please enter semester name.";     
+       // Validate date
+       $input_day = trim($_POST["day"]);
+       if(empty($input_date)){
+           $day_err = "Please enter day name.";     
        } else{
-           $semester = $input_semester;
+           $date = $input_date;
+       }
+       // Validate from_time
+       $input_from_time = trim($_POST["from_time"]);
+       if(empty($input_from_time)){
+           $from_time_err = "Please enter time .";     
+       } else{
+           $from_time = $input_from_time;
        }
      // Check input errors before inserting in database
-     if(empty($course_err) && empty($instructor_err) && empty($evaluator_err)&& empty($assistant_err)&& empty($semester_err)){
+     if(empty($course_err) && empty($invigilator_err) && empty($venue_err)&& empty($day_err)&& empty($to_time_err)&& empty($from_time_err)){
           // Prepare an update statement
-        $sql = "UPDATE course_allocation SET course_name=?, semester=?, evaluator=?,assistant=?,instructor=? WHERE id=?";
+        $sql = "UPDATE exam_invigilation SET course_name=?, from_time=?, venue=?, day=?,to_time=?,invigilators=? WHERE id=?";
   
         if($stmt = mysqli_prepare($conn, $sql)){
              // Set parameters
              $param_course = $course;
-             $param_semester = $semester;
-             $param_evaluator = $evaluator;
-             $param_instructor = $instructor;
-             $param_assistant = $assistant;
+             $param_from_time = $from_time;
+             $param_invigilator = $invigilator;
+             $param_to_time = $to_time;
+             $param_venue = $venue;
+             $param_day = $day;
              $param_id = $id;
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt,'ssssss', $param_course, $param_semester, $param_evaluator,$param_assistant, $param_instructor, $param_id );
+            mysqli_stmt_bind_param($stmt,'sssssss', $param_course, $param_venue, $param_invigilator,$param_day,$param_from_time, $param_to_time, $param_id );
             
            
 
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Records updated successfully. Redirect to landing page
-            header("location: courseallocation.php");
+            header("location: examinvigilation.php");
             exit();
         } else{
             echo "Oops! Something went wrong. Please try again later.";
@@ -110,7 +119,7 @@ mysqli_close($conn);
         $id =  trim($_GET["id"]);
         
          // Prepare a select statement
-         $sql = "SELECT * FROM course_allocation WHERE id = ?";
+         $sql = "SELECT * FROM exam_invigilation WHERE id = ?";
          if($stmt = mysqli_prepare($conn, $sql)){
              // Bind variables to the prepared statement as parameters
              mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -129,14 +138,15 @@ mysqli_close($conn);
      
               // Retrieve individual field value
               $course = $row["course_name"];
-              $semester = $row["semester"];
-              $evaluator = $row["evaluator"];
-              $instructor = $row["instructor"]; 
-              $assistant = $row["assistant"]; 
+              $from_time = $row["from_time"];
+              $to_time = $row["to_time"];
+              $invigilator = $row["invigilators"]; 
+              $venue = $row["venue"]; 
+              $day = $row["day"];
               
           } else{
               // URL doesn't contain valid id. Redirect to error page
-              header("location: errorAlllocation.php");
+              header("location: errorInvigilation.php");
               exit();
           }
           
@@ -151,12 +161,10 @@ mysqli_close($conn);
   mysqli_close($conn);
 }  else{
   // URL doesn't contain id parameter. Redirect to error page
-  header("location: errorAllocation.php");
+  header("location: errorInvigilation.php");
   exit();
 }
 }
-
-
 
 
   

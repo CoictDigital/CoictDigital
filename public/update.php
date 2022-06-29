@@ -12,9 +12,6 @@
         $contact = $_POST['contact'];
         $field=$_POST['field'];
         $email = $_SESSION['email'];
-        $emai= $_GET["email"];
-        $result = fetchStudentRow($email); 
-        $student =  $result;
         
         
 
@@ -97,7 +94,7 @@
                   <label class="form-check-label"> NON IT Field</label>
                 </div>
                 <div>
-                 Employed at/company name <textarea class="form-control" name="employedat" value="<?php echo $student['employedas']; ?>" placeholder="" oninput="this.value = this.value.toUpperCase()"></textarea>
+                 Employed at/company name <textarea class="form-control" name="employedat" value="<?php echo ['employedas']; ?>" placeholder="" oninput="this.value = this.value.toUpperCase()"></textarea>
                  Employed as/deal with<textarea class="form-control" name="employedas" value="" placeholder=""  oninput="this.value = this.value.toUpperCase()"></textarea>
                 </div>
 </div>

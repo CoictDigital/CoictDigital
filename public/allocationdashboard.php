@@ -24,6 +24,21 @@ unset($_SESSION["studentFilledCount"]);
   <?php
     require_once("../includes/leftNav.php");
     ?>
+    <?php
+    // (`semester`,`course_name`,`evaluator`,`asistant`,`instructor`) VALUES ('$semester','$course_name','$evaluator','$asistant','$instructor')
+$instructor_name= $_SESSION["userData"]['name'];
+$instructor_id= $_SESSION["userData"]['id'];
+$query ="SELECT distinct users.name,course_allocation.course_name,course_allocation.semester,course_allocation.evaluator,course_allocation.instructor,course_allocation.assistant
+                      FROM users
+                      INNER JOIN course_allocation ON users.name = course_allocation.instructor where users.id='$instructor_id' ";
+                      $result = $conn->query($query);
+                   
+                       $row= mysqli_fetch_all($result, MYSQLI_ASSOC)[0];
+      
+   
+
+    ?>
+   
 
 
   <main id="main">
@@ -34,7 +49,7 @@ unset($_SESSION["studentFilledCount"]);
         <div class="container-fluid">            
           
           <div class="section-title">
-            <h2>MY ALLOCATION</h2>
+            <h2>Course Allocation</h2>
           </div>
           <!-- <div class="">
           <form>
@@ -73,19 +88,20 @@ unset($_SESSION["studentFilledCount"]);
 
         <div class="col-sm-8"> 
         <form>
-              <H3>Hellow,</H3>
+          <h3>Hellow,</h3>
+              <H4><B>Instructor:</B> <?php echo $_SESSION["userData"]["name"]; ?> </H4>
+              <div>You have been allocated to  
+                 <div><h4><b>Course:</b><?php echo $row['course_name']; ?> </h4></div>
 
-              <B>Dr.Mlaki</B><?php echo $row['instructor']; ?>  
-              <div><> You have been allocated to  
-                 <div><h4>Course:<?php echo $row['course_name']; ?></h4></div>
-                 <div> Practical/Tutorial Assistant: </div>
-                 <div> Evaluator:<?php echo $row['evaluator']; ?> </div>
+                 <div> <h4><b>Practical/Tutorial Assistant:</b><?php echo $row['assistant']; ?></h4></div>
+
+                 <div> <h4><b>Evaluator:</b><?php echo $row['evaluator']; ?> </h4></div>
                  
-                  <div>Semester:  <?php echo $row['semester']; ?></div> 
+                  <div> <h4><b>Semester:</b><?php echo $row['semester']; ?>  </h4></div> 
 
                 </div>
-                <button type="submit" formaction="http://localhost/coictdigital/coictdigital/public/previewhistory.php" class="allocationbutton">VIEW HISTORY</button>
-                <button type="submit" formaction="http://localhost/coictdigital/coictdigital/public/lecturerallocation.php" class="allocationbutton">OTHER ALLOCATION</button>
+                <button type="submit" formaction="http://localhost/coictdigital/public/previewhistory.php" class="btn btn-info">VIEW HISTORY</button>
+                <button type="submit" formaction="http://localhost/coictdigital/public/lecturerallocation.php" class="btn btn-info">OTHER ALLOCATION</button>
           </form>
         <!-- <p>Instructor: <?php echo $row['instructor']; ?>  </p> -->
         <!-- <p>Course Name:  <?php echo $row['course_name']; ?></p>

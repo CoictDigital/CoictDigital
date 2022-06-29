@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2022 at 06:26 PM
+-- Generation Time: Jun 29, 2022 at 02:35 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1753,7 +1753,11 @@ ALTER TABLE `user_response`
 -- AUTO_INCREMENT for table `alumni`
 --
 ALTER TABLE `alumni`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+>>>>>>> 451428085544f36047bc8861f7aef3ea979d9afa
 
 --
 -- AUTO_INCREMENT for table `course_allocation`
