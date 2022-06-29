@@ -19,15 +19,15 @@
     <nav id="navbar" class="nav-menu navbar">
       <ul>
 
-        <li><a href="index.php" class="nav-link scrollto"> <i class="fa fa-home">  </i><span>Home</span></a></li>
+        <li><a href="index.php" class="nav-link scrollto" style="float:left;"> <i class="fa fa-home">  </i><span>Home</span></a></li>
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
                         echo "department1.php";
                       } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "index.php";
                       }
-                      ?>" class="nav-link scrollto"><i class="fas fa-thin fa-dna"></i> <span>Course Evaluation</span></a></li>
-        <li><a href="alumnirecords.php" class="nav-link scrollto"><i class="fas fa-thin fa-clipboard"></i><span>Alumni Records</span></a></li>
+                      ?>" class="nav-link scrollto" style="float:left;"><i class="fas fa-thin fa-dna"></i> <span>Course Evaluation</span></a></li>
+        <li><a href="alumnirecords.php" class="nav-link scrollto" style="float:left;"><i class="fas fa-thin fa-clipboard"></i><span>Alumni Records</span></a></li>
 
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
@@ -35,7 +35,7 @@
                       } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "Teachingmonitoring.php";
                       }
-                      ?>" class="nav-link scrollto"><i class="fas fa-thin fa-chalkboard"></i> <span>Teaching Monitoring</span></a></li>
+                      ?>" class="nav-link scrollto" style="float:left;"><i class="fas fa-thin fa-chalkboard"></i> <span>Teaching Monitoring</span></a></li>
                       
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
@@ -43,15 +43,15 @@
                       } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "allocationdashboard.php";
                       }
-                      ?>" class="nav-link scrollto">  <i class="fas fa-thin fa-book"></i><span>Course Allocation</span></a></li>
+                      ?>" class="nav-link scrollto" style="float:left;">  <i class="fas fa-thin fa-book"></i><span>Course Allocation</span></a></li>
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
                         echo "examinvigilation.php";
                       } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "invigilationdashboard.php";
                       }
-                      ?>" class="nav-link scrollto"> <i class="fas fa-thin fa-file"></i><span>Exam Invigilation</span></a></li>
-        <li><a href="./../logout.php" class="nav-link scrollto"> <span>Logout</span></a></li>
+                      ?>" class="nav-link scrollto"style="float:left;"> <i class="fas fa-thin fa-file"></i><span>Exam Invigilation</span></a></li>
+        <li><a href="./../logout.php" class="nav-link scrollto" style="float:left;"> <span>Logout</span></a></li>
       
       </ul>
     </nav><!-- .nav-menu -->

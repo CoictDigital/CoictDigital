@@ -2,22 +2,22 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>CoICT Digital</title>
-  <link rel="shortcut icon" href="assets/img/favicon.jpg" type="image/x-icon">
-  <meta name="title" content="Digital solutions services">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <!-- css files -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
+    <title>CoICT Digital</title>
+    <link rel="shortcut icon" href="assets/img/favicon.jpg" type="image/x-icon">
+    <meta name="title" content="Digital solutions services">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!-- css files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 
 <body>
-<?php
+    <?php
   //require_once("../includes/functions.php");
   require_once("../includes/headerContent.php");
   require_once("../includes/sessionStuffs.php");
@@ -40,8 +40,8 @@
    }
   ?>
 
-  <!-- sql query for fetching data -->
-<?php 
+    <!-- sql query for fetching data -->
+    <?php 
   $sql = "SELECT * FROM teachingmonitoring_questions, courses 
   WHERE courses.course_code = teachingmonitoring_questions.course_code 
   AND teachingmonitoring_questions.course_code = '$courseCode'
@@ -50,8 +50,10 @@
  //$result = $conn->query($sql);// or die($conn->error);
   //$row = $result->fetch_assoc();
   $courseRes = [];
+  
 
   if ($results->num_rows == 0) {
+    //echo $courseCode;
     echo "<b> No courses found for those filters</b>";
  }else{
   while($row = mysqli_fetch_assoc($results)) {
@@ -59,82 +61,86 @@
        }
   mysqli_close($conn);
 ?>
-  
 
 
 
-<main id="main">
-    <!-- ======= Main  Section ======= -->
-    <section id="" class="services">
-      <div class="container-fluid">
-        <div class="section-title">
-          <h3>UNIVERSITY OF DAR ES SALAAM</h3>
-          <h3>Quality Assurance Bureau (QAB)</h3>
-          <h3>Teaching and Learning Monitoring</h3>
-          
-        </div>
-      </div>
-      
-      
-      <!-- card table -->
-      
-      <div class="p-4">
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title">Department of Computer Science and Engineering</p>
-              
+
+    <main id="main">
+        <!-- ======= Main  Section ======= -->
+        <section id="" class="services">
+            <div class="container-fluid">
+                <div class="section-title">
+                    <h3>UNIVERSITY OF DAR ES SALAAM</h3>
+                    <h3>Quality Assurance Bureau (QAB)</h3>
+                    <h3>Teaching and Learning Monitoring</h3>
+
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- result -->
 
-      <div class="p-4">
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title">Teaching and Learning monitoring results</p>
-          </div>
-<!-- 
+            <!-- card table -->
+
+            <div class="p-4">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title">Department of Computer Science and Engineering</p>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- result -->
+
+            <div class="p-4">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title">Teaching and Learning monitoring results</p>
+                    </div>
+                    <!-- 
             fetch monitoring data here -->
-          <div class="container-fluid mb-3">
-            <?php
+                    <div class="container-fluid mb-3">
+                        <?php
                 foreach ($courseRes as $coursecode) {
                 ?>
-                 <div class="card mb-1">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-10">
-                        
-                          <p class=""><?php echo $coursecode["course_code"] . " - Week " . $coursecode["week"]; ?></p>
-                          
-                        </div>
+                        <div class="card mb-1">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-10">
 
-                        <!-- view button -->
-                        <div class="col-2">
-                          
-                          <a href="./monitoringresults.php?<?php echo "courseCode=" . $coursecode["course_code"]."&week=".$coursecode['week'];?>" class="btn btn-primary">View</a>
+                                        <p class="">
+                                            <?php echo $coursecode["course_code"] . " - Week " . $coursecode["week"]; ?>
+                                        </p>
+
+                                    </div>
+
+                                    <!-- view button -->
+                                    <div class="col-2">
+
+                                        <a href="./monitoringresults.php?<?php echo "courseCode=" . $coursecode["course_code"]."&week=".$coursecode['week'];?>"
+                                            class="btn btn-primary">View</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <?php
+                        <?php
                 }
                 ?>
-                </div>        
-           <?php 
+                    </div>
+                    <?php 
  }
  ?>
 
-          </div>
-        </div>
-      </div>
+                </div>
+            </div>
+            </div>
 
 
 
-      
-</section>
-<main>
+
+        </section>
+        <main>
 
 </body>
+
 </html>

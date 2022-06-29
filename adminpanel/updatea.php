@@ -12,6 +12,7 @@
         $contact = $_POST['contact'];
         $field=$_POST['field'];
         $email = $_SESSION['email'];
+
         
         
 
@@ -49,26 +50,28 @@
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">   
 <!-- css files -->
-<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
+<!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet"> -->
 <title>CoICT Digital</title>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="page-contact">
         
         <section>
             <div class="container">
               <div class="row justify-content-center align-items-center">
             
- <div class="col-sm-10">
+ <div class="col-sm-7" >
 <form action="" class="card p-4 rounded shadow login" method="POST">
-<img src="assets/img/udsmlogo.png" alt="responsive image">
+<!-- <img src="assets/img/udsmlogo.png" alt="responsive image"> -->
 <p class="text-center pt-3">Alumni Employment Status</p>
-<div class="mb-3">
+<div class="mb-3" style='cursor:pointer; cursor:hand;'>
 <center>WELCOME! <?php
                           echo $_SESSION['Name'];
  ?>
  </center>
-  <div class="question">           
+  <div class="question" >           
                   <h6>Please select your current employment status:</h6>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="occupation" id="yes" value="Employed" onclick="showHideissues()">
@@ -94,7 +97,7 @@
                   <label class="form-check-label"> NON IT Field</label>
                 </div>
                 <div>
-                 Employed at/company name <textarea class="form-control" name="employedat" value="<?php echo ['employedas']; ?>" placeholder="" oninput="this.value = this.value.toUpperCase()"></textarea>
+                 Employed at/company name <textarea class="form-control" name="employedat" value="<?php echo $student['employedas']; ?>" placeholder="" oninput="this.value = this.value.toUpperCase()"></textarea>
                  Employed as/deal with<textarea class="form-control" name="employedas" value="" placeholder=""  oninput="this.value = this.value.toUpperCase()"></textarea>
                 </div>
 </div>
@@ -107,9 +110,8 @@
                 </div>
             </div>
  <center>       
-</div>
-<button type="submit" class="mx-auto button" name="login">continue</button>
-</div>
+<button type="submit" style='cursor:pointer; cursor:hand;' class="btn-get-started" name="login">continue</button>
+
 </center>    
 
 </div>

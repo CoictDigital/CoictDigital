@@ -57,60 +57,38 @@
 <p class="text-center pt-3">Please select the corresponding details</p>
 
 <div class="mb-3">
-<select class="form-select" aria-label="Default select example" name="study_year" id="year" required>
-<option value="">Year of study</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-</select> 
+<select class="form-select" aria-label="Default select example" name="yearofstudy"
+                                    id="studyyear" required>
+                                    <option hidden disabled selected value> -- Select year of study --</option>
+                                    <option>Year of study</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+
+                                </select>
 </div>
 
 <div class="mb-3">
-<select class="form-select" aria-label="Default select example" name="semester" id="semester" required>
-<option value="">Semester</option>
-<option value="1">1</option>
-<option value="2">2</option>
-</select> 
+<select class="form-select" aria-label="Default select example" name="semester"
+                                    id="semester" required>
+                                    <option hidden disabled selected value> -- Select semester --</option>
+                                    <!-- <option>Semester</option> -->
+                                    <option>Semester</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
 </div>
 
 
 <div class="mb-3">
-<select class="form-select" aria-label="Default select example" name="course_code" required>
-<option value="">Course</option>
-        <?php
-         $query = "select DISTINCT course_code from teachingmonitoring_questions";
-         //$query1 = mysqli_query($conn, $qr);
-         $result = $conn->query($query);
-         if ($result->num_rows > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-       ?>
-
-      if ($row['course_code']!=$i) {
-        $i=0;
-           $i= $row['course_code']
-        <option value="<?php echo $row['course_code']; ?>"><?php echo $row['course_code']; ?></option>
-       }
-<?php
-    }
-}
-
-?>
-</select> 
+<select class="form-select" aria-label="Default select example" name="course_code"
+                                    id="course">
+                                    <option hidden disabled selected value> -- Select course --</option>
+                                    <option>Course</option>
+                                  
+                                </select>
 </div>
-<!-- 
-<div class="mb-3">
-    <select class="form-select" aria-label="Default select example" name="course_code">
-          <option>Course code</option>
-          <?php 
-           foreach ($options as $option) {
-          ?>
-          <option><?php echo $option['course_code']; ?> </option>
-          <?php 
-           }
-          ?>    
-    </select>
-</div>  -->
 
 <button type="submit" class="mx-auto button" name="teaching">Proceed</button>
 
@@ -129,22 +107,72 @@
 <!-- Popper JS -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        var study_year;
+        var semester;
+        var data = {
+            "study_year": null,
+            "semester": null,
+        };
+        const selectElement = document.getElementById('semester');
+        const courseYear = document.getElementById("studyyear");
+        courseYear.addEventListener('change', (event) => {
+            data["study_year"] = event.target.value;
+        });
+        selectElement.addEventListener('change', (event) => {
+            data["semester"] = event.target.value;
+            updateCourse();
+        });
 
-<script>
-  var study_year = "";
-$(function(){
-  $("#year").change(function(){
-      
-      var displayresult=$("#year option:selected").text();
-      study_year =displayresult;
-  });
-});
-  $(function(){
-  $("#semester").change(function(){
-      
-      var displayresult=$("#semester option:selected").text();
-      
-  });
+        const updateCourse = async () => {
+            const courseField = document.getElementById("course");
+
+            const url = "http://localhost/coictdigital/includes/fetchcoursecode.php";
+            const options = {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+
+                body: Object.entries(data).map(([k, v]) => {
+                    return k + '=' + v
+                }).join('&')
+
+            }
+            //fetch courses based on semester and study year
+            const response = await fetch(url, options);
+            const result = await response.json();
+
+            let courses = [];
+
+            for (var i = 0; i < result.length; ++i) {
+                courses.push(result[i].course_code);
+            }
+
+            let options_new = courses.map(course =>
+                `<option value='${course}'>${course}</option>`).join('\n');
+            courseField.innerHTML = options_new;
+
+        };
+
+    });
+    </script>
+
+    <!-- refresh page on clicking browser's back button -->
+    <script>
+    window.addEventListener("pageshow", function(event) {
+        var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window
+            .performance.navigation.type === 2);
+        if (historyTraversal) {
+            // Handle page restore.
+            //alert('refresh');
+            window.location.reload();
+        }
     });
     </script>
     

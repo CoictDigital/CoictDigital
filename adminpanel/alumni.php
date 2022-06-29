@@ -37,7 +37,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="d-flex align-items-center">CoICT Digital</h1>
@@ -86,9 +86,9 @@
             <div>
               <h4 class="title"><a href="#" class="stretched-link">Computer Science</a></h4>
               <?php 
-          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE student_programme ='BSC IN CS'";
+          $query ="SELECT COUNT(*) AS number_of_alumni FROM alumni WHERE programme ='BSC IN CS'";
           $result = $conn->query($query);
-          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          $count = mysqli_fetch_assoc($result)["number_of_alumni"];
           if($result->num_rows> 0){
     ?>
               <p class="description"><?php echo $count; } ?> total alumni</p>
@@ -101,9 +101,9 @@
             <div>
               <h4 class="title"><a href="#" class="stretched-link">Computer Engineering and IT</a></h4>
               <?php 
-          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE student_programme ='BSC IN CEIT'";
+          $query ="SELECT COUNT(*) AS number_of_alumni FROM alumni WHERE programme ='BSC IN CEIT'";
           $result = $conn->query($query);
-          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          $count = mysqli_fetch_assoc($result)["number_of_alumni"];
           if($result->num_rows> 0){
     ?>
               <p class="description"><?php echo $count; } ?> total alumni</p>
@@ -115,13 +115,48 @@
             <div>
               <h4 class="title"><a href="#" class="stretched-link">Business in IT</a></h4>
               <?php 
-          $query ="SELECT COUNT(*) AS number_of_students FROM users WHERE student_programme ='BSC IN BIT'";
+          $query ="SELECT COUNT(*) AS number_of_alumni FROM alumni WHERE programme ='BSC IN BIT'";
           $result = $conn->query($query);
-          $count = mysqli_fetch_assoc($result)["number_of_students"];
+          $count = mysqli_fetch_assoc($result)["number_of_alumni"];
           if($result->num_rows> 0){
     ?>
               <p class="description"><?php echo $count; } ?> total alumni</p>
             </div>
+          </div><!-- End Service Item -->
+
+         
+        </div>
+        
+        <div class="row gy-5 p-5">
+        <center> <h4 class="title"><a href="#" class="stretched-link">Employment Industry</a></h4> </center>
+          </div>
+
+       
+        <div class="row gy-5">
+       
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+          <h4 class="title"><a href="#" class="stretched-link">Computer Science</a></h4></br>
+          <div class="description">
+                    <canvas id="myChart" class="chart-canvas"></canvas>
+                  </div>
+           
+          </div>
+          <!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="title"><a href="#" class="stretched-link">Computer Engineering and IT</a></h4></br>
+          <div class="description">
+                    <canvas id="myChart1" class="chart-canvas"></canvas>
+                  </div>
+           
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
+          <h4 class="title"><a href="#" class="stretched-link">Business in IT</a></h4></br>
+          <div class="description">
+                    <canvas id="myChart2" class="chart-canvas"></canvas>
+                  </div>
+           
           </div><!-- End Service Item -->
 
          
@@ -156,6 +191,8 @@
     <tr>
     <th class="th-lg">Name</th>
     <th class="th-lg">Email</th>
+    <th class="th-lg">Programme</th>
+    <th class="th-lg">Status</th>
     <th class="th-lg">Action</th>
 </tr>
   </thead>
@@ -173,11 +210,13 @@
                       foreach ($alumnis as $alumni) {
 
                     ?>
-                  <td ><?php echo $alumni['alumni_name']; ?></td>
+                  <td ><?php echo $alumni['Name']; ?></td>
                   <td ><?php echo $alumni['email']; ?></td>
+                  <td ><?php echo $alumni['programme']; ?></td>
+                  <td ><?php echo $alumni['occupation']; ?></td>
                   <!-----crud icons ------->
                   <td>                    
-                  <a href="updatealumni.php?<?php echo "alumniId=" . $alumni['id']; ?>" data-toggle="modal" data-target="#editModal"><i class="bi bi-pencil-square" style="color: #1335f5;"></i></a>  
+                 
                     <a href="#editModal" data-toggle="modal" data-target="#editModal"><i class="bi bi-trash" style="color: #d90769;"></i></a> 
                                       
                   </td>
@@ -196,6 +235,10 @@
   
 
         </div>
+        <div class="text-center">             
+        <a href="updatealu.php" class="btn-get-started">Update alumni Details</a>
+        </div>
+
 
       </div>
     </section><!-- End Services Cards Section -->
@@ -212,6 +255,120 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/plugins/chartjs.min.js"></script>
+
+  <!-----------------comp science chart---------------------------->
+
+  <?php 
+          $query ="SELECT COUNT(field) AS number_of_field FROM alumni WHERE programme ='BSC IN CS' AND field='NON IT'";
+          $query1 ="SELECT COUNT(field) AS number_of_field FROM alumni WHERE programme ='BSC IN CS' AND field='IT'";
+          $result = $conn->query($query);
+          $result1 = $conn->query($query1);
+          $count = mysqli_fetch_assoc($result)["number_of_field"];
+          $count1 = mysqli_fetch_assoc($result1)["number_of_field"];
+         
+         
+
+    ?>
+  <script>
+    
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'pie',
+
+          // The data for our dataset
+          data: {
+            labels: ['IT', 'Non-IT'],
+            datasets: [{
+              backgroundColor: ['#38574d', '#f6b418'],
+              data: [ <?php echo $count1; ?>,<?php echo $count; ?>],
+            }]
+          },
+
+          // Configuration options go here
+          options: {
+            responsive: true,
+
+          }
+        });
+
+        </script>
+
+    <!-----------------comp engineering chart---------------------------->
+    <?php 
+          $quer ="SELECT COUNT(field) AS number_of_field FROM alumni WHERE programme ='BSC IN CEIT' AND field='NON IT'";
+          $quer1 ="SELECT COUNT(field) AS number_of_field FROM alumni WHERE programme ='BSC IN CEIT' AND field='IT'";
+          $resul = $conn->query($quer);
+          $resul1 = $conn->query($quer1);
+          $coun = mysqli_fetch_assoc($resul)["number_of_field"];
+          $coun1 = mysqli_fetch_assoc($resul1)["number_of_field"];
+         
+         
+
+    ?>
+    <script>
+    
+    var ctx = document.getElementById('myChart1').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'pie',
+
+      // The data for our dataset
+      data: {
+        labels: ['IT', 'Non-IT'],
+        datasets: [{
+          backgroundColor: ['#38574d', '#f6b418'],
+          data: [<?php echo $coun1; ?>,<?php echo $coun; ?>],
+        }]
+      },
+
+      // Configuration options go here
+      options: {
+        responsive: true,
+
+      }
+    });
+
+    </script>
+
+      <!-----------------BIT chart---------------------------->
+      <?php 
+          $quey ="SELECT COUNT(field) AS number_of_field FROM alumni WHERE programme ='BSC IN BIT' AND field='NON IT'";
+          $quey1 ="SELECT COUNT(field) AS number_of_field FROM alumni WHERE programme ='BSC IN BIT' AND field='IT'";
+          $res = $conn->query($quey);
+          $res1 = $conn->query($quey1);
+          $cout = mysqli_fetch_assoc($res)["number_of_field"];
+          $cout1 = mysqli_fetch_assoc($res1)["number_of_field"];
+         
+         
+
+    ?>
+  <script>
+    
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'pie',
+
+      // The data for our dataset
+      data: {
+        labels: ['IT', 'Non-IT'],
+        datasets: [{
+          backgroundColor: ['#38574d', '#f6b418'],
+          data: [<?php echo $cout1; ?>,<?php echo $cout; ?>],
+        }]
+      },
+
+      // Configuration options go here
+      options: {
+        responsive: true,
+
+      }
+    });
+
+    </script>
+
 
 </body>
 

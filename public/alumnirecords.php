@@ -16,8 +16,8 @@
     ?>
     <?php
 	$sql=$conn->query("SELECT 'Name','sex' FROM alumni" );
-	// foreach ($sql->fetch_array() as $key => $value) 
-	// 	$$key = $value;
+	foreach ($sql->fetch_array() as $key => $value) 
+		$$key = $value;
 
 ?>
 
@@ -37,7 +37,6 @@
                  <?php
                       if ($_SESSION["userData"]["role"] == 2) {
                         $sql = "SELECT * FROM `alumni`";
-
                       }
                       $result=$conn->query($sql);
                       ?>
@@ -79,21 +78,26 @@
                       </script>
 
 
+
+
+
+
        <!-- ======= Form Section ======= -->
        <section id="" class="services">
         <div class="container-fluid"> 
           <div class="section-title">
             <h2>ALUMNI MANAGEMENT</h2>
           </div>
+          <script>
+      $(document).ready(function () {
+      $('#myTable4').DataTable();
+  });
+    </script>
 
           <div class="">
 
           <form>
-            <form name="search_form" method="POST" Action="alumnirecords.php">
-          <div class="col-sm-30 mb-2" >
-          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">  
-              </div>
-                    </form>
+
             <div class="form-group row">
                 <div class="col-sm-30 mb-1" >
                 <a href="updatesession.php" class="mx-auto button"; style= "float: right; height: 25px;"><center>update</center></a>        
@@ -107,7 +111,7 @@
             </div>
             <div class="form-group row">
               <div class="centre">
-              <table id='mytable' class="table table-bordered table-striped">
+              <table id='myTable4' class="table table-bordered table-striped">
                 <thead class="table-secondary">
                   <tr id='tb' >
                     <th scope="col">S/N</th>
@@ -117,6 +121,7 @@
                     <th scope="col">YEAR</th>
                     <th scope="col">EMAIL ADRESS</th>
                     <th scope="col">OCCUPATION</th>
+                    <th scope="col">FIELD</th>
                     <th scope="col">DETAILS</th>
                   </tr>
                 </thead>
@@ -136,6 +141,7 @@
                    <td><?php echo $row['year_completed']; ?></td>
                    <td><?php echo $row['email']; ?></td>
                    <td><?php echo $row['occupation']; ?></td>
+                   <td><?php echo $row['field']; ?></td>
                    <td>
                    <form action="alumniview.php" method="POST">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -157,57 +163,22 @@
           
           </form>
         </div>
-
+        <div class="col-sm-30 mb-1" >
+                <a href="market.php" class="mx-auto button"; style= "float: right; height: 25px;"><center>marketing</center></a>        
+              </div>
 
         
         </div>
       </section><!-- End Form Section -->
-       <!-- fading addnew form-->
-       <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-title text-center">
-                <h4>Add Alumni Details</h4>
-              </div>
-              <div class="d-flex flex-column text-center">
-                <form action="alumni.php" method="post">
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="regno"placeholder="reg.no" name="regno">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="alumniname" placeholder="alumni name" name="alumniname">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="programm" placeholder="programm" name="programm">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="year" placeholder="year" name="year">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="adresses" placeholder="adresses" name="adresses">
-                  </div>
-                  <button type="submit" class="mx-auto button" >Save</button>
-                </form>
-              </div>
-            </div>
-          </div>
-           </div>
-      </div>
 
-      <!-- end of fading aadnew form-->
       
-
-
-
- 
-
+      
   </main>
+
+  <div class="col-sm-30 mb-1" >
+                <a href="updatesession.php" class="mx-auto button";><center>update</center></a>        
+              </div>
+ 
   <!-- End #main -->
  
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>

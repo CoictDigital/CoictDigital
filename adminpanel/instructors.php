@@ -37,7 +37,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="d-flex align-items-center">CoICT Digital</h1>
@@ -179,8 +179,8 @@
                   <td ><?php echo $instructor['course_title']; ?></td>
                   <!-----crud icons ------->
                   <td>                    
-                  <a href="updateinstructor.php?<?php echo "courseId=" . $instructor['course_code']; ?>" data-toggle="modal" data-target="#editModal"><i class="bi bi-pencil-square" style="color: #1335f5;"></i></a>  
-                    <a href="deleteinstructor.php?<?php echo "courseId=" . $instructor['course_code']; ?>" data-toggle="modal" data-target="#editModal"><i class="bi bi-trash" style="color: #d90769;"></i></a> 
+                  <a href="updateinstructor.php?<?php echo "courseId=" . $instructor['course_code']; ?>" ><i class="bi bi-pencil-square" style="color: #1335f5;"></i></a>  
+                    <a href="deleteinstructor.php?<?php echo "courseId=" . $instructor['course_code']; ?>"><i class="bi bi-trash" style="color: #d90769;"></i></a> 
                                       
                   </td>
                   </tr> 
