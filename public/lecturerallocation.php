@@ -99,7 +99,7 @@ function e($val)
                   <td class="col-1" >
                     <form class="form_action" action="read.php" method="POST">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
+                      <button type="submit" title="View Record"style="border:none;  background-color: transparent;"><i class="all-icons fa fa-eye"></i></button>
                     </form>  
 
                         <!-- <a  href="deleteAllocation.php? id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a> -->
