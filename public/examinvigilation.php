@@ -220,6 +220,7 @@
                                  $xx = $conn->query($sql__);
                                  $rowx = mysqli_fetch_all($xx, MYSQLI_ASSOC);
                                  if(count($rowx) > 0) {
+                                  $rowx = $rowx[0];
                                   $texthere = "class='text-danger'";
                                   $button_view_excuse = "<button type='button' data-toggle='modal' data-target='#viewexcuse$id'>Excuse</button>";
                               
@@ -296,12 +297,12 @@
               <div class="">
               <form action="updateinvigilation.php" method="POST">
                   <div class="form-group">
-                    <input type="text" class="form-control"<?php echo (!empty($invigilator_err)) ? 'is-invalid' : ''; ?> id="invigilators" placeholder="<?php echo $invigilator; ?>">
+                    <input type="text" class="form-control"<?php echo (!empty($invigilator_err)) ? 'is-invalid' : ''; ?> id="invigilators" placeholder="<?php echo $invigilators; ?>">
                     
                   </div>
                   
                   <div class="form-group">
-                    <input type="text" class="form-control"<?php echo (!empty($course_err)) ? 'is-invalid' : ''; ?> id="course_name" placeholder="<?php echo $course; ?>">
+                    <input type="text" class="form-control"<?php echo (!empty($course_err)) ? 'is-invalid' : ''; ?> id="course_name" placeholder="<?php echo $course_name; ?>">
                    
                   </div>
                   
