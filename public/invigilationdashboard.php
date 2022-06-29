@@ -24,7 +24,21 @@ unset($_SESSION["studentFilledCount"]);
   <?php
     require_once("../includes/leftNav.php");
     ?>
+ <?php
+    // (`semester`,`course_name`,`evaluator`,`asistant`,`instructor`) VALUES ('$semester','$course_name','$evaluator','$asistant','$instructor')
+$instructor_name= $_SESSION["userData"]['name'];
+$instructor_id= $_SESSION["userData"]['id'];
+$query ="SELECT distinct users.name,exam_invigilation.day,exam_invigilation.from_time,exam_invigilation.to_time,exam_invigilation.course_name,exam_invigilation.venue,exam_invigilation.invigilators
+                      FROM users
+                      INNER JOIN exam_invigilation ON users.name = exam_invigilation.invigilators where users.id='$instructor_id' ";
+                      
+                      $result = $conn->query($query);
+                       $row= mysqli_fetch_all($result, MYSQLI_ASSOC)[0];
+      
+   
 
+    ?>
+   
 
   <main id="main">
 
@@ -55,13 +69,13 @@ unset($_SESSION["studentFilledCount"]);
         <div class="col-sm-8"> 
         <form>
               <H3>Hellow,</H3>
-              <DIV><h4><B>Instructor:</B>Dr.Salome Maro</h4></DIV> 
+              <DIV><h4><B>Instructor:</B><?php echo $_SESSION["userData"]["name"]; ?></h4></DIV> 
               <div>You have been allocated to  
-                 <div><h4><b>Course:</b>Programming in java</h4></div>
+                 <div><h4><b>Course:</b><?php echo $row['course_name']; ?> </h4></div>
 
-                 <div> <h4><b>Venue: </b>D01 </h4></div>
+                 <div> <h4><b>Venue: </b><?php echo $row['venue']; ?></h4></div>
 
-                 <div> <h4><b>Time: </b> 10:30 to 12:30 </h4></div>
+                 <div> <h4><b>Time: </b><?php echo $row['from_time']; ?> to <?php echo $row['to_time']; ?> </h4></div>
                  
                    
 
@@ -113,7 +127,7 @@ unset($_SESSION["studentFilledCount"]);
             <div class="modal-body">
               
               <!-- <div class="d-flex flex-column text-center"> -->
-                <form>
+                <form action="declineInvigilation.php" method="POST">
                   <!-- <div class="form-group">
                     <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
                   </div> -->
@@ -125,15 +139,15 @@ unset($_SESSION["studentFilledCount"]);
                   </div>
                   
                   <div class="form-group">
-                  <label for="message-text" class="col-form-label">Message:</label>
-                    <textarea rows="4" cols="50" name="comment" form="usrform">
-                  Enter your reasons here...</textarea>
+                  <label for="message-text" class="col-form-label">Message:Enter your excuse below</label>
+                    <textarea rows="4" cols="50" name="comment">
+                  </textarea>
                   </div>
                  
                   </div>
                   <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" formaction="http://localhost/coictdigital/coictdigital/public/declineinvigilation.php" >SEND</button>
+                  <button type="submit" class="btn btn-primary" name="declineinvigilation" formaction="http://localhost/coictdigital/public/declineinvigilation.php" >SEND</button>
                   </div>
                 </form>
               <!-- </div> -->

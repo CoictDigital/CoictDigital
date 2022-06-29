@@ -31,27 +31,15 @@ unset($_SESSION["studentFilledCount"]);
   
        <!-- ======= Form Section ======= -->
        <section id="invigilation" class="services">
-        <div class="container-fluid">            
+        <div class="">            
           <!-- <span class="badge alert-success" style="float: right;">Admin</span> -->
           <div class="section-title">
             <h2>Exam Invigilation</h2>
           </div>
-          <div class="container">
+          <div class="">
           <form>
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label"> <i class="fa fa-search" aria-hidden="true"></i>Search</label>
-              <div class="col-sm-5 mb-1">
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-sm-5 mb-1">
-              <a href="#addnewModal"  data-toggle="modal" data-target="#addnewModal" > 
-                <!-- <button type="submit" class="mx-auto button" style="float: right; height: 40px;">Add New</button> -->
-              </a>
-              </div>
-            </div>
-           <div class="form-group row">
-              <h5>You have  just Accept  your allocation</h5>
-            </div>
+           
+        
             <div class="form-group row">
               <div class="">
             
@@ -211,12 +199,7 @@ unset($_SESSION["studentFilledCount"]);
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    <div class="container">
-      <!-- <div class="copyright">
-        &copy; Copyright <strong><span>coictdigital@udsm.co.tz</span></strong>
-      </div> -->
-     
-    </div>
+    
   </footer><!-- End  Footer -->
  
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>

@@ -3,7 +3,7 @@
 
 <head>
     <?php
-     require_once("../includes/navbar.php");
+    
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
     unset($_SESSION["studentFilledCount"]);
@@ -21,15 +21,17 @@
   <!-- ======= Header ======= -->  
 
     <main id="main">
-
+      <?php 
+    // require_once("../includes/navbar.php");
+    ?>
    <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="p-4">
 
         <div class="section-title">
           <h2>CoICT Digital</h2>
-          <p>A management information system that manages course evaluation by students at the end of the semester, alumni 
-            information once they graduate, monitors teaching and learning processes, allocation of courses and exam invigilators to staff in the college.</p>
+          <p><center>A management information system that manages course evaluation by students at the end of the semester, alumni 
+            information once they graduate, monitors teaching and learning processes, allocation of courses and exam invigilators to staff in the college.</center> </p>
         </div>
 
         <div class="row">

@@ -23,18 +23,22 @@ unset($_SESSION["studentFilledCount"]);
   <!-- ======= Header ======= -->
   <?php
     require_once("../includes/leftNav.php");
+    ?>
+    <?php
     // (`semester`,`course_name`,`evaluator`,`asistant`,`instructor`) VALUES ('$semester','$course_name','$evaluator','$asistant','$instructor')
 $instructor_name= $_SESSION["userData"]['name'];
-    $sql = "SELECT * FROM  course_allocation where instructor==$instructor_name ";
-    $results = mysqli_query($conn, $sql);
+$instructor_id= $_SESSION["userData"]['id'];
+$query ="SELECT distinct users.name,course_allocation.course_name,course_allocation.semester,course_allocation.evaluator,course_allocation.instructor,course_allocation.assistant
+                      FROM users
+                      INNER JOIN course_allocation ON users.name = course_allocation.instructor where users.id='$instructor_id' ";
+                      $result = $conn->query($query);
+                   
+                       $row= mysqli_fetch_all($result, MYSQLI_ASSOC)[0];
+      
    
 
-    // confirm_query($conn, $results);
-    $results =  mysqli_fetch_assoc($results);
-    
-    print_r($sql);
-
     ?>
+   
 
 
   <main id="main">
@@ -87,13 +91,13 @@ $instructor_name= $_SESSION["userData"]['name'];
           <h3>Hellow,</h3>
               <H4><B>Instructor:</B> <?php echo $_SESSION["userData"]["name"]; ?> </H4>
               <div>You have been allocated to  
-                 <div><h4><b>Course:</b><?php echo $_SESSION["userData"]["course_name"]; ?> </h4></div>
+                 <div><h4><b>Course:</b><?php echo $row['course_name']; ?> </h4></div>
 
-                 <div> <h4><b>Practical/Tutorial Assistant:</b></h4></div>
+                 <div> <h4><b>Practical/Tutorial Assistant:</b><?php echo $row['assistant']; ?></h4></div>
 
-                 <div> <h4><b>Evaluator:</b> </h4></div>
+                 <div> <h4><b>Evaluator:</b><?php echo $row['evaluator']; ?> </h4></div>
                  
-                  <div> <h4><b>Semester:</b>  </h4></div> 
+                  <div> <h4><b>Semester:</b><?php echo $row['semester']; ?>  </h4></div> 
 
                 </div>
                 <button type="submit" formaction="http://localhost/coictdigital/public/previewhistory.php" class="btn btn-info">VIEW HISTORY</button>
