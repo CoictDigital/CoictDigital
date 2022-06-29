@@ -134,7 +134,7 @@ function e($val)
                         $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
                       }
           ?>
-              <select class="form-select" name="evaluator" aria-label="Default select example">
+              <select class="form-select" name="supervisor" aria-label="Default select example">
                       
                       <option value="">Select Evaluator</option>
                       <?php 
@@ -247,6 +247,7 @@ function e($val)
                         <!-- <a  href="deleteAllocation.php? id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a> -->
                   </td>
                   </tr>
+                  
 
 <div class="modal fade" id="updateModal<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -270,13 +271,14 @@ function e($val)
                 <div class="form-group">
                   
                    <!-- <input type="text" class="form-control <?php echo (!empty($instructor_err)) ? 'is-invalid' : ''; ?>" name="instructor"  value="<?php echo $instructor; ?>"> --> 
-                  <select class="form-control" name="assistant" aria-label="Default select example"  >
+                  <select class="form-control" name="instructor" aria-label="Default select example"  >
                       
                       <option value="<?php echo $instructor; ?><?php echo $instructor; ?></option>
                       <?php 
                       foreach ($options as $option) {
+                        print_r($options);
                       ?>
-                        <option value="<?php echo $option['instructor']; ?>"><?php echo $option['instructor']; ?> </option>
+                        <option value="<?php echo $row['instructor']; ?>"><?php echo $row['instructor']; ?> </option>
                         <?php 
                         }
                       ?>
@@ -307,12 +309,13 @@ function e($val)
       </div>
     </div>
 
+    <?php }
+                 }
+                 ?>
     <!-- end of fading edit allocation-->
 
 
-                  <?php }
-                 }
-                 ?> 
+                 
                 
                       
                      

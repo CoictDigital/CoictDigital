@@ -51,7 +51,7 @@ if (isset($_POST["ss_id"]) && !empty($_POST["ss_id"])) {
                             <p>Are you sure you want to delete this allocaction record?</p>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">
-                                <a href="index.php" class="btn btn-secondary">No</a>
+                                <a href="courseallocation.php" class="btn btn-secondary">No</a>
                             </p>
                         </div>
                     </form>
