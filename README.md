@@ -15,3 +15,14 @@ System functions include:
 # Getting Started
 To get started with exploring CoictDigital you can clone the repository and deploy it in your server.
 The database is called coict_digital.sql and it needs to be installed too and run in your server.
+To see the functionalities of the system you need to login as a user of the system.
+User 1- Student
+Username: reg_no(from database table users)
+Password: surname(from database table users)
+User 2- Staff
+Username: email(from database table users)
+Password: surname(from database table users)
+User 3- Admin
+Username: admin@udsm.ac.tz
+Password: admin
+
