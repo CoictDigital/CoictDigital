@@ -3,6 +3,7 @@
 
 <head>
     <?php
+    
     require_once("../includes/headerContent.php");
     require_once("../includes/sessionStuffs.php");
     unset($_SESSION["studentFilledCount"]);
@@ -20,20 +21,29 @@
   <!-- ======= Header ======= -->  
 
     <main id="main">
-
+      <?php 
+    // require_once("../includes/navbar.php");
+    ?>
    <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="p-4">
 
         <div class="section-title">
           <h2>CoICT Digital</h2>
-          <p>A management information system that manages course evaluation by students at the end of the semester, alumni 
-            information once they graduate, monitors teaching and learning processes, allocation of courses and exam invigilators to staff in the college.</p>
+          <p><center>A management information system that manages course evaluation by students at the end of the semester, alumni 
+            information once they graduate, monitors teaching and learning processes, allocation of courses and exam invigilators to staff in the college.</center> </p>
         </div>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-          <div class="icon"><i class="fas fa-light fa-dna"></i></div>
+          <div class="icon"><a href="<?php
+                      if ($_SESSION["userData"]["role"] == 2) {
+                        echo "department1.php";
+                      } else if ($_SESSION["userData"]["role"] == 3) {
+                        echo "index.php";
+                      }
+                      ?>" class=""><i class="fas fa-light fa-dna"></i> </a>
+                      </div>
                         <h4 class="title">Course Evaluation</h4>
                         <p class="description">
                             At the end of the semester, courses are evaluated by students. The evaluation results are real time and
@@ -41,28 +51,46 @@
                         </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-          <div class="icon"><i class="fas fa-thin fa-clipboard"></i></div>
+          <div class="icon"><a href="alumnirecords.php"><i class="fas fa-thin fa-clipboard"></i></a></div>
                         <h4 class="title">Alumni Records</h4>
                         <p class="description">
                              Alumni records provide information on the employment status of the alumni and can be used by the the college 
                              to analyse its quality of education. </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon"><i class="fas fa-thin fa-chalkboard"></i></div>
+          <div class="icon"><a href="<?php
+                      if ($_SESSION["userData"]["role"] == 2) {
+                        echo "teachingresults.php";
+                      } else if ($_SESSION["userData"]["role"] == 3) {
+                        echo "Teachingmonitoring.php";
+                      }
+                      ?>" class="nav-link scrollto"><i class="fas fa-thin fa-chalkboard"></i></a></div>
                         <h4 class="title">Teaching Monitoring</h4>
                         <p class="description">
                         Teaching monitoring is a vital element in improving the quality of education done by the lecturers to monitor the 
                         teaching and learning process.</p>
                     </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-          <div class="icon"><i class="fas fa-thin fa-book"></i></div>
+          <div class="icon"><a href="<?php
+                      if ($_SESSION["userData"]["role"] == 2) {
+                        echo "courseallocation.php";
+                      } else if ($_SESSION["userData"]["role"] == 3) {
+                        echo "allocationdashboard.php";
+                      }
+                      ?>" class="nav-link scrollto"> <i class="fas fa-thin fa-book"></i></a></div>
                         <h4 class="title">Course Allocation</h4>
                         <p class="description">
                             The head of department allocates courses to lecturers who can view their allocation and suggest change of 
                             allocation where necessary.</p>
                     </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-          <div class="icon"><i class="fas fa-thin fa-file"></i></div>
+          <div class="icon"><a href="<?php
+                      if ($_SESSION["userData"]["role"] == 2) {
+                        echo "examinvigilation.php";
+                      } else if ($_SESSION["userData"]["role"] == 3) {
+                        echo "invigilationdashboard.php";
+                      }
+                      ?>" class="nav-link scrollto"> <i class="fas fa-thin fa-file"></i></a></div>
                         <h4 class="title">Exam Invigilation</h4>
                         <p class="description">
                             The head of department assigns lecturers exams to invigilate including the venue and time. Lecturers and students can view the exam invigilation details.</p>

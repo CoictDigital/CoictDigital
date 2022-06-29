@@ -86,18 +86,18 @@
                  <div class="p-4">
                   <div class="card">
                   <div class="card-body">
-                    <div class="row">
-                    <?php 
-                      $query ="SELECT * FROM courses";
+                  
+                    
+                     <h4><b>Add Invigilator</b></h4>
+             <div class="row p-2">    
+                <div class="col-sm-4">
+                <?php 
+                      $query ="SELECT DISTINCT courses.course_title FROM courses";
                       $result = $conn->query($query);
                       if($result->num_rows> 0){
                         $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
                                           }
                      ?>
-                     <h4><b>Add Invigilator</b></h4>
-             <div class="row p-2">    
-                <div class="col-sm-4">
-                  
                 <select class="form-select" name="coursename" aria-label="Default select example">
                       
                           <option selected>Select Course</option>
@@ -113,21 +113,42 @@
               </div>
 
               <div class="col-sm-4">
-              <select class="form-select" name="invigilator" aria-label="Default select example">
+
+               <?php
+             if ($_SESSION["userData"]["role"] == "2") {
                       
-                      <option selected>Select Instructor</option>
+                     
+                      $query ="SELECT users.name FROM users where users.role ='3'";
+                      
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                      }
+          ?>
+          <select class="form-select" name="invigilator" aria-label="Default select example" required>
+                      <option value="">Select Invigilator</option>
                       <?php 
                       foreach ($options as $option) {
                       ?>
-                        <option><?php echo $option['instructor']; ?> </option>
+                        <option value="<?php echo $option['name']; ?>"><?php echo $option['name']; ?> </option>
                         <?php 
                         }
                       ?>
                             
               </select>
+              <?php 
+							}
+						  ?>
               </div>
 
               <div class="col-sm-4">
+              <?php 
+                      $query ="SELECT DISTINCT courses.venue FROM courses";
+                      $result = $conn->query($query);
+                      if($result->num_rows> 0){
+                        $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                                          }
+                     ?>
               <select class="form-select" name="venue" aria-label="Default select example">
                   <option selected>venue</option>
                   <?php 
@@ -139,6 +160,7 @@
                       ?>
                 </select>
               </div>
+                      </div>
               
               <div class="row p-2">
               <div class="col-sm-4">
@@ -147,34 +169,15 @@
                
               </div>
               <div class="col-sm-4">
-                <select class="form-select" name="from_time" aria-label="Default select example">
-                  <option selected> From Time</option>
-              
-                  <option value="7:30">7:30   </option>
-                  <option value="8:00 ">8:00   </option>
-                  <option value="8:30">8:30   </option>
-                  <option value="9:00">9:00   </option>
-                  <option value="9:30">9:30   </option>
-                  <option value="11:30">11:30   </option>
-                  <option value="9:30">15:30   </option>
-                  
-                </select>
+              <input type="time" class="form-control" name="from_time" placeholder="From : time">
               </div>
               <div class="col-sm-4">
-                <select class="form-select" name="to_time" aria-label="Default select example">
-                  <option selected>To time</option>
-                  <option value="10:30">10:30</option>
-                  <option value="10:30">11:00</option>
-                  <option value="14:30">14:30</option>
-                  <option value="18:30">18:30</option>
-                 
-                  
-                </select>
+              <input type="time" class="form-control" name="to_time" placeholder="To : time">
                     </div>
               </div>
-                </div>
-                <button type="submit" name="invigilate" class="mx-auto button" >Save</button>
-              </div>
+                
+              <center> <button type="submit" name="invigilate" class="mx-auto button" >Save</button></center> 
+              
               </div>
               </div>
               </div>
@@ -195,46 +198,152 @@
                     <th class="th-lg">Action</th>
                   </tr>
                 </thead>
-          </table>
-          </div>
-            <div class="">
-            <table>
+         
+            
                 <tbody>
                 <?php 
                             $sql = "SELECT * FROM exam_invigilation" ;
                             $result = $conn->query($sql);
                           if ($result->num_rows > 0) {
-                            
+                            $sql__ = "";
                               while($row = $result->fetch_assoc()){
                                   extract($row);
+                                  $id = $row['id'];
+                                  $invigilators = $row['invigilators'];
+                                  $texthere = "";
+                                  $button_view_exuse = "";
+
+                                 $sql__ = "SELECT * FROM excuses WHERE instructor='$invigilators'";
+                                 $xx = $conn->query($sql__);
+                                 $rowx = mysqli_fetch_all($xx, MYSQLI_ASSOC);
+                                 if(count($rowx) > 0) {
+                                  $texthere = "class='text-danger'";
+//////////
+$button_view_excuse = "Excuse";
+}
                               
-                            ?>
+?>
+
+
+<div class="modal fade" id="viewexcuse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header border-bottom-0">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-title text-center">
+        <h4>View Excuses</h4>
+      </div>
+      <div class="d-flex flex-column text-center">
+        <form>
+          
+          <div class="form-group">
+            <input type="text" class="form-control" id="venue" placeholder="Venue">
+          </div>
+          <div class="form-group">
+            <input type="time" class="form-control" id="time" placeholder="Time">
+          </div>
+          <button type="submit" class="mx-auto button" >Seen</button>
+        </form>
+      </div>
+    </div>
+  </div>
+   </div>
+</div>
+
+/////
+                              
                   <tr>
-                   <td ><?php echo $row['day']; ?></td>
-                   <td ><?php echo $row['from_time'] ;?> - <?php echo $row['to_time'] ;?></td>
-                   <td ><?php echo $row['course_name']; ?></td>
-                   <td ><?php echo $row['venue']; ?></td>
-                   <td ><?php echo $row['invigilators']; ?></td>
+                   <td <?php echo $texthere;?>><?php echo $row['day']; ?></td>
+                   <td <?php echo $texthere;?>><?php echo $row['from_time'] ;?> - <?php echo $row['to_time'] ;?></td>
+                   <td <?php echo $texthere;?>><?php echo $row['course_name']; ?></td>
+                   <td <?php echo $texthere;?>><?php echo $row['venue']; ?></td>
+                   <td <?php echo $texthere;?>><?php echo $row['invigilators']; ?></td>
                    
                    <!-----crud icons ------->
                   <td class="col-1" >
-                    <form action="read.php" method="POST">
+                    <form action="viewinvigilation.php" method="POST">
                       <input type="hidden" name="id"  value="<?php echo $id; ?>">
                       <button type="submit" title="View Record"><i class="all-icons fa fa-eye"></i></button>
-                    </form>  
-                     
-                       <a href="#updateModal" data-toggle="modal" data-target="#updateModal"><i class="all-icons fa fa-pencil"></i></a>  
-                         <a  href="deleteAllocation.php? id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>
-                       
-                  
+                    </form>
+                    <button type="button" data-toggle="modal" data-target="#updatemodel<?php echo $id; ?>"><i class="all-icons fa fa-pencil"></i></button> 
+                    <form class="form_action" action="deleteinvigilator.php" method="POST">
+                      <input type="hidden" name="id" value="<?php echo $id; ?>">
+                      <button type="submit" title="Delete Record"><i class="all-icons fa fa-trash"></i></button>
+                    </form>
+                    <button type="button" data-toggle="modal" data-target="#viewexcuse<?php echo $id; ?>">Excuse</button>
+                    <!-- <?php echo $button_view_excuse;?> -->
                   </td>
                   </tr>
+         <div class="modal fade" id="updatemodel<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Invigilation </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-title text-center">
+               
+              </div>
+              <div class="">
+              <form action="updateinvigilation.php" method="POST">
+                  <div class="form-group">
+                    <input type="text" class="form-control"<?php echo (!empty($invigilator_err)) ? 'is-invalid' : ''; ?> id="staffname" placeholder="<?php echo $invigilator; ?>">
+                    
+                  </div>
+                  
+                  <div class="form-group">
+                    <input type="text" class="form-control"<?php echo (!empty($course_err)) ? 'is-invalid' : ''; ?> id="course_name" placeholder="<?php echo $course; ?>">
+                   
+                  </div>
+                  
+                  <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Venue:</label>
+                    <input type="text" class="form-control"<?php echo (!empty($venue_err)) ? 'is-invalid' : ''; ?> id="venue" placeholder="<?php echo $venue; ?>">
+                  </div>
+                  <div class="row">
+                  <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Day:</label>
+                    <input type="text" class="form-control"<?php echo (!empty($day_err)) ? 'is-invalid' : ''; ?> id="day" placeholder="<?php echo $day; ?>">
+                  </div></div>
+                  <div class="row">
+                    <div></div>
+                  <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">From Time:</label>
+                  <input type="time" class="form-control"<?php echo (!empty($from_time_err)) ? 'is-invalid' : ''; ?> id="from_time" placeholder="<?php echo $from_time; ?>">
+                  </div>
+                  
+                  <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">To Time:</label>
+                    <input type="time" class="form-control"<?php echo (!empty($to_time_err)) ? 'is-invalid' : ''; ?> id="to_time" placeholder="<?php echo $to_time; ?>">
+                  </div>
+                  </div>
+                  <!-- footer -->
+                  
+                        <div class="modal-footer">  
+                  <button data-dismiss="modal" class="btn btn-secondary btn-sm">Cancel</button>
+                <button type="submit" name="updateinvingator" class="btn btn-primary btn-sm">Edit</button> 
+                        </div>
+                   
+                   
+                  <!-- end footer -->
+                </form>
+              </div>
+            </div>
+          </div>
+           </div>
+      </div>
+
                   <?php }
                  }
                  ?> 
-                 
                 
-                  
                 </tbody>
               </table>
             </div>
@@ -285,46 +394,7 @@
       <!-- end of fading aadnew form-->
       
       <!-- fading edit form-->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-title text-center">
-                <h4>Edit Invigilation</h4>
-              </div>
-              <div class="d-flex flex-column text-center">
-              <form>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="staffname"placeholder="Staff Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="assistantname"placeholder="Assistant Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursename" placeholder="Course Name">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="coursetoinvigilate" placeholder="Invigilation Course ">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="venue" placeholder="Venue">
-                  </div>
-                  <div class="form-group">
-                    <input type="time" class="form-control" id="time" placeholder="Time">
-                  </div>
-                  <button type="submit" class="mx-auto button" >Save</button>
-                </form>
-              </div>
-            </div>
-          </div>
-           </div>
-      </div>
-
+      
       
 
   </main>

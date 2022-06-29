@@ -7,12 +7,12 @@ if (isset($_POST["ss_id"]) && !empty($_POST["ss_id"])) {
     // Include config file
     
     // Prepare a delete statement
-    $sql = "DELETE FROM course_allocation WHERE id='". $_POST["ss_id"] . "'";
+    $sql = "DELETE FROM exam_invigilation WHERE id='". $_POST["ss_id"] . "'";
     $stmt = $conn->query($sql);
 
     if ($stmt) {
         // Records deleted successfully. Redirect to landing page
-        header("location: courseallocation.php");
+        header("location: examinvigilation.php");
         exit();
     } else {
         echo "Oops! Something went wrong. Please try again later.";
@@ -48,10 +48,10 @@ if (isset($_POST["ss_id"]) && !empty($_POST["ss_id"])) {
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">
                             <input type="hidden" name="ss_id" value="<?php echo trim($_POST["id"]); ?>" />
-                            <p>Are you sure you want to delete this allocaction record?</p>
+                            <p>Are you sure you want to delete this invigilation record?</p>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">
-                                <a href="courseallocation.php" class="btn btn-secondary">No</a>
+                                <a href="examinvigilation.php" class="btn btn-secondary">No</a>
                             </p>
                         </div>
                     </form>

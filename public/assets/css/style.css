@@ -533,3 +533,23 @@ section {
 div.card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.form_action{
+  box-sizing:none;
+  border: none;
+  border-radius: 40px;
+  width: 100px;
+  height: 30px;
+}
+.card-body-invigilator{
+
+  width: 90px;
+  height: 45px;
+}
+.navbutton{
+  text-align: center;
+  background-color: beige;
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  display: inline-block;
+}
