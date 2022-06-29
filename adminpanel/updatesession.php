@@ -59,6 +59,7 @@
     $row = mysqli_fetch_array($select);
     
     if(is_array($row)){
+        
         $_SESSION["email"]= $row["email"];
         $_SESSION["Name"]= $row["Name"];
         
