@@ -173,7 +173,7 @@
                       foreach ($alumnis as $alumni) {
 
                     ?>
-                  <td ><?php echo $alumni['alumni_name']; ?></td>
+                  <td ><?php echo $alumni['Name']; ?></td>
                   <td ><?php echo $alumni['email']; ?></td>
                   <!-----crud icons ------->
                   <td>                    
@@ -196,6 +196,10 @@
   
 
         </div>
+        <div class="text-center">             
+        <a href="updatealu.php" class="btn-get-started">Update alumni Details</a>
+        </div>
+
 
       </div>
     </section><!-- End Services Cards Section -->
