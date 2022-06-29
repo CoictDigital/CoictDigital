@@ -208,6 +208,7 @@
                             $sql__ = "";
                               while($row = $result->fetch_assoc()){
                                   extract($row);
+                                  $button_view_excuse = "";
                                   $id = $row['id'];
                                   $invigilators = $row['invigilators'];
                                   $texthere = "";
@@ -218,14 +219,12 @@
                                  $rowx = mysqli_fetch_all($xx, MYSQLI_ASSOC);
                                  if(count($rowx) > 0) {
                                   $texthere = "class='text-danger'";
-//////////
-$button_view_excuse = "Excuse";
-}
+                                  $button_view_excuse = "<button type='button' data-toggle='modal' data-target='#viewexcuse$id'>Excuse</button>";
                               
 ?>
 
 
-<div class="modal fade" id="viewexcuse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="viewexcuse<?php echo $id;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
  <div class="modal-dialog modal-dialog-centered" role="document">
   <div class="modal-content">
     <div class="modal-header border-bottom-0">
@@ -241,10 +240,10 @@ $button_view_excuse = "Excuse";
         <form>
           
           <div class="form-group">
-            <input type="text" class="form-control" id="venue" placeholder="Venue">
+          <label for="available">I will not be available .</label>
           </div>
           <div class="form-group">
-            <input type="time" class="form-control" id="time" placeholder="Time">
+          <label for="message-text" class="col-form-label"><?php echo $rowx['comment']?></label>
           </div>
           <button type="submit" class="mx-auto button" >Seen</button>
         </form>
@@ -253,8 +252,7 @@ $button_view_excuse = "Excuse";
   </div>
    </div>
 </div>
-
-/////
+<?php }?>
                               
                   <tr>
                    <td <?php echo $texthere;?>><?php echo $row['day']; ?></td>
@@ -272,10 +270,9 @@ $button_view_excuse = "Excuse";
                     <button type="button" data-toggle="modal" data-target="#updatemodel<?php echo $id; ?>"><i class="all-icons fa fa-pencil"></i></button> 
                     <form class="form_action" action="deleteinvigilator.php" method="POST">
                       <input type="hidden" name="id" value="<?php echo $id; ?>">
-                      <button type="submit" title="Delete Record"><i class="all-icons fa fa-trash"></i></button>
+                      <button type="submit" title="Delete Record"><i class="all-icons fa fa-trash" style="color: #d90769;"></i></button>
                     </form>
-                    <button type="button" data-toggle="modal" data-target="#viewexcuse<?php echo $id; ?>">Excuse</button>
-                    <!-- <?php echo $button_view_excuse;?> -->
+                    <?php echo $button_view_excuse;?>
                   </td>
                   </tr>
          <div class="modal fade" id="updatemodel<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -294,7 +291,7 @@ $button_view_excuse = "Excuse";
               <div class="">
               <form action="updateinvigilation.php" method="POST">
                   <div class="form-group">
-                    <input type="text" class="form-control"<?php echo (!empty($invigilator_err)) ? 'is-invalid' : ''; ?> id="staffname" placeholder="<?php echo $invigilator; ?>">
+                    <input type="text" class="form-control"<?php echo (!empty($invigilator_err)) ? 'is-invalid' : ''; ?> id="invigilators" placeholder="<?php echo $invigilator; ?>">
                     
                   </div>
                   
