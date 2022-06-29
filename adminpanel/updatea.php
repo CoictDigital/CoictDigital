@@ -18,6 +18,8 @@
 
         $query = "UPDATE alumni SET occupation='$occupation',contact='$contact',employedat='$employedat',employedas='$employedas',field='$field' WHERE email='$email' ";
         $result = mysqli_query($conn,$query);
+
+        
         if (isset($_POST['login'])){
           echo'<script type = "text/javascript"> ';
         echo'alert("thank you for your corporation");';
@@ -29,6 +31,7 @@
     }
 
     ?>
+    
     <script>
   function showHideissues(){
     if ((document.getElementById("yes").checked) || (document.getElementById("ya").checked)){
@@ -57,6 +60,7 @@
   <link href="assets/css/main.css" rel="stylesheet">
     </head>
     <body class="page-contact">
+ 
         
         <section>
             <div class="container">
@@ -97,7 +101,7 @@
                   <label class="form-check-label"> NON IT Field</label>
                 </div>
                 <div>
-                 Employed at/company name <textarea class="form-control" name="employedat" value="<?php echo $student['employedas']; ?>" placeholder="" oninput="this.value = this.value.toUpperCase()"></textarea>
+                 Employed at/company name <textarea class="form-control" name="employedat" value="" placeholder="" oninput="this.value = this.value.toUpperCase()"></textarea>
                  Employed as/deal with<textarea class="form-control" name="employedas" value="" placeholder=""  oninput="this.value = this.value.toUpperCase()"></textarea>
                 </div>
 </div>
