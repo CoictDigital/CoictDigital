@@ -42,7 +42,7 @@
         <div class="section-title">
           <h3>UNIVERSITY OF DAR ES SALAAM</h3>
           <h3>Quality Assurance Bureau (QAB)</h3>
-          <h3>Student Course Evaluation Form</h3>
+          <h3>Student Course Evaluation Results</h3>
           <h2>Undergraduate Programmes</h2>
         </div>
 

@@ -173,7 +173,7 @@
                       foreach ($alumnis as $alumni) {
 
                     ?>
-                  <td ><?php echo $alumni['alumni_name']; ?></td>
+                  <td ><?php echo $alumni['Name']; ?></td>
                   <td ><?php echo $alumni['email']; ?></td>
                   <!-----crud icons ------->
                   <td>                    
