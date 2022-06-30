@@ -135,7 +135,7 @@
 
           <div class="row">
             <div class="col-sm-6 mb-1">
-              <p>The session <?php echo $row['session_starting_time']; ?>  </p>
+              <p>Session starting time: <?php echo $row['session_starting_time']; ?>  </p>
             </div>
             <div class="" >
 
