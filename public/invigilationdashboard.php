@@ -143,11 +143,15 @@ $query ="SELECT distinct users.name,exam_invigilation.day,exam_invigilation.from
                     <textarea rows="4" cols="50" name="comment">
                   </textarea>
                   </div>
+                  <div class="form-group">
+                
+                    <label for="message-text" class="col-form-label" style="color:red ">IMPORTANT! Once submitted details cannot be edited.</label>
+                  </div>
                  
                   </div>
                   <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" name="declineinvigilation" formaction="http://localhost/coictdigital/public/declineinvigilation.php" >SEND</button>
+                  <button type="submit" class="btn btn-primary" name="declineinvigilation" formaction="http://localhost/coictdigital/public/declineinvigilation.php" >Submit</button>
                   </div>
                 </form>
               <!-- </div> -->

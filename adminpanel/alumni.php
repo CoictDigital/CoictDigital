@@ -235,6 +235,10 @@
   
 
         </div>
+        <div class="text-center">             
+        <a href="updatealu.php" class="btn-get-started">Update alumni Details</a>
+        </div>
+
 
       </div>
     </section><!-- End Services Cards Section -->
