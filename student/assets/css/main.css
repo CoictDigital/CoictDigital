@@ -101,7 +101,7 @@ section {
 
 .breadcrumbs:before {
   content: "";
-  background-color: rgba(27, 47, 69, 0.7);
+  background-color: rgba(8,100,175,0.7);
   position: absolute;
   inset: 0;
 }
@@ -580,7 +580,7 @@ section {
 # Call To Action Section
 --------------------------------------------------------------*/
 .call-to-action {
-  background: linear-gradient(rgba(27, 47, 69, 0.8), rgba(27, 47, 69, 0.8)), url("../img/course.jpg") center center;
+  background: linear-gradient(rgba(8,100,175,0.7), rgba(8,100,175,0.7)), url("../img/course.jpg") center center;
   background-size: cover;
   padding: 100px 0;
 }

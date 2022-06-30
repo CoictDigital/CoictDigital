@@ -128,7 +128,7 @@
         </div>
         
         <div class="row gy-5 p-5">
-        <center> <h4 class="title"><a href="#" class="stretched-link">Employment Industry</a></h4> </center>
+        <center> <h4 class="title-yellow">Employment Industry</h4> </center>
           </div>
 
        
@@ -193,7 +193,7 @@
     <th class="th-lg">Email</th>
     <th class="th-lg">Programme</th>
     <th class="th-lg">Status</th>
-    <th class="th-lg">Action</th>
+    <!-- <th class="th-lg">Action</th> -->
 </tr>
   </thead>
   <tbody>
@@ -215,11 +215,11 @@
                   <td ><?php echo $alumni['programme']; ?></td>
                   <td ><?php echo $alumni['occupation']; ?></td>
                   <!-----crud icons ------->
-                  <td>                    
+                  <!-- <td>                    
                  
                     <a href="#editModal" data-toggle="modal" data-target="#editModal"><i class="bi bi-trash" style="color: #d90769;"></i></a> 
                                       
-                  </td>
+                  </td> -->
                   </tr> 
                   <?php }
                         }
@@ -277,7 +277,7 @@
           data: {
             labels: ['IT', 'Non-IT'],
             datasets: [{
-              backgroundColor: ['#38574d', '#f6b418'],
+              backgroundColor: ['#0864af', '#23395d'],
               data: [ <?php echo $count1; ?>,<?php echo $count; ?>],
             }]
           },
@@ -314,7 +314,7 @@
       data: {
         labels: ['IT', 'Non-IT'],
         datasets: [{
-          backgroundColor: ['#38574d', '#f6b418'],
+          backgroundColor: ['#0864af', '#23395d'],
           data: [<?php echo $coun1; ?>,<?php echo $coun; ?>],
         }]
       },
@@ -351,7 +351,7 @@
       data: {
         labels: ['IT', 'Non-IT'],
         datasets: [{
-          backgroundColor: ['#38574d', '#f6b418'],
+          backgroundColor: ['#0864af', '#23395d'],
           data: [<?php echo $cout1; ?>,<?php echo $cout; ?>],
         }]
       },

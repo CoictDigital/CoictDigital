@@ -167,9 +167,9 @@
 
           </div>
 
-          <div id="editor" class="form-group">
+          <!-- <div id="editor" class="form-group">
           <a href="javascript:generatePDF()"><button class="btn btn-primary" >Dowload Results</button></a>
-          </div>
+          </div> -->
         </div>
     </section><!-- End Form Section -->
     

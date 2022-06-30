@@ -41,8 +41,9 @@ require_once("../includes/leftNav.php");
        <section id="evaluation" class="services">
       <div class="container-fluid">
       <div class="section-title">
-          <h3>UNIVERSITY OF DAR ES SALAAM</h3>
-          <h3>Alumni Details</h3>
+      <h3>UNIVERSITY OF DAR ES SALAAM</h3>
+          <h3>Alumni Records Management</h3>
+          <h2>Undergraduate Programmes</h2>
           
         </div>
       </div>

@@ -85,7 +85,9 @@
        <section id="" class="services">
         <div class="container-fluid"> 
           <div class="section-title">
-            <h2>ALUMNI MANAGEMENT</h2>
+          <h3>UNIVERSITY OF DAR ES SALAAM</h3>
+          <h3>Alumni Records Management</h3>
+          <h2>Undergraduate Programmes</h2>
           </div>
           <script>
       $(document).ready(function () {
@@ -94,19 +96,21 @@
     </script>
 
           <div class="">
+          <div class="p-4">
+        <div class="card">
+          <div class="card-body">
+            <!-- <p class="card-title">Department of Computer Science and Engineering</p> -->
 
-          <form>
-
-            <div class="form-group row">
-                <div class="col-sm-30 mb-1" >
+          <form> <!-- <div class="form-group row"> -->
+                <!-- <div class="col-sm-30 mb-1" >
                 <a href="updatesession.php" class="mx-auto button"; style= "float: right; height: 25px;"><center>update</center></a>        
-              </div>
+              </div> -->
               <!-- <div class="col-sm-30 mb-1" >
                 <a href="profile.php" class="mx-auto button"; style= "float: right; height: 25px;"><center>profile</center></a>        
               </div> -->
             
            <div class="form-group row">
-              <h5>ALUMNI TABLE</h5>
+              <h5 class="card-title text-center p-4">ALUMNI TABLE</h5>
             </div>
             <div class="form-group row">
               <div class="centre">
@@ -161,6 +165,10 @@
             </div>
           
           </form>
+          </div>
+          </div>
+          </div>
+          
         </div>
 
 

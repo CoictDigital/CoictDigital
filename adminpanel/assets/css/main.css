@@ -741,7 +741,7 @@ section {
   color: var(--color-primary);
 }
 
-/*--------------------------------------------------------------
+/*-----------------------------------------------------------
 # Services List Section
 --------------------------------------------------------------*/
 .services-list .service-item {
@@ -765,6 +765,10 @@ section {
   color: var(--color-secondary);
 }
 
+.title-yellow{
+  color: #f6b418;
+}
+
 .services-list .service-item .title a:hover {
   color: #38618e;
 }
@@ -778,7 +782,7 @@ section {
 # Call To Action Section
 --------------------------------------------------------------*/
 .call-to-action {
-  background: #0864af, url("../img/services-header.jpg") center center;
+  background:  linear-gradient(rgba(8,100,175,0.7), rgba(8,100,175,0.7)), url("../img/services-header.jpg") center center;
   background-size: cover;
   padding: 100px 0;
 }

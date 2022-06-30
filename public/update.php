@@ -107,9 +107,7 @@
                 </div>
             </div>
  <center>       
-</div>
 <button type="submit" class="mx-auto button" name="login">continue</button>
-</div>
 </center>    
 
 </div>

@@ -58,7 +58,7 @@
           <div class="modal-body text-center">
                 <p>Thank you for your response. </p>
                 <p>You and other <?php echo ($_SESSION["studentFilledCount"] - 1);
-                                  echo $_SESSION["studentFilledCount"] - 1 > 1 ?  " students " : " student "   ?>have filled this form.</p>
+                                  echo $_SESSION["studentFilledCount"] - 1 > 1 ?  " students " : " student "   ?>have evaluated this course.</p>
 
                 <button type="submit" class="btn-get-started"><a href="../student/index.php">Exit</a></button>
               </div>

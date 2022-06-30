@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>CoICT Digital-Already Filled</title>
+  <title>CoICT Digital-Delete</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -62,7 +62,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
            
-            <p>Are you sure you want to delete this course?</p>
+            <p>Are you sure you want to delete this instructor?</p>
             <div class="text-center" data-aos="fade-up" data-aos-delay="200">
            <center> <form action="changes.php" method="POST">
           
@@ -70,7 +70,7 @@
                 
             <button type="submit" class="btn-get-started mb-3" name="deleteinstructor" value="deleteinstructor">Delete</button>
             </form>
-            <a href="instructor.php" class="btn-watch-video pt-2 align-items-center"><i class="bi bi-x-square"></i><span>Cancel</span></a>
+            <a href="instructors.php" class="btn-watch-video pt-2 align-items-center"><i class="bi bi-x-square"></i><span>Cancel</span></a>
             </center>
           </div>
 
