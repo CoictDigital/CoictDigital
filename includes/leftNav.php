@@ -19,14 +19,14 @@
     <nav id="navbar" class="nav-menu navbar">
       <ul>
 
-        <li><a href="index.php" class="nav-link scrollto" style="float:left;"> <i class="fa fa-home">  </i><span>Home</span></a></li>
+        <li><a href="index.php" class="nav-link scrollto" style="float:left;  "> <i class="fa fa-home">  </i><span>Home</span></a></li>
         <li><a href="<?php
                       if ($_SESSION["userData"]["role"] == 2) {
                         echo "department1.php";
                       } else if ($_SESSION["userData"]["role"] == 3) {
                         echo "index.php";
                       }
-                      ?>" class="nav-link scrollto" style="float:left;"><i class="fas fa-thin fa-dna"></i> <span>Course Evaluation</span></a></li>
+                      ?>" class="nav-link scrollto" style="float:left; "><i class="fas fa-thin fa-dna"></i> <span>Course Evaluation</span></a></li>
         <li><a href="alumnirecords.php" class="nav-link scrollto" style="float:left;"><i class="fas fa-thin fa-clipboard"></i><span>Alumni Records</span></a></li>
 
         <li><a href="<?php
@@ -57,4 +57,7 @@
     </nav><!-- .nav-menu -->
   </div>
   <script src="https://kit.fontawesome.com/939695db0f.js" crossorigin="anonymous"></script>
+  <style>
+    
+  </style>
 </header>

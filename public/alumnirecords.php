@@ -35,7 +35,7 @@
 
   <main id="main">
                  <?php
-                      if ($_SESSION["userData"]["role"] == 2) {
+                      if (($_SESSION["userData"]["role"] == 2) || ($_SESSION["userData"]["role"] == 3)) {
                         $sql = "SELECT * FROM `alumni`";
                       }
                       $result=$conn->query($sql);
@@ -99,9 +99,9 @@
           <form>
 
             <div class="form-group row">
-                <div class="col-sm-30 mb-1" >
+                <!-- <div class="col-sm-30 mb-1" >
                 <a href="updatesession.php" class="mx-auto button"; style= "float: right; height: 25px;"><center>update</center></a>        
-              </div>
+              </div> -->
               <!-- <div class="col-sm-30 mb-1" >
                 <a href="profile.php" class="mx-auto button"; style= "float: right; height: 25px;"><center>profile</center></a>        
               </div> -->
@@ -163,9 +163,9 @@
           
           </form>
         </div>
-        <div class="col-sm-30 mb-1" >
+        <!-- <div class="col-sm-30 mb-1" >
                 <a href="market.php" class="mx-auto button"; style= "float: right; height: 25px;"><center>marketing</center></a>        
-              </div>
+              </div> -->
 
         
         </div>

@@ -93,56 +93,56 @@ CREATE TABLE `courses` (
 
 INSERT INTO `courses` (`course_code`, `study_year`, `course_title`, `instructor`, `venue`, `class_size`, `department`, `college`, `date`, `assistant`, `semester`) VALUES
 ('CL 111', 1, 'Communication skills for engineers', 'Dr. Fatma Ally', 'YOMBO 4', 350, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
-('CS 151', 1, 'Computer organisation I', 'Dr. Mercy Mbise', 'D01', 250, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
+('CS 151', 1, 'Computer organisation I', 'Dr. Mercy Mbise', 'D 01', 250, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
 ('CS 173', 1, 'Business computer communication', 'Dr. Miriam Amiri', 'D 01', 350, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
-('CS 174', 1, 'Programming in C', 'Dr. Kennedy Mwakisole', 'DO1', 350, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
-('CS 175', 1, 'Programming in Java', 'Dr. Mercy Mbise', 'D01', 250, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
-('CS 234', 2, 'Object oriented programming in Java', 'Dr. Juma Lungo', 'B310', 350, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
+('CS 174', 1, 'Programming in C', 'Dr. Kennedy Mwakisole', 'D 01', 350, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
+('CS 175', 1, 'Programming in Java', 'Dr. Mercy Mbise', 'D 01', 250, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
+('CS 234', 2, 'Object oriented programming in Java', 'Dr. Juma Lungo', 'B 310', 350, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
 ('CS 243', 2, 'Computer network and design', 'Dr. John Zedekia', 'C1/C2', 78, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
-('CS 252', 2, 'Computer organisation and architecture II', 'Dr. Ellen Kalinga', 'D01', 270, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
-('CS 323', 3, 'Control systems engineering', 'Dr. Merina ', 'B307', 105, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2),
-('CS 334', 3, 'Principles of operating systems', 'Dr. Fatma Ally', 'B307', 244, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
-('CS 335', 3, 'Software engineering', 'Dr. Juma Lungo', 'DO1', 269, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
-('CS 348', 3, 'Network switching and routing', 'Dr. Yona', 'B307', 105, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2),
-('CS 354', 3, 'Microcomputer systems II', 'Dr. Bagile', 'B305', 65, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2),
-('CS 356', 3, 'Embedded systems', 'Dr. Daudi Nyamiula', 'B302', 57, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2),
-('DS 112', 1, 'Development perspectives 1', 'Dr. Miriam Amiri', 'YOMBO5', 350, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
+('CS 252', 2, 'Computer organisation and architecture II', 'Dr. Ellen Kalinga', 'D 01', 270, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
+('CS 323', 3, 'Control systems engineering', 'Dr. Merina ', 'B 307', 105, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2),
+('CS 334', 3, 'Principles of operating systems', 'Dr. Fatma Ally', 'B 307', 244, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
+('CS 335', 3, 'Software engineering', 'Dr. Juma Lungo', 'D 01', 269, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
+('CS 348', 3, 'Network switching and routing', 'Dr. Yona', 'B 307', 105, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2),
+('CS 354', 3, 'Microcomputer systems II', 'Dr. Bagile', 'B 305', 65, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2),
+('CS 356', 3, 'Embedded systems', 'Dr. Daudi Nyamiula', 'B 302', 57, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2),
+('DS 112', 1, 'Development perspectives 1', 'Dr. Miriam Amiri', 'YOMBO 5', 350, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
 ('DS 113', 1, 'Development perspectives 2', 'Dr. Mlay Massawe', 'YOMBO 5', 350, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
-('GM 300', 3, 'Strategic management', 'Dr. Winfrida Malamla', 'YOMBO5', 350, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
+('GM 300', 3, 'Strategic management', 'Dr. Winfrida Malamla', 'YOMBO 5', 350, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
 ('IE 445', 3, 'Entrepreneurship for engineers', 'Dr. Taifa Micheal', 'YOMBO 5', 244, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
-('IS 143', 1, 'Discrete structures', 'Dr. Cosmas Mushi', 'B310', 78, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
-('IS 158', 1, 'Computer hardware and system maintainance', 'Dr. Ismail Abdul', 'B302', 78, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
-('IS 162', 1, 'Introduction to information systems', 'Dr. Ismail Abdul', 'B302', 78, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
-('IS 171', 1, 'Introduction to computer networks', 'Dr. Mercy Mbise', 'D01', 350, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
-('IS 181', 1, 'Web programming', 'Dr. Bernard Musa', 'D01', 150, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
-('IS 236', 2, 'Structured system analysis and design', 'Dr. Salome Maro', 'DO1', 350, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
-('IS 237', 2, 'Data abstractions and algorithms', 'Dr. Godfrey Justo', 'B307', 78, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
-('IS 238', 2, 'Mobile application development', 'Dr. Kennedy Mwakisole', 'DO1', 78, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
-('IS 239', 2, 'Algorithms and complexity', 'Dr. Godfrey Justo', 'B310', 78, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
+('IS 143', 1, 'Discrete structures', 'Dr. Cosmas Mushi', 'B 310', 78, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
+('IS 158', 1, 'Computer hardware and system maintainance', 'Dr. Ismail Abdul', 'B 302', 78, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
+('IS 162', 1, 'Introduction to information systems', 'Dr. Ismail Abdul', 'B 302', 78, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
+('IS 171', 1, 'Introduction to computer networks', 'Dr. Mercy Mbise', 'D 01', 350, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
+('IS 181', 1, 'Web programming', 'Dr. Bernard Musa', 'D 01', 150, 'CSE', 'COICT', '2022-06-07 14:47:10', '', 2),
+('IS 236', 2, 'Structured system analysis and design', 'Dr. Salome Maro', 'D 01', 350, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
+('IS 237', 2, 'Data abstractions and algorithms', 'Dr. Godfrey Justo', 'B 307', 78, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
+('IS 238', 2, 'Mobile application development', 'Dr. Kennedy Mwakisole', 'D 01', 78, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
+('IS 239', 2, 'Algorithms and complexity', 'Dr. Godfrey Justo', 'B 310', 78, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
 ('IS 243', 2, 'Practical training 1', 'Dr. Godfrey Justo', 'CoICT', 350, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
-('IS 245', 2, 'Management of IT resources', 'Dr. Angela Jovin', '', 0, 'CSE', 'CoICT', '2022-06-22 22:38:53', '', 1),
-('IS 246', 2, 'Principles of computer graphics', 'Dr. James Chambua', 'B302', 78, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
+('IS 245', 2, 'Management of IT resources', 'Dr. Angela Jovin', 'YOMBO 1', 0, 'CSE', 'CoICT', '2022-06-22 22:38:53', '', 1),
+('IS 246', 2, 'Principles of computer graphics', 'Dr. James Chambua', 'B 302', 78, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
 ('IS 264', 2, 'Principles of database systems', 'Dr. Henry Kalisti', 'COICT', 150, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
-('IS 274', 2, 'Object oriented analysis and design', 'Dr. Salome Maro', 'B302', 350, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
-('IS 283', 2, 'Web services and technologies', 'Dr. Henry Kalisti', 'B308', 150, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
+('IS 274', 2, 'Object oriented analysis and design', 'Dr. Salome Maro', 'B 302', 350, 'CSE', 'COICT', '2022-06-07 14:26:42', '', 1),
+('IS 283', 2, 'Web services and technologies', 'Dr. Henry Kalisti', 'B 308', 150, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
 ('IS 335', 3, 'FYP', 'DR COSMAS MUSHI', 'COICT', 244, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
 ('IS 336', 3, 'Principles of system security', 'Dr. Hellen Maziku', 'B302', 244, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
 ('IS 337', 3, 'Mobile computing', 'Dr. Jimmy Mbelwa', 'B 305', 244, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
-('IS 343', 3, 'Practical training 2', 'Dr. Godfrey Justo', 'B302', 415, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
-('IS 344', 3, 'Human computer interaction', 'Dr. Cosmas Mushi', 'B310', 244, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
-('IS 365', 3, 'Artificial intelligence', 'Dr. James Chambua', 'B305', 244, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
+('IS 343', 3, 'Practical training 2', 'Dr. Godfrey Justo', 'B 302', 415, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
+('IS 344', 3, 'Human computer interaction', 'Dr. Cosmas Mushi', 'B 310', 244, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
+('IS 365', 3, 'Artificial intelligence', 'Dr. James Chambua', 'B 305', 244, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
 ('IS 367', 0, 'Management of information systems', 'Dr. Honest C. Kimaro', 'DO1', 78, 'CSE', 'COICT', '2022-06-07 14:15:15', '', 1),
-('IS 368', 3, 'Data mining and warehousing', 'Dr. Kennedy Mwakisole', 'B307', 244, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
+('IS 368', 3, 'Data mining and warehousing', 'Dr. Kennedy Mwakisole', 'B 307', 244, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
 ('IS 369', 3, 'IT audit and controls', 'Dr. Aron Kandoro', 'B305', 108, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
-('IS 371', 0, 'System administration in linux', 'Dr. Jimmy Mbelwa', 'B307', 150, 'CSE', 'COICT', '2022-06-07 14:15:15', '', 1),
-('IS 384', 3, 'Software project management', 'Dr. Mathew Mndeme', 'B307', 35, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
-('IS 385', 3, 'Business intelligence', 'Dr. Godfrey Justo', 'B307', 35, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
+('IS 371', 0, 'System administration in linux', 'Dr. Jimmy Mbelwa', 'B 307', 150, 'CSE', 'COICT', '2022-06-07 14:15:15', '', 1),
+('IS 384', 3, 'Software project management', 'Dr. Mathew Mndeme', 'B 307', 35, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
+('IS 385', 3, 'Business intelligence', 'Dr. Godfrey Justo', 'B 307', 35, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
 ('IS 386', 3, 'Enterprise systems', 'Dr. Honest C. Kimaro', 'B 307', 35, 'CSE', 'COICT', '2022-06-02 09:56:45', '', 2),
 ('IS 387', 3, 'Environmental management of information systems', 'Dr. Wilfred Senyoni', 'B307', 35, 'CSE', 'COICT', '2022-06-07 14:07:50', '', 1),
 ('MK 301', 3, 'Entrepreneurship ', 'Dr. Winnie Nguni', 'YOMBO 5', 35, 'CSE', 'COICT', '2022-06-08 13:32:38', '', 2),
 ('MT 100', 1, 'Foundations of analysis', 'Dr. Mlay', 'YOMBO 2', 350, 'CSE', 'COICT', '2022-06-07 14:41:15', '', 1),
 ('MT 249', 2, 'Mathematical logic and formal semantics', 'Dr. Henry Kalisti', 'COICT', 150, 'CSE', 'COICT', '2022-06-07 14:32:27', '', 2),
-('TE 339', 3, 'Telecommunication switching and transmission', 'Dr. Naiman', 'B310', 105, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2);
+('TE 339', 3, 'Telecommunication switching and transmission', 'Dr. Naiman', 'B 310', 105, 'CSE', 'COICT', '0000-00-00 00:00:00', '', 2);
 
 -- --------------------------------------------------------
 
@@ -163,35 +163,59 @@ CREATE TABLE `course_allocation` (
 -- Dumping data for table `course_allocation`
 --
 
+
 INSERT INTO `course_allocation` (`id`, `course_name`, `semester`, `evaluator`, `assistant`, `instructor`) VALUES
-(1, 'Introduction to	Informatics	and	\r\nMicrocomputers', '1', '', 'Mr Masembo', 'Ms.Lilian Mkonyi'),
-(2, 'Computer Organization and	\r\nArchitecture I', '1', '', 'Mr.Mwita Sogorya', 'Dr.Diana Rwegasira'),
-(3, 'Introduction	to	Information	\r\nSystems', '1', '', '', 'Dr.Ruthbetha	Kateule'),
-(4, 'Programming in C', '1', '', 'Mr Kishiwa', 'Dr.Masoud	Mahundi'),
+(2, 'Computer Organization and	Architecture I', '1', 'Dr. Ruth Kateule', 'Mr.Mwita Sogorya', 'Dr.Diana Rwegasira'),
+(3, 'Introduction	to	Information	Systems', '1', 'Dr. Masoud H Mahundi', 'Mr Michael kishiwa', 'Dr. Ruth Kateule'),
+(4, 'Programming in C', '1', '', 'Mr Kishiwa', 'Dr. Masoud H. Mahundi'),
 (5, 'Measurements & Instrumentation Engineering	I', '1', '', 'Dr	Lujara', 'Dr.Jacqueline Damas'),
-(6, 'Computer Network Design	and	Administration', '1', '', 'Mr Zedekia', 'Dr.Yona Andengelile'),
-(7, 'Principles	of Computer	Graphics', '1', '', '', 'Dr.James Chambua'),
-(8, 'Data Abstraction and Algorithms', '1', '', '', 'Dr.Godfrey Justo'),
-(9, 'Mobile	Applications Development', '1', '', '', 'Dr.Kennedy Frank'),
-(10, 'Multimedia	System', '1', '', '', 'Dr.Mercy	Mbise'),
-(11, 'Principles of	Database Systems', '1', '', 'Mr	Masembo', 'Mr.Henry	Kalisti'),
-(12, 'Structured Systems Analysis & Design', '1', '', '', 'Dr.Salome	Maro'),
-(13, 'Principles	of	Operating Systems', '1', '', 'Dr Charles Tarimo', 'Dr.Fatuma	Simba'),
-(14, 'Human	Computer Interaction', '1', '', '', ' Dr.Joseph Cosmas'),
+(6, 'Computer Network Design	and	Administration', '1', '', 'Mr Zedekia', 'Dr. Yonah Andengelile'),
+(7, 'Principles	of Computer	Graphics', '1', '', '', 'Dr. James Chambua'),
+(8, 'Data Abstraction and Algorithms', '1', '', '', 'Dr. Godfrey N. Justo'),
+(9, 'Mobile	Applications Development', '1', '', '', 'Dr. Frank Kennedy'),
+(10, 'Multimedia	System', '1', '', '', 'Dr Mercy Mbise'),
+(11, 'Principles of	Database Systems', '1', 'Dr Juma Lungo', 'Mr	Masembo', 'Mr.Henry	Kalisti'),
+(12, 'Structured Systems Analysis & Design', '1', '', '', 'Dr. Salome H. Maro'),
+(13, 'Principles	of	Operating Systems', '1', '', 'Dr Charles Tarimo', 'Dr. Fatuma Simba'),
+(14, 'Human	Computer Interaction', '1', '', '', 'Dr. Joseph C. Mushi'),
 (15, 'Software Engineering', '1', '', '', 'Dr.Juma Lungo	/ Dr.Leonard Peter'),
 (16, 'Final Year Project', '1', '', '', 'FYP Team'),
 (17, 'Trends and Social-cultural	implications of	information Technology', '1', '', '', 'Mr.Hassan	Omary'),
 (18, 'Microcomputer Systems I', '1', '', '', 'Dr.Burchard Bagile'),
 (19, 'Management of Information Systems', '1', '', '', 'Dr.Honest	Kimaro'),
-(20, 'IT Audit and Controls', '1', '', '', 'Dr.Aron Kondoro'),
-(21, 'System	Administration in Linux', '1', '', '', 'Dr.Jimmy Mbelwa'),
-(22, 'Environmental Management	Information	Systems', '1', '', '', 'Dr.Wilfred Senyoni'),
-(23, 'Software Quality Assurance and Testing', '1', '', '', 'Dr.Wilbard Nyamwihula'),
+(20, 'IT Audit and Controls', '1', '', '', 'Dr. Aron W. Kondoro'),
+(21, 'System	Administration in Linux', '1', '', '', 'Dr. Jimmy Mbelwa'),
+(22, 'Environmental Management	Information	Systems', '1', '', '', 'Dr. Wilfred Senyoni'),
+(23, 'Software Quality Assurance and Testing', '1', '', '', 'Dr. Wilbard Nyamwihula'),
 (24, 'Modern	Control	Systems	Engineering', '1', '', '', 'Mr.Daudi	Charles / Ms.Merina Marcellino'),
-(25, 'Computer Organization and Architecture	III', '1', '', '', 'Dr.Hellen	Maziku'),
-(26, 'EMBEDDED SYSTEMS', '1', 'DR TAIFA', 'Dr. MIRIAM', 'Dr. WINFRIDA'),
-(27, 'PROGRAMMING IN JAVA', '2', 'DR. DAUDI', 'Dr christina', 'Dr. JUMA H. LUNGO');
+(25, 'Computer Organization and Architecture	III', '1', '', '', 'Dr. Hellen Maziku'),
+(26, 'PROGRAMMING IN C', '1', 'DR FATMA', 'DR FATMA', 'Dr. Fatuma Simba'),
+(29, 'EMBEDDED SYSTEMS', '1', '', 'Mr. Mwita Sogorwa', 'Dr. Yonah Andengelile'),
+(30, 'DEVELOPMENT PERSPECTIVES II', '1', '', 'Mr. Mwita Sogorwa', 'Dr. Wilfred Senyoni'),
+(31, 'COMPUTER ORGANISATION I', '1', 'Dr. Aron W. Kondoro', 'Mr. Michael Kishiwa', 'Dr. Ruth Kateule'),
+(32, 'DISCRETE STRUCTURES', '2', 'Dr. Yonah Andengelile', 'Mr. Marco Masembo', 'Dr. Honest C. Kimaro'),
+(33, 'DISCRETE STRUCTURES', '2', 'Dr. Masoud H. Mahundi', 'Mr. Michael Kishiwa', 'Dr Mercy Mbise');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `course_allocation`
+--
+ALTER TABLE `course_allocation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `course_allocation`
+--
+ALTER TABLE `course_allocation`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+COMMIT;
 -- --------------------------------------------------------
 
 --
@@ -678,17 +702,35 @@ CREATE TABLE `exam_invigilation` (
 -- Dumping data for table `exam_invigilation`
 --
 
-INSERT INTO `exam_invigilation` (`id`, `day`, `from_time`, `to_time`, `course_name`, `venue`, `invigilators`) VALUES
-(3, '2022-06-16', '8:30', '10:30', 'PRINCIPLES OF OPERATING SYSTEM', 'YOMBO5', 'DR. FATUMA SIMBA'),
-(4, '0000-00-00', '7:30', '10:30', 'FYP', 'B307', 'DR TAIFA'),
-(5, '0000-00-00', '7:30', '18:30', 'ENTREPRENEURSHIP', 'B302', 'DR HELLEN MAZIKU'),
-(6, '0000-00-00', '8:30', '18:30', 'HUMAN COMPUTER INTERACTION', 'DO1', 'DR TAIFA'),
-(7, '0000-00-00', '9:30', '14:30', 'ENTREPRENEURSHIP', 'DO1', 'DR JIMMY MBELWA'),
-(8, '0000-00-00', '8:30', '10:30', 'PRINCIPLES OF OPERATING SYSTEM', 'YOMBO 5', 'DR COSMAS MUSHI'),
-(9, '0000-00-00', '8:00', '10:30', 'ENTREPRENEURSHIP', 'DO1', 'Dr. ARON R. KONDORO'),
-(10, '0000-00-00', '8:30', '10:30', 'BUSINESS INTELLIGENCE', 'B 305', 'DR HONEST C. KIMARO'),
-(0, '2022-06-16', '7:30', '10:30', 'NETWORK SWITCHING AND ROUTING', 'D01', 'Dr. MLAY');
 
+INSERT INTO `exam_invigilation` (`id`, `day`, `from_time`, `to_time`, `course_name`, `venue`, `invigilators`) VALUES
+(3, '2022-07-13', '08:30', '10:30', 'COMPUTER ORGANISATION I', 'YOMBO 4', 'Dr. Juma H.Lungo'),
+(4, '2022-06-13', '11:30', '12:30', 'PROGRAMMING IN C', 'D 01', 'Dr. Ruth Kateule'),
+(5, '2022-07-18', '02:30', '04:30', 'BUSINESS COMPUTER COMMUNICATIONS', 'B 310', 'Dr. Aron W. Kondoro'),
+(6, '2022-06-17', '04:30', '06:30', 'PROGRAMMING IN JAVA', 'B 310', 'Dr. Hellen Maziku'),
+(7, '2022-07-08', '04:30', '06:30', 'STRATEGIC MANAGEMENT', 'C1/C2', 'Dr. Honest C. Kimaro'),
+(9, '2022-06-25', '08:30', '10:30', 'PROGRAMMING IN C', 'D 01', 'Dr. Aron W. Kondoro');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `exam_invigilation`
+--
+ALTER TABLE `exam_invigilation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `exam_invigilation`
+--
+ALTER TABLE `exam_invigilation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+COMMIT;
 -- --------------------------------------------------------
 
 --
