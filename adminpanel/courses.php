@@ -220,8 +220,8 @@
                   <td ><?php echo $instructor['course_title']; ?></td>
                   <!-----crud icons ------->
                   <td>                    
-                  <a href="updatecourse.php?<?php echo "courseId=" . $instructor['course_code']; ?>" data-toggle="modal" data-target="#editModal"><i class="bi bi-pencil-square" style="color: #1335f5;"></i></a>  
-                  <a href="deletecourse.php?<?php echo "courseId=" . $instructor['course_code']; ?>" data-toggle="modal" data-target="#editModal"><i class="bi bi-trash" style="color: #d90769;"></i></a> 
+                  <a href="updatecourse.php?<?php echo "courseId=" . $instructor['course_code']; ?>" ><i class="bi bi-pencil-square" style="color: #1335f5;"></i></a>  
+                  <a href="deletecourse.php?<?php echo "courseId=" . $instructor['course_code']; ?>" ><i class="bi bi-trash" style="color: #d90769;"></i></a> 
                                       
                   </td>
                   </tr> 
